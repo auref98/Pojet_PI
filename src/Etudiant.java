@@ -20,6 +20,6 @@ class Etudiant extends Representant{
   private Section etudie;
 
   Etudiant(){
-
+	Wesh ma couille
   }
 }
