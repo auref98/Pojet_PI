@@ -21,5 +21,6 @@ class Etudiant extends Representant{
 
   Etudiant(){
 	Wesh ma couille
+	slt poto, TG ludo!
   }
 }
