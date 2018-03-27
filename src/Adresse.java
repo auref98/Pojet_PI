@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 class Adresse {
   private String localite;
   private int codePostal;

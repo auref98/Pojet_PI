@@ -1,6 +1,6 @@
 package src;
 
-import java.util.LocalDate;
+import java.time.LocalDate;
 
 class Etudiant extends Representant{
   private LocalDate dateNaissance;
