@@ -20,11 +20,6 @@ class Etudiant extends Representant{
   private Section etudie;
 
   Etudiant(){
-<<<<<<< HEAD
-	Wesh ma couille
-	slt poto, TG ludo!
-=======
-	Wesh ma couille t'es ki
->>>>>>> cc18403c799a7c6567c9cd43bf910b29af476ef8
+
   }
 }
