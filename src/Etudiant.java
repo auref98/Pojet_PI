@@ -20,7 +20,6 @@ class Etudiant extends Representant{
   private Section etudie;
 
   Etudiant(){
-<<<<<<< HEAD
     
   }
 }
