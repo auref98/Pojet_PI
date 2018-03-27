@@ -14,6 +14,5 @@ class Adresse {
   private ArrayList<Etudiant> reside;
 
   Adresse(){
-	  String Bite;
   }
 }
