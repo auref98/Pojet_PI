@@ -1,4 +1,4 @@
-package src;
+package Class_PI;
 
 class Commentaire {
   private String contenu;

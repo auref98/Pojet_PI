@@ -1,4 +1,6 @@
-package src;
+package Class_PI;
+
+import java.util.*;
 
 import java.util.ArrayList;
 
@@ -14,6 +16,5 @@ class Adresse {
   private ArrayList<Etudiant> reside;
 
   Adresse(){
-       
   }
 }

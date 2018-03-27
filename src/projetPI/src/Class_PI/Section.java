@@ -1,4 +1,6 @@
-package src;
+package Class_PI;
+
+import java.util.*;
 
 class Section {
   private String nom;

@@ -1,4 +1,6 @@
-package src;
+package Class_PI;
+
+import java.util.*;
 
 class Representant {
   private String nom;
@@ -8,9 +10,5 @@ class Representant {
   private String matricule;//matricule -> e16****
 
   private LinkedList<Commentaire> poste;
-  private LinkedList<Inscription> inscri;
-
-  Representation(){
-
-  }
+  private LinkedList<Inscription> inscrit;
 }
