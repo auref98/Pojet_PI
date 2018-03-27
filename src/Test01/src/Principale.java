@@ -46,7 +46,7 @@ public class Principale extends JFrame
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Placer Bateaux");
-		this.setSize(500, 350);
+		this.setSize(50, 50);
 		this.setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
