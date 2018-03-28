@@ -6,13 +6,16 @@ import java.util.LinkedList;
 class Section {
   private String nom;
 
-  private LinkedList<Etudiant> etudie;
-  private LinkedList<Evenement> concerne;
-  private LinkedList<Contact> interesse;
+  private LinkedList<Etudiant> listeEtudiant;
+  private LinkedList<Evenement> listeEvent;
+  private LinkedList<Contact> listeContact;
   private Professeur relais;
-  private ArrayList<Professeur> enseigne;
-
-  Section(){
-
-  }
+  private ArrayList<Professeur> listeProf;
+  
+	public Section(String nom, Professeur relais)
+	{
+		super();
+		this.nom = nom;
+		this.relais = relais;
+	}
 }
