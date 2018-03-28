@@ -7,8 +7,11 @@ class Contact {
 
   private Evenement eve;
   private ArrayList<Section> interesse;
-
-  Contact(){
-
+  
+  //constructeur contact
+  //pré:la variable mail est initialisé
+  //post:mail contient maintenant le nouveau mail
+  Contact(String mail){
+	  this.mail=mail;
   }
 }
