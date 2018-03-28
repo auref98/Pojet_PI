@@ -13,7 +13,12 @@ class Adresse {
   private Evenement eve;
   private ArrayList<Etudiant> reside;
 
-  Adresse(){
-
+  Adresse(String localite, int codePostal,String rue,int numero,String boite,String pays){
+	  this.localite = localite;
+	  this.codePostal = codePostal;
+	  this.rue = rue;
+	  this.numero = numero;
+	  this.boit = boite;
+	  this.pays = pays;
   }
 }
