@@ -1,11 +1,6 @@
 package Class_PI;
 
-<<<<<<< HEAD:src/Etudiant.java
 import java.time.LocalDate;
-=======
-import java.time.*;
-import java.util.*;
->>>>>>> 263a235f873da958a455f3e40307c6f0b7a25446:src/projetPI/src/Class_PI/Etudiant.java
 
 class Etudiant extends Representant{
   private LocalDate dateNaissance;

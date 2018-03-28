@@ -1,7 +1,8 @@
 package Class_PI;
 
-import java.util.*;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.LinkedList;
 
 class Plage {
   private LocalDate date;

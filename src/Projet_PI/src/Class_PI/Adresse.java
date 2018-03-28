@@ -1,7 +1,5 @@
 package Class_PI;
 
-import java.util.*;
-
 import java.util.ArrayList;
 
 class Adresse {
@@ -16,6 +14,6 @@ class Adresse {
   private ArrayList<Etudiant> reside;
 
   Adresse(){
-	  String Bite;
+
   }
 }

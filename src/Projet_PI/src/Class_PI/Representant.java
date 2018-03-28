@@ -1,6 +1,6 @@
 package Class_PI;
 
-import java.util.*;
+import java.util.LinkedList;
 
 class Representant {
   private String nom;
@@ -10,5 +10,9 @@ class Representant {
   private String matricule;//matricule -> e16****
 
   private LinkedList<Commentaire> poste;
-  private LinkedList<Inscription> inscrit;
+  private LinkedList<Inscription> inscri;
+
+  Representant(){
+
+  }
 }
