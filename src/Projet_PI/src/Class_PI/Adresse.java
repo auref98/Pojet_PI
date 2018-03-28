@@ -13,6 +13,11 @@ class Adresse {
   private Evenement eve;
   private ArrayList<Etudiant> reside;
 
+  /*
+   * constructeur Adresse
+   * precondition : toute les variables sont initialisé
+   * postcondition : le constructeur est initialiser
+   */
   Adresse(String localite, int codePostal,String rue,int numero,String boite,String pays){
 	  this.localite = localite;
 	  this.codePostal = codePostal;
