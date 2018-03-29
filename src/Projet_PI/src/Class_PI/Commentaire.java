@@ -11,4 +11,18 @@ class Commentaire {
   Commentaire(String contenu){
 	  this.contenu=contenu;
   }
+
+/**
+ * @return the contenu
+ */
+public String getContenu() {
+	return contenu;
+}
+
+/**
+ * @param contenu the contenu to set
+ */
+public void setContenu(String contenu) {
+	this.contenu = contenu;
+}
 }

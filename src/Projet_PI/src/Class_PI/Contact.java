@@ -14,4 +14,18 @@ class Contact {
   Contact(String mail){
 	  this.mail=mail;
   }
+
+/**
+ * @return the mail
+ */
+public String getMail() {
+	return mail;
+}
+
+/**
+ * @param mail the mail to set
+ */
+public void setMail(String mail) {
+	this.mail = mail;
+}
 }
