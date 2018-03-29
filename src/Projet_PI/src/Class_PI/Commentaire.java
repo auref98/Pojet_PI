@@ -1,6 +1,6 @@
 package Class_PI;
 
-class Commentaire {
+public class Commentaire {
   private String contenu;
 
   private Representant poste;

@@ -1,6 +1,6 @@
 package Class_PI;
 
-class Inscription {
+public class Inscription {
   private boolean valide;
   private Representant representant;
   private Plage plage;

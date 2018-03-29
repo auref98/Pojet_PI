@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
 
-class Plage {
+public class Plage {
   private LocalDate date;
   private LocalTime heureDebut;
   private LocalTime heureFin;

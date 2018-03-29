@@ -2,7 +2,7 @@ package Class_PI;
 
 import java.time.LocalDate;
 
-class Etudiant extends Representant{
+public class Etudiant extends Representant{
   private LocalDate dateNaissance;
   private String paysDeNaissance;
   private String lieuDeNaissance;

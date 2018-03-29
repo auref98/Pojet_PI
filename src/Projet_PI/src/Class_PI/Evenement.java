@@ -2,7 +2,7 @@ package Class_PI;
 
 import java.util.*;
 
-class Evenement {
+public class Evenement {
   private String nom;
   private int nbParticipantRequis;
   private String description;

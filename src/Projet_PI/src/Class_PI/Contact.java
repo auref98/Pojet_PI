@@ -2,7 +2,7 @@ package Class_PI;
 
 import java.util.*;
 
-class Contact {
+public class Contact {
   private String mail;
 
   private Evenement eve;

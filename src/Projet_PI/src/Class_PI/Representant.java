@@ -2,7 +2,7 @@ package Class_PI;
 
 import java.util.LinkedList;
 
-abstract class Representant {
+public abstract class Representant {
 	private String nom;
 	private String prenom;
 	private int numTel;

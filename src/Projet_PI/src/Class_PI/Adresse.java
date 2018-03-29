@@ -2,7 +2,7 @@ package Class_PI;
 
 import java.util.ArrayList;
 
-class Adresse {
+public class Adresse {
   private String localite;
   private int codePostal;
   private String rue;
