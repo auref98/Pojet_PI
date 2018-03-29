@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Section {
+  private int id;
   private String nom;
+  
 
   private LinkedList<Etudiant> listeEtudiant;
   private LinkedList<Evenement> listeEvent;
