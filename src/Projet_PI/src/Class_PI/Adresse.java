@@ -26,88 +26,88 @@ class Adresse {
 	  this.boit = boite;
 	  this.pays = pays;
   }
-
-/**
- * @return the localite
- */
-public String getLocalite() {
-	return localite;
-}
-
-/**
- * @param localite the localite to set
- */
-public void setLocalite(String localite) {
-	this.localite = localite;
-}
-
-/**
- * @return the codePostal
- */
-public int getCodePostal() {
-	return codePostal;
-}
-
-/**
- * @param codePostal the codePostal to set
- */
-public void setCodePostal(int codePostal) {
-	this.codePostal = codePostal;
-}
-
-/**
- * @return the rue
- */
-public String getRue() {
-	return rue;
-}
-
-/**
- * @param rue the rue to set
- */
-public void setRue(String rue) {
-	this.rue = rue;
-}
-
-/**
- * @return the numero
- */
-public int getNumero() {
-	return numero;
-}
-
-/**
- * @param numero the numero to set
- */
-public void setNumero(int numero) {
-	this.numero = numero;
-}
-
-/**
- * @return the boit
- */
-public String getBoit() {
-	return boit;
-}
-
-/**
- * @param boit the boit to set
- */
-public void setBoit(String boit) {
-	this.boit = boit;
-}
-
-/**
- * @return the pays
- */
-public String getPays() {
-	return pays;
-}
-
-/**
- * @param pays the pays to set
- */
-public void setPays(String pays) {
-	this.pays = pays;
-}
+	
+	/**
+	 * @return the localite
+	 */
+	public String getLocalite() {
+		return localite;
+	}
+	
+	/**
+	 * @param localite the localite to set
+	 */
+	public void setLocalite(String localite) {
+		this.localite = localite;
+	}
+	
+	/**
+	 * @return the codePostal
+	 */
+	public int getCodePostal() {
+		return codePostal;
+	}
+	
+	/**
+	 * @param codePostal the codePostal to set
+	 */
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
+	}
+	
+	/**
+	 * @return the rue
+	 */
+	public String getRue() {
+		return rue;
+	}
+	
+	/**
+	 * @param rue the rue to set
+	 */
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+	
+	/**
+	 * @return the numero
+	 */
+	public int getNumero() {
+		return numero;
+	}
+	
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	/**
+	 * @return the boit
+	 */
+	public String getBoit() {
+		return boit;
+	}
+	
+	/**
+	 * @param boit the boit to set
+	 */
+	public void setBoit(String boit) {
+		this.boit = boit;
+	}
+	
+	/**
+	 * @return the pays
+	 */
+	public String getPays() {
+		return pays;
+	}
+	
+	/**
+	 * @param pays the pays to set
+	 */
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
 }
