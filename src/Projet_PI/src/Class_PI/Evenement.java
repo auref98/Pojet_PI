@@ -23,4 +23,74 @@ class Evenement {
 		this.srcImage = srcImage;
 		this.adresseEve = adresseEve;
 	}
+
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	/**
+	 * @return the nbParticipantRequis
+	 */
+	public int getNbParticipantRequis() {
+		return nbParticipantRequis;
+	}
+
+	/**
+	 * @param nbParticipantRequis the nbParticipantRequis to set
+	 */
+	public void setNbParticipantRequis(int nbParticipantRequis) {
+		this.nbParticipantRequis = nbParticipantRequis;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the srcImage
+	 */
+	public String getSrcImage() {
+		return srcImage;
+	}
+
+	/**
+	 * @param srcImage the srcImage to set
+	 */
+	public void setSrcImage(String srcImage) {
+		this.srcImage = srcImage;
+	}
+
+	/**
+	 * @return the adresseEve
+	 */
+	public Adresse getAdresseEve() {
+		return adresseEve;
+	}
+
+	/**
+	 * @param adresseEve the adresseEve to set
+	 */
+	public void setAdresseEve(Adresse adresseEve) {
+		this.adresseEve = adresseEve;
+	}
 }

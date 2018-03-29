@@ -32,7 +32,133 @@ class Etudiant extends Representant{
 	this.role = role;
 	this.reside = reside;
 	this.etudie = etudie;
-}
+	  }
+	
+	/**
+	 * @return the dateNaissance
+	 */
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+	
+	/**
+	 * @param dateNaissance the dateNaissance to set
+	 */
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	
+	/**
+	 * @return the paysDeNaissance
+	 */
+	public String getPaysDeNaissance() {
+		return paysDeNaissance;
+	}
+	
+	/**
+	 * @param paysDeNaissance the paysDeNaissance to set
+	 */
+	public void setPaysDeNaissance(String paysDeNaissance) {
+		this.paysDeNaissance = paysDeNaissance;
+	}
+	
+	/**
+	 * @return the lieuDeNaissance
+	 */
+	public String getLieuDeNaissance() {
+		return lieuDeNaissance;
+	}
+	
+	/**
+	 * @param lieuDeNaissance the lieuDeNaissance to set
+	 */
+	public void setLieuDeNaissance(String lieuDeNaissance) {
+		this.lieuDeNaissance = lieuDeNaissance;
+	}
+	
+	/**
+	 * @return the numeroNational
+	 */
+	public String getNumeroNational() {
+		return numeroNational;
+	}
+	
+	/**
+	 * @param numeroNational the numeroNational to set
+	 */
+	public void setNumeroNational(String numeroNational) {
+		this.numeroNational = numeroNational;
+	}
+	
+	/**
+	 * @return the nationalite
+	 */
+	public String getNationalite() {
+		return nationalite;
+	}
+	
+	/**
+	 * @param nationalite the nationalite to set
+	 */
+	public void setNationalite(String nationalite) {
+		this.nationalite = nationalite;
+	}
+	
+	/**
+	 * @return the iban
+	 */
+	public String getIban() {
+		return iban;
+	}
+	
+	/**
+	 * @param iban the iban to set
+	 */
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+	
+	/**
+	 * @return the conseilSocial
+	 */
+	public boolean isConseilSocial() {
+		return conseilSocial;
+	}
+	
+	/**
+	 * @param conseilSocial the conseilSocial to set
+	 */
+	public void setConseilSocial(boolean conseilSocial) {
+		this.conseilSocial = conseilSocial;
+	}
+	
+	/**
+	 * @return the lieuEcole
+	 */
+	public String getLieuEcole() {
+		return lieuEcole;
+	}
+	
+	/**
+	 * @param lieuEcole the lieuEcole to set
+	 */
+	public void setLieuEcole(String lieuEcole) {
+		this.lieuEcole = lieuEcole;
+	}
+	
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
+	
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
 
   
 }
