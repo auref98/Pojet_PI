@@ -9,29 +9,45 @@
 package DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import Bean.Adresse;
+import Bean.Etudiant;
+import Bean.Evenement;
 
 public class DAOAdresse extends DAO<Adresse>
 {
 	@Override
-	public Adresse find(String champ, String value)
+	public Adresse find(int id)
 	{
 		Adresse adresse = new Adresse();
-		String query = "select * from adresse where ? like ?";
+		String query = "select * from adresse where id = ?";
 		PreparedStatement ps;
 		
 		try
 		{
 			ps = connection.prepareStatement(query);
-			ps.setString(1, champ);
-			ps.setInt(2, );
+			ps.setInt(1, id);
+			ResultSet resulSet = ps.executeQuery(query);
+			
+			if(resulSet.next() == false) return null;
+			
+			private int id;
+			private String localite;
+			  private int codePostal;
+			  private String rue;
+			  private int numero;
+			  private String boit;
+			  private String pays;
+	
+			  private Evenement eve;
+			  private ArrayList<Etudiant> reside;
+
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: create failed !");
 		}
-		return null;
 	}
 	
 	@Override
