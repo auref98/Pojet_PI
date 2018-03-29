@@ -12,13 +12,18 @@ class Plage {
   private Evenement eve;
   private LinkedList<Inscription> listeInscri;
 
-  //constructeur de plage
-  //pré:variables correctement initialisées
-  //post:variables correctement ajoutées
-  Plage(LocalDate date,LocalTime heureDebut,LocalTime heureFin){
+  /**
+   * 
+   * @param date
+   * @param heureDebut
+   * @param heureFin
+   * @param eve
+   */
+  Plage(LocalDate date,LocalTime heureDebut,LocalTime heureFin, Evenement eve){
 	  this.date=date;
 	  this.heureDebut=heureDebut;
 	  this.heureFin=heureFin;
+	  this.eve = eve;
   }
 	
 	/**
