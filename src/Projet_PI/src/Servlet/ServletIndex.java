@@ -23,7 +23,7 @@ public class ServletIndex extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/TestJSP.jsp").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Connection.jsp").forward(request,  response);
 	}
 	
 }
