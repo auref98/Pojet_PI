@@ -1,4 +1,8 @@
-package Class_PI;
+/*
+ * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ */
+
+package Bean;
 
 public class Commentaire {
   private String contenu;
@@ -8,7 +12,7 @@ public class Commentaire {
   //constructeur commentaire
   //pré:contenu initialisé, contient au moins un caractère
   //post:contenu initialisé avec le nouveau contenu
-  Commentaire(String contenu){
+  public Commentaire(String contenu){
 	  this.contenu=contenu;
   }
 	

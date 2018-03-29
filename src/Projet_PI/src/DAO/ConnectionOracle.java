@@ -11,8 +11,8 @@ public class ConnectionOracle
 	
 	
 	private String url = "jdbc:oracle:thin:@"+ "172.16.110.172:2115:o11etu2"; 
-	private String username = "toto";
-	private String password = "tata";
+	private String username = "BDNamingException";
+	private String password = "12345";
 	
 	private ConnectionOracle()
 		{
