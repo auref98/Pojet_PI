@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Class_PI.Commentaire;
+import Bean.Commentaire;
 
 /**
  * @author Aurelien
@@ -23,7 +23,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	public Commentaire find(String id) {
 		int idCommentaire = Integer.parseInt(id);
 		String query = "Select contenu From Commentaire where id=?";
-		Commentaire com;
+		Commentaire com = null;
 		try{
 			prStat = connection.prepareStatement(query);
 			prStat.setInt(1, idCommentaire);
@@ -47,11 +47,11 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				System.out.println(e.getMessage());
 			}
 		}
-		return null;
+		return com;
 	}
 	@Override
-	public boolean create(Commentaire object) {
-		// TODO Auto-generated method stub
+	public boolean create(Commentaire com) {
+		String query = "INSERT INTO commentaire (contenu) VALUES (?)";
 		return false;
 	}
 	@Override
