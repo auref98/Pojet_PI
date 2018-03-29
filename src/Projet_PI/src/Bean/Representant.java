@@ -16,20 +16,32 @@ public abstract class Representant {
 
 	private LinkedList<Commentaire> poste;
 	private LinkedList<Inscription> inscri;
-  
-	/**
-	 * @param nom
-	 * @param prenom
-	 * @param numTel
-	 * @param mail
-	 * @param matricule
-	 */
-	public Representant(String nom, String prenom, int numTel, String mail, String matricule) {
+	
+	public Representant(int id, String nom, String prenom, int numTel, String mail, String matricule) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.numTel = numTel;
 		this.mail = mail;
 		this.matricule = matricule;
+	}
+	
+	public Representant() {
+
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -101,4 +113,8 @@ public abstract class Representant {
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
+	
+	
+  
+	
 }

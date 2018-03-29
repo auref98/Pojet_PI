@@ -5,30 +5,48 @@
 package Bean;
 
 public class Commentaire {
-
+	private int id;
 	private String contenu;
-
-	private Representant poste;
+	
+	private Representant rep;
 	private Evenement evenement;
-  
-	//constructeur commentaire
-	//pré:contenu initialisé, contient au moins un caractère
-	//post:contenu initialisé avec le nouveau contenu
-	public Commentaire(String contenu){
-		this.contenu=contenu;
+	
+	public Commentaire(int id, String contenu) {
+		super();
+		this.id = id;
+		this.contenu = contenu;
 	}
 	
+	public Commentaire() {
+
+	}
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 	/**
 	 * @return the contenu
 	 */
 	public String getContenu() {
 		return contenu;
 	}
-	
 	/**
 	 * @param contenu the contenu to set
 	 */
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
+	
+	
+	
+	
 }
