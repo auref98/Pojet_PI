@@ -26,6 +26,9 @@ class Adresse {
 	  this.boit = boite;
 	  this.pays = pays;
   }
+  public Adresse clone(){
+	  return new Adresse(this.localite,this.codePostal,this.rue,this.numero,this.boit,this.pays);
+  }
 	
 	/**
 	 * @return the localite

@@ -23,6 +23,24 @@ class Evenement {
 		this.srcImage = srcImage;
 		this.adresseEve = adresseEve;
 	}
+	
+	/**
+	 * @author Aurelien
+	 * @return clone de l'evenement
+	 */
+	public Evenement clone(){
+		return new Evenement(this.nom, this.nbParticipantRequis, this.description,this.srcImage,this.adresseEve.clone());
+	}
+	
+	/**
+	 * 
+	 * @author Aurelien
+	 * @param nom est initialiser
+	 * @return true si le nom est égale au nom de l'évènement
+	 */
+	public boolean equals(String nom){
+		return nom.equals(this.nom);
+	}
 
 	/**
 	 * @return the nom
