@@ -1,3 +1,7 @@
+/*
+ * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ */
+
 package Servlet;
 
 import java.io.IOException;
