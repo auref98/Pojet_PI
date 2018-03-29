@@ -29,7 +29,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			prStat.setInt(1, idCommentaire);
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
-				com = new Commentaire(resSet.getString("contenu"));
+				com = new Commentaire(resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -51,7 +51,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	}
 	
 	/**
-	 * 
+	 * @author Aurelien
 	 * @param com
 	 * @param refRepr
 	 * @param regEvent
@@ -81,14 +81,31 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		}
 		return change;
 	}
+	
 	@Override
-	public boolean update(Commentaire object) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Commentaire com) {
+		String query = "UPDATE commentaire SET contenu = ? where id = ?";
+		boolean change = false;
+		try{
+			this.prStat = connection.prepareStatement(query);
+			this.prStat.setString(1, com.getContenu());
+			this.prStat.setInt(2, com.getId());
+			change = (this.prStat.executeUpdate()>0) ? true : false;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				prStat.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return change;
 	}
 	@Override
 	public boolean delete(Commentaire object) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	
