@@ -8,7 +8,7 @@ public class Commentaire {
   //constructeur commentaire
   //pré:contenu initialisé, contient au moins un caractère
   //post:contenu initialisé avec le nouveau contenu
-  Commentaire(String contenu){
+  public Commentaire(String contenu){
 	  this.contenu=contenu;
   }
 	
