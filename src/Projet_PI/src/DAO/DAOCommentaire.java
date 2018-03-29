@@ -20,8 +20,8 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	 * @param id
 	 * @return le commentaire dont l'id correspond au commentaire 
 	 */
-	public Commentaire find(String id) {
-		int idCommentaire = Integer.parseInt(id);
+	public Commentaire find(int id) {
+		int idCommentaire = id;
 		String query = "Select contenu From Commentaire where id=?";
 		Commentaire com = null;
 		try{
@@ -49,10 +49,37 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		}
 		return com;
 	}
-	@Override
+	
+	/**
+	 * 
+	 * @param com
+	 * @param refRepr
+	 * @param regEvent
+	 * @return true si le commentaire est ajouter
+	 */
 	public boolean create(Commentaire com) {
-		String query = "INSERT INTO commentaire (contenu) VALUES (?)";
-		return false;
+		int refRepr = com.getRep().getId();
+		int refEvent = com.getEvenement().getId();
+		boolean change = false;
+		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";
+		try{
+			this.prStat = connection.prepareStatement(query);
+			this.prStat.setString(0, com.getContenu());
+			this.prStat.setInt(2, refRepr);
+			this.prStat.setInt(3, refEvent);
+			int nbChange = this.prStat.executeUpdate();
+			change = (nbChange > 0) ? true : false;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				prStat.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return change;
 	}
 	@Override
 	public boolean update(Commentaire object) {
