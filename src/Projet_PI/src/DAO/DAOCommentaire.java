@@ -20,8 +20,8 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	 * @param id
 	 * @return le commentaire dont l'id correspond au commentaire 
 	 */
-	public Commentaire find(String id) {
-		int idCommentaire = Integer.parseInt(id);
+	public Commentaire find(int id) {
+		int idCommentaire = id;
 		String query = "Select contenu From Commentaire where id=?";
 		Commentaire com = null;
 		try{
@@ -29,7 +29,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			prStat.setInt(1, idCommentaire);
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
-				com = new Commentaire(resSet.getString("contenu"));
+				com = new Commentaire(resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -49,19 +49,63 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		}
 		return com;
 	}
-	@Override
+	
+	/**
+	 * @author Aurelien
+	 * @param com
+	 * @param refRepr
+	 * @param regEvent
+	 * @return true si le commentaire est ajouter
+	 */
 	public boolean create(Commentaire com) {
-		String query = "INSERT INTO commentaire (contenu) VALUES (?)";
-		return false;
+		int refRepr = com.getRep().getId();
+		int refEvent = com.getEvenement().getId();
+		boolean change = false;
+		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";
+		try{
+			this.prStat = connection.prepareStatement(query);
+			this.prStat.setString(0, com.getContenu());
+			this.prStat.setInt(2, refRepr);
+			this.prStat.setInt(3, refEvent);
+			int nbChange = this.prStat.executeUpdate();
+			change = (nbChange > 0) ? true : false;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				prStat.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return change;
 	}
+	
 	@Override
-	public boolean update(Commentaire object) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Commentaire com) {
+		String query = "UPDATE commentaire SET contenu = ? where id = ?";
+		boolean change = false;
+		try{
+			this.prStat = connection.prepareStatement(query);
+			this.prStat.setString(1, com.getContenu());
+			this.prStat.setInt(2, com.getId());
+			change = (this.prStat.executeUpdate()>0) ? true : false;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				prStat.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return change;
 	}
 	@Override
 	public boolean delete(Commentaire object) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	

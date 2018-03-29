@@ -28,21 +28,18 @@ public class DAOAdresse extends DAO<Adresse>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resulSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery(query);
 			
-			if(resulSet.next() == false) return null;
+			if(resultSet.next() == false) return null;
 			
-			private int id;
-			private String localite;
-			  private int codePostal;
-			  private String rue;
-			  private int numero;
-			  private String boit;
-			  private String pays;
-	
-			  private Evenement eve;
-			  private ArrayList<Etudiant> reside;
-
+			String localite = resultSet.getString("localite");
+			int cp = resultSet.getInt("cp");
+			String rue = resultSet.getString("rue");
+			int numero = resultSet.getInt("numero");
+			String boite = resultSet.getString("Boite");
+			String pays = resultSet.getString("pays");
+			
+			return new Adresse(id, localite, cp, rue, numero, boite, pays);
 		}
 		catch (SQLException ex)
 		{
