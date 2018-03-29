@@ -20,4 +20,47 @@ class Plage {
 	  this.heureDebut=heureDebut;
 	  this.heureFin=heureFin;
   }
+	
+	/**
+	 * @return the date
+	 */
+	public LocalDate getDate() {
+		return date;
+	}
+	
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
+	/**
+	 * @return the heureDebut
+	 */
+	public LocalTime getHeureDebut() {
+		return heureDebut;
+	}
+	
+	/**
+	 * @param heureDebut the heureDebut to set
+	 */
+	public void setHeureDebut(LocalTime heureDebut) {
+		this.heureDebut = heureDebut;
+	}
+	
+	/**
+	 * @return the heureFin
+	 */
+	public LocalTime getHeureFin() {
+		return heureFin;
+	}
+	
+	/**
+	 * @param heureFin the heureFin to set
+	 */
+	public void setHeureFin(LocalTime heureFin) {
+		this.heureFin = heureFin;
+	}
+	  
 }

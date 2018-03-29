@@ -19,6 +19,18 @@ class Professeur extends Representant{
 		super(nom, prenom, numTel, mail, matricule);
 		this.nbParticipations = nbParticipations;
 	}
-
+	/**
+	 * @return the nbParticipations
+	 */
+	public int getNbParticipations() {
+		return nbParticipations;
+	}
+	/**
+	 * @param nbParticipations the nbParticipations to set
+	 */
+	public void setNbParticipations(int nbParticipations) {
+		this.nbParticipations = nbParticipations;
+	}
+	
   
 }
