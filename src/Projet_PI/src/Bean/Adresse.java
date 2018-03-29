@@ -2,7 +2,7 @@
  * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
  */
 
-package Class_PI;
+package Bean;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,9 @@ public class Adresse {
    * precondition : toute les variables sont initialisé
    * postcondition : le constructeur est initialiser
    */
-  Adresse(String localite, int codePostal,String rue,int numero,String boite,String pays){
+  public Adresse() {}
+  
+  public Adresse(String localite, int codePostal,String rue,int numero,String boite,String pays){
 	  this.localite = localite;
 	  this.codePostal = codePostal;
 	  this.rue = rue;
