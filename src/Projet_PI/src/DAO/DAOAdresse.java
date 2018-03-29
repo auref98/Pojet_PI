@@ -14,25 +14,6 @@ import Bean.Adresse;
 
 public class DAOAdresse extends DAO<Adresse>
 {
-	public Adresse find(String champ, String value)
-	{
-		Adresse adresse = new Adresse();
-		String query = "select * from adresse where ? = ?";
-		PreparedStatement ps;
-		
-		try
-		{
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, id);
-			
-		}
-		catch (SQLException ex)
-		{
-			System.out.println("Erreur: create failed !");
-		}
-		return null;
-	}
-	
 	@Override
 	public Adresse find(String champ, String value)
 	{
@@ -43,8 +24,8 @@ public class DAOAdresse extends DAO<Adresse>
 		try
 		{
 			ps = connection.prepareStatement(query);
-			ps.setInt(1, id);
-			
+			ps.setString(1, champ);
+			ps.setInt(2, );
 		}
 		catch (SQLException ex)
 		{
