@@ -8,6 +8,7 @@ public class Commentaire {
   private String contenu;
 
   private Representant poste;
+  private Evenement evenement;
   
   //constructeur commentaire
   //pré:contenu initialisé, contient au moins un caractère
