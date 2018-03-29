@@ -1,4 +1,8 @@
-package Class_PI;
+/*
+ * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ */
+
+package Bean;
 
 public class Commentaire {
   private String contenu;
