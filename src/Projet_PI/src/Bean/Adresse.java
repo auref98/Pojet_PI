@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Adresse {
   private int id;
   private String localite;
-  private int codePostal;
+  private int cp;
   private String rue;
   private int numero;
   private String boit;
