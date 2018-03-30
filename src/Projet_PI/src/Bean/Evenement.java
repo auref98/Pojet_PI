@@ -18,13 +18,13 @@ public class Evenement {
   private LinkedList<Contact> listeContact;
   private ArrayList<Section> listeSection;
   
-	public Evenement(String nom, int nbParticipantRequis, String description, String srcImage, Adresse adresseEve)
+	public Evenement(String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
 	{
 		super();
 		this.nom = nom;
 		this.nbParticipantRequis = nbParticipantRequis;
 		this.description = description;
-		this.srcImage = srcImage;
+		this.image = image;
 		this.adresseEve = adresseEve;
 	}
 	
@@ -33,7 +33,7 @@ public class Evenement {
 	 * @return clone de l'evenement
 	 */
 	public Evenement clone(){
-		return new Evenement(this.nom, this.nbParticipantRequis, this.description,this.srcImage,this.adresseEve.clone());
+		return new Evenement(this.nom, this.nbParticipantRequis, this.description,this.image,this.adresseEve.clone());
 	}
 	
 	/**
@@ -91,15 +91,15 @@ public class Evenement {
 	/**
 	 * @return the srcImage
 	 */
-	public String getSrcImage() {
-		return srcImage;
+	public String getImage() {
+		return image;
 	}
 
 	/**
 	 * @param srcImage the srcImage to set
 	 */
-	public void setSrcImage(String srcImage) {
-		this.srcImage = srcImage;
+	public void setImage(String srcImage) {
+		this.image = image;
 	}
 
 	/**

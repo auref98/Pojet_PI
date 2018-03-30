@@ -17,6 +17,7 @@ import Bean.Evenement;
 
 public class DAOAdresse extends DAO<Adresse>
 {
+	//Return null en cas d'érreur ou si aucune ligne n'a été trouvé
 	@Override
 	public Adresse find(int id)
 	{
@@ -43,13 +44,15 @@ public class DAOAdresse extends DAO<Adresse>
 		}
 		catch (SQLException ex)
 		{
-			System.out.println("Erreur: create failed !");
+			System.out.println("Erreur: find failed !");
 			return null;
 		}
 	}
 	
-	public Evenement findEvent(int id)
+	//Return null en cas d'érreur ou si aucune ligne n'a été trouvé
+	public ArrayList<Evenement> findListeEvent(int id)
 	{
+		ArrayList<Evenement> listeEvent = new ArrayList<Evenement>();
 		String query = "select * from evenement where REFADDR = ?";
 		PreparedStatement ps;
 		
@@ -60,20 +63,23 @@ public class DAOAdresse extends DAO<Adresse>
 			ResultSet resultSet = ps.executeQuery(query);
 			
 			if(resultSet.next() == false) throw new SQLException();
-			
-			String localite = resultSet.getString("localite");
-			int codePostal = resultSet.getInt("codePostal");
-			String rue = resultSet.getString("rue");
-			int numero = resultSet.getInt("numero");
-			String boite = resultSet.getString("Boite");
-			String pays = resultSet.getString("pays");
-			ps.close();
+			do
+			{
+				String localite = resultSet.getString("localite");
+				int codePostal = resultSet.getInt("codePostal");
+				String rue = resultSet.getString("rue");
+				int numero = resultSet.getInt("numero");
+				String boite = resultSet.getString("Boite");
+				String pays = resultSet.getString("pays");
+				ps.close();
+				
+			} while(resultSet.next());
 			
 			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
 		}
 		catch (SQLException ex)
 		{
-			System.out.println("Erreur: create failed !");
+			System.out.println("Erreur: findListeEvent failed !");
 			return null;
 		}
 	}
