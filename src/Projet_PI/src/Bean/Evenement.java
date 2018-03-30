@@ -10,7 +10,7 @@ public class Evenement {
   private String nom;
   private int nbParticipantRequis;
   private String description;
-  private String srcImage;
+  private String image;
   private Adresse adresseEve;
 
   private ArrayList<Plage> listePlage;
