@@ -15,8 +15,8 @@ public class Adresse {
   private String boite;
   private String pays;
 
-  private Evenement eve;
-  private ArrayList<Etudiant> reside;
+  private ArrayList<Evenement> listeEvent;
+  private ArrayList<Etudiant> listeEtudiant;
 
   /*
    * constructeur Adresse
