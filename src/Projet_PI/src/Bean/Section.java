@@ -6,8 +6,9 @@ package Bean;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.io.Serializable;
 
-public class Section {
+public class Section implements Serializable {
   private int id;
   private String nom;
   
@@ -18,6 +19,8 @@ public class Section {
   private Professeur relais;
   private ArrayList<Professeur> listeProf;
   
+  	Section(){}
+  	
 	public Section(String nom, Professeur relais)
 	{
 		super();
@@ -38,4 +41,20 @@ public class Section {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	/**
+	 * @return the relais
+	 */
+	public Professeur getRelais() {
+		return relais;
+	}
+
+	/**
+	 * @param relais the relais to set
+	 */
+	public void setRelais(Professeur relais) {
+		this.relais = relais;
+	}
+	
+	
 }

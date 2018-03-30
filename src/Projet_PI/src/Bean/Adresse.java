@@ -5,8 +5,9 @@
 package Bean;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Adresse {
+public class Adresse implements Serializable {
   private int id;
   private String localite;
   private int codePostal;

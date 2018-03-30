@@ -5,8 +5,9 @@
 package Bean;
 
 import java.util.*;
+import java.io.Serializable;
 
-public class Contact {
+public class Contact implements Serializable {
   private int id;
   private String mail;
 
@@ -15,7 +16,9 @@ public class Contact {
   
   //constructeur contact
   //pré:la variable mail est initialisé
-  //post:mail contient maintenant le nouveau mail
+  //post:mail contient maintenant le nouveau mail  
+  Contact(){}
+  
   Contact(String mail){
 	  this.mail=mail;
   }
