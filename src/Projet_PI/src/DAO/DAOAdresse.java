@@ -65,11 +65,10 @@ public class DAOAdresse extends DAO<Adresse>
 			if(resultSet.next() == false) throw new SQLException();
 			do
 			{
-				String localite = resultSet.getString("localite");
-				int codePostal = resultSet.getInt("codePostal");
-				String rue = resultSet.getString("rue");
-				int numero = resultSet.getInt("numero");
-				String boite = resultSet.getString("Boite");
+				String nom = resultSet.getString("nom");
+				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
+				String description = resultSet.getString("description");
+				String image = resultSet.getString("image");
 				String pays = resultSet.getString("pays");
 				ps.close();
 				
