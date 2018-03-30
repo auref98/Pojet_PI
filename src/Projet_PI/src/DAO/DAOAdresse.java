@@ -30,20 +30,22 @@ public class DAOAdresse extends DAO<Adresse>
 			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery(query);
 			
-			if(resultSet.next() == false) return null;
+			if(resultSet.next() == false) throw new SQLException();
 			
 			String localite = resultSet.getString("localite");
-			int cp = resultSet.getInt("cp");
+			int codePostal = resultSet.getInt("codePostal");
 			String rue = resultSet.getString("rue");
 			int numero = resultSet.getInt("numero");
 			String boite = resultSet.getString("Boite");
 			String pays = resultSet.getString("pays");
+			ps.close();
 			
-			return new Adresse(id, localite, cp, rue, numero, boite, pays);
+			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: create failed !");
+			return null;
 		}
 	}
 	

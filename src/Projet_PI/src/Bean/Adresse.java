@@ -9,10 +9,10 @@ import java.util.ArrayList;
 public class Adresse {
   private int id;
   private String localite;
-  private int cp;
+  private int codePostal;
   private String rue;
   private int numero;
-  private String boit;
+  private String boite;
   private String pays;
 
   private Evenement eve;
@@ -25,18 +25,15 @@ public class Adresse {
    */
   public Adresse() {}
   
-  public Adresse(String localite, int codePostal,String rue,int numero,String boite,String pays){
+  public Adresse(int id, String localite, int codePostal,String rue,int numero,String boite,String pays){
+	  this.id = id;
 	  this.localite = localite;
 	  this.codePostal = codePostal;
 	  this.rue = rue;
 	  this.numero = numero;
-	  this.boit = boite;
+	  this.boite = boite;
 	  this.pays = pays;
-  }
-  public Adresse clone(){
-	  return new Adresse(this.localite,this.codePostal,this.rue,this.numero,this.boit,this.pays);
-  }
-	
+  }	
 	/**
 	 * @return the localite
 	 */
@@ -97,14 +94,14 @@ public class Adresse {
 	 * @return the boit
 	 */
 	public String getBoit() {
-		return boit;
+		return boite;
 	}
 	
 	/**
 	 * @param boit the boit to set
 	 */
-	public void setBoit(String boit) {
-		this.boit = boit;
+	public void setBoit(String boite) {
+		this.boite = boite;
 	}
 	
 	/**
