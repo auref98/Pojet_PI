@@ -19,8 +19,10 @@ public class Contact implements Serializable {
   //post:mail contient maintenant le nouveau mail  
   Contact(){}
   
-  Contact(String mail){
+  Contact(String mail, Evenement eve){
 	  this.mail=mail;
+	  this.eve = eve;
+	  interesse = new ArrayList<Section>();
   }
 	
 	/**
@@ -35,5 +37,27 @@ public class Contact implements Serializable {
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	/**
+	 * @return the mail
+	 */
+	public Evenement getEve() {
+		return eve;
+	}
+	
+	/**
+	 * @param mail the mail to set
+	 */
+	public void setEve(Evenement eve) {
+		this.eve = eve;
+	}
+	
+	public void addInteresse(Section s) {
+		interesse.add(s);
+	}
+	
+	public void delInteresse(Section s) {
+		interesse.remove(s);
 	}
 }

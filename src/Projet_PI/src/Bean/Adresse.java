@@ -21,8 +21,8 @@ public class Adresse implements Serializable {
 
   /*
    * constructeur Adresse
-   * precondition : toute les variables sont initialisé
-   * postcondition : le constructeur est initialiser
+   * precondition : toutes les variables sont initialisées
+   * postcondition : le constructeur est initialisé
    */
   public Adresse() {}
   
@@ -34,6 +34,9 @@ public class Adresse implements Serializable {
 	  this.numero = numero;
 	  this.boite = boite;
 	  this.pays = pays;
+	  listeEvent = new ArrayList<Evenement> (); 
+	  listeEtudiant = new ArrayList<Etudiant> ();
+	  
   }	
 	/**
 	 * @return the localite
@@ -92,16 +95,16 @@ public class Adresse implements Serializable {
 	}
 	
 	/**
-	 * @return the boit
+	 * @return the boite
 	 */
-	public String getBoit() {
+	public String getBoite() {
 		return boite;
 	}
 	
 	/**
-	 * @param boit the boit to set
+	 * @param boit the boite to set
 	 */
-	public void setBoit(String boite) {
+	public void setBoite(String boite) {
 		this.boite = boite;
 	}
 	
@@ -117,5 +120,45 @@ public class Adresse implements Serializable {
 	 */
 	public void setPays(String pays) {
 		this.pays = pays;
+	}
+	
+	public void addEtudiant(Etudiant e) {
+		listeEtudiant.add(e);
+	}
+	
+	public void addEvent(Evenement e) {
+		listeEvent.add(e);
+	}
+	
+	public void delEtudiant(Etudiant e) {
+		listeEtudiant.remove(e);
+	}
+	
+	public void delEvent(Evenement e) {
+		listeEvent.remove(e);
+	}
+	
+	public void getEtudiant() {
+		int taille = listeEtudiant.size();
+		int i = 0;
+		while (i<taille) {
+			Etudiant e = listeEtudiant.get(i);
+			System.out.println(e.toString());
+			i++;
+		}
+	}
+	
+	public void getEvent() {
+		int taille = listeEvent.size();
+		int i = 0;
+		while (i<taille) {
+			Evenement e = listeEvent.get(i);
+			System.out.println(e.toString());
+			i++;
+		}
+	}
+	
+	public String toString(){
+		return("Rue "+rue+", "+ numero + "/n"+ codePostal + localite + "( " + pays + " )");
 	}
 }
