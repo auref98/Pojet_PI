@@ -9,7 +9,8 @@
 package DAO;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.Date;
 
 import Bean.Adresse;
 import Bean.Etudiant;
@@ -50,7 +51,7 @@ public class DAOAdresse extends DAO<Adresse>
 	}
 	
 	//Return null en cas d'érreur ou si aucune ligne n'a été trouvé
-	public ArrayList<Evenement> findListeEvent(int id)
+	public ArrayList<Evenement> findListeEvent(int idAddr)
 	{
 		ArrayList<Evenement> listeEvent = new ArrayList<Evenement>();
 		String query = "select * from evenement where REFADDR = ?";
@@ -59,22 +60,64 @@ public class DAOAdresse extends DAO<Adresse>
 		try
 		{
 			ps = connection.prepareStatement(query);
-			ps.setInt(1, id);
+			ps.setInt(1, idAddr);
 			ResultSet resultSet = ps.executeQuery(query);
 			
 			if(resultSet.next() == false) throw new SQLException();
 			do
 			{
+				int id = resultSet.getInt("id");
 				String nom = resultSet.getString("nom");
 				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
 				String description = resultSet.getString("description");
 				String image = resultSet.getString("image");
-				String pays = resultSet.getString("pays");
-				ps.close();
+				
+				listeEvent.add(new Evenement(id, nom, nbParticipantRequis, description, image));
 				
 			} while(resultSet.next());
 			
-			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
+			ps.close();
+			return listeEvent;
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findListeEvent failed !");
+			return null;
+		}
+	}
+	
+	public ArrayList<Etudiant> findListeEtud(int idAddr)
+	{
+		ArrayList<Etudiant> listeEtud = new ArrayList<Etudiant>();
+		String query = "select * from etudiant where REFADDR = ?";
+		PreparedStatement ps;
+		
+		try
+		{
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, idAddr);
+			ResultSet resultSet = ps.executeQuery(query);
+			
+			if(resultSet.next() == false) throw new SQLException();
+			do
+			{
+				int id = resultSet.getInt("id");
+				java.util.Date dateNaissance = resultSet.getDate("dateNaissance");
+				String paysNaissance = resultSet.getString("paysNaissance");
+				String lieuNaissance = resultSet.getString("lieuNaissance");
+				long numNational = resultSet.getLong("numNational");
+				String nationalite = resultSet.getString("nationalite");
+				String numBanque = resultSet.getString("numbanque");
+				boolean soutienSocial = (resultSet.getInt("soutienSocial") == 1) ? true : false;
+				String emplacementEcole = resultSet.getString("emplacementEcole");
+				String image = resultSet.getString("image");
+				
+				listeEvent.add(new Evenement(id, nom, nbParticipantRequis, description, image));
+				
+			} while(resultSet.next());
+			
+			ps.close();
+			return listeEvent;
 		}
 		catch (SQLException ex)
 		{
