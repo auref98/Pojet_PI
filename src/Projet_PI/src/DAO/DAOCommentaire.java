@@ -29,7 +29,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			prStat.setInt(1, idCommentaire);
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
-				com = new Commentaire(resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
+				com = new Commentaire(id,resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
