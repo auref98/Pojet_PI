@@ -75,6 +75,21 @@ public class Adresse implements Serializable {
 	// Getters et setters
 	
 //###################################################################################################################################################################
+
+  /** 
+	 
+	 * */
+	public int getId() {
+		return id;
+	}
+	
+	/** 
+	 
+	 */
+	public void setId(int id) {
+		this.id = id;
+	} 
+  
   
 // Getter et setter pour l'attribut "localite"  
 

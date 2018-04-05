@@ -56,6 +56,20 @@ public class Contact implements Serializable {
 	
 //###################################################################################################################################################################
 	
+  /** 
+	 
+	 * */
+	public int getId() {
+		return id;
+	}
+	
+	/** 
+	 
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 // Getter et setter pour l'attribut "mail" 
   
 	/**
