@@ -35,9 +35,9 @@ public class Commentaire {
 
 	}
 	
-	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.
-	 * Précondition: id et contenu sont initialisés.
-	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br/><br/>
+	 * Précondition: id et contenu sont initialisés.<br/>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br/>
 	 * @param id l'identifiant (BD) du commentaire
 	 * @param contenu le texte du commentaire
 	 */

@@ -19,10 +19,9 @@ package Bean;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-
 /** Classe de type "bean" représentant une adresse physique; elle est utilisée pour situer aussi bien le lieu d'un événement que le domicile d'un participant.*/
 public class Adresse implements Serializable {
-  private int id;
+  private int id;													// Attribut permettant de récuperer l'id référençant cette adresse dans la base de données
   private String localite;
   private int codePostal;
   private String rue;
@@ -30,8 +29,8 @@ public class Adresse implements Serializable {
   private String boite;
   private String pays;
 
-  private ArrayList<Evenement> listeEvent;							
-  private ArrayList<Etudiant> listeEtudiant;						
+  private ArrayList<Evenement> listeEvent;							// Référence une liste des événements ayant (eu) lieu ) cette adresse					
+  private ArrayList<Etudiant> listeEtudiant;						// Référence une liste des étudiants résidant à cette adresse
 
 //###################################################################################################################################################################
 	
@@ -44,11 +43,11 @@ public class Adresse implements Serializable {
   
   
   /**
-   * Constructeur initialisant tous les champs.</br>
+   * Constructeur initialisant tous les champs.<br/>
    * </br>
-   * Précondition: tous les paramètres sont correctement initialisés.</br>
-   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;</br>
-   * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.
+   * Précondition: tous les paramètres sont correctement initialisés.<br/>
+   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;<br/>
+   * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.<br/>
    * @param id l'identifiant (BD) de l'adresse
    * @param localite le nom de la localité
    * @param codePostal le code postal correspondant à la localité
@@ -192,9 +191,9 @@ public class Adresse implements Serializable {
 //###################################################################################################################################################################	
 	
 	/**
-	 * Ajoute un Etudiant à la liste.</br></br>
-	 * Précondition: l'attribut "listeEtudiant" est initialisé avec un type valide (Etudiant); l'objet Etudiant e est correctement initialisé.</br>
-	 * Postcondition: l'Etudiant e a été ajoute à la liste "listeEtudiant".</br>
+	 * Ajoute un Etudiant à la liste.<br/><br/>
+	 * Précondition: l'attribut "listeEtudiant" est initialisé avec un type valide (Etudiant); l'objet Etudiant e est correctement initialisé.<br/>
+	 * Postcondition: l'Etudiant e a été ajoute à la liste "listeEtudiant".<br/>
 	 * @param l'objet Etudiant à ajouter à la liste.
 	 */
 	public void addEtudiant(Etudiant e) {
@@ -202,9 +201,9 @@ public class Adresse implements Serializable {
 	}
 	
 	/**
-	 * Ajoute un Evenement à la liste.</br></br>
-	 * Précondition: l'attribut "listeEvent" est initialisé avec un type valide (Event); l'objet Evenement e est correctement initialisé.</br>
-	 * Postcondition: l'Evenement e a été ajouté à la liste "listeEvent".</br>
+	 * Ajoute un Evenement à la liste.<br/><br/>
+	 * Précondition: l'attribut "listeEvent" est initialisé avec un type valide (Event); l'objet Evenement e est correctement initialisé.<br/>
+	 * Postcondition: l'Evenement e a été ajouté à la liste "listeEvent".<br/>
 	 * @param l'objet Evenement à ajouter à la liste.
 	 */
 	public void addEvent(Evenement e) {
@@ -212,9 +211,9 @@ public class Adresse implements Serializable {
 	}
 	
 	/**
-	 * Supprime un Etudiant de la liste.</br></br>
-	 * Précondition: l'attribut "listeEtudiant" est initialisé.</br>
-	 * Postcondition: si l'Etudiant e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.</br>
+	 * Supprime un Etudiant de la liste.<br/><br/>
+	 * Précondition: l'attribut "listeEtudiant" est initialisé.<br/>
+	 * Postcondition: si l'Etudiant e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.<br/>
 	 * @param e l'objet Etudiant à supprimer de la liste.
 	 */
 	public void delEtudiant(Etudiant e) {
@@ -222,9 +221,9 @@ public class Adresse implements Serializable {
 	}
 	
 	/**
-	 * Supprime un Evenement de la liste.</br></br>
-	 * Précondition: l'attribut "listeEvent" est initialisé.</br>
-	 * Postcondition: si l'Evenement e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.</br>
+	 * Supprime un Evenement de la liste.<br/><br/>
+	 * Précondition: l'attribut "listeEvent" est initialisé.<br/>
+	 * Postcondition: si l'Evenement e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.<br/>
 	 * @param e l'objet Evenement à supprimer de la liste.
 	 */
 	public void delEvent(Evenement e) {

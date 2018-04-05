@@ -21,10 +21,10 @@ import java.io.Serializable;
 
 /** Classe de type "bean" contenant les informations d'un visiteur d'un événement souhaitant recevoir des information sur une ou plusieurs sections de l'école.*/
 public class Contact implements Serializable {
-  private int id;
-  private String mail;
+  private int id;													// Attribut permettant de récuperer l'id réferencant ce contact dans la base de données
+  private String mail;												// Attribut contenant l'adresse email du contact
 
-  private Evenement eve;
+  private Evenement eve;											// Référence l'événement auquel le contact a été enregistré
   private ArrayList<Section> interesse;
  
 //###################################################################################################################################################################
@@ -32,25 +32,22 @@ public class Contact implements Serializable {
 	// Constructeurs
 	
 //###################################################################################################################################################################
-  //constructeur contact
-  //pré:la variable mail est initialisé
-  //post:mail contient maintenant le nouveau mail  
   
   /** Constructeur sans paramètre. */
   public Contact(){}
   
   /**
-   * Constructeur initialisant l'adresse email du contact et l'événement où il a été enregistré.
-   * Précondition: les paramètres "mail" et "eve" sont correctement initialisés.
-   * Postcondition: les attributs "mail" et "eve" sont initialisés avec la valeur des paramètres de même nom; 
-   * 				l'attribut "interesse" est initialisé avec une liste vide de type approprié (Section).
+   * Constructeur initialisant l'adresse email du contact et l'événement où il a été enregistré.<br/><br/>
+   * Précondition: les paramètres "mail" et "eve" sont correctement initialisés.<br/>
+   * Postcondition: l'objet est initialisé; les attributs "mail" et "eve" sont initialisés avec la valeur des paramètres de même nom;<br/>
+   * 				l'attribut "interesse" est initialisé avec une liste vide de type approprié (Section).<br/>
    * @param mail l'adresse email du contact.
    * @param eve l'événement où le contact a été enregistré.
    */
   public Contact(String mail, Evenement eve){
 	  this.mail=mail;
 	  this.eve = eve;
-	  interesse = new ArrayList<Section>();
+	  interesse = new ArrayList<Section>();							// Initialise l'attribut avec une liste vide
   }
   
 //###################################################################################################################################################################
@@ -59,6 +56,8 @@ public class Contact implements Serializable {
 	
 //###################################################################################################################################################################
 	
+// Getter et setter pour l'attribut "mail" 
+  
 	/**
 	 * Renvoie l'adresse email du contact.
 	 * @return l'adresse email du contact.
@@ -74,6 +73,8 @@ public class Contact implements Serializable {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	
+// Getter et setter pour l'attribut "eve" 
 	
 	/**
 	 * Renvoie la référence de l'événement où le contact a été enregistré.
