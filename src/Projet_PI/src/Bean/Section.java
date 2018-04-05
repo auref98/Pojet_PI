@@ -14,19 +14,18 @@ public class Section implements Serializable {
   
 
   private ArrayList<Etudiant> listeEtudiant;
-  private ArrayList<Evenement> listeEvent;
   private ArrayList<Contact> listeContact;
   private Professeur relais;
   private ArrayList<Professeur> listeProf;
   
-  	Section(){}
+  	public Section(){}
   	
-	public Section(String nom, Professeur relais)
+	public Section(int id, String nom, Professeur relais)
 	{
+		this.id=id;
 		this.nom = nom;
 		this.relais = relais;
 		listeEtudiant= new ArrayList<Etudiant>();
-		listeEvent= new ArrayList<Evenement>();
 		listeContact= new ArrayList<Contact>();
 		listeProf= new ArrayList<Professeur>();
 		
@@ -78,10 +77,6 @@ public class Section implements Serializable {
 		listeEtudiant.add(e);
 	}
 	
-	public void addEvent(Evenement e) {
-		listeEvent.add(e);
-	}
-	
 	public void addContact(Contact c) {
 		listeContact.add(c);
 	}
@@ -92,10 +87,6 @@ public class Section implements Serializable {
 	
 	public void delEtudiant(Etudiant e) {
 		listeEtudiant.remove(e);
-	}
-	
-	public void delEvent(Evenement e) {
-		listeEvent.remove(e);
 	}
 	
 	public void delContact(Contact c) {
@@ -116,15 +107,19 @@ public class Section implements Serializable {
 		}
 	}
 	
-	public void getEvent() {
-		int taille = listeEvent.size();
-		int i = 0;
-		while (i<taille) {
-			Evenement e = listeEvent.get(i);
-			System.out.println(e.toString());
-			i++;
-		}
+	public void setEtudiant(ArrayList<Etudiant> tab) {
+		listeEtudiant = tab;
 	}
+	
+	public void setContact(ArrayList<Contact> tab) {
+		listeContact = tab;
+	}
+	
+	public void setProf(ArrayList<Professeur> tab) {
+		listeProf = tab;
+	}
+	
+	
 	
 	public void getContact() {
 		int taille = listeContact.size();
