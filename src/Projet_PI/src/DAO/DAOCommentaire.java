@@ -4,6 +4,7 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import Bean.Commentaire;
 
@@ -48,6 +49,40 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			}
 		}
 		return com;
+	}
+	
+	/**
+	 * Recherche dans la BD tout les commentaire relier a idEve.
+	 * @param idEve
+	 * @return LinkedList de commentaire relier a un evenement.
+	 */
+	public LinkedList<Commentaire> findAllEve(int idEve){
+		LinkedList<Commentaire> com = null;
+		String sql = "SELECT * FROM commentaire WHERE refeven = ?";
+		try {
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setInt(1, idEve);
+			this.resSet = this.prStat.executeQuery();
+			while(this.resSet.next())
+				com.add(new Commentaire(this.resSet.getInt("id"),this.resSet.getString("contenu")));
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+			try{
+				this.prStat.close();
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return com;
+		
 	}
 	
 	/**
