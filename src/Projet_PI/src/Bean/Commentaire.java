@@ -89,4 +89,18 @@ public class Commentaire {
 		this.contenu = contenu;
 	}
 
+	/**
+	 * @return the rep
+	 */
+	public Representant getRep() {
+		return rep;
+	}
+
+	/**
+	 * @return the evenement
+	 */
+	public Evenement getEvenement() {
+		return evenement;
+	}
+
 }
