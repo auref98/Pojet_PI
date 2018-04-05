@@ -35,6 +35,12 @@ public class Commentaire {
 
 	}
 	
+	public Commentaire(int id, String contenu) {
+		this.id = id;
+		this.contenu = contenu;
+
+	}
+	
 	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br/><br/>
 	 * Précondition: id et contenu sont initialisés.<br/>
 	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br/>
@@ -97,10 +103,26 @@ public class Commentaire {
 	}
 
 	/**
+	 * @param rep the rep to set
+	 */
+	public void setRep(Representant rep) {
+		this.rep = rep;
+	}
+
+	/**
 	 * @return the evenement
 	 */
 	public Evenement getEvenement() {
 		return evenement;
 	}
+
+	/**
+	 * @param evenement the evenement to set
+	 */
+	public void setEvenement(Evenement evenement) {
+		this.evenement = evenement;
+	}
+
+	
 
 }
