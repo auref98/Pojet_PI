@@ -106,4 +106,8 @@ public class Plage implements Serializable{
 	public void setInscription(LinkedList<Inscription> i) {
 		listeInscription = i;
 	}
+	public void setEve(Evenement eve){
+		this.eve = eve;
+	}
+	
 }

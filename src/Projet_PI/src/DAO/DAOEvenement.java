@@ -11,12 +11,18 @@ package DAO;
 import java.sql.*;
 import java.util.*;
 
-import Bean.Adresse;
-import Bean.Evenement;
+import Bean.*;
 
 public class DAOEvenement extends DAO<Evenement>
 {
-
+	/**
+	 * 
+	 * @param	id correspond à l'id d'un evenement
+	 * @return 	si une ligne est trouvé dans la table
+	 *  		evenement, elle est retournée sous forme d'objet
+	 *  		sinon return null
+	 *
+	 */
 	@Override
 	public Evenement find(int id)
 	{
@@ -31,23 +37,61 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
-			String localite = resultSet.getString("localite");
-			int codePostal = resultSet.getInt("codePostal");
-			String rue = resultSet.getString("rue");
-			int numero = resultSet.getInt("numero");
-			String boite = resultSet.getString("Boite");
-			String pays = resultSet.getString("pays");
+			String nom = resultSet.getString("nom");
+			int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
+			String description = resultSet.getString("description");
+			String image = resultSet.getString("image");
+			Adresse adr = new Adresse();
+			adr.setId(resultSet.getInt("refaddr"));
 			ps.close();
 			
-			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
+			return new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 		}
 		catch (SQLException ex)
 		{
-			System.out.println("Erreur: findAdr failed !");
+			System.out.println("Erreur: findEvent failed !");
 			return null;
 		}
 	}
 
+	/**
+	 * 
+	 * @param	id correspond à l'id d'un evenement
+	 * @return 	si une plusieurs lignes ont été trouvées dans la table
+	 *  		plage, elles seront retournées sous forme d'objet de type ArrayList
+	 *  		sinon return null
+	 *
+	 */
+	public ArrayList<Plage> findListePlage(int id)
+	{
+		String query = "select * from plage where refEvenement = ?";
+		PreparedStatement ps;
+		ArrayList<Plage> listePlage = new ArrayList<Plage>();
+		
+		try
+		{
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery(query);
+			
+			if(resultSet.next() == false) throw new SQLException();
+			
+			do
+			{
+				int idPlage = resultSet.getInt("id");
+				listePlage.add(new DAOPlage().find(idPlage));
+				
+			} while(resultSet.next());
+			
+			return listePlage;
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findListePlage failed !");
+			return null;
+		}
+	}
+	
 	@Override
 	public boolean create(Evenement object)
 	{

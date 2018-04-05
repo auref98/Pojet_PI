@@ -17,7 +17,14 @@ import Bean.Evenement;
 
 public class DAOAdresse extends DAO<Adresse>
 {
-	//Return null en cas d'érreur ou si aucune ligne n'a été trouvé
+	/**
+	 * 
+	 * @param	id correspond à l'id d'une adresse
+	 * @return 	si une ligne est trouvé dans la table
+	 *  		adresse, elle est retournée sous forme d'objet
+	 *  		sinon return null
+	 *
+	 */
 	@Override
 	public Adresse find(int id)
 	{
@@ -48,85 +55,14 @@ public class DAOAdresse extends DAO<Adresse>
 			return null;
 		}
 	}
-/*	
-	//Return null en cas d'érreur ou si aucune ligne n'a été trouvé
-	public ArrayList<Evenement> findListeEvent(int idAddr)
-	{
-		ArrayList<Evenement> listeEvent = new ArrayList<Evenement>();
-		String query = "select * from evenement where REFADDR = ?";
-		PreparedStatement ps;
-		
-		try
-		{
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, idAddr);
-			ResultSet resultSet = ps.executeQuery(query);
-			
-			if(resultSet.next() == false) throw new SQLException();
-			do
-			{
-				int id = resultSet.getInt("id");
-				String nom = resultSet.getString("nom");
-				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
-				String description = resultSet.getString("description");
-				String image = resultSet.getString("image");
-				
-				listeEvent.add(new Evenement(id, nom, nbParticipantRequis, description, image));
-				
-			} while(resultSet.next());
-			
-			ps.close();
-			return listeEvent;
-		}
-		catch (SQLException ex)
-		{
-			System.out.println("Erreur: findListeEvent failed !");
-			return null;
-		}
-	}
 	
-	public ArrayList<Etudiant> findListeEtud(int idAddr)
-	{
-		ArrayList<Etudiant> listeEtud = new ArrayList<Etudiant>();
-		String query = "select * from etudiant where REFADDR = ?";
-		PreparedStatement ps;
-		
-		try
-		{
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, idAddr);
-			ResultSet resultSet = ps.executeQuery(query);
-			
-			if(resultSet.next() == false) throw new SQLException();
-			do
-			{
-				int id = resultSet.getInt("id");
-				java.util.Date dateNaissance = resultSet.getDate("dateNaissance");
-				String paysNaissance = resultSet.getString("paysNaissance");
-				String lieuNaissance = resultSet.getString("lieuNaissance");
-				long numNational = resultSet.getLong("numNational");
-				String nationalite = resultSet.getString("nationalite");
-				String numBanque = resultSet.getString("numbanque");
-				boolean soutienSocial = (resultSet.getInt("soutienSocial") == 1) ? true : false;
-				String emplacementEcole = resultSet.getString("emplacementEcole");
-				String image = resultSet.getString("image");
-				
-				listeEvent.add(new Evenement(id, nom, nbParticipantRequis, description, image));
-				
-			} while(resultSet.next());
-			
-			ps.close();
-			return listeEvent;
-		}
-		catch (SQLException ex)
-		{
-			System.out.println("Erreur: findListeEvent failed !");
-			return null;
-		}
-	}
-*/
-	
-	//Return false en cas d'érreur sinon renvoie true si la ligne à bien été ajouté à la BD
+	/**
+	 * 
+	 * @param 	adr est initialisé
+	 * @return 	true si l'objet adr à bien été ajouté dans la table adresse
+	 * 			false si un problème à été rencontré
+	 *
+	 */
 	@Override
 	public boolean create(Adresse adr)
 	{
@@ -155,8 +91,13 @@ public class DAOAdresse extends DAO<Adresse>
 		}
 	}
 
-	
-	//Return false en cas d'érreur sinon renvoie true si la ligne à bien été mis à jour dans la BD
+	/**
+	 * 
+	 * @param 	adr est initialisé
+	 * @return 	true si la ligne dans la table adresse à bien été mis à jour
+	 * 			false si un problème à été rencontré
+	 *
+	 */
 	@Override
 	public boolean update(Adresse adr)
 	{
@@ -186,8 +127,13 @@ public class DAOAdresse extends DAO<Adresse>
 		}
 	}
 	
-	
-	//Return false en cas d'érreur sinon renvoie true si la table à bien été supprime de la BD
+	/**
+	 * 
+	 * @param 	adr est initialisé
+	 * @return 	true si la ligne de la table adresse à bien été supprimé
+	 * 			false si un problème à été rencontré
+	 *
+	 */
 	@Override
 	public boolean delete(Adresse adr)
 	{
