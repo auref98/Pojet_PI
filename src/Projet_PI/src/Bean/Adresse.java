@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 
-/** Classe représentant une adresse physique; elle est utilisée pour situer aussi bien le lieu d'un événement que le domicile d'un participant.*/
+/** Classe de type "bean" représentant une adresse physique; elle est utilisée pour situer aussi bien le lieu d'un événement que le domicile d'un participant.*/
 public class Adresse implements Serializable {
   private int id;
   private String localite;
