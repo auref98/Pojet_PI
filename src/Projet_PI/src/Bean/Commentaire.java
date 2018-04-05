@@ -41,10 +41,11 @@ public class Commentaire {
 	 * @param id l'identifiant (BD) du commentaire
 	 * @param contenu le texte du commentaire
 	 */
-	public Commentaire(int id, String contenu) {
-		super();
+	public Commentaire(int id, String contenu,Representant rep,Evenement e) {
 		this.id = id;
 		this.contenu = contenu;
+		this.rep = rep;
+		this.evenement = e;
 	}
 	
 //###################################################################################################################################################################
