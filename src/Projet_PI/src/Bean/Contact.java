@@ -18,7 +18,7 @@ package Bean;
 
 import java.util.*;
 
-import DAO.DAO;
+import DAO.DAOContact;
 
 import java.io.Serializable;
 
@@ -26,7 +26,7 @@ import java.io.Serializable;
 public class Contact implements Serializable {
   private int id;													// Attribut permettant de récuperer l'id réferencant ce contact dans la base de données
   private String mail;// Attribut contenant l'adresse email du contact
-  private DAO contact;
+  private DAOContact bdContact = new DAOContact;
   private Evenement eve;											// Référence l'événement auquel le contact a été enregistré
   private ArrayList<Section> interesse;
  
