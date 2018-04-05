@@ -17,12 +17,15 @@
 package Bean;
 
 import java.util.*;
+
+
+
 import java.io.Serializable;
 
 /** Classe de type "bean" contenant les informations d'un visiteur d'un événement souhaitant recevoir des information sur une ou plusieurs sections de l'école.*/
 public class Contact implements Serializable {
   private int id;													// Attribut permettant de récuperer l'id réferencant ce contact dans la base de données
-  private String mail;												// Attribut contenant l'adresse email du contact
+  private String mail;// Attribut contenant l'adresse email du contact
 
   private Evenement eve;											// Référence l'événement auquel le contact a été enregistré
   private ArrayList<Section> interesse;
@@ -44,7 +47,8 @@ public class Contact implements Serializable {
    * @param mail l'adresse email du contact.
    * @param eve l'événement où le contact a été enregistré.
    */
-  public Contact(String mail, Evenement eve){
+  public Contact(int id,String mail, Evenement eve){
+	  this.id=id;
 	  this.mail=mail;
 	  this.eve = eve;
 	  interesse = new ArrayList<Section>();							// Initialise l'attribut avec une liste vide
@@ -130,5 +134,9 @@ public class Contact implements Serializable {
 	 */
 	public void delInteresse(Section s) {
 		interesse.remove(s);
+	}
+	
+	public void setInteresse(ArrayList<Section> tab) {
+		interesse = tab;
 	}
 }

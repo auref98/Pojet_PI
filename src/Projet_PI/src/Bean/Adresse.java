@@ -29,9 +29,6 @@ public class Adresse implements Serializable {
   private String boite;
   private String pays;
 
-  private ArrayList<Evenement> listeEvent;							// Référence une liste des événements ayant (eu) lieu ) cette adresse					
-  private ArrayList<Etudiant> listeEtudiant;						// Référence une liste des étudiants résidant à cette adresse
-
 //###################################################################################################################################################################
 	
 	// Constructeurs
@@ -64,9 +61,7 @@ public class Adresse implements Serializable {
 	  this.numero = numero;
 	  this.boite = boite;
 	  this.pays = pays;
-	  listeEvent = new ArrayList<Evenement> ();						// Initialise une liste vide pour l'adresse des événements 
-	  listeEtudiant = new ArrayList<Etudiant> ();					// Initialise une liste vide pour l'adresse des étudiants
-	  
+	 
   }	
   	
   
@@ -199,83 +194,6 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 	
-//###################################################################################################################################################################
-	
-	// Manipulation des listes
-	
-//###################################################################################################################################################################	
-	
-	/**
-	 * Ajoute un Etudiant à la liste.<br/><br/>
-	 * Précondition: l'attribut "listeEtudiant" est initialisé avec un type valide (Etudiant); l'objet Etudiant e est correctement initialisé.<br/>
-	 * Postcondition: l'Etudiant e a été ajoute à la liste "listeEtudiant".<br/>
-	 * @param l'objet Etudiant à ajouter à la liste.
-	 */
-	public void addEtudiant(Etudiant e) {
-		listeEtudiant.add(e);
-	}
-	
-	/**
-	 * Ajoute un Evenement à la liste.<br/><br/>
-	 * Précondition: l'attribut "listeEvent" est initialisé avec un type valide (Event); l'objet Evenement e est correctement initialisé.<br/>
-	 * Postcondition: l'Evenement e a été ajouté à la liste "listeEvent".<br/>
-	 * @param l'objet Evenement à ajouter à la liste.
-	 */
-	public void addEvent(Evenement e) {
-		listeEvent.add(e);
-	}
-	
-	/**
-	 * Supprime un Etudiant de la liste.<br/><br/>
-	 * Précondition: l'attribut "listeEtudiant" est initialisé.<br/>
-	 * Postcondition: si l'Etudiant e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.<br/>
-	 * @param e l'objet Etudiant à supprimer de la liste.
-	 */
-	public void delEtudiant(Etudiant e) {
-		listeEtudiant.remove(e);
-	}
-	
-	/**
-	 * Supprime un Evenement de la liste.<br/><br/>
-	 * Précondition: l'attribut "listeEvent" est initialisé.<br/>
-	 * Postcondition: si l'Evenement e se trouvait dans la liste, celui-ci en a été supprimé; sinon la liste et l'objet courant sont inchangés.<br/>
-	 * @param e l'objet Evenement à supprimer de la liste.
-	 */
-	public void delEvent(Evenement e) {
-		listeEvent.remove(e);
-	}
-	
-	/**
-	 * Affiche tous les étudiants de la liste "listeEtudiant".</br></br>
-	 * Précondition: la liste d'Etudiant est initialisée.</br>
-	 * Postcondition: 	les informations de tous les étudiants de la liste ont été affichées a l'ecran conformement au format defini dans la méthode toString de la classe Etudiant; 
-	 *					l'objet courant est inchangé.</br>
-	 */
-	public void getEtudiant() {
-		int taille = listeEtudiant.size();							// Stocke la taille de la liste dans une variable
-		int i = 0;													// Declare et initialise a 0 un indice
-		while (i<taille) {											// Tant que l'indice est inferieur a la taille de la liste,
-			Etudiant e = listeEtudiant.get(i);						// obtient l'Etudiant place a l'indice i dans la liste...
-			System.out.println(e.toString());						// ... et affiche ses information a l'ecran
-			i++;													// Incremente l'indice
-		}
-	}
-	
-	/**
-	 * Affiche tous les événements de la liste "listeEvent".</br></br>
-	 * Précondition: la liste d'Evenement est initialisée.</br>
-	 * Postcondition: 	les informations de tous les événements de la liste ont été affichées à l'écran conformément au format defini dans la méthode toString de la classe Evenement; 
-	 *					l'objet courant est inchangé.
-	 */
-	public void getEvent() {
-		int taille = listeEvent.size();								// Stocke la taille de la liste dans une variable
-		int i = 0;													// Declare et initialise a 0 un indice
-		while (i<taille) {											// Tant que l'indice est inferieur a la taille de la liste,
-			Evenement e = listeEvent.get(i);						// obtient l'Etudiant place a l'indice i dans la liste...
-			System.out.println(e.toString());						// ... et affiche ses information a l'ecran
-			i++;													// Incremente l'indice
-		}
-	}
 
 //###################################################################################################################################################################
 	
