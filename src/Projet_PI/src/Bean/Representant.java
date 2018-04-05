@@ -6,7 +6,7 @@ package Bean;
 
 import java.util.LinkedList;
 
-public abstract class Representant {
+public class Representant {
 	private int id;
 	private String lastname;
 	private String firstname;
