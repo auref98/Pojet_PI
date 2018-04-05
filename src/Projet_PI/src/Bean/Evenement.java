@@ -7,20 +7,21 @@ package Bean;
 import java.util.*;
 
 public class Evenement {
-  private String nom;
-  private int nbParticipantRequis;
-  private String description;
-  private String image;
-  private Adresse adresseEve;
+	
+	private int id;
+	private String nom;
+	private int nbParticipantRequis;
+	private String description;
+	private String image;
+	private Adresse adresseEve;
 
-  private ArrayList<Plage> listePlage;
-  private LinkedList<Commentaire> listeCommentaire;
-  private LinkedList<Contact> listeContact;
-  private ArrayList<Section> listeSection;
+	private ArrayList<Plage> listePlage;
+	private LinkedList<Commentaire> listeCommentaire;
+	private LinkedList<Contact> listeContact;
+	private ArrayList<Section> listeSection;
   
 	public Evenement(String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
 	{
-		super();
 		this.nom = nom;
 		this.nbParticipantRequis = nbParticipantRequis;
 		this.description = description;
@@ -32,10 +33,10 @@ public class Evenement {
 	 * @author Aurelien
 	 * @return clone de l'evenement
 	 */
-	public Evenement clone(){
+	/*public Evenement clone(){
 		return new Evenement(this.nom, this.nbParticipantRequis, this.description,this.image,this.adresseEve.clone());
 	}
-	
+	*/
 	/**
 	 * 
 	 * @author Aurelien
@@ -46,6 +47,19 @@ public class Evenement {
 		return nom.equals(this.nom);
 	}
 
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 	/**
 	 * @return the nom
 	 */

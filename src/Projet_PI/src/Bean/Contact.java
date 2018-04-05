@@ -17,9 +17,9 @@ public class Contact implements Serializable {
   //constructeur contact
   //pré:la variable mail est initialisé
   //post:mail contient maintenant le nouveau mail  
-  Contact(){}
+  public Contact(){}
   
-  Contact(String mail, Evenement eve){
+  public Contact(String mail, Evenement eve){
 	  this.mail=mail;
 	  this.eve = eve;
 	  interesse = new ArrayList<Section>();

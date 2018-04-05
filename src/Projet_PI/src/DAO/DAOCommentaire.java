@@ -29,7 +29,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			prStat.setInt(1, idCommentaire);
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
-				com = new Commentaire(resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
+				com = new Commentaire(id,resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -104,9 +104,23 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		return change;
 	}
 	@Override
-	public boolean delete(Commentaire object) {
-		
-		return false;
+	public boolean delete(Commentaire com) {
+		String query = "DELETE FROM commentaire WHERE id=?";
+		boolean change = false;
+		try{
+			this.prStat = connection.prepareStatement(query);
+			this.prStat.setInt(1, com.getId());
+			change = (this.prStat.executeUpdate()>0)?true:false;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try{
+				this.prStat.close();
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return change;
 	}
 	
 	
