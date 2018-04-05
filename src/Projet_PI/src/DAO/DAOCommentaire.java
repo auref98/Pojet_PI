@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import Bean.Commentaire;
+import Bean.Evenement;
+import Bean.Representant;
 
 /**
  * @author Aurelien
@@ -17,7 +19,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	ResultSet resSet;
 	
 	/**
-	 * @author Aurelien
+	 * @author Aurelien.
 	 * @param id
 	 * @return le commentaire dont l'id correspond au commentaire 
 	 */
@@ -30,6 +32,10 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			prStat.setInt(1, idCommentaire);
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
+				Representant rep = new Representant();
+				rep.setId(this.resSet.getInt("REFREPR"));
+				Evenement eve = new Evenement();
+				eve.setId(this.resSet.getInt("REFEVEN"));
 				com = new Commentaire(id,resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
 			}
 		}catch (Exception e) {
@@ -51,11 +57,11 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		return com;
 	}
 	
-	/**
+	/** POUR LUDOVIC
 	 * Recherche dans la BD tout les commentaire relier a idEve.
 	 * @param idEve
 	 * @return LinkedList de commentaire relier a un evenement.
-	 */
+	 
 	public LinkedList<Commentaire> findAllEve(int idEve){
 		LinkedList<Commentaire> com = null;
 		String sql = "SELECT * FROM commentaire WHERE refeven = ?";
@@ -82,8 +88,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			}
 		}
 		return com;
-		
-	}
+	}*/
 	
 	/**
 	 * @author Aurelien

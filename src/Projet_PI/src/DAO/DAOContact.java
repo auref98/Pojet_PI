@@ -6,10 +6,12 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import Bean.Contact;
 import Bean.Evenement;
+import Bean.Section;
 
 /**
  * @author Aurelien
@@ -29,8 +31,9 @@ public class DAOContact extends DAO<Contact>{
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				Evenement eve = new DAOEvenement.find(this.resSet.getInt("REFEVEN"));
-				cont = new Contact(this.resSet.getString("MAIL"),eve);
+				Evenement eve = new Evenement();
+				eve.setId(this.resSet.getInt("REFEVEN"));
+				cont = new Contact(this.resSet.getInt("ID"),this.resSet.getString("MAIL"),eve);
 				cont.setId(id);
 			}
 		}catch(Exception e){
@@ -52,38 +55,42 @@ public class DAOContact extends DAO<Contact>{
 		return cont;
 	}
 
-	/**
-	 * Recherche dans la BD la liste de contact relié a un evenement
-	 * @param id
-	 * @return une liste de contact qui est relié à l'id de l'evenement.
-	 */
-	public LinkedList<Contact> findAllEve(int id){
-		LinkedList<Contact> cont = null;
-		String sql = "SELECT * FROM contact WHERE refeven = ?";
-		try{
+	public ArrayList<Section> findAvecSection(int id){
+		ArrayList<Section> section = null;
+		String sql = "SELECT * FROM interesse WHERE id = ?";
+		int tab[] = null;
+		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, id);
+			this.prStat.setInt(1,id);
 			this.resSet = this.prStat.executeQuery();
-			while(this.resSet.next()){
-				cont.add(new Contact(this.resSet.getInt("id"),this.resSet.getString("MAIL")));
+			tab = new int[this.resSet.getFetchSize()];
+			int i = 0;
+			while(this.resSet.next() && i < tab.length){
+				tab[i] = this.resSet.getInt("refsect");
+				i++;
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
+			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}finally{
 			try {
-				resSet.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
 			try {
-				prStat.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				this.prStat.close();
+			} catch (Exception e) {
+				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
 		}
-		return cont;
+		DAOSection daoSec = new DAOSection();
+		for(int i = 0; i < tab.length;i++){
+			section.add(daoSec.find(tab[i]));
+		}
+		return section;
 	}
 	
 	@Override
