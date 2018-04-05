@@ -8,20 +8,20 @@ import java.util.LinkedList;
 
 public abstract class Representant {
 	private int id;
-	private String nom;
-	private String prenom;
-	private int numTel;
+	private String lastname;
+	private String firstname;
+	private int phone;
 	private String mail;
 	private String matricule;//matricule -> e16****
 
 	private LinkedList<Commentaire> poste;
 	private LinkedList<Inscription> inscri;
 	
-	public Representant(int id, String nom, String prenom, int numTel, String mail, String matricule) {
+	public Representant(int id, String lastname, String firstname, int phone, String mail, String matricule) {
 		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.numTel = numTel;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.phone = phone;
 		this.mail = mail;
 		this.matricule = matricule;
 	}
@@ -45,45 +45,45 @@ public abstract class Representant {
 	}
 
 	/**
-	 * @return the nom
+	 * @return the lastname
 	 */
-	public String getNom() {
-		return nom;
+	public String getLastname() {
+		return lastname;
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param lastname the lastname to set
 	 */
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	/**
-	 * @return the prenom
+	 * @return the firstname
 	 */
-	public String getPrenom() {
-		return prenom;
+	public String getFirstname() {
+		return firstname;
 	}
 
 	/**
-	 * @param prenom the prenom to set
+	 * @param firstname the firstname to set
 	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	/**
-	 * @return the numTel
+	 * @return the phone
 	 */
-	public int getNumTel() {
-		return numTel;
+	public int getPhone() {
+		return phone;
 	}
 
 	/**
-	 * @param numTel the numTel to set
+	 * @param phone the phone to set
 	 */
-	public void setNumTel(int numTel) {
-		this.numTel = numTel;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
 	/**
@@ -112,6 +112,34 @@ public abstract class Representant {
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
+	}
+
+	/**
+	 * @return the poste
+	 */
+	public LinkedList<Commentaire> getPoste() {
+		return poste;
+	}
+
+	/**
+	 * @param poste the poste to set
+	 */
+	public void setPoste(LinkedList<Commentaire> poste) {
+		this.poste = poste;
+	}
+
+	/**
+	 * @return the inscri
+	 */
+	public LinkedList<Inscription> getInscri() {
+		return inscri;
+	}
+
+	/**
+	 * @param inscri the inscri to set
+	 */
+	public void setInscri(LinkedList<Inscription> inscri) {
+		this.inscri = inscri;
 	}
 	
 	

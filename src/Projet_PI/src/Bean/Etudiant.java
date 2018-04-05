@@ -27,13 +27,13 @@ public class Etudiant extends Representant{
 	
 	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees
 	private LocalDate dateNaissance;								// Date de naissance de l'étudiant
-	private String paysDeNaissance;									// Pays de naissance de l'étudiant
-	private String lieuDeNaissance;									// Lieu de naissance de l'étudiant
-	private String numeroNational;									// Numéro national identifiant l'étudiant
+	private String paysNaissance;									// Pays de naissance de l'étudiant
+	private String lieuNaissance;									// Lieu de naissance de l'étudiant
+	private String numNational;										// Numéro national identifiant l'étudiant
 	private String nationalite;										// Nationalité actuelle de l'étudiant
-	private String iban;											// Numéro IBAN du compte bancaire de l'étudiant (les étudiants représentant l'école à un événement sont rémunérés)
-	private boolean conseilSocial;									// Indique si l'étudiant bénéficie d'un soutient du service social de l'école (si c'est le cas il bénéficie d'une priorité à l'inscription)
-	private String lieuEcole;										// Implantaion (ville) de l'école où l'étudiant suit les cours
+	private String numBanque;											// Numéro numBanque du compte bancaire de l'étudiant (les étudiants représentant l'école à un événement sont rémunérés)
+	private boolean soutienSocial;									// Indique si l'étudiant bénéficie d'un soutient du service social de l'école (si c'est le cas il bénéficie d'une priorité à l'inscription)
+	private String emplacementEcole;										// Implantaion (ville) de l'école où l'étudiant suit les cours
 	private String role;											// Attribut renseignant le rôle que l'étudiant souhaite assumer lors d'un événement (ouvrier, représentant au stand,...).
 
 	private Adresse adr;											// Référence l'adresse de l'étudiant
@@ -61,28 +61,28 @@ public class Etudiant extends Representant{
 	 * @param matricule le matricule HERS identifiant de l'étudiant.
 	 * @param id l'identifiant (BD) de l'étudiant.
 	 * @param dateNaissance la date de naissance de l'étudiant (au format LocalDate).
-	 * @param paysDeNaissance le pays de naissance de l'étudiant.
-	 * @param lieuDeNaissance le lieu de naissance de l'étudiant.
-	 * @param numeroNational le numéro national identifiant de l'étudiant.
+	 * @param paysNaissance le pays de naissance de l'étudiant.
+	 * @param lieuNaissance le lieu de naissance de l'étudiant.
+	 * @param numNational le numéro national identifiant de l'étudiant.
 	 * @param nationalite la nationalité de l'étudiant.
-	 * @param iban le numéro IBAN du compte bancaire de l'étudiant.
-	 * @param conseilSocial <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
-	 * @param lieuEcole l'implantation (ville) de l'école où l'étudiant suit les cours.
+	 * @param numBanque le numéro numBanque du compte bancaire de l'étudiant.
+	 * @param soutienSocial <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
+	 * @param emplacementEcole l'implantation (ville) de l'école où l'étudiant suit les cours.
 	 * @param role le rôle que l'étudiant souhaite assumer lors d'un événement.
 	 */
 	public Etudiant(String nom, String prenom, int numTel, String mail, String matricule, int id,
-			LocalDate dateNaissance, String paysDeNaissance, String lieuDeNaissance, String numeroNational,
-			String nationalite, String iban, boolean conseilSocial, String lieuEcole, String role) {
+			LocalDate dateNaissance, String paysNaissance, String lieuNaissance, String numNational,
+			String nationalite, String numBanque, boolean soutienSocial, String emplacementEcole, String role) {
 		super(id, nom, prenom, numTel, mail, matricule);
 		this.id = id;
 		this.dateNaissance = dateNaissance;
-		this.paysDeNaissance = paysDeNaissance;
-		this.lieuDeNaissance = lieuDeNaissance;
-		this.numeroNational = numeroNational;
+		this.paysNaissance = paysNaissance;
+		this.lieuNaissance = lieuNaissance;
+		this.numNational = numNational;
 		this.nationalite = nationalite;
-		this.iban = iban;
-		this.conseilSocial = conseilSocial;
-		this.lieuEcole = lieuEcole;
+		this.numBanque = numBanque;
+		this.soutienSocial = soutienSocial;
+		this.emplacementEcole = emplacementEcole;
 		this.role = role;
 	}
 	
@@ -128,40 +128,40 @@ public class Etudiant extends Representant{
 		this.dateNaissance = dateNaissance;
 	}
 
-// Getter et setter pour l'attribut "paysDeNaissance" 
+// Getter et setter pour l'attribut "paysNaissance" 
 	
 	/**
 	 * Renvoie le pays de naissance de l'étudiant.
 	 * @return le pays de naissance de l'étudiant.
 	 */
-	public String getPaysDeNaissance() {
-		return paysDeNaissance;
+	public String getPaysNaissance() {
+		return paysNaissance;
 	}
 
 	/**
 	 * Affecte le pays de naissance de l'étudiant.
-	 * @param paysDeNaissance le pays de naissance à affecter.
+	 * @param paysNaissance le pays de naissance à affecter.
 	 */
-	public void setPaysDeNaissance(String paysDeNaissance) {
-		this.paysDeNaissance = paysDeNaissance;
+	public void setPaysNaissance(String paysNaissance) {
+		this.paysNaissance = paysNaissance;
 	}
 
-// Getter et setter pour l'attribut "lieuDeNaissance" 
+// Getter et setter pour l'attribut "lieuNaissance" 
 	
 	/**
 	 * Renvoie le lieu de naissance de l'étudiant.
 	 * @return le lieu de naissance de l'étudiant.
 	 */
-	public String getLieuDeNaissance() {
-		return lieuDeNaissance;
+	public String getLieuNaissance() {
+		return lieuNaissance;
 	}
 
 	/**
 	 * Affecte le lieu de naissance de l'étudiant.
-	 * @param lieuDeNaissance le lieu de naissance à affecter.
+	 * @param lieuNaissance le lieu de naissance à affecter.
 	 */
-	public void setLieuDeNaissance(String lieuDeNaissance) {
-		this.lieuDeNaissance = lieuDeNaissance;
+	public void setLieuNaissance(String lieuNaissance) {
+		this.lieuNaissance = lieuNaissance;
 	}
 
 // Getter et setter pour l'attribut "numeroNatioanl" 
@@ -170,16 +170,16 @@ public class Etudiant extends Representant{
 	 * Renvoie le numéro national identifiant de l'étudiant.
 	 * @return le numéro national identifiant de l'étudiant.
 	 */
-	public String getNumeroNational() {
-		return numeroNational;
+	public String getNumNational() {
+		return numNational;
 	}
 
 	/**
 	 * Affecte le numéro national de l'étudiant.
-	 * @param numeroNational le numéro national à affecter.
+	 * @param numNational le numéro national à affecter.
 	 */
-	public void setNumeroNational(String numeroNational) {
-		this.numeroNational = numeroNational;
+	public void setNumNational(String numNational) {
+		this.numNational = numNational;
 	}
 
 // Getter et setter pour l'attribut "nationalite" 
@@ -200,58 +200,58 @@ public class Etudiant extends Representant{
 		this.nationalite = nationalite;
 	}
 
-// Getter et setter pour l'attribut "iban" 
+// Getter et setter pour l'attribut "numBanque" 
 	
 	/**
-	 * Renvoie le numéro IBAN du compte bancaire de l'étudiant.
-	 * @return le numéro IBAN du compte bancaire de l'étudiant.
+	 * Renvoie le numéro numBanque du compte bancaire de l'étudiant.
+	 * @return le numéro numBanque du compte bancaire de l'étudiant.
 	 */
-	public String getIban() {
-		return iban;
+	public String getNumBanque() {
+		return numBanque;
 	}
 
 	/**
-	 * Affecte le numéro IBAN du compte bancaire de l'étudiant.
-	 * @param iban le numéro IBAN du compte bancaire à affecter.
+	 * Affecte le numéro numBanque du compte bancaire de l'étudiant.
+	 * @param numBanque le numéro numBanque du compte bancaire à affecter.
 	 */
-	public void setIban(String iban) {
-		this.iban = iban;
+	public void setNumBanque(String numBanque) {
+		this.numBanque = numBanque;
 	}
 
-// Getter et setter pour l'attribut "conseilSocial" 
+// Getter et setter pour l'attribut "soutienSocial" 
 	
 	/**
 	 * Renvoie <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
 	 * @return <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
 	 */
-	public boolean isConseilSocial() {
-		return conseilSocial;
+	public boolean isSoutienSocial() {
+		return soutienSocial;
 	}
 
 	/**
 	 * Affecte une valeur booléenne renseignant si l'étudiant bénéficie d'un soutient du service social.
-	 * @param conseilSocial <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
+	 * @param soutienSocial <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon.
 	 */
-	public void setConseilSocial(boolean conseilSocial) {
-		this.conseilSocial = conseilSocial;
+	public void setSoutienSocial(boolean soutienSocial) {
+		this.soutienSocial = soutienSocial;
 	}
 
-// Getter et setter pour l'attribut "lieuEcole" 
+// Getter et setter pour l'attribut "emplacementEcole" 
 	
 	/**
 	 * Renvoie l'implantation (ville) de l'école où l'étudiant suit les cours.
 	 * @return l'implantation (ville) de l'école où l'étudiant suit les cours.
 	 */
-	public String getLieuEcole() {
-		return lieuEcole;
+	public String getEmplacementEcole() {
+		return emplacementEcole;
 	}
 
 	/**
 	 * Affecte l'implantation (ville) de l'école où l'étudiant suit les cours.
-	 * @param lieuEcole l'implantation (ville) de l'école à affecter.
+	 * @param emplacementEcole l'implantation (ville) de l'école à affecter.
 	 */
-	public void setLieuEcole(String lieuEcole) {
-		this.lieuEcole = lieuEcole;
+	public void setEmplacementEcole(String emplacementEcole) {
+		this.emplacementEcole = emplacementEcole;
 	}
 
 // Getter et setter pour l'attribut "role" 
@@ -271,5 +271,35 @@ public class Etudiant extends Representant{
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	/**
+	 * @return the adr
+	 */
+	public Adresse getAdr() {
+		return adr;
+	}
+
+	/**
+	 * @param adr the adr to set
+	 */
+	public void setAdr(Adresse adr) {
+		this.adr = adr;
+	}
+
+	/**
+	 * @return the sec
+	 */
+	public Section getSec() {
+		return sec;
+	}
+
+	/**
+	 * @param sec the sec to set
+	 */
+	public void setSec(Section sec) {
+		this.sec = sec;
+	}
+	
+	
 
 }
