@@ -70,10 +70,10 @@ public class Etudiant extends Representant{
 	 * @param emplacementEcole l'implantation (ville) de l'école où l'étudiant suit les cours.
 	 * @param role le rôle que l'étudiant souhaite assumer lors d'un événement.
 	 */
-	public Etudiant(String nom, String prenom, int numTel, String mail, String matricule, int id,
+	public Etudiant(String lastname, String firstname, int phone, String mail, String matricule, int id,
 			LocalDate dateNaissance, String paysNaissance, String lieuNaissance, String numNational,
-			String nationalite, String numBanque, boolean soutienSocial, String emplacementEcole, String role) {
-		super(id, nom, prenom, numTel, mail, matricule);
+			String nationalite, String numBanque, boolean soutienSocial, String emplacementEcole, String role, Adresse adr, Section sec) {
+		super(id, lastname, firstname, phone, mail, matricule);
 		this.id = id;
 		this.dateNaissance = dateNaissance;
 		this.paysNaissance = paysNaissance;
@@ -84,6 +84,8 @@ public class Etudiant extends Representant{
 		this.soutienSocial = soutienSocial;
 		this.emplacementEcole = emplacementEcole;
 		this.role = role;
+		this.adr = adr;
+		this.sec = sec;
 	}
 	
 //###################################################################################################################################################################
