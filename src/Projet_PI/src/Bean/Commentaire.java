@@ -16,8 +16,7 @@
 
 package Bean;
 
-// Classe utilisee pour reccueillir les commentaires des personnes ayant represente l'ecole lors de l'evenement reference
-
+/** Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence. */
 public class Commentaire {
 	private int id;													// Attribut permettant de recuperer l'id referencant cette adresse dans la base de donnees
 	private String contenu;											// Attribut pour le texte du commentaire
@@ -25,53 +24,68 @@ public class Commentaire {
 	private Representant rep;										// Reference vers l'autreur du commentaire
 	private Evenement evenement;									// Reference vers l'evenement en question
 	
+//###################################################################################################################################################################
 	
-/*
- * Constructeurs
- */
+	// Constructeurs
+	
+//###################################################################################################################################################################
   
-	// Constructeur sans parametre	
+	/** Constructeur sans paramètre.*/	
 	public Commentaire() {
 
 	}
 	
-	// Constructeur prenant l'identifiant et le texte du commentaire en parametres
-	// Precondition: id et contenu sont initialises
-	// Postcondition: l'objet a ete initialise, tous ses champs sont initialises avec la valeur des parametres de meme nom;
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br/><br/>
+	 * Précondition: id et contenu sont initialisés.<br/>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br/>
+	 * @param id l'identifiant (BD) du commentaire
+	 * @param contenu le texte du commentaire
+	 */
 	public Commentaire(int id, String contenu) {
 		super();
 		this.id = id;
 		this.contenu = contenu;
 	}
 	
+//###################################################################################################################################################################
 	
+	// Getters et setters
+	
+//###################################################################################################################################################################
+	
+// Getter et setter pour l'attribut "id"  
 	
 	/**
-	 * @return l'identifiant (BD) de l'objet
+	 * Renvoie l'identifiant (BD) de l'objet.
+	 * @return l'identifiant (BD) de l'objet.
 	 */
 	public int getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id l'identifiant (BD) de l'objet
+	 * Affecte l'identifiant (BD) de l'objet.
+	 * @param id l'identifiant (BD) de l'objet à affecter.
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+// Getter et setter pour l'attribut "contenu" 
+	
 	/**
-	 * @return le texte du commentaire sous forme d'un objet java.lang.String
+	 * Renvoie le texte du commentaire sous forme d'un objet java.lang.String.
+	 * @return le texte du commentaire sous forme d'un objet java.lang.String.
 	 */
 	public String getContenu() {
 		return contenu;
 	}
 	/**
-	 * @param contenu le texte du commentaire
+	 * Affecte le texte du commentaire.
+	 * @param contenu le texte du commentaire à affecter.
 	 */
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
-	
-	
-	
-	
+
 }

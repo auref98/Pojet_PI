@@ -53,6 +53,20 @@ public class Section implements Serializable {
 		return relais;
 	}
 
+	/** 
+	 
+	 * */
+	public int getId() {
+		return id;
+	}
+	
+	/** 
+	 
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	/**
 	 * @param relais the relais to set
 	 */

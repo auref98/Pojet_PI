@@ -9,27 +9,41 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 
 public class Plage {
-  private LocalDate date;
-  private LocalTime heureDebut;
-  private LocalTime heureFin;
-
-  private Evenement eve;
-  private LinkedList<Inscription> listeInscri;
-
-  /**
-   * 
-   * @param date
-   * @param heureDebut
-   * @param heureFin
-   * @param eve
-   */
-  Plage(LocalDate date,LocalTime heureDebut,LocalTime heureFin, Evenement eve){
-	  this.date=date;
-	  this.heureDebut=heureDebut;
-	  this.heureFin=heureFin;
-	  this.eve = eve;
-  }
 	
+	private int id;
+	private LocalDate date;
+	private LocalTime heureDebut;
+	private LocalTime heureFin;
+	
+	private Evenement eve;
+	private LinkedList<Inscription> listeInscri;
+	
+	/**
+	 * 
+	 * @param date
+	 * @param heureDebut
+	 * @param heureFin
+	 * @param eve
+	 */
+	Plage(LocalDate date,LocalTime heureDebut,LocalTime heureFin, Evenement eve){
+		this.date=date;
+		this.heureDebut=heureDebut;
+		this.heureFin=heureFin;
+		this.eve = eve;
+  	}
+  	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 	/**
 	 * @return the date
 	 */
