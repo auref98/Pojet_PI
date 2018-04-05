@@ -17,7 +17,7 @@ public class Inscription implements Serializable{
 	
 	public Inscription() {}
 	
-	public Inscription(int id, Representant representant, Plage plage){
+	public Inscription(int id, boolean valide, Representant representant, Plage plage){
 	 	this.id = id;
 		this.valide = valide; //en attendant que le charge de comm ne valide la présence l'attribut est a false
 	  	this.representant = representant;
