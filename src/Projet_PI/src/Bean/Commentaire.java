@@ -24,10 +24,11 @@ public class Commentaire {
 	private Representant rep;										// Reference vers l'autreur du commentaire
 	private Evenement evenement;									// Reference vers l'evenement en question
 	
+//###################################################################################################################################################################
 	
-/*
- * Constructeurs
- */
+	// Constructeurs
+	
+//###################################################################################################################################################################
   
 	/** Constructeur sans paramètre.*/	
 	public Commentaire() {
@@ -64,7 +65,7 @@ public class Commentaire {
 	
 	/**
 	 * Affecte l'identifiant (BD) de l'objet.
-	 * @param id l'identifiant (BD) de l'objet.
+	 * @param id l'identifiant (BD) de l'objet à affecter.
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -81,7 +82,7 @@ public class Commentaire {
 	}
 	/**
 	 * Affecte le texte du commentaire.
-	 * @param contenu le texte du commentaire.
+	 * @param contenu le texte du commentaire à affecter.
 	 */
 	public void setContenu(String contenu) {
 		this.contenu = contenu;

@@ -33,9 +33,11 @@ public class Adresse implements Serializable {
   private ArrayList<Evenement> listeEvent;							
   private ArrayList<Etudiant> listeEtudiant;						
 
-/*
- * Constructeurs
- */
+//###################################################################################################################################################################
+	
+	// Constructeurs
+	
+//###################################################################################################################################################################
   
   /**Constructeur sans paramètre */
   public Adresse() {}
@@ -87,7 +89,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le nom de la localité.
-	 * @param localite le nom de la localité.
+	 * @param localite le nom de la localité à affecter.
 	 */
 	public void setLocalite(String localite) {
 		this.localite = localite;
@@ -105,7 +107,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le code postal correspondant à la localité.
-	 * @param codePostal le code postal correspondant à la localité.
+	 * @param codePostal le code postal correspondant à la localité à affecter.
 	 */
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
@@ -123,7 +125,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le nom de la rue.
-	 * @param rue le nom de la rue.
+	 * @param rue le nom de la rue à affecter.
 	 * */
 	public void setRue(String rue) {
 		this.rue = rue;
@@ -141,7 +143,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le numéro du bâtiment.
-	 * @param numero le numéro du bâtiment.
+	 * @param numero le numéro du bâtiment à affecter.
 	 */
 	public void setNumero(int numero) {
 		this.numero = numero;
@@ -159,7 +161,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le numéro de la boîte.
-	 * @param boite le numéro de la boîte.
+	 * @param boite le numéro de la boîte à affecter.
 	 */
 	public void setBoite(String boite) {
 		this.boite = boite;
@@ -177,7 +179,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le pays.
-	 * @param pays le pays.
+	 * @param pays le pays à affecter.
 	 * */
 	public void setPays(String pays) {
 		this.pays = pays;
@@ -193,7 +195,7 @@ public class Adresse implements Serializable {
 	 * Ajoute un Etudiant à la liste.</br></br>
 	 * Précondition: l'attribut "listeEtudiant" est initialisé avec un type valide (Etudiant); l'objet Etudiant e est correctement initialisé.</br>
 	 * Postcondition: l'Etudiant e a été ajoute à la liste "listeEtudiant".</br>
-	 * @param l'objet Etudiant à ajouter.
+	 * @param l'objet Etudiant à ajouter à la liste.
 	 */
 	public void addEtudiant(Etudiant e) {
 		listeEtudiant.add(e);
@@ -203,7 +205,7 @@ public class Adresse implements Serializable {
 	 * Ajoute un Evenement à la liste.</br></br>
 	 * Précondition: l'attribut "listeEvent" est initialisé avec un type valide (Event); l'objet Evenement e est correctement initialisé.</br>
 	 * Postcondition: l'Evenement e a été ajouté à la liste "listeEvent".</br>
-	 * @param l'objet Evenement à ajouter.
+	 * @param l'objet Evenement à ajouter à la liste.
 	 */
 	public void addEvent(Evenement e) {
 		listeEvent.add(e);
