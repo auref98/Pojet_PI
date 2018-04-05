@@ -4,9 +4,10 @@
 
 package Bean;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Evenement {
+public class Evenement implements Serializable{
 	
 	private int id;
 	private String nom;
@@ -20,13 +21,17 @@ public class Evenement {
 	private LinkedList<Contact> listeContact;
 	private ArrayList<Section> listeSection;
   
-	public Evenement(String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
+	public Evenement() {}
+	
+	public Evenement(int id, String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
 	{
+		this.id = id;
 		this.nom = nom;
 		this.nbParticipantRequis = nbParticipantRequis;
 		this.description = description;
 		this.image = image;
 		this.adresseEve = adresseEve;
+		
 	}
 	
 	/**
@@ -128,5 +133,59 @@ public class Evenement {
 	 */
 	public void setAdresseEve(Adresse adresseEve) {
 		this.adresseEve = adresseEve;
+	}
+	//##############################################################
+	//manip liste
+	//##############################################################
+	public void addPlage(Plage p) {
+		listePlage.add(p);
+	}
+	public void addCommentaire(Commentaire c) {
+		listeCommentaire.add(c);
+	}
+	public void addContact(Contact c) {
+		listeContact.add(c);
+	}
+	public void addSection(Section s) {
+		listeSection.add(s);
+	}
+	
+	public void delPlage(Plage p) {
+		listePlage.remove(p);
+	}
+	public void delCommentaire(Commentaire c) {
+		listeCommentaire.remove(c);
+	}
+	public void delContact(Contact c) {
+		listeContact.remove(c);
+	}
+	public void delSection(Section s) {
+		listeSection.remove(s);
+	}
+	
+	public void setPlage(ArrayList<Plage> p) {
+		listePlage = p;
+	}
+	public void setCommentaire(LinkedList<Commentaire> c) {
+		listeCommentaire = c;
+	}
+	public void setContact(LinkedList<Contact> c) {
+		listeContact = c;
+	}
+	public void setSection(ArrayList<Plage> p) {
+		listePlage = p;
+	}
+	
+	public ArrayList<Plage> getPlage() {
+		return listePlage;
+	}
+	public LinkedList<Commentaire> getCommentaire() {
+		return listeCommentaire;
+	}
+	public LinkedList<Contact> getContact() {
+		return listeContact;
+	}
+	public ArrayList<Plage> getSection() {
+		return listePlage;
 	}
 }

@@ -4,20 +4,24 @@
 
 package Bean;
 
-public class Inscription {
+import java.io.Serializable;
+
+public class Inscription implements Serializable{
 	
 	private int id;
 	private boolean valide;
 	private Representant representant;
 	private Plage plage;
 	
-	//constructeur 
-	//pré:le representant est la personne qui lance l'inscription, la plage est celle a laquelle il veut participer
-	//post: les attibuts sont initialisés
-	Inscription(Representant r, Plage p){
-	 	valide = false; //en attendant que le charge de comm ne valide la présence l'attribut est a false
-	  	representant = r;
-	  	plage = p;
+	//constructeurs
+	
+	public Inscription() {}
+	
+	public Inscription(int id, Representant representant, Plage plage){
+	 	this.id = id;
+		this.valide = valide; //en attendant que le charge de comm ne valide la présence l'attribut est a false
+	  	this.representant = representant;
+	  	this.plage = plage;
 	}
 	
 	/**

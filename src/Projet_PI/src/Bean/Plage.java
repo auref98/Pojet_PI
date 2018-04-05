@@ -4,11 +4,12 @@
 
 package Bean;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
 
-public class Plage {
+public class Plage implements Serializable{
 	
 	private int id;
 	private LocalDate date;
@@ -16,8 +17,9 @@ public class Plage {
 	private LocalTime heureFin;
 	
 	private Evenement eve;
-	private LinkedList<Inscription> listeInscri;
+	private LinkedList<Inscription> listeInscription;
 	
+	public Plage() {}
 	/**
 	 * 
 	 * @param date
@@ -25,12 +27,16 @@ public class Plage {
 	 * @param heureFin
 	 * @param eve
 	 */
-	Plage(LocalDate date,LocalTime heureDebut,LocalTime heureFin, Evenement eve){
+	Plage(int id, LocalDate date, LocalTime heureDebut, LocalTime heureFin, Evenement eve){
+		this.id = id;
 		this.date=date;
 		this.heureDebut=heureDebut;
 		this.heureFin=heureFin;
 		this.eve = eve;
   	}
+	//##################################################################
+	//getter setter
+	//##################################################################
   	/**
 	 * @return the id
 	 */
@@ -85,5 +91,19 @@ public class Plage {
 	public void setHeureFin(LocalTime heureFin) {
 		this.heureFin = heureFin;
 	}
-	  
+	//#####################################################################
+	//manip liste
+	//#####################################################################
+	public void addInscription(Inscription i) {
+		listeInscription.add(i);
+	}
+	public void delInscription(Inscription i) {
+		listeInscription.remove(i);
+	}
+	public LinkedList<Inscription> getInscription(){
+		return listeInscription;
+	}
+	public void setInscription(LinkedList<Inscription> i) {
+		listeInscription = i;
+	}
 }
