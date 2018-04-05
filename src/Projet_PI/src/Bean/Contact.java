@@ -136,7 +136,7 @@ public class Contact implements Serializable {
 		interesse.remove(s);
 	}
 	
-	public void setInteresse(ArrayList tab) {
+	public void setInteresse(ArrayList<Section> tab) {
 		interesse = tab;
 	}
 }
