@@ -11,6 +11,7 @@ package DAO;
 import java.sql.*;
 import java.util.*;
 
+import Bean.Adresse;
 import Bean.Evenement;
 
 public class DAOEvenement extends DAO<Evenement>
@@ -19,8 +20,32 @@ public class DAOEvenement extends DAO<Evenement>
 	@Override
 	public Evenement find(int id)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from evenement where id = ?";
+		PreparedStatement ps;
+		
+		try
+		{
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery(query);
+			
+			if(resultSet.next() == false) throw new SQLException();
+			
+			String localite = resultSet.getString("localite");
+			int codePostal = resultSet.getInt("codePostal");
+			String rue = resultSet.getString("rue");
+			int numero = resultSet.getInt("numero");
+			String boite = resultSet.getString("Boite");
+			String pays = resultSet.getString("pays");
+			ps.close();
+			
+			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findAdr failed !");
+			return null;
+		}
 	}
 
 	@Override
