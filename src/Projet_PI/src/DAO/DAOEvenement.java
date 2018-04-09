@@ -102,11 +102,11 @@ public class DAOEvenement extends DAO<Evenement>
 	 *  		sinon return null
 	 *
 	 */
-	public ArrayList<Commentaire> findListeCom(Evenement event)
+	public LinkedList<Commentaire> findListeCom(Evenement event)
 	{
 		String query = "select * from commentaire where refEvenement = ?";
 		PreparedStatement ps;
-		ArrayList<Commentaire> listeCom = new ArrayList<Commentaire>();
+		LinkedList<Commentaire> listeCom = new LinkedList<Commentaire>();
 		
 		try
 		{
@@ -138,15 +138,15 @@ public class DAOEvenement extends DAO<Evenement>
 	 * 
 	 * @param	evenement est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
-	 *  		contact, elles seront retournées sous forme d'objet de type ArrayList
+	 *  		contact, elles seront retournées sous forme d'objet de type LinkedList
 	 *  		sinon return null
 	 *
 	 */
-	public ArrayList<Contact> findListeContact(Evenement event)
+	public LinkedList<Contact> findListeContact(Evenement event)
 	{
 		String query = "select * from Contact where refEvenement = ?";
 		PreparedStatement ps;
-		ArrayList<Contact> listeContact = new ArrayList<Contact>();
+		LinkedList<Contact> listeContact = new LinkedList<Contact>();
 		
 		try
 		{
@@ -267,6 +267,7 @@ public class DAOEvenement extends DAO<Evenement>
 			ps.setString(3, event.getDescription());
 			ps.setString(4, event.getImage());
 			ps.setInt(5, event.getAdresseEve().getId());
+			ps.setInt(6, event.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
