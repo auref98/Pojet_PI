@@ -139,4 +139,8 @@ public class Contact implements Serializable {
 	public void setInteresse(ArrayList<Section> tab) {
 		interesse = tab;
 	}
+	
+	public ArrayList<Section> getInteresse() {
+		return interesse;
+	}
 }
