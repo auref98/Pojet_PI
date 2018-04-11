@@ -56,7 +56,7 @@ public class DAOContact extends DAO<Contact>{
 	}
 
 	public ArrayList<Section> findAvecSection(int id){
-		ArrayList<Section> section = null;
+		ArrayList<Section> section = new ArrayList<Section>();
 		String sql = "SELECT * FROM interesse WHERE id = ?";
 		int tab[] = null;
 		try {
