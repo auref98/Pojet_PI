@@ -97,16 +97,6 @@ public class Section implements Serializable {
 		listeProf.remove(p);
 	}
 	
-	public void getEtudiant() {
-		int taille = listeEtudiant.size();
-		int i = 0;
-		while (i<taille) {
-			Etudiant e = listeEtudiant.get(i);
-			System.out.println(e.toString());
-			i++;
-		}
-	}
-	
 	public void setEtudiant(ArrayList<Etudiant> tab) {
 		listeEtudiant = tab;
 	}
@@ -119,26 +109,16 @@ public class Section implements Serializable {
 		listeProf = tab;
 	}
 	
-	
-	
-	public void getContact() {
-		int taille = listeContact.size();
-		int i = 0;
-		while (i<taille) {
-			Contact c = listeContact.get(i);
-			System.out.println(c.toString());
-			i++;
-		}
+	public ArrayList<Etudiant> getEtudiant() {
+		return listeEtudiant;
 	}
 	
-	public void getProfesseur() {
-		int taille = listeProf.size();
-		int i = 0;
-		while (i<taille) {
-			Professeur p = listeProf.get(i);
-			System.out.println(p.toString());
-			i++;
-		}
+	public ArrayList<Contact> getContact() {
+		return listeContact;
+	}
+	
+	public ArrayList<Professeur> getProfesseur() {
+		return listeProf;
 	}
 	
 	public String toString() {

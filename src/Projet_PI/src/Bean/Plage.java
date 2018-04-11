@@ -27,7 +27,7 @@ public class Plage implements Serializable{
 	 * @param heureFin
 	 * @param eve
 	 */
-	Plage(int id, LocalDate date, LocalTime heureDebut, LocalTime heureFin, Evenement eve){
+	public Plage(int id, LocalDate date, LocalTime heureDebut, LocalTime heureFin, Evenement eve){
 		this.id = id;
 		this.date=date;
 		this.heureDebut=heureDebut;
@@ -90,6 +90,19 @@ public class Plage implements Serializable{
 	 */
 	public void setHeureFin(LocalTime heureFin) {
 		this.heureFin = heureFin;
+	}
+	
+	public LinkedList<Inscription> getListeInscription()
+	{
+		return listeInscription;
+	}
+	public void setListeInscription(LinkedList<Inscription> listeInscription)
+	{
+		this.listeInscription = listeInscription;
+	}
+	public Evenement getEve()
+	{
+		return eve;
 	}
 	//#####################################################################
 	//manip liste
