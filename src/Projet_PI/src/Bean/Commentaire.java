@@ -16,13 +16,17 @@
 
 package Bean;
 
-/** Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence. */
+/** 
+ * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence.
+ * @see Evenement
+ * @see Representant
+ */
 public class Commentaire {
-	private int id;													// Attribut permettant de recuperer l'id referencant cette adresse dans la base de donnees
+	private int id;													// Attribut permettant de récupérer l'id référençant cette adresse dans la base de données
 	private String contenu;											// Attribut pour le texte du commentaire
 	
-	private Representant rep;										// Reference vers l'autreur du commentaire
-	private Evenement evenement;									// Reference vers l'evenement en question
+	private Representant rep;											// Référence vers l'autreur du commentaire
+	private Evenement evenement;										// Référence vers l'événement en question
 	
 //###################################################################################################################################################################
 	
@@ -35,17 +39,27 @@ public class Commentaire {
 
 	}
 	
+	
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br><br>
+	 * Précondition: id et contenu sont initialisés.<br>
+	 * Postcondition: l'objet a été initialisé, ses champs "id" et "contenu" sont initialisés avec la valeur des paramètres de même nom.<br>
+	 * @param id l'identifiant (BD) du commentaire
+	 * @param contenu le texte du commentaire
+	 */
 	public Commentaire(int id, String contenu) {
 		this.id = id;
 		this.contenu = contenu;
 
 	}
 	
-	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br/><br/>
-	 * Précondition: id et contenu sont initialisés.<br/>
-	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br/>
+	/**
+	 * Constructeur initialisant tous les champs de l'objet<br><br>
+	 * Précondition: tous les paramètres sont initialisés.<br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br>
 	 * @param id l'identifiant (BD) du commentaire
 	 * @param contenu le texte du commentaire
+	 * @param rep la référence de l'objet Representant à affecter
+	 * @param e La référence de l'objet Evenement à affecter
 	 */
 	public Commentaire(int id, String contenu,Representant rep,Evenement e) {
 		this.id = id;
@@ -64,7 +78,7 @@ public class Commentaire {
 	
 	/**
 	 * Renvoie l'identifiant (BD) de l'objet.
-	 * @return l'identifiant (BD) de l'objet.
+	 * @return l'identifiant (BD) de l'objet
 	 */
 	public int getId() {
 		return id;
@@ -72,7 +86,7 @@ public class Commentaire {
 	
 	/**
 	 * Affecte l'identifiant (BD) de l'objet.
-	 * @param id l'identifiant (BD) de l'objet à affecter.
+	 * @param id l'identifiant (BD) de l'objet à affecter
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -82,47 +96,57 @@ public class Commentaire {
 	
 	/**
 	 * Renvoie le texte du commentaire sous forme d'un objet java.lang.String.
-	 * @return le texte du commentaire sous forme d'un objet java.lang.String.
+	 * @return le texte du commentaire sous forme d'un objet java.lang.String
 	 */
 	public String getContenu() {
 		return contenu;
 	}
 	/**
 	 * Affecte le texte du commentaire.
-	 * @param contenu le texte du commentaire à affecter.
+	 * @param contenu le texte du commentaire à affecter
 	 */
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 
+// Getter et setter pour l'attribut "rep" 
+	
 	/**
-	 * @return the rep
+	 * Renvoie la référence vers l'objet Représentant associé à l'objet courant.
+	 * @return la référence vers l'objet Représentant associé à l'objet courant
+	 * @see Representant
 	 */
 	public Representant getRep() {
 		return rep;
 	}
 
 	/**
-	 * @param rep the rep to set
+	 * Affecte l'objet Representant à associer à l'objet courant.
+	 * @param rep l'objet Representant à associer à l'objet courant
+	 * @see Representant
 	 */
 	public void setRep(Representant rep) {
 		this.rep = rep;
 	}
 
+// Getter et setter pour l'attribut "evenement" 
+	
 	/**
-	 * @return the evenement
+	 * Renvoie la référence vers l'objet Evenement associé à l'objet courant.
+	 * @return la référence vers l'objet Evenement associé à l'objet courant
+	 * @see Evenement
 	 */
 	public Evenement getEvenement() {
 		return evenement;
 	}
 
 	/**
-	 * @param evenement the evenement to set
+	 * Affecte l'objet Evenement à associer à l'objet courant.
+	 * @param evenement l'objet Evenement à associer à l'objet courant
+	 * @see Evenement
 	 */
 	public void setEvenement(Evenement evenement) {
 		this.evenement = evenement;
 	}
-
-	
 
 }
