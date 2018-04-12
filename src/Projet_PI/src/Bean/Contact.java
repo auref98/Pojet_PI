@@ -25,10 +25,10 @@ import java.io.Serializable;
 /** Classe de type "bean" contenant les informations d'un visiteur d'un événement souhaitant recevoir des notifications concernant une ou plusieurs sections de l'école.*/
 public class Contact implements Serializable {
   private int id;													// Attribut permettant de récuperer l'id réferencant ce contact dans la base de données
-  private String mail;// Attribut contenant l'adresse email du contact
+  private String mail;												// Attribut contenant l'adresse email du contact
 
   private Evenement eve;											// Référence l'événement auquel le contact a été enregistré
-  private ArrayList<Section> interesse;
+  private ArrayList<Section> interesse;								// Référence une liste d'objets Section par lesquelles le contact est intéréssé
  
 //###################################################################################################################################################################
 	
@@ -64,7 +64,7 @@ public class Contact implements Serializable {
  // Getter et setter pour l'attribut "id" 
   
   	/**
-	 * Renvoie l'identifiant (BD) de l'adresse
+	 * Renvoie l'identifiant (BD) de l'adresse.
 	 * @return l'identifiant (BD) de l'adresse
 	 */
 	public int getId() {
@@ -72,7 +72,7 @@ public class Contact implements Serializable {
 	}
 	
 	/**
-	 * Affecte  l'identifiant (BD) de l'adresse
+	 * Affecte  l'identifiant (BD) de l'adresse.
 	 * @param id l'identifiant (BD) de l'adresse à affecter
 	 */
 	public void setId(int id) {
@@ -82,7 +82,7 @@ public class Contact implements Serializable {
 // Getter et setter pour l'attribut "mail" 
   
 	/**
-	 * Renvoie l'adresse email du contact
+	 * Renvoie l'adresse email du contact.
 	 * @return l'adresse email du contact
 	 */
 	public String getMail() {
@@ -90,7 +90,7 @@ public class Contact implements Serializable {
 	}
 	
 	/**
-	 * Affecte l'adresse email du contact
+	 * Affecte l'adresse email du contact.
 	 * @param mail l'adresse email du contact à affecter
 	 */
 	public void setMail(String mail) {
@@ -100,7 +100,7 @@ public class Contact implements Serializable {
 // Getter et setter pour l'attribut "eve" 
 	
 	/**
-	 * Renvoie la référence de l'événement où le contact a été enregistré
+	 * Renvoie la référence de l'événement où le contact a été enregistré.
 	 * @return la référence de l'événement où le contact a été enregistré
 	 */
 	public Evenement getEve() {
@@ -108,7 +108,7 @@ public class Contact implements Serializable {
 	}
 	
 	/**
-	 * Affecte la référence de l'événement où le contact a été enregistré
+	 * Affecte la référence de l'événement où le contact a été enregistré.
 	 * @param eve la référence de l'événement à affecter
 	 */
 	public void setEve(Evenement eve) {
