@@ -16,7 +16,11 @@
 
 package Bean;
 
-/** Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence. */
+/** 
+ * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence.
+ * @see Evenement
+ * @see Representant
+ */
 public class Commentaire {
 	private int id;													// Attribut permettant de récupérer l'id référençant cette adresse dans la base de données
 	private String contenu;											// Attribut pour le texte du commentaire
@@ -36,9 +40,9 @@ public class Commentaire {
 	}
 	
 	
-	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br/><br/>
-	 * Précondition: id et contenu sont initialisés.<br/>
-	 * Postcondition: l'objet a été initialisé, ses champs "id" et "contenu" sont initialisés avec la valeur des paramètres de même nom.<br/>
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br><br>
+	 * Précondition: id et contenu sont initialisés.<br>
+	 * Postcondition: l'objet a été initialisé, ses champs "id" et "contenu" sont initialisés avec la valeur des paramètres de même nom.<br>
 	 * @param id l'identifiant (BD) du commentaire
 	 * @param contenu le texte du commentaire
 	 */
@@ -49,9 +53,9 @@ public class Commentaire {
 	}
 	
 	/**
-	 * Constructeur initialisant tous les champs de l'objet<br/><br/>
-	 * Précondition: tous les paramètres sont initialisés.<br/>
-	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br/>
+	 * Constructeur initialisant tous les champs de l'objet<br><br>
+	 * Précondition: tous les paramètres sont initialisés.<br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br>
 	 * @param id l'identifiant (BD) du commentaire
 	 * @param contenu le texte du commentaire
 	 * @param rep la référence de l'objet Representant à affecter
@@ -110,6 +114,7 @@ public class Commentaire {
 	/**
 	 * Renvoie la référence vers l'objet Représentant associé à l'objet courant.
 	 * @return la référence vers l'objet Représentant associé à l'objet courant
+	 * @see Representant
 	 */
 	public Representant getRep() {
 		return rep;
@@ -118,6 +123,7 @@ public class Commentaire {
 	/**
 	 * Affecte l'objet Representant à associer à l'objet courant.
 	 * @param rep l'objet Representant à associer à l'objet courant
+	 * @see Representant
 	 */
 	public void setRep(Representant rep) {
 		this.rep = rep;
@@ -128,6 +134,7 @@ public class Commentaire {
 	/**
 	 * Renvoie la référence vers l'objet Evenement associé à l'objet courant.
 	 * @return la référence vers l'objet Evenement associé à l'objet courant
+	 * @see Evenement
 	 */
 	public Evenement getEvenement() {
 		return evenement;
@@ -136,6 +143,7 @@ public class Commentaire {
 	/**
 	 * Affecte l'objet Evenement à associer à l'objet courant.
 	 * @param evenement l'objet Evenement à associer à l'objet courant
+	 * @see Evenement
 	 */
 	public void setEvenement(Evenement evenement) {
 		this.evenement = evenement;

@@ -37,9 +37,6 @@ public class Section implements Serializable {
 //###################################################################################################################################################################
   
   	/** Constructeur sans paramètre. */
-	public Representant() {
-
-	}
   	public Section(){}
   	
 	public Section(int id, String nom, Professeur relais)
@@ -80,16 +77,12 @@ public class Section implements Serializable {
 		return relais;
 	}
 
-	/** 
-	 
-	 * */
+
 	public int getId() {
 		return id;
 	}
 	
-	/** 
-	 
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}

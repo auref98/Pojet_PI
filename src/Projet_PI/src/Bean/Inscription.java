@@ -19,8 +19,10 @@ package Bean;
 import java.io.Serializable;
 
 /**
- * Classe de type "bean" représentant une "inscription", c'est-à-dire le lien entre un représentant de l'école et une plage horaire liée à un événement.<br/><br/>
+ * Classe de type "bean" représentant une "inscription", c'est-à-dire le lien entre un représentant de l'école et une plage horaire liée à un événement.<br><br>
  * Elle indique égalemetn si le représentant s'est effectivement présenté à l'événement.
+ * @see Representant
+ * @see Plage
  */
 public class Inscription implements Serializable{
 	
@@ -39,7 +41,7 @@ public class Inscription implements Serializable{
 	public Inscription() {}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres.<br/><br/>
+	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition:  tous les paramètres sont correctement initialisés.<br>
 	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
 	 * @param id l'identifiant (BD) de l'étudiant
@@ -89,7 +91,7 @@ public class Inscription implements Serializable{
 	}
 	
 	/**
-	 * Affecte une valeur booleenne indiquand si le représentant s'est présenté à l'événement.<br/>
+	 * Affecte une valeur booleenne indiquand si le représentant s'est présenté à l'événement.<br>
 	 * (Par défaut la valeur est initialisée à <code>false</code>.
 	 * @param valide <code>true</code> pour valider la présence du représentant
 	 */
@@ -97,11 +99,12 @@ public class Inscription implements Serializable{
 		this.valide = valide;
 	}
 
-// Getter et setter pour l'attribut "représentant" 
+// Getter et setter pour l'attribut "representant" 
 	
 	/**
 	 * Renvoie la référence vers l'objet Représentant lié à cette inscription.
 	 * @return la référence vers l'objet Représentant lié à cette inscription
+	 * @see Representant
 	 */
 	public Representant getRepresentant() {
 		return representant;
@@ -110,6 +113,7 @@ public class Inscription implements Serializable{
 	/**
 	 * Affecte la référence vers l'objet Représentant lié à cette inscription.
 	 * @param representant la référence vers l'objet Représentant lié à cette inscription.
+	 * @see Representant
 	 */
 	public void setRepresentant(Representant representant) {
 		this.representant = representant;
@@ -120,6 +124,7 @@ public class Inscription implements Serializable{
 	/**
 	 * Renvoie la référence vers l'objet Plage correspondant à la date de cette inscription.
 	 * @return la référence vers l'objet Plage correspondant à la date de cette inscription
+	 * @see Plage
 	 */
 	public Plage getPlage() {
 		return plage;
@@ -128,10 +133,10 @@ public class Inscription implements Serializable{
 	/**
 	 * Affecte la référence vers l'objet Plage correspondant à la date de cette inscription.
 	 * @param plage la référence vers l'objet Plage correspondant à la date de cette inscription
+	 * @see Plage
 	 */
 	public void setPlage(Plage plage) {
 		this.plage = plage;
 	}
 	  
-  
 }

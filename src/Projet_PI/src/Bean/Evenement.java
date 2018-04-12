@@ -20,9 +20,15 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Classe de type "bean" représentant un événement.<br/><br/>
+ * Classe de type "bean" représentant un événement.<br><br>
  * Elle renseigne le nombre de participants requis et les sections représentées, l'adresse de l'événement,
  * une référence vers les plages horaires nécessaires ainsi que la liste des commentaires ayant été postés par les participants à la suite de l'événement.
+ * @see Commentaire
+ * @see Contact
+ * @see Plage
+ * @see Section
+ * @see java.util.ArrayList
+ * @see java.util.LinkedList
  */
 public class Evenement implements Serializable{
 	
@@ -48,10 +54,10 @@ public class Evenement implements Serializable{
 	public Evenement() {}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres.<br/><br/>
-	 * Précondition: tous les paramètres sont correctement initialisés.<br/>
+	 * Constructeur initialisant tous les paramètres.<br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés.<br>
 	 * Postcondition: l'objet est initialisé; les attributs "id", "nom", "nbParticipantsRequis", "description", "image" et "adresseEve" sont initialisés avec la valeur du paramètre de même nom;
-	 * les champs "listePlage", "listeCommentaire", "listeContact" et "listeSection" sont initialisés avec une liste vide de type approprié.<br/>
+	 * les champs "listePlage", "listeCommentaire", "listeContact" et "listeSection" sont initialisés avec une liste vide de type approprié.<br>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param nom le nom de l'événement
 	 * @param nbParticipantRequis le nombre total de participants requis pour représenter l'école lors de l'événement
@@ -113,7 +119,7 @@ public class Evenement implements Serializable{
 
 	/**
 	 * Affecte  l'identifiant (BD) de l'objet.
-	 * @param l'identifiant (BD) de l'objet
+	 * @param id l'identifiant (BD) de l'objet
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -196,6 +202,7 @@ public class Evenement implements Serializable{
 	/**
 	 * Renvoie l'adresse de l'événement.
 	 * @return un objet de type Adresse représentant l'adresse de cet événement
+	 * @see Adresse
 	 */
 	public Adresse getAdresseEve() {
 		return adresseEve;
@@ -204,6 +211,7 @@ public class Evenement implements Serializable{
 	/**
 	 * Affecte l'adresse de l'événement.
 	 * @param adresseEve un objet de type Adresse représentant l'adresse de cet événement
+	 * @see Adresse
 	 */
 	public void setAdresseEve(Adresse adresseEve) {
 		this.adresseEve = adresseEve;

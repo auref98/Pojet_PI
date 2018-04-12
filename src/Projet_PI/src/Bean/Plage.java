@@ -42,6 +42,7 @@ public class Plage implements Serializable{
 	
 	/**
 	 * 
+	 * @param id
 	 * @param date
 	 * @param heureDebut
 	 * @param heureFin

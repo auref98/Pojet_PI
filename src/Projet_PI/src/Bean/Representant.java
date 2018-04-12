@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integre: realisation d'un logiciel de gestion des inscritsptions à des evenements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -18,6 +18,15 @@ package Bean;
 
 import java.util.LinkedList;
 
+/**
+ * Classe modélisant un membre de la HERS à enregistrer dans le planning de l'application.<br><br>
+ * Ceci est une classe représantant un membre de l'école en toute généralité; pour représenter spécifiquement un étudiant ou un professeur, utiliser les classes spécialisées dérivées de celle-ci.
+ * @see Commentaire
+ * @see Etudiant
+ * @see Inscription
+ * @see Professeur
+ * @see java.util.LinkedList
+ */
 public class Representant {
 	private int id;
 	private String lastname;
@@ -26,8 +35,8 @@ public class Representant {
 	private String mail;
 	private String matricule;//matricule -> e16****
 
-	private LinkedList<Commentaire> poste;
-	private LinkedList<Inscription> inscri;
+	private LinkedList<Commentaire> posts;
+	private LinkedList<Inscription> inscrits;
 	
 //###################################################################################################################################################################
 	
@@ -146,31 +155,35 @@ public class Representant {
 //###################################################################################################################################################################	
 	
 	/**
-	 * @return the poste
+	 * @return the posts
+	 * @see java.util.LinkedList
 	 */
 	public LinkedList<Commentaire> getPoste() {
-		return poste;
+		return posts;
 	}
 
 	/**
-	 * @param poste the poste to set
+	 * @param posts the posts to set
+	 * @see java.util.LinkedList
 	 */
-	public void setPoste(LinkedList<Commentaire> poste) {
-		this.poste = poste;
+	public void setPoste(LinkedList<Commentaire> posts) {
+		this.posts = posts;
 	}
 
 	/**
-	 * @return the inscri
+	 * @return the inscrits
+	 * @see java.util.LinkedList
 	 */
-	public LinkedList<Inscription> getInscri() {
-		return inscri;
+	public LinkedList<Inscription> getInscrits() {
+		return inscrits;
 	}
 
 	/**
-	 * @param inscri the inscri to set
+	 * @param inscrits the inscrits to set
+	 * @see java.util.LinkedList
 	 */
-	public void setInscri(LinkedList<Inscription> inscri) {
-		this.inscri = inscri;
+	public void setInscrits(LinkedList<Inscription> inscrits) {
+		this.inscrits = inscrits;
 	}
 	
 	

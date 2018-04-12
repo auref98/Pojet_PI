@@ -19,7 +19,11 @@ package Bean;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-/** Classe de type "bean" représentant une adresse physique; elle est utilisée pour situer aussi bien le lieu d'un événement que le domicile d'un participant.*/
+/** 
+ * Classe de type "bean" représentant une adresse physique; elle est utilisée pour situer aussi bien le lieu d'un événement que le domicile d'un participant.
+ * @see Etudiant
+ * @see Evenement
+ */ 
 public class Adresse implements Serializable {
   private int id;													// Attribut permettant de récuperer l'id référençant cette adresse dans la base de données
   private String localite;
@@ -40,10 +44,10 @@ public class Adresse implements Serializable {
   
   
   /**
-   * Constructeur initialisant tous les champs.<br/></br>
-   * Précondition: tous les paramètres sont correctement initialisés.<br/>
-   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;<br/>
-   * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.<br/>
+   * Constructeur initialisant tous les champs.<br><br>
+   * Précondition: tous les paramètres sont correctement initialisés.<br>
+   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;<br>
+   * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.<br>
    * @param id l'identifiant (BD) de l'adresse
    * @param localite le nom de la localité
    * @param codePostal le code postal correspondant à la localité
@@ -202,12 +206,12 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################		
 
-	/**Affiche l'adresse a l'écran (override la méthode toString héritée de la classe Object).</br></br>
-	 * Précondition: les champs rue, numero, codePostal, localite et pays sont initialisés.</br>
+	/**Affiche l'adresse a l'écran (override la méthode toString héritée de la classe Object).<br><br>
+	 * Précondition: les champs rue, numero, codePostal, localite et pays sont initialisés.<br>
 	 * Postcondition: l'objet courant est inchangé.
-	 * @return objet java.lang.String reprenant les informations de l'adresse selon le format ci-dessous</br></br>
-	 * Rue Rue de la Cite roses, 64</br>
-	 * 6800 Libramont-Chevigny( Belgique )</br>
+	 * @return objet java.lang.String reprenant les informations de l'adresse selon le format ci-dessous<br><br>
+	 * Rue Rue de la Cite roses, 64<br>
+	 * 6800 Libramont-Chevigny( Belgique )<br>
 	 */
 	@Override
 	public String toString(){

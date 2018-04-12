@@ -19,9 +19,11 @@ package Bean;
 import java.time.LocalDate;
 
 /** 
- * Classe de type "bean" représentant un étudiant.<br><br/>
+ * Classe de type "bean" représentant un étudiant.<br><br>
  * Etend la classe "Représentant" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
  * spécifiques au informations nécessaires à la modélisation d'un étudiant.
+ * @see Adresse
+ * @see Section
  */
 public class Etudiant extends Representant{
 	
@@ -54,9 +56,9 @@ public class Etudiant extends Representant{
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
 	 * Postcondition: l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
-	 * @param nom le nom de l'étudiant
-	 * @param prenom le prénom de l'étudiant
-	 * @param numTel le numéro de téléphone de l'étudiant
+	 * @param lastName le nom de l'étudiant
+	 * @param firstName le prénom de l'étudiant
+	 * @param phone le numéro de téléphone de l'étudiant
 	 * @param mail l'adresse email de l'étudiant
 	 * @param matricule le matricule HERS identifiant de l'étudiant
 	 * @param id l'identifiant (BD) de l'étudiant
@@ -72,10 +74,10 @@ public class Etudiant extends Representant{
 	 * @param adr l'adresse de l'étudiant
 	 * @param sec la section à laquelle l'étudiant appartient
 	 */
-	public Etudiant(String lastname, String firstname, int phone, String mail, String matricule, int id,
+	public Etudiant(String lastName, String firstName, int phone, String mail, String matricule, int id,
 			LocalDate dateNaissance, String paysNaissance, String lieuNaissance, String numNational,
 			String nationalite, String numBanque, boolean soutienSocial, String emplacementEcole, String role, Adresse adr, Section sec) {
-		super(id, lastname, firstname, phone, mail, matricule);
+		super(id, lastName, firstName, phone, mail, matricule);
 		this.id = id;
 		this.dateNaissance = dateNaissance;
 		this.paysNaissance = paysNaissance;
@@ -281,6 +283,7 @@ public class Etudiant extends Representant{
 	/**
 	 * Renvoie l'adresse de l'étudiant.
 	 * @return l'adresse de l'étudiant
+	 * @see Adresse
 	 */
 	public Adresse getAdr() {
 		return adr;
@@ -289,6 +292,7 @@ public class Etudiant extends Representant{
 	/**
 	 * Affecte l'adresse de l'étudiant.
 	 * @param adr l'adresse de l'étudiant
+	 * @see Adresse
 	 */
 	public void setAdr(Adresse adr) {
 		this.adr = adr;
@@ -299,6 +303,7 @@ public class Etudiant extends Representant{
 	/**
 	 * Renvoie la section à laquelle l'étudiant appartient.
 	 * @return la section à laquelle l'étudiant appartient
+	 * @see Section
 	 */
 	public Section getSec() {
 		return sec;
@@ -306,6 +311,7 @@ public class Etudiant extends Representant{
 
 	/** Renvoie la section à laquelle l'étudiant appartient.
 	 * @param sec la section à laquelle l'étudiant appartient
+	 * @see Section
 	 */
 	public void setSec(Section sec) {
 		this.sec = sec;

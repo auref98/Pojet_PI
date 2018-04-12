@@ -19,9 +19,11 @@ package Bean;
 import java.util.ArrayList;
 
 /** 
- * Classe de type "bean" représentant un professeur.<br><br/>
+ * Classe de type "bean" représentant un professeur.<br><br>
  * Etend la classe "Représentant" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
- * spécifiques au informations nécessaires à la modélisation d'un professeur..
+ * spécifiques au informations nécessaires à la modélisation d'un professeur.
+ * @see Section
+ * @see java.util.ArrayList
  */
 public class Professeur extends Representant{
 	private int id;												// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees
@@ -42,8 +44,8 @@ public class Professeur extends Representant{
 		
 	}
 	
-	/** Constructeur initialisant tous les attributs (à l'exception des listes).<br><br/>
-	 * Précondition: tous les paramètres sont correctement initialisés.<br/>
+	/** Constructeur initialisant tous les attributs (à l'exception des listes).<br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés.<br>
 	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
 	 * @param nom le nom du professeur
 	 * @param prenom le prénom du professeur
@@ -106,6 +108,8 @@ public class Professeur extends Representant{
 	/**
 	 * Renvoie la référence de la liste des sections dont le professeur est le relais de communication.
 	 * @return la référence de la liste des sections dont le professeur est le relais de communication
+	 * @see Section
+	 * @see java.util.ArrayList
 	 */
 	public ArrayList<Section> getRelais() {
 		return relais;
@@ -114,6 +118,8 @@ public class Professeur extends Representant{
 	/**
 	 * Affecte la référence de la liste des sections dont le professeur est le relais de communication.
 	 * @param relais la référence de la liste des sections dont le professeur est le relais de communication
+	 * @see Section
+	 * @see java.util.ArrayList
 	 */
 	public void setRelais(ArrayList<Section> relais) {
 		this.relais = relais;
@@ -124,6 +130,8 @@ public class Professeur extends Representant{
 	/**
 	 * Renvoie la référence de la liste des sections dans lesquelles le professeur enseigne.
 	 * @return la référence de la liste des sections dans lesquelles le professeur enseigne
+	 * @see Section
+	 * @see java.util.ArrayList
 	 */
 	public ArrayList<Section> getEnseigne() {
 		return enseigne;
@@ -131,7 +139,9 @@ public class Professeur extends Representant{
 
 	/**
 	 * Affecte la référence de la liste des sections dans lesquelles le professeur enseigne.
-	 * @param la référence de la liste des sections dans lesquelles le professeur enseigne.
+	 * @param enseigne la référence de la liste des sections dans lesquelles le professeur enseigne.
+	 * @see Section
+	 * @see java.util.ArrayList
 	 */
 	public void setEnseigne(ArrayList<Section> enseigne) {
 		this.enseigne = enseigne;
