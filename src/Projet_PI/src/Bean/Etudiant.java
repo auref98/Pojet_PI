@@ -19,7 +19,7 @@ package Bean;
 import java.time.LocalDate;
 
 /** 
- * Classe de type "bean" représentant un étudiant.<br>
+ * Classe de type "bean" représentant un étudiant.<br><br/>
  * Etend la classe "Représentant" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
  * spécifiques au informations nécessaires à la modélisation d'un étudiant.
  */
@@ -53,7 +53,7 @@ public class Etudiant extends Representant{
 	/**
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; tous les attributs (sauf adr et sec) sont initialisés avec la valeur du paramètre de même nom.<br>
+	 * Postcondition: l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
 	 * @param nom le nom de l'étudiant
 	 * @param prenom le prénom de l'étudiant
 	 * @param numTel le numéro de téléphone de l'étudiant
