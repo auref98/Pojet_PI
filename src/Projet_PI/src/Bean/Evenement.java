@@ -104,15 +104,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "id"	
 
 	/**
-	 * Renvoie 
-	 * @return the id
+	 * Renvoie l'identifiant (BD) de l'objet.
+	 * @return l'identifiant (BD) de l'objet
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * Affecte  l'identifiant (BD) de l'objet.
+	 * @param l'identifiant (BD) de l'objet
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -121,14 +122,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "nom"	
 	
 	/**
-	 * @return the nom
+	 * Renvoie le nom de l'événement.
+	 * @return le nom de l'événement
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * Affecte le nom de l'événement.
+	 * @param nom le nom de l'événement
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -137,14 +140,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "nbParticipantsRequis"	
 	
 	/**
-	 * @return the nbParticipantRequis
+	 * Renvoie le nombre de participants requis pour cet événement.
+	 * @return le nombre de participants requis
 	 */
 	public int getNbParticipantRequis() {
 		return nbParticipantsRequis;
 	}
 
 	/**
-	 * @param nbParticipantRequis the nbParticipantRequis to set
+	 * Affecte le nombre de participants requis pour cet événement.
+	 * @param nbParticipantRequis le nombre de participants requis pour cet événement
 	 */
 	public void setNbParticipantRequis(int nbParticipantRequis) {
 		this.nbParticipantsRequis = nbParticipantRequis;
@@ -153,14 +158,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "description"	
 	
 	/**
-	 * @return the description
+	 * Renvoie la description de l'événement.
+	 * @return la description de l'événement
 	 */
 	public String getDescription() {
 		return description;
 	}
 
 	/**
-	 * @param description the description to set
+	 * Affecte la description de l'événement.
+	 * @param description la description de l'événement.
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -169,14 +176,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "image"	
 	
 	/**
-	 * @return the srcImage
+	 * Renvoie le lien vers l'image correspondant à cet événement.
+	 * @return le lien vers l'image
 	 */
 	public String getImage() {
 		return image;
 	}
 
 	/**
-	 * @param srcImage the srcImage to set
+	 * Affecte le lien vers l'image correspondant à cet événement.
+	 * @param srcImage le lien vers l'image à affecter
 	 */
 	public void setImage(String srcImage) {
 		this.image = image;
@@ -185,14 +194,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "adresseEve"	
 	
 	/**
-	 * @return the adresseEve
+	 * Renvoie l'adresse de l'événement.
+	 * @return un objet de type Adresse représentant l'adresse de cet événement
 	 */
 	public Adresse getAdresseEve() {
 		return adresseEve;
 	}
 
 	/**
-	 * @param adresseEve the adresseEve to set
+	 * Affecte l'adresse de l'événement.
+	 * @param adresseEve un objet de type Adresse représentant l'adresse de cet événement
 	 */
 	public void setAdresseEve(Adresse adresseEve) {
 		this.adresseEve = adresseEve;
