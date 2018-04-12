@@ -62,7 +62,6 @@ public class Adresse implements Serializable {
 	  this.pays = pays;
 	 
   }	
-  	
   
 //###################################################################################################################################################################
 	
@@ -70,9 +69,11 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################
 
+ // Getter et setter pour l'attribut "id" 
+  
   	/**
   	 * Renvoie l'identifiant (BD) de l'objet.
-	 * @return l'identifiant (BD) de l'objet.
+	 * @return l'identifiant (BD) de l'objet
   	 */
   	public int getId() {
 		return id;
@@ -80,18 +81,17 @@ public class Adresse implements Serializable {
 	
 	/**
 	 * Affecte l'identifiant (BD) de l'objet.
-	 * @param id l'identifiant (BD) de l'objet à affecter.
+	 * @param id l'identifiant (BD) de l'objet à affecter
 	 */
 	public void setId(int id) {
 		this.id = id;
 	} 
   
-  
 // Getter et setter pour l'attribut "localite"  
 
 	/** 
 	 * Renvoie le nom de la localité.
-	 * @return le nom de la localité.
+	 * @return le nom de la localité
 	  */
 	public String getLocalite() {
 		return localite;
@@ -99,7 +99,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le nom de la localité.
-	 * @param localite le nom de la localité à affecter.
+	 * @param localite le nom de la localité à affecter
 	 */
 	public void setLocalite(String localite) {
 		this.localite = localite;
@@ -109,7 +109,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Renvoie le code postal correspondant à la localité.
-	 * @return le code postal correspondant à la localité.
+	 * @return le code postal correspondant à la localité
 	 */
 	public int getCodePostal() {
 		return codePostal;
@@ -117,7 +117,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le code postal correspondant à la localité.
-	 * @param codePostal le code postal correspondant à la localité à affecter.
+	 * @param codePostal le code postal correspondant à la localité à affecter
 	 */
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
@@ -127,7 +127,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Renvoie le nom de la rue.
-	 * @return le nom de la rue.
+	 * @return le nom de la rue
 	 */
 	public String getRue() {
 		return rue;
@@ -135,7 +135,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le nom de la rue.
-	 * @param rue le nom de la rue à affecter.
+	 * @param rue le nom de la rue à affecter
 	 */
 	public void setRue(String rue) {
 		this.rue = rue;
@@ -145,7 +145,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Renvoie le numéro du bâtiment.
-	 * @return le numéro du bâtiment.
+	 * @return le numéro du bâtiment
 	 */
 	public int getNumero() {
 		return numero;
@@ -153,7 +153,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le numéro du bâtiment.
-	 * @param numero le numéro du bâtiment à affecter.
+	 * @param numero le numéro du bâtiment à affecter
 	 */
 	public void setNumero(int numero) {
 		this.numero = numero;
@@ -163,7 +163,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Renvoie le numéro de la boîte.
-	 * @return le numéro de la boîte.
+	 * @return le numéro de la boîte
 	 */
 	public String getBoite() {
 		return boite;
@@ -171,7 +171,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le numéro de la boîte.
-	 * @param boite le numéro de la boîte à affecter.
+	 * @param boite le numéro de la boîte à affecter
 	 */
 	public void setBoite(String boite) {
 		this.boite = boite;
@@ -181,7 +181,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Renvoie le pays.
-	 * @return le pays.
+	 * @return le pays
 	 */
 	public String getPays() {
 		return pays;
@@ -189,7 +189,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le pays.
-	 * @param pays le pays à affecter.
+	 * @param pays le pays à affecter
 	 */
 	public void setPays(String pays) {
 		this.pays = pays;
@@ -205,7 +205,7 @@ public class Adresse implements Serializable {
 	/**Affiche l'adresse a l'écran (override la méthode toString héritée de la classe Object).</br></br>
 	 * Précondition: les champs rue, numero, codePostal, localite et pays sont initialisés.</br>
 	 * Postcondition: l'objet courant est inchangé.
-	 * @return objet java.lang.String reprenant les informations de l'adresse selon le format ci-dessous:</br></br>
+	 * @return objet java.lang.String reprenant les informations de l'adresse selon le format ci-dessous</br></br>
 	 * Rue Rue de la Cite roses, 64</br>
 	 * 6800 Libramont-Chevigny( Belgique )</br>
 	 */
