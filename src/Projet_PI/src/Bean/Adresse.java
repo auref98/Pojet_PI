@@ -40,8 +40,7 @@ public class Adresse implements Serializable {
   
   
   /**
-   * Constructeur initialisant tous les champs.<br/>
-   * </br>
+   * Constructeur initialisant tous les champs.<br/></br>
    * Précondition: tous les paramètres sont correctement initialisés.<br/>
    * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;<br/>
    * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.<br/>
@@ -71,15 +70,17 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################
 
-  /** 
-	 
-	 * */
-	public int getId() {
+  	/**
+  	 * Renvoie l'identifiant (BD) de l'objet.
+	 * @return l'identifiant (BD) de l'objet.
+  	 */
+  	public int getId() {
 		return id;
 	}
 	
-	/** 
-	 
+	/**
+	 * Affecte l'identifiant (BD) de l'objet.
+	 * @param id l'identifiant (BD) de l'objet à affecter.
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -91,7 +92,7 @@ public class Adresse implements Serializable {
 	/** 
 	 * Renvoie le nom de la localité.
 	 * @return le nom de la localité.
-	 * */
+	  */
 	public String getLocalite() {
 		return localite;
 	}
@@ -135,7 +136,7 @@ public class Adresse implements Serializable {
 	/** 
 	 * Affecte le nom de la rue.
 	 * @param rue le nom de la rue à affecter.
-	 * */
+	 */
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
@@ -163,7 +164,7 @@ public class Adresse implements Serializable {
 	/** 
 	 * Renvoie le numéro de la boîte.
 	 * @return le numéro de la boîte.
-	 * */
+	 */
 	public String getBoite() {
 		return boite;
 	}
@@ -181,7 +182,7 @@ public class Adresse implements Serializable {
 	/** 
 	 * Renvoie le pays.
 	 * @return le pays.
-	 * */
+	 */
 	public String getPays() {
 		return pays;
 	}
@@ -189,7 +190,7 @@ public class Adresse implements Serializable {
 	/** 
 	 * Affecte le pays.
 	 * @param pays le pays à affecter.
-	 * */
+	 */
 	public void setPays(String pays) {
 		this.pays = pays;
 	}

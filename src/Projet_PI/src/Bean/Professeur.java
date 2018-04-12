@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -13,18 +25,30 @@ public class Professeur extends Representant{
 	private ArrayList<Section> relais;
 	private ArrayList<Section> enseigne;
 	
-	public Professeur(String nom, String prenom, int numTel, String mail, String matricule, int id,
-			int nbParticipations) {
-		super(id, nom, prenom, numTel, mail, matricule);
-		this.id = id;
-		this.nbParticipations = nbParticipations;
-	}
+//###################################################################################################################################################################
 	
+	// Constructeurs
+	
+//###################################################################################################################################################################
+	
+	/** Canstructeur sans paramètre. */
 	public Professeur() {
 		super();
 		
 	}
 
+	public Professeur(String nom, String prenom, int numTel, String mail, String matricule, int id, int nbParticipations) {
+		super(id, nom, prenom, numTel, mail, matricule);
+		this.id = id;
+		this.nbParticipations = nbParticipations;
+	}
+
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
+	
 	/**
 	 * @return the id
 	 */
@@ -53,6 +77,12 @@ public class Professeur extends Representant{
 		this.nbParticipations = nbParticipations;
 	}
 
+//###################################################################################################################################################################
+	
+	// Manipulation des listes
+	
+//###################################################################################################################################################################		
+	
 	/**
 	 * @return the relais
 	 */

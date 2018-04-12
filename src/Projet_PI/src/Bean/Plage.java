@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -19,7 +31,15 @@ public class Plage implements Serializable{
 	private Evenement eve;
 	private LinkedList<Inscription> listeInscription;
 	
+//###################################################################################################################################################################
+	
+	// Constructeurs
+	
+//###################################################################################################################################################################
+	
+	/** Constructeur sans paramètre. */
 	public Plage() {}
+	
 	/**
 	 * 
 	 * @param date
@@ -34,9 +54,12 @@ public class Plage implements Serializable{
 		this.heureFin=heureFin;
 		this.eve = eve;
   	}
-	//##################################################################
-	//getter setter
-	//##################################################################
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
+	
   	/**
 	 * @return the id
 	 */
@@ -104,9 +127,13 @@ public class Plage implements Serializable{
 	{
 		return eve;
 	}
-	//#####################################################################
-	//manip liste
-	//#####################################################################
+	
+//###################################################################################################################################################################
+	
+	// Manipulation des listes
+	
+//###################################################################################################################################################################
+	
 	public void addInscription(Inscription i) {
 		listeInscription.add(i);
 	}

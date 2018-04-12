@@ -21,8 +21,8 @@ public class Commentaire {
 	private int id;													// Attribut permettant de recuperer l'id referencant cette adresse dans la base de donnees
 	private String contenu;											// Attribut pour le texte du commentaire
 	
-	private Representant rep;										// Reference vers l'autreur du commentaire
-	private Evenement evenement;									// Reference vers l'evenement en question
+	private Representant rep;											// Reference vers l'autreur du commentaire
+	private Evenement evenement;										// Reference vers l'evenement en question
 	
 //###################################################################################################################################################################
 	

@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -17,6 +29,17 @@ public class Representant {
 	private LinkedList<Commentaire> poste;
 	private LinkedList<Inscription> inscri;
 	
+//###################################################################################################################################################################
+	
+	// Constructeurs
+	
+//###################################################################################################################################################################
+	
+	/** Constructeur sans paramètre. */
+	public Representant() {
+
+	}
+	
 	public Representant(int id, String lastname, String firstname, int phone, String mail, String matricule) {
 		this.id = id;
 		this.lastname = lastname;
@@ -26,9 +49,11 @@ public class Representant {
 		this.matricule = matricule;
 	}
 	
-	public Representant() {
-
-	}
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
 
 	/**
 	 * @return the id
@@ -114,6 +139,12 @@ public class Representant {
 		this.matricule = matricule;
 	}
 
+//###################################################################################################################################################################
+	
+	// Manipulation des listes
+	
+//###################################################################################################################################################################	
+	
 	/**
 	 * @return the poste
 	 */

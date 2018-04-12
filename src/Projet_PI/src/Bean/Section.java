@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -18,6 +30,16 @@ public class Section implements Serializable {
   private Professeur relais;
   private ArrayList<Professeur> listeProf;
   
+ //###################################################################################################################################################################
+	
+  	// Constructeurs
+	
+//###################################################################################################################################################################
+  
+  	/** Constructeur sans paramètre. */
+	public Representant() {
+
+	}
   	public Section(){}
   	
 	public Section(int id, String nom, Professeur relais)
@@ -31,6 +53,12 @@ public class Section implements Serializable {
 		
 	}
 
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
+	
 	/**
 	 * @return the nom
 	 */
@@ -72,6 +100,12 @@ public class Section implements Serializable {
 	public void setRelais(Professeur relais) {
 		this.relais = relais;
 	}
+
+//###################################################################################################################################################################
+	
+	// Manipulation des listes
+	
+//###################################################################################################################################################################	
 	
 	public void addEtudiant(Etudiant e) {
 		listeEtudiant.add(e);
@@ -120,7 +154,14 @@ public class Section implements Serializable {
 	public ArrayList<Professeur> getProfesseur() {
 		return listeProf;
 	}
+
+//###################################################################################################################################################################
 	
+	// Affichage
+	
+//###################################################################################################################################################################		
+	
+
 	public String toString() {
 		return("le relais de la section "+ nom+" : "+relais.toString());
 	}

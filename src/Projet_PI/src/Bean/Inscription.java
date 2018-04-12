@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -13,8 +25,13 @@ public class Inscription implements Serializable{
 	private Representant representant;
 	private Plage plage;
 	
-	//constructeurs
+//###################################################################################################################################################################
 	
+	// Constructeurs
+	
+//###################################################################################################################################################################
+	
+	/** Constructeur sans paramètre. */
 	public Inscription() {}
 	
 	public Inscription(int id, boolean valide, Representant representant, Plage plage){
@@ -23,6 +40,12 @@ public class Inscription implements Serializable{
 	  	this.representant = representant;
 	  	this.plage = plage;
 	}
+	
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
 	
 	/**
 	 * @return the id

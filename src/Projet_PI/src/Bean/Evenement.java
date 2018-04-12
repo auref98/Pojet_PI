@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 package Bean;
@@ -21,6 +33,13 @@ public class Evenement implements Serializable{
 	private LinkedList<Contact> listeContact;
 	private ArrayList<Section> listeSection;
   
+//###################################################################################################################################################################
+	
+	// Constructeurs
+	
+//###################################################################################################################################################################
+	
+	/** Constructeur sans paramètre. */
 	public Evenement() {}
 	
 	public Evenement(int id, String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
@@ -52,6 +71,13 @@ public class Evenement implements Serializable{
 		return nom.equals(this.nom);
 	}
 
+//###################################################################################################################################################################
+	
+	// Getters et setters
+	
+//###################################################################################################################################################################
+	
+	
 	/**
 	 * @return the id
 	 */
@@ -134,9 +160,12 @@ public class Evenement implements Serializable{
 	public void setAdresseEve(Adresse adresseEve) {
 		this.adresseEve = adresseEve;
 	}
-	//##############################################################
-	//manip liste
-	//##############################################################
+//###################################################################################################################################################################
+	
+	// Manipulation des listes
+	
+//###################################################################################################################################################################
+	
 	public void addPlage(Plage p) {
 		listePlage.add(p);
 	}
