@@ -68,6 +68,7 @@ public class Plage implements Serializable{
 		this.heureFin=heureFin;
 		this.eve = eve;
   	}
+	
 //###################################################################################################################################################################
 	
 	// Getters et setters
@@ -151,6 +152,7 @@ public class Plage implements Serializable{
 	/**
 	 * Renvoie la référence de l'objet <code>Evenement</code> auquel l'objet courant se rapporte.
 	 * @return la référence de l'objet <code>Evenement</code> auquel l'objet courant se rapporte
+	 * @see Evenement
 	 */
 	public Evenement getEve()	{
 		return eve;
@@ -159,6 +161,7 @@ public class Plage implements Serializable{
 	/**
 	 * Affecte la référence de l'objet <code>Evenement</code> auquel l'objet courant se rapporte.
 	 * @param eve  la référence de l'objet <code>Evenement</code> auquel l'objet courant se rapporte.
+	 * @see Evenement
 	 */
 	public void setEve(Evenement eve) {
 		this.eve = eve;
@@ -167,8 +170,10 @@ public class Plage implements Serializable{
 // Getter et setter pour l'attribut "listeInscription"
 	
 	/**
-	 * Renvoie la référence de la liste des objets <code>Inscription</code> liées à l'objet courant.
-	 * @return la référence de la liste des objets <code>Inscription</code> liées à l'objet courant
+	 * Renvoie la référence de la liste des objets <code>Inscription</code> liés à l'objet courant.
+	 * @return la référence de la liste des objets <code>Inscription</code> liés à l'objet courant
+	 * @see Inscription
+	 * @see java.util.LinkedList
 	 */
 	public LinkedList<Inscription> getListeInscription()
 	{
@@ -176,8 +181,10 @@ public class Plage implements Serializable{
 	}
 	
 	/**
-	 * Affecte la référence de la liste des objets <code>Inscription</code> liées à l'objet courant.
-	 * @param listeInscription la référence de la liste des objets <code>Inscription</code> liées à l'objet courant
+	 * Affecte la référence d'une liste d'objets <code>Inscription</code> à l'objet courant..
+	 * @param listeInscription la référence d'une liste d'objets <code>Inscription</code> à affecter à l'objet courant.
+	 * @see Inscription
+	 *  @see java.util.LinkedList
 	 */
 	public void setListeInscription(LinkedList<Inscription> listeInscription)
 	{

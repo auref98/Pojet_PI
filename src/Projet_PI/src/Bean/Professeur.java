@@ -116,8 +116,8 @@ public class Professeur extends Representant{
 	}
 
 	/**
-	 * Affecte la référence de la liste des sections dont le professeur est le relais de communication.
-	 * @param relais la référence de la liste des sections dont le professeur est le relais de communication
+	 * Affecte la référence d'une liste d'objets <code>Section</code> à l'attribut de l'objet courant représentant les sections dont le professeur est le relais de communication.
+	 * @param relais la référence d'une liste d'objets <code>Section</code> à affecter à l'attribut de l'objet courant représentant les sections dont le professeur est le relais de communication
 	 * @see Section
 	 * @see java.util.ArrayList
 	 */
@@ -138,9 +138,8 @@ public class Professeur extends Representant{
 	}
 
 	/**
-	 * Affecte la référence de la liste des sections dans lesquelles le professeur enseigne.
-	 * @param enseigne la référence de la liste des sections dans lesquelles le professeur enseigne.
-	 * @see Section
+	 * Affecte la référence d'une liste d'objets <code>Section</code> à l'attribut de l'objet courant représentant les sections dans lesquelles le professeur enseigne.
+	 * @param enseigne la référence d'une liste d'objets <code>Section</code> à affecter à l'attribut de l'objet courant représentant les sections dans lesquelles le professeur enseigne
 	 * @see java.util.ArrayList
 	 */
 	public void setEnseigne(ArrayList<Section> enseigne) {

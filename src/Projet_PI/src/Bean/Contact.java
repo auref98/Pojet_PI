@@ -125,27 +125,23 @@ public class Contact implements Serializable {
 // Getter et setter pour l'attribut "interesse"
 	
 	/**
-	 * Affecte la référence d'une <code>ArrayList</code> de <code>Section</code> à l'objet courant.<br><br>
-	 * Précondition: l'objet <code>tab</code> est correctement initialisé.<br>
-	 * Postcondition: la liste <code>tab</code> a été affectée à l'objet courant; la liste tab est inchangée.<br>
-	 * @param tab la liste de <code>Section</code> à affecter à l'objet courant
-	 * @see Section
-	 * @see java.util.ArrayList
-	 */
-	public void setInteresse(ArrayList<Section> tab) {
-		interesse = tab;
-	}
-	
-	/**
-	 * Renvoie la référence de l'<code>ArrayList</code> de <code>Section</code> pour lesquelles le contact est intéressé.<br><br>
-	 * Précondition: l'objet courant est correctement initialisé.<br>
-	 * Postcondition: l'objet courant est inchangé.<br>
+	 * Renvoie la référence de l'<code>ArrayList</code> de <code>Section</code> pour lesquelles le contact est intéressé.
 	 * @return la référence de l'<code>ArrayList</code> de <code>Section</code> liée à l'objet courant
 	 * @see Section
 	 * @see java.util.ArrayList
 	 */
 	public ArrayList<Section> getInteresse() {
 		return interesse;
+	}
+	
+	/**
+	 * Affecte la référence d'une <code>ArrayList</code> de <code>Section</code> à l'objet courant.
+	 * @param tab la liste de <code>Section</code> à affecter à l'objet courant
+	 * @see Section
+	 * @see java.util.ArrayList
+	 */
+	public void setInteresse(ArrayList<Section> tab) {
+		interesse = tab;
 	}
 	
 //###################################################################################################################################################################
