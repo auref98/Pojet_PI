@@ -53,10 +53,10 @@ public class Representant {
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
 	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom;<br>
-	 * 				les listes <code>posts</code> et <code>inscrits> ne sont pas initialisés.<br>
+	 * 				les listes <code>posts</code> et <code>inscrits</code> ne sont pas initialisés.<br>
 	 * @param id l'identifiant (BD) de l'événement
-	 * @param lastname le nom du représentant
-	 * @param firstname  le prénom du représentant
+	 * @param lastName le nom du représentant
+	 * @param firstName  le prénom du représentant
 	 * @param phone le numéro de téléphone du représentant
 	 * @param mail l'adresse email du représentant
 	 * @param matricule l'identifiant -  propre à l'école -  du représentant
@@ -106,7 +106,7 @@ public class Representant {
 
 	/**
 	 * Affecte le nom du représentant.
-	 * @param lastname le nom à affecter.
+	 * @param lastName le nom à affecter.
 	 */
 	public void setLastname(String lastName) {
 		this.lastName = lastName;

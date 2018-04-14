@@ -205,7 +205,7 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################		
 
-	/**Affiche l'adresse a l'écran (override la méthode <code>toString</code> héritée de la classe <code>Object</code>).<br><br>
+	/**Renvoie un objet <code>java.lang.String</code> structurant les information de l'objet courant (override la méthode <code>toString</code> héritée de la classe <code>Object</code>).<br><br>
 	 * Précondition: les champs <code>rue, numero, codePostal, localite</code> et <code>pays</code> sont initialisés.<br>
 	 * Postcondition: l'objet courant est inchangé.
 	 * @return objet <code>java.lang.String</code> reprenant les informations de l'adresse selon le format ci-dessous<br><br>

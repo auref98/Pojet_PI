@@ -56,7 +56,7 @@ public class Evenement implements Serializable{
 	/**
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code>" sont initialisés avec la valeur du paramètre de même nom;
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code> sont initialisés avec la valeur du paramètre de même nom;
 	 * les champs <code>listePlage, listeCommentaire, listeContact</code> et <code>listeSection</code> sont initialisés avec une liste vide de type approprié.<br>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param nom le nom de l'événement
