@@ -29,8 +29,8 @@ import java.util.LinkedList;
  */
 public class Representant {
 	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
-	private String lastname;											// Attribut pour le nom du représentant
-	private String firstname;											// Attribut pour le prénom du représentant
+	private String lastName;											// Attribut pour le nom du représentant
+	private String firstName;											// Attribut pour le prénom du représentant
 	private int phone;												// Attribut pour le numéro de téléphone du représentant
 	private String mail;												// Attribut pour l'adresse email du représentant
 	private String matricule;											//Attribut pour l'identifiant -  propre à l'école -  du représentant (e...... pour un étudiant, h...... pour un professeur)
@@ -52,18 +52,19 @@ public class Representant {
 	/**
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom;
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom;<br>
+	 * 				les listes <code>posts</code> et <code>inscrits> ne sont pas initialisés.<br>
 	 * @param id l'identifiant (BD) de l'événement
-	 * @param lastname
-	 * @param firstname
-	 * @param phone
-	 * @param mail
-	 * @param matricule
+	 * @param lastname le nom du représentant
+	 * @param firstname  le prénom du représentant
+	 * @param phone le numéro de téléphone du représentant
+	 * @param mail l'adresse email du représentant
+	 * @param matricule l'identifiant -  propre à l'école -  du représentant
 	 */
-	public Representant(int id, String lastname, String firstname, int phone, String mail, String matricule) {
+	public Representant(int id, String lastName, String firstName, int phone, String mail, String matricule) {
 		this.id = id;
-		this.lastname = lastname;
-		this.firstname = firstname;
+		this.lastName = lastName;
+		this.firstName = firstName;
 		this.phone = phone;
 		this.mail = mail;
 		this.matricule = matricule;
@@ -75,6 +76,8 @@ public class Representant {
 	
 //###################################################################################################################################################################
 
+// getter et setter pour l'attribut "id"
+	
 	/**
 	 * @return the id
 	 */
@@ -89,32 +92,34 @@ public class Representant {
 		this.id = id;
 	}
 
+// getter et setter pour l'attribut "lastName"
+	
 	/**
 	 * @return the lastname
 	 */
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
 	/**
 	 * @param lastname the lastname to set
 	 */
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
 	}
 
 	/**
 	 * @return the firstname
 	 */
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
 	/**
-	 * @param firstname the firstname to set
+	 * @param firstName the firstname to set
 	 */
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstname(String firstName) {
+		this.firstName = firstName;
 	}
 
 	/**
