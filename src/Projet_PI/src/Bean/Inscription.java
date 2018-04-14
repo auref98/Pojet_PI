@@ -19,7 +19,7 @@ package Bean;
 import java.io.Serializable;
 
 /**
- * Classe de type "bean" représentant une "inscription", c'est-à-dire le lien entre un représentant de l'école et une plage horaire liée à un événement.<br><br>
+ * Classe de type "bean" représentant une "inscription", c'est-à-dire le lien entre un représentant de l'école et une plage horaire liée à un événement. <br><br>
  * Elle indique égalemetn si le représentant s'est effectivement présenté à l'événement.
  * @see Representant
  * @see Plage
@@ -41,9 +41,9 @@ public class Inscription implements Serializable{
 	public Inscription() {}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres.<br><br>
-	 * Précondition:  tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
+	 * Constructeur initialisant tous les paramètres. <br><br>
+	 * Précondition:  tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom. <br>
 	 * @param id l'identifiant (BD) de l'étudiant
 	 * @param valide après l'événement, indique si le représentant s'est présenté à l'événement ou non
 	 * @param representant référence vers l'objet représentant lié
@@ -91,7 +91,7 @@ public class Inscription implements Serializable{
 	}
 	
 	/**
-	 * Affecte une valeur booleenne indiquand si le représentant s'est présenté à l'événement.<br>
+	 * Affecte une valeur booleenne indiquand si le représentant s'est présenté à l'événement. <br>
 	 * (Par défaut la valeur est initialisée à <code>false</code>.
 	 * @param valide <code>true</code> pour valider la présence du représentant
 	 */

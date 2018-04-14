@@ -39,14 +39,14 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################
   
-  /**Constructeur sans paramètre */
+  /**Constructeur sans paramètre. */
   public Adresse() {}
   
   
   /**
-   * Constructeur initialisant tous les champs.<br><br>
-   * Précondition: tous les paramètres sont correctement initialisés.<br>
-   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom.<br>
+   * Constructeur initialisant tous les champs. <br><br>
+   * Précondition: tous les paramètres sont correctement initialisés. <br>
+   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom. <br>
    * @param id l'identifiant (BD) de l'adresse
    * @param localite le nom de la localité
    * @param codePostal le code postal correspondant à la localité
@@ -205,12 +205,12 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################		
 
-	/**Renvoie un objet <code>java.lang.String</code> structurant les information de l'objet courant (override la méthode <code>toString</code> héritée de la classe <code>Object</code>).<br><br>
-	 * Précondition: les champs <code>rue, numero, codePostal, localite</code> et <code>pays</code> sont initialisés.<br>
+	/**Renvoie un objet <code>java.lang.String</code> structurant les information de l'objet courant. (Override la méthode <code>toString</code> héritée de la classe <code>Object</code>). <br><br>
+	 * Précondition: les champs <code>rue, numero, codePostal, localite</code> et <code>pays</code> sont initialisés. <br>
 	 * Postcondition: l'objet courant est inchangé.
-	 * @return objet <code>java.lang.String</code> reprenant les informations de l'adresse selon le format ci-dessous<br><br>
-	 * Rue Rue de la Cite roses, 64<br>
-	 * 6800 Libramont-Chevigny( Belgique )<br>
+	 * @return objet <code>java.lang.String</code> reprenant les informations de l'adresse selon le format ci-dessous: <br><br>
+	 * Rue Rue de la Cite roses, 64 <br>
+	 * 6800 Libramont-Chevigny( Belgique ) <br>
 	 * @see Object#toString()
 	 */
 	@Override

@@ -19,7 +19,7 @@ package Bean;
 import java.util.LinkedList;
 
 /**
- * Classe modélisant un membre de la HERS à enregistrer dans le planning de l'application.<br><br>
+ * Classe modélisant un membre de la HERS à enregistrer dans le planning de l'application. <br><br>
  * Ceci est une classe représantant un membre de l'école en toute généralité; pour représenter spécifiquement un étudiant ou un professeur, utiliser les classes spécialisées dérivées de celle-ci.
  * @see Commentaire
  * @see Etudiant
@@ -50,10 +50,10 @@ public class Representant {
 	}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres.<br><br>
-	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom;<br>
-	 * 				les listes <code>posts</code> et <code>inscrits</code> ne sont pas initialisés.<br>
+	 * Constructeur initialisant tous les paramètres. <br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom; <br>
+	 * 				les listes <code>posts</code> et <code>inscrits</code> ne sont pas initialisées. <br>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param lastName le nom du représentant
 	 * @param firstName  le prénom du représentant

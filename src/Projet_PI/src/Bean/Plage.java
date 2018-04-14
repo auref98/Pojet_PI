@@ -22,10 +22,10 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 
 /**
- * Classe de type "bean" représentant une plage horaire.<br><br>
- * Elle renseigne la date associée à cette plage horaire et ses heures de début et de fin, ainsi que l'objet <code>Evenement</code> auquel elle se rapporte.<br>
- * elle ne représente pas l'événement lui-même mais une partie de celui-ci. Un <code>Evenement</code> est modélisé par un ensemble de <code>Plage</code> distinctes.<br>
- * Cette classe a été conçue afin de modéliser une plage horaire sur une seule journée; elle ne fonctionne pas pour représenter une durée s'étendant au delà de minuit.<br>
+ * Classe de type "bean" représentant une plage horaire. <br><br>
+ * Elle renseigne la date associée à cette plage horaire et ses heures de début et de fin, ainsi que l'objet <code>Evenement</code> auquel elle se rapporte. <br>
+ * elle ne représente pas l'événement lui-même mais une partie de celui-ci. Un <code>Evenement</code> est modélisé par un ensemble de <code>Plage</code> distinctes. <br>
+ * Cette classe a été conçue afin de modéliser une plage horaire sur une seule journée; elle ne fonctionne pas pour représenter une durée s'étendant au delà de minuit. <br>
  * @see Evenement
  * @see Inscription
  * @see java.util.LinkedList
@@ -52,9 +52,9 @@ public class Plage implements Serializable{
 	public Plage() {}
 	
 	/**
-	 * Constructeur initialisant tous les attributs de l'objet.<br><br>
-	 * Précondition:  tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet a été initialisé, tous ses champs (à l'exception de "<code>listeInscription</code>" sont initialisés avec la valeur du paramètre de même nom.<br>
+	 * Constructeur initialisant tous les attributs de l'objet. <br><br>
+	 * Précondition:  tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs (à l'exception de "<code>listeInscription</code>" sont initialisés avec la valeur du paramètre de même nom. <br>
 	 * @param id l'identifiant (BD) de la plage
 	 * @param date la date à laquelle la plage se rapporte. au format <code>java.time.LocalDate</code>
 	 * @param heureDebut l'heure de début de la plage au format <code>java.time.LocalTime</code>
@@ -209,7 +209,7 @@ public class Plage implements Serializable{
 //###################################################################################################################################################################
 	
 	/**
-	 * Ajoute un objet <code>Inscription</code> à l'objet courant. <br><br>
+	 * Ajoute un objet <code>Inscription</code> à l'objet courant.  <br><br>
 	 * Précondition: l'attribut "<code>listeInscription</code>" est initialisé avec un type valide (<code>Inscription</code>); l'objet <code>Inscription i</code>  est correctement initialisé. <br>
 	 * Postcondition: l'objet <code>Inscription i</code> a été ajouté à l'objet courant. <br>
 	 * @param i l'<code>Inscription</code> à ajouter à la liste "<code>listeInscription</code>"
@@ -221,9 +221,9 @@ public class Plage implements Serializable{
 	}
 	
 	/**
-	 * Supprime un objet <code>Inscription</code> de l'objet courant.<br><br>
-	 * Précondition: l'attribut "<code>listeInscription</code>" est initialisé.<br>
-	 * Postcondition: si l'objet <code>Inscription i</code> se trouvait dans la liste, il en a été supprimé; sinon l'objet courant est inchangé.<br>
+	 * Supprime un objet <code>Inscription</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeInscription</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Inscription i</code> se trouvait dans la liste, il en a été supprimé; sinon l'objet courant est inchangé. <br>
 	 * @param i l'objet <code>Inscription</code> à supprimer de l'objet courant
 	 * @see Inscription
 	 * @see java.util.LinkedList#remove(Object)

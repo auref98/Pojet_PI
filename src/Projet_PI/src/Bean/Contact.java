@@ -45,10 +45,10 @@ public class Contact implements Serializable {
   public Contact(){}
   
   /**
-   * Constructeur initialisant tous les attributs de l'objet..<br><br>
-   * Précondition: les paramètres "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont correctement initialisés.<br>
-   * Postcondition: l'objet est initialisé; les attributs "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont initialisés avec la valeur des paramètres de même nom;<br>
-   * 				l'attribut "<code>interesse</code>" est initialisé avec une <code>ArrayList</code> vide de type approprié (<code>Section</code>).<br>
+   * Constructeur initialisant tous les attributs de l'objet. <br><br>
+   * Précondition: les paramètres "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont correctement initialisés. <br>
+   * Postcondition: l'objet est initialisé; les attributs "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont initialisés avec la valeur des paramètres de même nom; <br>
+   * 				l'attribut "<code>interesse</code>" est initialisé avec une <code>ArrayList</code> vide de type approprié (<code>Section</code>). <br>
    * @param id l'identifiant (BD) de l'adresse
    * @param mail l'adresse email du contact
    * @param eve la référence de l'<code>Evenement</code> où le contact a été enregistré
@@ -151,24 +151,24 @@ public class Contact implements Serializable {
 //###################################################################################################################################################################	
 	
 	/**
-	 * Ajoute un objet <code>Contact</code> à la liste.<br><br>
-	 * Précondition: l'attribut "<code>interesse</code>" est initialisé avec un type valide (<code>Section</code>); l'objet <code>Section s</code> est correctement initialisé.<br>
-	 * Postcondition: l'objet <code>Section s</code> a été ajouté à l'objet courant "intéresse".<br>
+	 * Ajoute un objet <code>Contact</code> à l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>interesse</code>" est initialisé avec un type valide (<code>Section</code>); l'objet <code>Section s</code> est correctement initialisé. <br>
+	 * Postcondition: l'objet <code>Section s</code> a été ajouté à l'objet courant. <br>
 	 * @param s l'objet <code>Section</code> à ajouter à l'objet courant
 	 * @see Section
-	 * @see java.util.ArrayList#add(Object)
+	 * @see ArrayList#add(Object o)
 	 */
 	public void addInteresse(Section s) {
 		interesse.add(s);
 	}
 	
 	/**
-	 * Supprime un objet <code>Section</code> de l'objet courant.<br><br>
-	 * Précondition: l'attribut "<code>interesse</code>" est initialisé.<br>
-	 * Postcondition: si l'objet <code>Section s</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé.<br>
+	 * Supprime un objet <code>Section</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>interesse</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Section s</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé. <br>
 	 * @param s l'objet <code>Section</code> à supprimer de l'objet courant
 	 * @see Section
-	 * @see java.util.ArrayList#remove(Object)
+	 * @see java.util.ArrayList#remove(Object o)
 	 */
 	public void delInteresse(Section s) {
 		interesse.remove(s);

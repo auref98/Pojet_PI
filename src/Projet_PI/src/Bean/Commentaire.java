@@ -40,11 +40,11 @@ public class Commentaire {
 	}
 	
 	
-	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br><br>
-	 * Précondition: <code>id</code> et <code>contenu</code> sont initialisés.<br>
-	 * Postcondition: l'objet est initialisé, ses champs "<code>id</code>" et "<code>contenu</code>" sont initialisés avec la valeur du paramètre de même nom.<br>
-	 * @param id l'identifiant (BD) du commentaire
-	 * @param contenu le texte du commentaire
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres. <br><br>
+	 * Précondition: <code>id</code> et <code>contenu</code> sont initialisés. <br>
+	 * Postcondition: l'objet est initialisé, ses champs "<code>id</code>" et "<code>contenu</code>" sont initialisés avec la valeur du paramètre de même nom. <br>
+	 * @param id                   l'identifiant (BD) du commentaire
+	 * @param contenu        le texte du commentaire
 	 */
 	public Commentaire(int id, String contenu) {
 		this.id = id;
@@ -53,13 +53,13 @@ public class Commentaire {
 	}
 	
 	/**
-	 * Constructeur initialisant tous les champs de l'objet<br><br>
-	 * Précondition: tous les paramètres sont initialisés.<br>
-	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom.<br>
-	 * @param id l'identifiant (BD) du commentaire
-	 * @param contenu le texte du commentaire
-	 * @param rep la référence de l'objet <code>Representant</code> à affecter
-	 * @param e La référence de l'objet <code>Evenement</code> à affecter
+	 * Constructeur initialisant tous les champs de l'objet. <br><br>
+	 * Précondition: tous les paramètres sont initialisés. <br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom. <br>
+	 * @param id                   l'identifiant (BD) du commentaire
+	 * @param contenu        le texte du commentaire
+	 * @param rep                 la référence de l'objet <code>Representant</code> à affecter
+	 * @param e                     la référence de l'objet <code>Evenement</code> à affecter
 	 */
 	public Commentaire(int id, String contenu,Representant rep,Evenement e) {
 		this.id = id;
