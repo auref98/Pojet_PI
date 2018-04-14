@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscritsptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscritsptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -28,15 +28,15 @@ import java.util.LinkedList;
  * @see java.util.LinkedList
  */
 public class Representant {
-	private int id;
-	private String lastname;
-	private String firstname;
-	private int phone;
-	private String mail;
-	private String matricule;//matricule -> e16****
+	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
+	private String lastname;											// Attribut pour le nom du représentant
+	private String firstname;											// Attribut pour le prénom du représentant
+	private int phone;												// Attribut pour le numéro de téléphone du représentant
+	private String mail;												// Attribut pour l'adresse email du représentant
+	private String matricule;											//Attribut pour l'identifiant -  propre à l'école -  du représentant (e...... pour un étudiant, h...... pour un professeur)
 
-	private LinkedList<Commentaire> posts;
-	private LinkedList<Inscription> inscrits;
+	private LinkedList<Commentaire> posts;							// Référence vers une liste de Commentaire (voir classe éponyme)
+	private LinkedList<Inscription> inscrits;								// Référence vers une liste d'Inscription (voir classe éponyme)
 	
 //###################################################################################################################################################################
 	
@@ -49,6 +49,17 @@ public class Representant {
 
 	}
 	
+	/**
+	 * Constructeur initialisant tous les paramètres.<br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés.<br>
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom;
+	 * @param id l'identifiant (BD) de l'événement
+	 * @param lastname
+	 * @param firstname
+	 * @param phone
+	 * @param mail
+	 * @param matricule
+	 */
 	public Representant(int id, String lastname, String firstname, int phone, String mail, String matricule) {
 		this.id = id;
 		this.lastname = lastname;
@@ -148,12 +159,6 @@ public class Representant {
 		this.matricule = matricule;
 	}
 
-//###################################################################################################################################################################
-	
-	// Manipulation des listes
-	
-//###################################################################################################################################################################	
-	
 	/**
 	 * @return the posts
 	 * @see java.util.LinkedList

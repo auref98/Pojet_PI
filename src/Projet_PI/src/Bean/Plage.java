@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -54,11 +54,11 @@ public class Plage implements Serializable{
 	/**
 	 * Constructeur initialisant tous les attributs de l'objet.<br><br>
 	 * Précondition:  tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet a été initialisé, tous ses champs (à l'exception de "<code>listeInscription</code>" sont initialisés avec la valeur des paramètres de même nom.<br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs (à l'exception de "<code>listeInscription</code>" sont initialisés avec la valeur du paramètre de même nom.<br>
 	 * @param id l'identifiant (BD) de la plage
-	 * @param date la date à laquelle la plage se rapporte. au format java.time.LocalDate
-	 * @param heureDebut l'heure de début de la plage au format java.time.LocalTime
-	 * @param heureFin l'heure de fin de la plage au format java.time.LocalTime
+	 * @param date la date à laquelle la plage se rapporte. au format <code>java.time.LocalDate</code>
+	 * @param heureDebut l'heure de début de la plage au format <code>java.time.LocalTime</code>
+	 * @param heureFin l'heure de fin de la plage au format <code>java.time.LocalTime</code>
 	 * @param eve la référence de l'Evenement auquel la plage se rapporte
 	 */
 	public Plage(int id, LocalDate date, LocalTime heureDebut, LocalTime heureFin, Evenement eve){

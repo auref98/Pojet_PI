@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des événements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -46,8 +46,7 @@ public class Adresse implements Serializable {
   /**
    * Constructeur initialisant tous les champs.<br><br>
    * Précondition: tous les paramètres sont correctement initialisés.<br>
-   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom;<br>
-   * 				les deux attributs correspondant à des listes ont été initialisés avec des listes vides de type approprié.<br>
+   * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom.<br>
    * @param id l'identifiant (BD) de l'adresse
    * @param localite le nom de la localité
    * @param codePostal le code postal correspondant à la localité
@@ -121,7 +120,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le code postal correspondant à la localité.
-	 * @param codePostal le code postal correspondant à la localité à affecter
+	 * @param codePostal le code postal à affecter
 	 */
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
@@ -206,12 +205,13 @@ public class Adresse implements Serializable {
 	
 //###################################################################################################################################################################		
 
-	/**Affiche l'adresse a l'écran (override la méthode toString héritée de la classe Object).<br><br>
-	 * Précondition: les champs rue, numero, codePostal, localite et pays sont initialisés.<br>
+	/**Affiche l'adresse a l'écran (override la méthode <code>toString</code> héritée de la classe <code>Object</code>).<br><br>
+	 * Précondition: les champs <code>rue, numero, codePostal, localite</code> et <code>pays</code> sont initialisés.<br>
 	 * Postcondition: l'objet courant est inchangé.
-	 * @return objet java.lang.String reprenant les informations de l'adresse selon le format ci-dessous<br><br>
+	 * @return objet <code>java.lang.String</code> reprenant les informations de l'adresse selon le format ci-dessous<br><br>
 	 * Rue Rue de la Cite roses, 64<br>
 	 * 6800 Libramont-Chevigny( Belgique )<br>
+	 * @see Object#toString()
 	 */
 	@Override
 	public String toString(){

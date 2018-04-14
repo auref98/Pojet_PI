@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -26,7 +26,7 @@ import java.io.Serializable;
  */
 public class Inscription implements Serializable{
 	
-	private int id;												// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees
+	private int id;												// Attribut permettant de récuperer l'id référençant cette adresse dans la base de donnees
 	private boolean valide;										// Attribut indiquant si le représentant a bien effectué sa tâche
 	private Representant representant;								// Référence vers l'objet Représentant lié à cette inscription
 	private Plage plage;											// Référence vers l'objet Plage correspondant à la date de cette inscription (date de la prestation à effectuer)
@@ -102,8 +102,8 @@ public class Inscription implements Serializable{
 // Getter et setter pour l'attribut "representant" 
 	
 	/**
-	 * Renvoie la référence vers l'objet Représentant lié à cette inscription.
-	 * @return la référence vers l'objet Représentant lié à cette inscription
+	 * Renvoie la référence vers l'objet <code>Representant</code> lié à cette inscription.
+	 * @return la référence vers l'objet <code>Representant</code> lié à cette inscription
 	 * @see Representant
 	 */
 	public Representant getRepresentant() {
@@ -122,8 +122,8 @@ public class Inscription implements Serializable{
 // Getter et setter pour l'attribut "plage" 
 	
 	/**
-	 * Renvoie la référence vers l'objet Plage correspondant à la date de cette inscription.
-	 * @return la référence vers l'objet Plage correspondant à la date de cette inscription
+	 * Renvoie la référence vers l'objet <code>Plage</code> correspondant à la date de cette inscription.
+	 * @return la référence vers l'objet <code>Plage</code> correspondant à la date de cette inscription
 	 * @see Plage
 	 */
 	public Plage getPlage() {
@@ -131,8 +131,8 @@ public class Inscription implements Serializable{
 	}
 	
 	/**
-	 * Affecte la référence vers l'objet Plage correspondant à la date de cette inscription.
-	 * @param plage la référence vers l'objet Plage correspondant à la date de cette inscription
+	 * Affecte la référence vers l'objet <code>Plage</code> correspondant à la date de cette inscription.
+	 * @param plage la référence vers l'objet <code>Plage</code> correspondant à la date de cette inscription
 	 * @see Plage
 	 */
 	public void setPlage(Plage plage) {

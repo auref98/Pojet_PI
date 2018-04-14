@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des événements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -20,7 +20,7 @@ import java.time.LocalDate;
 
 /** 
  * Classe de type "bean" représentant un étudiant.<br><br>
- * Etend la classe "Représentant" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
+ * Etend la classe "<code>Représentant</code>" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
  * spécifiques au informations nécessaires à la modélisation d'un étudiant.
  * @see Adresse
  * @see Section
@@ -62,7 +62,7 @@ public class Etudiant extends Representant{
 	 * @param mail l'adresse email de l'étudiant
 	 * @param matricule le matricule HERS identifiant de l'étudiant
 	 * @param id l'identifiant (BD) de l'étudiant
-	 * @param dateNaissance la date de naissance de l'étudiant (au format LocalDate)
+	 * @param dateNaissance la date de naissance de l'étudiant (au format <code>LocalDate</code>)
 	 * @param paysNaissance le pays de naissance de l'étudiant
 	 * @param lieuNaissance le lieu de naissance de l'étudiant
 	 * @param numNational le numéro national identifiant de l'étudiant
@@ -71,8 +71,8 @@ public class Etudiant extends Representant{
 	 * @param soutienSocial <code>true</code> si l'étudiant bénéficie d'un soutient du service social, <code>false</code> sinon
 	 * @param emplacementEcole l'implantation (ville) de l'école où l'étudiant suit les cours
 	 * @param role le rôle que l'étudiant souhaite assumer lors d'un événement
-	 * @param adr l'adresse de l'étudiant
-	 * @param sec la section à laquelle l'étudiant appartient
+	 * @param adr la référence de l'<code>Adresse</code> de l'étudiant
+	 * @param sec la référence de la <code>Section</code> à laquelle l'étudiant appartient
 	 */
 	public Etudiant(String lastName, String firstName, int phone, String mail, String matricule, int id,
 			LocalDate dateNaissance, String paysNaissance, String lieuNaissance, String numNational,
@@ -119,16 +119,16 @@ public class Etudiant extends Representant{
 // Getter et setter pour l'attribut "dateNaissance" 
 	
 	/**
-	 * Renvoie la date de naissance de l'étudiant (au format LocalDate).
-	 * @return la date de naissance de l'étudiant (au format LocalDate)
+	 * Renvoie la date de naissance de l'étudiant (au format <code>LocalDate</code>).
+	 * @return la date de naissance de l'étudiant (au format )
 	 */
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
 	/**
-	 * Affecte la date de naissance de l'étudiant (au format LocalDate).
-	 * @param dateNaissance la date de naissance à affecter (au format LocalDate)
+	 * Affecte la date de naissance de l'étudiant (au format <code>LocalDate</code>).
+	 * @param dateNaissance la date de naissance à affecter (au format <code>LocalDate</code>)
 	 */
 	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
@@ -317,6 +317,4 @@ public class Etudiant extends Representant{
 		this.sec = sec;
 	}
 	
-	
-
 }

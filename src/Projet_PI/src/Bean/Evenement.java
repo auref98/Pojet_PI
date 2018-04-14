@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -56,14 +56,14 @@ public class Evenement implements Serializable{
 	/**
 	 * Constructeur initialisant tous les paramètres.<br><br>
 	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; les attributs "id", "nom", "nbParticipantsRequis", "description", "image" et "adresseEve" sont initialisés avec la valeur du paramètre de même nom;
-	 * les champs "listePlage", "listeCommentaire", "listeContact" et "listeSection" sont initialisés avec une liste vide de type approprié.<br>
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code>" sont initialisés avec la valeur du paramètre de même nom;
+	 * les champs <code>listePlage, listeCommentaire, listeContact</code> et <code>listeSection</code> sont initialisés avec une liste vide de type approprié.<br>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param nom le nom de l'événement
 	 * @param nbParticipantRequis le nombre total de participants requis pour représenter l'école lors de l'événement
 	 * @param description une brève description de l'événement à l'attention des personnes intéréssées
 	 * @param image un lien vers une image / logo représentant l'événement
-	 * @param adresseEve l
+	 * @param adresseEve la référence de l'<code>Adresse</code> à laquelle se déroule l'événement
 	 */
 	public Evenement(int id, String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
 	{
@@ -90,7 +90,7 @@ public class Evenement implements Serializable{
 	}
 	*/
 	/**
-	 * Compare un objet java.lang.String passé en paramètre avec  le nom de l'objet courant. 
+	 * Compare un objet <code>java.lang.String</code> passé en paramètre avec  le nom de l'objet courant. 
 	 * Précondition: l'objet courant est initialisé.
 	 * Postcondition: l'objet courant est inchangé.
 	 * @author Aurelien
@@ -201,7 +201,7 @@ public class Evenement implements Serializable{
 	
 	/**
 	 * Renvoie l'adresse de l'événement.
-	 * @return un objet de type Adresse représentant l'adresse de cet événement
+	 * @return un objet de type <code>Adresse</code> représentant l'adresse de cet événement
 	 * @see Adresse
 	 */
 	public Adresse getAdresseEve() {
@@ -210,7 +210,7 @@ public class Evenement implements Serializable{
 
 	/**
 	 * Affecte l'adresse de l'événement.
-	 * @param adresseEve un objet de type Adresse représentant l'adresse de cet événement
+	 * @param adresseEve un objet de type <code> Adresse</code> représentant l'adresse de cet événement
 	 * @see Adresse
 	 */
 	public void setAdresseEve(Adresse adresseEve) {
