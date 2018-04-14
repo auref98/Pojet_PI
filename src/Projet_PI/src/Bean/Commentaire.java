@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: realisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -17,7 +17,7 @@
 package Bean;
 
 /** 
- * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence.
+ * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référencé.
  * @see Evenement
  * @see Representant
  */

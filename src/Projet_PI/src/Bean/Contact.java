@@ -46,12 +46,12 @@ public class Contact implements Serializable {
   
   /**
    * Constructeur initialisant tous les attributs de l'objet..<br><br>
-   * Précondition: les paramètres "id", "mail" et "eve" sont correctement initialisés.<br>
-   * Postcondition: l'objet est initialisé; les attributs "id", "mail" et "eve" sont initialisés avec la valeur des paramètres de même nom;<br>
-   * 				l'attribut "interesse" est initialisé avec une liste vide de type approprié (Section).<br>
+   * Précondition: les paramètres "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont correctement initialisés.<br>
+   * Postcondition: l'objet est initialisé; les attributs "<code>id</code>", "<code>mail</code>" et "<code>eve</code>" sont initialisés avec la valeur des paramètres de même nom;<br>
+   * 				l'attribut "<code>interesse</code>" est initialisé avec une <code>ArrayList</code> vide de type approprié (<code>Section</code>).<br>
    * @param id l'identifiant (BD) de l'adresse
    * @param mail l'adresse email du contact
-   * @param eve l'événement où le contact a été enregistré
+   * @param eve la référence de l'<code>Evenement</code> où le contact a été enregistré
    */
   public Contact(int id, String mail, Evenement eve){
 	  this.id=id;
@@ -105,8 +105,8 @@ public class Contact implements Serializable {
 // Getter et setter pour l'attribut "eve" 
 	
 	/**
-	 * Renvoie la référence de l'événement où le contact a été enregistré.
-	 * @return la référence de l'événement où le contact a été enregistré
+	 * Renvoie la référence de l'objet <code>Evenement</code> où le contact a été enregistré.
+	 * @return la référence de l'<code>Evenement</code> lié à l'objet courant
 	 * @see Evenement
 	 */
 	public Evenement getEve() {
@@ -114,12 +114,38 @@ public class Contact implements Serializable {
 	}
 	
 	/**
-	 * Affecte la référence de l'événement où le contact a été enregistré.
-	 * @param eve la référence de l'événement à affecter
+	 * Affecte la référence de l'<code>Evenement</code> où le contact a été enregistré.
+	 * @param eve la référence de l'objet<code>Evenement</code>à  lier à l'objet courant
 	 * @see Evenement
 	 */
 	public void setEve(Evenement eve) {
 		this.eve = eve;
+	}
+
+// Getter et setter pour l'attribut "interesse"
+	
+	/**
+	 * Affecte la référence d'une <code>ArrayList</code> de <code>Section</code> à l'objet courant.<br><br>
+	 * Précondition: l'objet <code>tab</code> est correctement initialisé.<br>
+	 * Postcondition: la liste <code>tab</code> a été affectée à l'objet courant; la liste tab est inchangée.<br>
+	 * @param tab la liste de <code>Section</code> à affecter à l'objet courant
+	 * @see Section
+	 * @see java.util.ArrayList
+	 */
+	public void setInteresse(ArrayList<Section> tab) {
+		interesse = tab;
+	}
+	
+	/**
+	 * Renvoie la référence de l'<code>ArrayList</code> de <code>Section</code> pour lesquelles le contact est intéressé.<br><br>
+	 * Précondition: l'objet courant est correctement initialisé.<br>
+	 * Postcondition: l'objet courant est inchangé.<br>
+	 * @return la référence de l'<code>ArrayList</code> de <code>Section</code> liée à l'objet courant
+	 * @see Section
+	 * @see java.util.ArrayList
+	 */
+	public ArrayList<Section> getInteresse() {
+		return interesse;
 	}
 	
 //###################################################################################################################################################################
@@ -129,50 +155,27 @@ public class Contact implements Serializable {
 //###################################################################################################################################################################	
 	
 	/**
-	 * Ajoute un Contact à la liste.<br><br>
-	 * Précondition: l'attribut "interesse" est initialisé avec un type valide (Section); l'objet Section s est correctement initialisé.<br>
-	 * Postcondition: la Section s a été ajoutée à la liste "intéresse".<br>
-	 * @param s l'objet Section à ajouter à la liste
+	 * Ajoute un objet <code>Contact</code> à la liste.<br><br>
+	 * Précondition: l'attribut "<code>interesse</code>" est initialisé avec un type valide (<code>Section</code>); l'objet <code>Section s</code> est correctement initialisé.<br>
+	 * Postcondition: l'objet <code>Section s</code> a été ajouté à l'objet courant "intéresse".<br>
+	 * @param s l'objet <code>Section</code> à ajouter à l'objet courant
 	 * @see Section
-	 * @see java.util.ArrayList
+	 * @see java.util.ArrayList#add(Object)
 	 */
 	public void addInteresse(Section s) {
 		interesse.add(s);
 	}
 	
 	/**
-	 * Supprime une Section de la liste référencée pas l'attribut "interesse".<br><br>
-	 * Précondition: l'attribut "interesse" est initialisé.<br>
-	 * Postcondition: si la Section s se trouvait dans la liste, celle-ci en a été supprimée; sinon la liste et l'objet courant sont inchangés.<br>
-	 * @param s l'objet Section à supprimer de la liste
+	 * Supprime un objet <code>Section</code> de l'objet courant.<br><br>
+	 * Précondition: l'attribut "<code>interesse</code>" est initialisé.<br>
+	 * Postcondition: si l'objet <code>Section s</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé.<br>
+	 * @param s l'objet <code>Section</code> à supprimer de l'objet courant
 	 * @see Section
-	 * @see java.util.ArrayList
+	 * @see java.util.ArrayList#remove(Object)
 	 */
 	public void delInteresse(Section s) {
 		interesse.remove(s);
 	}
 	
-	/**
-	 * Affecte la référence d'une liste de Section à l'attribut "interesse".<br><br>
-	 * Précondition: l'objet tab est correctement initialisé.<br>
-	 * Postcondition: la liste tab a été affectée à l'objet courant.<br>
-	 * @param tab la liste de Section à affecter à l'objet courant
-	 * @see Section
-	 * @see java.util.ArrayList
-	 */
-	public void setInteresse(ArrayList<Section> tab) {
-		interesse = tab;
-	}
-	
-	/**
-	 * Renvoie la référence de la liste de Section.<br><br>
-	 * Précondition: l'objet courant est correctement initialisé.<br>
-	 * Postcondition: l'objet courant est inchangé.<br>
-	 * @return la référence de la liste de Section pour lesquelles le contact est intéressé
-	 * @see Section
-	 * @see java.util.ArrayList
-	 */
-	public ArrayList<Section> getInteresse() {
-		return interesse;
-	}
 }
