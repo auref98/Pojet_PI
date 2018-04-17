@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscritsptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscritsptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -19,7 +19,7 @@ package Bean;
 import java.util.LinkedList;
 
 /**
- * Classe modélisant un membre de la HERS à enregistrer dans le planning de l'application.<br><br>
+ * Classe modélisant un membre de la HERS à enregistrer dans le planning de l'application. <br><br>
  * Ceci est une classe représantant un membre de l'école en toute généralité; pour représenter spécifiquement un étudiant ou un professeur, utiliser les classes spécialisées dérivées de celle-ci.
  * @see Commentaire
  * @see Etudiant
@@ -28,15 +28,15 @@ import java.util.LinkedList;
  * @see java.util.LinkedList
  */
 public class Representant {
-	private int id;
-	private String lastname;
-	private String firstname;
-	private int phone;
-	private String mail;
-	private String matricule;//matricule -> e16****
+	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
+	private String lastName;											// Attribut pour le nom du représentant
+	private String firstName;											// Attribut pour le prénom du représentant
+	private int phone;												// Attribut pour le numéro de téléphone du représentant
+	private String mail;												// Attribut pour l'adresse email du représentant
+	private String matricule;											//Attribut pour l'identifiant -  propre à l'école -  du représentant (e...... pour un étudiant, h...... pour un professeur)
 
-	private LinkedList<Commentaire> posts;
-	private LinkedList<Inscription> inscrits;
+	private LinkedList<Commentaire> posts;							// Référence vers une liste de Commentaire (voir classe éponyme)
+	private LinkedList<Inscription> inscrits;								// Référence vers une liste d'Inscription (voir classe éponyme)
 	
 //###################################################################################################################################################################
 	
@@ -49,10 +49,22 @@ public class Representant {
 
 	}
 	
-	public Representant(int id, String lastname, String firstname, int phone, String mail, String matricule) {
+	/**
+	 * Constructeur initialisant tous les paramètres. <br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom; <br>
+	 * 				les listes <code>posts</code> et <code>inscrits</code> ne sont pas initialisées. <br>
+	 * @param id l'identifiant (BD) de l'événement
+	 * @param lastName le nom du représentant
+	 * @param firstName  le prénom du représentant
+	 * @param phone le numéro de téléphone du représentant
+	 * @param mail l'adresse email du représentant
+	 * @param matricule l'identifiant -  propre à l'école -  du représentant
+	 */
+	public Representant(int id, String lastName, String firstName, int phone, String mail, String matricule) {
 		this.id = id;
-		this.lastname = lastname;
-		this.firstname = firstname;
+		this.lastName = lastName;
+		this.firstName = firstName;
 		this.phone = phone;
 		this.mail = mail;
 		this.matricule = matricule;
@@ -64,114 +76,142 @@ public class Representant {
 	
 //###################################################################################################################################################################
 
+// Getter et setter pour l'attribut "id"
+	
 	/**
-	 * @return the id
+	 * Renvoie l'identifiant (BD) de l'événement.
+	 * @return l'identifiant (BD) de l'événement
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * Affecte l'identifiant (BD) de l'événement.
+	 * @param id l'identifiant (BD) à affecter
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+// Getter et setter pour l'attribut "lastName"
+	
 	/**
-	 * @return the lastname
+	 * Renvoie le nom du représentant.
+	 * @return le nom du représentant
 	 */
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
 	/**
-	 * @param lastname the lastname to set
+	 * Affecte le nom du représentant.
+	 * @param lastName le nom à affecter.
 	 */
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
+	}
+
+// Getter et setter pour l'attribut "firstName"
+	
+	/**
+	 * Renvoie le prénom du représentant.
+	 * @return le prénom du représentant
+	 */
+	public String getFirstName() {
+		return firstName;
 	}
 
 	/**
-	 * @return the firstname
+	 * Affecte le prénom du représentant
+	 * @param firstName le prénom à affecter
 	 */
-	public String getFirstname() {
-		return firstname;
+	public void setFirstname(String firstName) {
+		this.firstName = firstName;
 	}
 
+// Fetter et setter pour l'attribut "phone"
+	
 	/**
-	 * @param firstname the firstname to set
-	 */
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	/**
-	 * @return the phone
+	 * Renvoie le numero de téléphone du représentant.
+	 * @return le numero de téléphone du représentant
 	 */
 	public int getPhone() {
 		return phone;
 	}
 
 	/**
-	 * @param phone the phone to set
+	 * Affecte e numero de téléphone du représentant.
+	 * @param phone le numero de téléphone à affecter
 	 */
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
+// Getter et setter pour l'attribut "mail"
+	
 	/**
-	 * @return the mail
+	 * Renvoie l'adresse email du représentant.
+	 * @return l'adresse email du représentant
 	 */
 	public String getMail() {
 		return mail;
 	}
 
 	/**
-	 * @param mail the mail to set
+	 * Affecte l'adresse email du représentant.
+	 * @param mail l'adresse email à affecter
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+// Getter et setter pour l'attribut "matricule"
+	
 	/**
-	 * @return the matricule
+	 * Renvoie l'identifiant -  propre à l'école -  du représentant.
+	 * @return l'identifiant -  propre à l'école -  du représentant
 	 */
 	public String getMatricule() {
 		return matricule;
 	}
 
 	/**
-	 * @param matricule the matricule to set
+	 * Affecte l'identifiant -  propre à l'école -  du représentant.
+	 * @param matricule l'identifiant -  propre à l'école - à affecter
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
 
-//###################################################################################################################################################################
-	
-	// Manipulation des listes
-	
-//###################################################################################################################################################################	
+// getter et setter pour l'attribut "posts"
 	
 	/**
-	 * @return the posts
+	 * Renvoie la référence de la liste des <code>Commentaire</code> postés par le représentant.
+	 * @return la référence de la liste des <code>Commentaire</code> postés par le représentant
+	 * @see Commentaire
 	 * @see java.util.LinkedList
 	 */
-	public LinkedList<Commentaire> getPoste() {
+	public LinkedList<Commentaire> getPosts() {
 		return posts;
 	}
 
 	/**
-	 * @param posts the posts to set
+	 * Affecte la référence d'une liste de <code>Commentaire</code>.
+	 * @param posts la référence d'une liste de <code>Commentaire</code> à affecter
+	 * @see Commentaire
 	 * @see java.util.LinkedList
 	 */
-	public void setPoste(LinkedList<Commentaire> posts) {
+	public void setPosts(LinkedList<Commentaire> posts) {
 		this.posts = posts;
 	}
 
+// Getter et setter pour l'attribut "inscrits"
+	
 	/**
-	 * @return the inscrits
+	 * Renvoie la référence de la liste des <code>Inscription</code> du représentant.
+	 * @return la référence de la liste des <code>Inscription</code> du représentant.
+	 * @see Inscription
 	 * @see java.util.LinkedList
 	 */
 	public LinkedList<Inscription> getInscrits() {
@@ -179,14 +219,13 @@ public class Representant {
 	}
 
 	/**
-	 * @param inscrits the inscrits to set
+	 * Affecte la référence d'une  liste d'<code>Inscription</code>.
+	 * @param inscrits la référence d'une  liste d'<code>Inscription</code> à affecter
+	 * @see Inscription
 	 * @see java.util.LinkedList
 	 */
 	public void setInscrits(LinkedList<Inscription> inscrits) {
 		this.inscrits = inscrits;
 	}
-	
-	
-  
 	
 }

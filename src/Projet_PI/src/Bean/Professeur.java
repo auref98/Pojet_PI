@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -19,7 +19,7 @@ package Bean;
 import java.util.ArrayList;
 
 /** 
- * Classe de type "bean" représentant un professeur.<br><br>
+ * Classe de type "bean" représentant un professeur. <br><br>
  * Etend la classe "Représentant" dont elle hérite les attributs d'une personne, et ajoute ses propres attributs 
  * spécifiques au informations nécessaires à la modélisation d'un professeur.
  * @see Section
@@ -44,9 +44,9 @@ public class Professeur extends Representant{
 		
 	}
 	
-	/** Constructeur initialisant tous les attributs (à l'exception des listes).<br><br>
-	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom.<br>
+	/** Constructeur initialisant tous les attributs (à l'exception des listes). <br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition:  l'objet est initialisé; tous les attributs sont initialisés avec la valeur du paramètre de même nom. <br>
 	 * @param nom le nom du professeur
 	 * @param prenom le prénom du professeur
 	 * @param numTel le numéro de téléphone du professeur
@@ -116,8 +116,8 @@ public class Professeur extends Representant{
 	}
 
 	/**
-	 * Affecte la référence de la liste des sections dont le professeur est le relais de communication.
-	 * @param relais la référence de la liste des sections dont le professeur est le relais de communication
+	 * Affecte la référence d'une liste d'objets <code>Section</code> à l'attribut de l'objet courant représentant les sections dont le professeur est le relais de communication.
+	 * @param relais la référence d'une liste d'objets <code>Section</code> à affecter à l'attribut de l'objet courant représentant les sections dont le professeur est le relais de communication
 	 * @see Section
 	 * @see java.util.ArrayList
 	 */
@@ -138,9 +138,8 @@ public class Professeur extends Representant{
 	}
 
 	/**
-	 * Affecte la référence de la liste des sections dans lesquelles le professeur enseigne.
-	 * @param enseigne la référence de la liste des sections dans lesquelles le professeur enseigne.
-	 * @see Section
+	 * Affecte la référence d'une liste d'objets <code>Section</code> à l'attribut de l'objet courant représentant les sections dans lesquelles le professeur enseigne.
+	 * @param enseigne la référence d'une liste d'objets <code>Section</code> à affecter à l'attribut de l'objet courant représentant les sections dans lesquelles le professeur enseigne
 	 * @see java.util.ArrayList
 	 */
 	public void setEnseigne(ArrayList<Section> enseigne) {

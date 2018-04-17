@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Classe de type "bean" représentant un événement.<br><br>
+ * Classe de type "bean" représentant un événement. <br><br>
  * Elle renseigne le nombre de participants requis et les sections représentées, l'adresse de l'événement,
  * une référence vers les plages horaires nécessaires ainsi que la liste des commentaires ayant été postés par les participants à la suite de l'événement.
  * @see Commentaire
@@ -54,16 +54,16 @@ public class Evenement implements Serializable{
 	public Evenement() {}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres.<br><br>
-	 * Précondition: tous les paramètres sont correctement initialisés.<br>
-	 * Postcondition: l'objet est initialisé; les attributs "id", "nom", "nbParticipantsRequis", "description", "image" et "adresseEve" sont initialisés avec la valeur du paramètre de même nom;
-	 * les champs "listePlage", "listeCommentaire", "listeContact" et "listeSection" sont initialisés avec une liste vide de type approprié.<br>
+	 * Constructeur initialisant tous les paramètres. <br><br>
+	 * Précondition: tous les paramètres sont correctement initialisés. <br>
+	 * Postcondition: l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code> sont initialisés avec la valeur du paramètre de même nom;
+	 * les champs <code>listePlage, listeCommentaire, listeContact</code> et <code>listeSection</code> sont initialisés avec une liste vide de type approprié. <br>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param nom le nom de l'événement
 	 * @param nbParticipantRequis le nombre total de participants requis pour représenter l'école lors de l'événement
 	 * @param description une brève description de l'événement à l'attention des personnes intéréssées
 	 * @param image un lien vers une image / logo représentant l'événement
-	 * @param adresseEve l
+	 * @param adresseEve la référence de l'<code>Adresse</code> à laquelle se déroule l'événement
 	 */
 	public Evenement(int id, String nom, int nbParticipantRequis, String description, String image, Adresse adresseEve)
 	{
@@ -90,7 +90,7 @@ public class Evenement implements Serializable{
 	}
 	*/
 	/**
-	 * Compare un objet java.lang.String passé en paramètre avec  le nom de l'objet courant. 
+	 * Compare un objet <code>java.lang.String</code> passé en paramètre avec  le nom de l'objet courant. 
 	 * Précondition: l'objet courant est initialisé.
 	 * Postcondition: l'objet courant est inchangé.
 	 * @author Aurelien
@@ -194,14 +194,14 @@ public class Evenement implements Serializable{
 	 * @param srcImage le lien vers l'image à affecter
 	 */
 	public void setImage(String srcImage) {
-		this.image = image;
+		this.image = srcImage;
 	}
 
 // Getter et setter pour l'attribut "adresseEve"	
 	
 	/**
 	 * Renvoie l'adresse de l'événement.
-	 * @return un objet de type Adresse représentant l'adresse de cet événement
+	 * @return un objet de type <code>Adresse</code> représentant l'adresse de cet événement
 	 * @see Adresse
 	 */
 	public Adresse getAdresseEve() {
@@ -210,67 +210,205 @@ public class Evenement implements Serializable{
 
 	/**
 	 * Affecte l'adresse de l'événement.
-	 * @param adresseEve un objet de type Adresse représentant l'adresse de cet événement
+	 * @param adresseEve un objet de type <code> Adresse</code> représentant l'adresse de cet événement
 	 * @see Adresse
 	 */
 	public void setAdresseEve(Adresse adresseEve) {
 		this.adresseEve = adresseEve;
 	}
+
+// Getter et setter pour l'attribut "listePlage"		
+	
+	/**
+	 * Renvoie la référence de la liste des objets <code>Plage</code> liés à cet événement.
+	 * @return la référence de la liste des objets <code>Plage</code> liés à cet événement
+	 * @see Plage
+	 * @see java.util.ArrayList
+	 */
+	public ArrayList<Plage> getPlage() {
+		return listePlage;
+	}
+	
+	/**
+	 * Affecte la référence d'une liste de <code>Plage</code>.
+	 * @param p la référence d'une liste de <code>Plage</code> à affecter
+	 * @see Plage
+	 * @see java.util.ArrayList
+	 */
+	public void setPlage(ArrayList<Plage> p) {
+		listePlage = p;
+	}
+	
+// Getter et setter pour l'attribut "listeCommentaire"	
+	
+	/**
+	 * Renvoie la référence de la liste des objets <code>Commentaire</code> liés à cet événement.
+	 * @return la référence de la liste des <code>Commentaire</code> liés à cet événement
+	 * @see Commentaire
+	 * @see java.util.LinkedList
+	 */
+	public LinkedList<Commentaire> getCommentaire() {
+		return listeCommentaire;
+	}
+	
+	/**
+	 * Affecte la référence d'une liste de <code>Commentaire</code>.
+	 * @param c la référence d'une liste de <code>Commentaire</code> à affecter
+	 * @see Commentaire
+	 * @see java.util.LinkedList
+	 */
+	public void setCommentaire(LinkedList<Commentaire> c) {
+		listeCommentaire = c;
+	}
+	
+// Getter et setter pour l'attribut "listeContact"	
+	
+	/**
+	 * Renvoie la référence de la liste des objets <code>Contact</code> liés à cet événement.
+	 * @return la référence de la liste des <code>Contact</code> liés à cet événement
+	 * @see Contact
+	 * @see java.util.LinkedList
+	 */
+	public LinkedList<Contact> getContact() {
+		return listeContact;
+	}
+	
+	/**
+	 * Affecte la référence d'une liste de <code>Contact</code>.
+	 * @param c la référence d'une liste de <code>Contact</code> à affecter
+	 * @see Contact
+	 * @see java.util.LinkedList
+	 */
+	public void setContact(LinkedList<Contact> c) {
+		listeContact = c;
+	}	
+	
+// Getter et setter pour l'attribut "listeSection"
+	
+	/**
+	 * Renvoie la référence de la liste des objets <code>Section</code> liés à cet événement.
+	 * @return la référence de la liste des <code>Section</code> liés à cet événement
+	 * @see Section
+	 * @see java.util.ArrayList
+	 */
+	public ArrayList<Section> getSection() {
+		return listeSection;
+	}
+	
+	/**
+	 * Affecte la référence d'une liste de <code>Section</code>.
+	 * @param s la référence d'une liste de <code>Section</code> à affecter
+	 * @see Section
+	 * @see java.util.ArrayList
+	 */
+	public void setSection(ArrayList<Section> s) {
+		listeSection = s;
+	}
+	
 //###################################################################################################################################################################
 	
 	// Manipulation des listes
 	
 //###################################################################################################################################################################
 	
+// Méthodes add (ajouter un abjet à une liste)
+	
+	/**
+	 * Ajoute un objet <code>Plage</code> à l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listePlage</code>" est initialisé avec un type valide (<code>Plage</code>); l'objet <code>Plage p</code> est correctement initialisé. <br>
+	 * Postcondition: l'objet <code>Plage p</code> a été ajouté à l'objet courant. <br>
+	 * @param p l'objet <code>Plage</code> à ajouter à l'objet courant
+	 * @see Plage
+	 * @see java.util.ArrayList#add(Object o)
+	 */
 	public void addPlage(Plage p) {
 		listePlage.add(p);
 	}
+	
+	/**
+	 * Ajoute un objet <code>Commentaire</code> à l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeCommentaire</code>" est initialisé avec un type valide (<code>Commentaire</code>); l'objet <code>Commentaire s</code> est correctement initialisé. <br>
+	 * Postcondition: l'objet <code>Commentaire c</code> a été ajouté à l'objet courant. <br>
+	 * @param c l'objet <code>Commentaire</code> à ajouter à l'objet courant
+	 * @see Commentaire
+	 * @see LinkedList#add(Object o)
+	 */
 	public void addCommentaire(Commentaire c) {
 		listeCommentaire.add(c);
 	}
+	
+	/**
+	 * Ajoute un objet <code>Contact</code> à l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeContact</code>" est initialisé avec un type valide (<code>Contact</code>); l'objet <code>Contact s</code> est correctement initialisé. <br>
+	 * Postcondition: l'objet <code>Contact c</code> a été ajouté à l'objet courant. <br>
+	 * @param c l'objet <code>Contact</code> à ajouter à l'objet courant
+	 * @see Contact
+	 * @see java.util.LinkedList#add(Object o)
+	 */
 	public void addContact(Contact c) {
 		listeContact.add(c);
 	}
+	
+	/**
+	 * Ajoute un objet <code>Section</code> à l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeSection</code>" est initialisé avec un type valide (<code>Section</code>); l'objet <code>Section s</code> est correctement initialisé. <br>
+	 * Postcondition: l'objet <code>Section s</code> a été ajouté à l'objet courant. <br>
+	 * @param s l'objet <code>Section</code> à ajouter à l'objet courant
+	 * @see Section
+	 * @see java.util.ArrayList#add(Object o)
+	 */
 	public void addSection(Section s) {
 		listeSection.add(s);
 	}
 	
+// Methodes del (Supprimer un objet d'une liste)
+	
+	/**
+	 * Supprime un objet <code>Plage</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listePlage</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Plage p</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé. <br>
+	 * @param p l'objet <code>Plage</code> à supprimer de l'objet courant
+	 * @see Plage
+	 * @see java.util.ArrayList#remove(Object o)
+	 */
 	public void delPlage(Plage p) {
 		listePlage.remove(p);
 	}
+	
+	/**
+	 * Supprime un objet <code>Commentaire</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeCommentaire</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Commentaire c</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé. <br>
+	 * @param c l'objet <code>Commentaire</code> à supprimer de l'objet courant
+	 * @see Commentaire
+	 * @see java.util.LinkedList#remove(Object o)
+	 */
 	public void delCommentaire(Commentaire c) {
 		listeCommentaire.remove(c);
 	}
+	
+	/**
+	 * Supprime un objet <code>Contact</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeContact</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Contact c</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé. <br>
+	 * @param c l'objet <code>Contact</code> à supprimer de l'objet courant
+	 * @see Contact
+	 * @see java.util.LinkedList#remove(Object o)
+	 */
 	public void delContact(Contact c) {
 		listeContact.remove(c);
 	}
+	
+	/**
+	 * Supprime un objet <code>Section</code> de l'objet courant. <br><br>
+	 * Précondition: l'attribut "<code>listeSection</code>" est initialisé. <br>
+	 * Postcondition: si l'objet <code>Section s</code> se trouvait dans l'objet courant, il en a été supprimé; sinon l'objet courant est inchangé. <br>
+	 * @param s l'objet <code>Section</code> à supprimer de l'objet courant
+	 * @see Section
+	 * @see java.util.ArrayList#remove(Object o)
+	 */
 	public void delSection(Section s) {
 		listeSection.remove(s);
 	}
-	
-	public void setPlage(ArrayList<Plage> p) {
-		listePlage = p;
-	}
-	public void setCommentaire(LinkedList<Commentaire> c) {
-		listeCommentaire = c;
-	}
-	public void setContact(LinkedList<Contact> c) {
-		listeContact = c;
-	}
-	public void setSection(ArrayList<Plage> p) {
-		listePlage = p;
-	}
-	
-	public ArrayList<Plage> getPlage() {
-		return listePlage;
-	}
-	public LinkedList<Commentaire> getCommentaire() {
-		return listeCommentaire;
-	}
-	public LinkedList<Contact> getContact() {
-		return listeContact;
-	}
-	public ArrayList<Plage> getSection() {
-		return listePlage;
-	}
 }
+	

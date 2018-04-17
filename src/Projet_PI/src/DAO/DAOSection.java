@@ -1,5 +1,17 @@
 /*
- * NamingException(Aurélien, Killian, Robin, Louis, Christophe)
+ * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
  */
 
 /**
@@ -77,7 +89,7 @@ public class DAOSection extends DAO<Section>
 			do
 			{
 				int idEtudiant = resultSet.getInt("id");
-				Etudiant etudiant = new DAOEtudiant.find(idEtudiant);
+				Etudiant etudiant = new DAOEtudiant().find(idEtudiant);
 				etudiant.setSec(section);
 				listeEtudiant.add(etudiant);
 				

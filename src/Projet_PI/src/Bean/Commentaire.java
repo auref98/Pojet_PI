@@ -2,7 +2,7 @@
  * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
- * Projet integre: realisation d'un logiciel de gestion des inscriptions à des evenements
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
  * Groupe: NamingException {
  * 				Adam Ludovic;
@@ -17,7 +17,7 @@
 package Bean;
 
 /** 
- * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référence.
+ * Classe de type bean utilisée pour reccueillir les commentaires des personnes ayant representé l'école lors de l'événement référencé.
  * @see Evenement
  * @see Representant
  */
@@ -40,11 +40,11 @@ public class Commentaire {
 	}
 	
 	
-	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres.<br><br>
-	 * Précondition: id et contenu sont initialisés.<br>
-	 * Postcondition: l'objet a été initialisé, ses champs "id" et "contenu" sont initialisés avec la valeur des paramètres de même nom.<br>
-	 * @param id l'identifiant (BD) du commentaire
-	 * @param contenu le texte du commentaire
+	/** Constructeur prenant l'identifiant et le texte du commentaire en paramètres. <br><br>
+	 * Précondition: <code>id</code> et <code>contenu</code> sont initialisés. <br>
+	 * Postcondition: l'objet est initialisé, ses champs "<code>id</code>" et "<code>contenu</code>" sont initialisés avec la valeur du paramètre de même nom. <br>
+	 * @param id                   l'identifiant (BD) du commentaire
+	 * @param contenu        le texte du commentaire
 	 */
 	public Commentaire(int id, String contenu) {
 		this.id = id;
@@ -53,13 +53,13 @@ public class Commentaire {
 	}
 	
 	/**
-	 * Constructeur initialisant tous les champs de l'objet<br><br>
-	 * Précondition: tous les paramètres sont initialisés.<br>
-	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur des paramètres de même nom.<br>
-	 * @param id l'identifiant (BD) du commentaire
-	 * @param contenu le texte du commentaire
-	 * @param rep la référence de l'objet Representant à affecter
-	 * @param e La référence de l'objet Evenement à affecter
+	 * Constructeur initialisant tous les champs de l'objet. <br><br>
+	 * Précondition: tous les paramètres sont initialisés. <br>
+	 * Postcondition: l'objet a été initialisé, tous ses champs sont initialisés avec la valeur du paramètre de même nom. <br>
+	 * @param id                   l'identifiant (BD) du commentaire
+	 * @param contenu        le texte du commentaire
+	 * @param rep                 la référence de l'objet <code>Representant</code> à affecter
+	 * @param e                     la référence de l'objet <code>Evenement</code> à affecter
 	 */
 	public Commentaire(int id, String contenu,Representant rep,Evenement e) {
 		this.id = id;
@@ -95,8 +95,8 @@ public class Commentaire {
 // Getter et setter pour l'attribut "contenu" 
 	
 	/**
-	 * Renvoie le texte du commentaire sous forme d'un objet java.lang.String.
-	 * @return le texte du commentaire sous forme d'un objet java.lang.String
+	 * Renvoie le texte du commentaire sous forme d'un objet <code> java.lang.String</code>.
+	 * @return le texte du commentaire sous forme d'un objet <code> java.lang.String</code>.
 	 */
 	public String getContenu() {
 		return contenu;
@@ -112,8 +112,8 @@ public class Commentaire {
 // Getter et setter pour l'attribut "rep" 
 	
 	/**
-	 * Renvoie la référence vers l'objet Représentant associé à l'objet courant.
-	 * @return la référence vers l'objet Représentant associé à l'objet courant
+	 * Renvoie la référence vers l'objet <code>Representant</code> associé à l'objet courant.
+	 * @return la référence vers l'objet <code>Representant</code> associé à l'objet courant
 	 * @see Representant
 	 */
 	public Representant getRep() {
@@ -121,8 +121,8 @@ public class Commentaire {
 	}
 
 	/**
-	 * Affecte l'objet Representant à associer à l'objet courant.
-	 * @param rep l'objet Representant à associer à l'objet courant
+	 * Affecte l'objet <code>Representant</code> à associer à l'objet courant.
+	 * @param rep l'objet <code>Representant</code> à associer à l'objet courant
 	 * @see Representant
 	 */
 	public void setRep(Representant rep) {
@@ -132,8 +132,8 @@ public class Commentaire {
 // Getter et setter pour l'attribut "evenement" 
 	
 	/**
-	 * Renvoie la référence vers l'objet Evenement associé à l'objet courant.
-	 * @return la référence vers l'objet Evenement associé à l'objet courant
+	 * Renvoie la référence vers l'objet <code>Evenement</code> associé à l'objet courant.
+	 * @return la référence vers l'objet <code>Evenement</code> associé à l'objet courant
 	 * @see Evenement
 	 */
 	public Evenement getEvenement() {
@@ -141,8 +141,8 @@ public class Commentaire {
 	}
 
 	/**
-	 * Affecte l'objet Evenement à associer à l'objet courant.
-	 * @param evenement l'objet Evenement à associer à l'objet courant
+	 * Affecte l'objet <code>Evenement</code> à associer à l'objet courant.
+	 * @param evenement l'objet <code>Evenement</code> à associer à l'objet courant
 	 * @see Evenement
 	 */
 	public void setEvenement(Evenement evenement) {
