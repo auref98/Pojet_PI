@@ -69,6 +69,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	@Override
 	public boolean create(Etudiant etu) {
 		// TODO Auto-generated method stub
+		new DAORepresentant().create(etu.getRepr());
 		boolean change = false;
 		String sql = "INSERT INTO etudiant (datenaissance,"
 											+ "paysnaissance,"
