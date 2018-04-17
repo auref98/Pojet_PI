@@ -21,8 +21,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import Bean.Adresse;
 import Bean.Etudiant;
 import Bean.Representant;
+import Bean.Section;
 
 /**
  * @author Aurelien
@@ -43,14 +45,17 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
+				Section sect = new DAOSection().find(this.resSet.getInt("REFSECT"));
+				Adresse adr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
 				Representant rep = new DAORepresentant().find(this.resSet.getInt("REFREPR"));
-				etu = new Etudiant(rep.getLastname(),
-									rep.getFirstname(),
+				etu = new Etudiant(rep.getIdR(),
+									rep.getLastName(),
+									rep.getFirstName(),
 									rep.getPhone(),
 									rep.getMail(),
 									rep.getMatricule(),
 									this.resSet.getInt("ID"),
-									new LocalDate(this.resSet.getString("DATENAISSANCE")),
+									LocalDate.parse(this.resSet.getString("DATENAISSANCE")),
 									this.resSet.getString("PAYSNAISSANCE"),
 									this.resSet.getString("LIEUNAISSANCE"),
 									this.resSet.getString("NUMNATIONAL"),
@@ -58,7 +63,9 @@ public class DAOEtudiant extends DAO<Etudiant>{
 									this.resSet.getString("NUMBANQUE"),
 									(this.resSet.getInt("SOUTIENSOCIAL")==1)?true:false,
 									this.resSet.getString("EMPLACEMENTECOLE"),
-									this.resSet.getString("ROLE"));
+									this.resSet.getString("ROLE"),
+									adr,
+									sect);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -82,7 +89,12 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	@Override
 	public boolean create(Etudiant etu) {
 		// TODO Auto-generated method stub
-		new DAORepresentant().create(etu.getRepr());
+		new DAORepresentant().create(new Representant(etu.getIdR(),
+														etu.getLastName(),
+														etu.getFirstName(),
+														etu.getPhone(),
+														etu.getMail(),
+														etu.getMatricule()));
 		boolean change = false;
 		String sql = "INSERT INTO etudiant (datenaissance,"
 											+ "paysnaissance,"
@@ -108,7 +120,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(7, (etu.isSoutienSocial())?1:0);
 			this.prStat.setString(8, etu.getEmplacementEcole());
 			this.prStat.setString(9, etu.getRole());
-			this.prStat.setInt(10, etu.get);//representant
+			this.prStat.setInt(10, etu.getIdR());
 			this.prStat.setInt(11, etu.getSec().getId());
 			this.prStat.setInt(12, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
@@ -153,7 +165,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(7, (etu.isSoutienSocial())?1:0);
 			this.prStat.setString(8, etu.getEmplacementEcole());
 			this.prStat.setString(9, etu.getRole());
-			this.prStat.setInt(10, etu.get);//representant
+			this.prStat.setInt(10, etu.getIdR());//representant
 			this.prStat.setInt(11, etu.getSec().getId());
 			this.prStat.setInt(12, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;

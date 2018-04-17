@@ -33,16 +33,16 @@ public class DAORepresentant extends DAO<Representant>{
 	ResultSet resSet;
 	
 	@Override
-	public Representant find(int id) {
+	public Representant find(int idr) {
 		// TODO Auto-generated method stub
 		Representant repr = null;
-		String sql = "SELECT * FROM representant WHERE id = ?";
+		String sql = "SELECT * FROM representant WHERE idr = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, id);
+			this.prStat.setInt(1, idr);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				repr = new Representant(id,this.resSet.getString("LASTNAME"),
+				repr = new Representant(idr,this.resSet.getString("LASTNAME"),
 										this.resSet.getString("FIRSTNAME"),
 										this.resSet.getInt("PHONE"),
 										this.resSet.getString("MAIL"),
@@ -68,13 +68,13 @@ public class DAORepresentant extends DAO<Representant>{
 		return repr;
 	}
 	
-	public LinkedList<Inscription> findCommentaire(int id){
+	public LinkedList<Inscription> findCommentaire(int idr){
 		LinkedList<Inscription> ins = new LinkedList<Inscription>();
 		String sql = "SELECT * FROM inscription WHERE refrepr = ?";
-		Representant rep = this.find(id);
+		Representant rep = this.find(idr);
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, id);
+			this.prStat.setInt(1, idr);
 			this.resSet = this.prStat.executeQuery();
 			while(this.resSet.next()){
 				Plage p = new Plage();
@@ -107,8 +107,8 @@ public class DAORepresentant extends DAO<Representant>{
 		String sql = "INSERT INTO representant(lastName, firstName, phone, mail, matricule) VALUES (?,?,?,?,?)";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setString(1, rep.getLastname());
-			this.prStat.setString(2, rep.getFirstname());
+			this.prStat.setString(1, rep.getLastName());
+			this.prStat.setString(2, rep.getFirstName());
 			this.prStat.setInt(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
@@ -137,12 +137,12 @@ public class DAORepresentant extends DAO<Representant>{
 											+ "matricule = ? WHERE id = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setString(1, rep.getLastname());
-			this.prStat.setString(2, rep.getFirstname());
+			this.prStat.setString(1, rep.getLastName());
+			this.prStat.setString(2, rep.getFirstName());
 			this.prStat.setInt(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
-			this.prStat.setInt(6, rep.getId());
+			this.prStat.setInt(6, rep.getIdR());
 			change = (this.prStat.executeUpdate()>0)?true:false;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -163,10 +163,10 @@ public class DAORepresentant extends DAO<Representant>{
 	public boolean delete(Representant rep) {
 		// TODO Auto-generated method stub
 		boolean change = false;
-		String sql = "DELETE FROM representant WHERE id = ?";
+		String sql = "DELETE FROM representant WHERE idr = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, rep.getId());
+			this.prStat.setInt(1, rep.getIdR());
 			change = (this.prStat.executeUpdate()>0)?true:false;
 		} catch (Exception e) {
 			// TODO: handle exception

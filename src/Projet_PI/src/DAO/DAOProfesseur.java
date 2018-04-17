@@ -21,7 +21,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import Bean.Professeur;
 import Bean.Representant;
@@ -43,7 +42,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
 				Representant rep = new DAORepresentant().find(this.resSet.getInt("refrepr"));
-				prof = new Professeur(rep.getFirstname(),rep.getLastname(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
+				prof = new Professeur(rep.getIdR(),rep.getFirstName(),rep.getLastName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -126,13 +125,18 @@ public class DAOProfesseur extends DAO<Professeur>{
 	@Override
 	public boolean create(Professeur prof) {
 		// TODO Auto-generated method stub
-		new DAORepresentant().create(prof.getRepr());
+		new DAORepresentant().create(new Representant(prof.getIdR(),
+														prof.getLastName(),
+														prof.getFirstName(),
+														prof.getPhone(),
+														prof.getMail(),
+														prof.getMatricule()));
 		boolean change = false;
 		String sql = "INSERT INTO professeur (nbParticipant,refrepr) VALUES (?)";
 		try {
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, prof.getNbParticipations());
-			this.prStat.setInt(2, prof.getRepr().getId());//getter de representant
+			this.prStat.setInt(2, prof.getIdR());
 			change = (this.prStat.executeUpdate()>0)?true: false;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -255,7 +259,6 @@ public class DAOProfesseur extends DAO<Professeur>{
 				System.out.println(e.getMessage());
 			}
 		}
-		return change;
 		return change;
 	}
 
