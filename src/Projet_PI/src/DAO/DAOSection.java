@@ -89,7 +89,7 @@ public class DAOSection extends DAO<Section>
 			do
 			{
 				int idEtudiant = resultSet.getInt("id");
-				Etudiant etudiant = new DAOEtudiant.find(idEtudiant);
+				Etudiant etudiant = new DAOEtudiant().find(idEtudiant);
 				etudiant.setSec(section);
 				listeEtudiant.add(etudiant);
 				
