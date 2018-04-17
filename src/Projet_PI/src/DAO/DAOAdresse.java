@@ -79,8 +79,8 @@ public class DAOAdresse extends DAO<Adresse>
 	public boolean create(Adresse adr)
 	{
 		String query = "insert into adresse values(null, ?, ?, ?, ?, ?, ?)";
-		PreparedStatement ps;
-		
+		PreparedStatement ps = null;
+		boolean changed = false;
 		try
 		{
 			ps = connection.prepareStatement(query);
@@ -93,14 +93,26 @@ public class DAOAdresse extends DAO<Adresse>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			
+			changed =  true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createAdr failed !");
-			return false;
+			changed =  false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Erreur : " + e.getMessage());
+			}
+		}
+		return changed;
 	}
 
 	/**
