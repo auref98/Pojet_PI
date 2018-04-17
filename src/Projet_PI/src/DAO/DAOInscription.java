@@ -51,7 +51,7 @@ public class DAOInscription extends DAO<Inscription>
 			
 			boolean valide = (resultSet.getInt("valide") == 0) ? false : true;
 			Representant representant = new Representant();
-			representant.setId(resultSet.getInt("refRepr"));
+			representant.setIdR(resultSet.getInt("refRepr"));
 			Plage plage = new Plage();
 			plage.setId(resultSet.getInt("refPlage"));
 			ps.close();
@@ -84,7 +84,7 @@ public class DAOInscription extends DAO<Inscription>
 			int valide = (incptn.isValide() == true) ? 1 : 0;
 			ps.setInt(1, valide);
 			ps.setInt(2, incptn.getPlage().getId());
-			ps.setInt(3, incptn.getRepresentant().getId());
+			ps.setInt(3, incptn.getRepresentant().getIdR());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
@@ -117,7 +117,7 @@ public class DAOInscription extends DAO<Inscription>
 			int valide = (incptn.isValide() == true) ? 1 : 0;
 			ps.setInt(1, valide);
 			ps.setInt(2, incptn.getPlage().getId());
-			ps.setInt(3, incptn.getRepresentant().getId());
+			ps.setInt(3, incptn.getRepresentant().getIdR());
 			ps.setInt(4, incptn.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();

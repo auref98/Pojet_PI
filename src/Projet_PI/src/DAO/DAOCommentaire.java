@@ -48,7 +48,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 			resSet = prStat.executeQuery();
 			if(resSet.next()){
 				Representant rep = new Representant();
-				rep.setId(this.resSet.getInt("REFREPR"));
+				rep.setIdR(this.resSet.getInt("REFREPR"));
 				Evenement eve = new Evenement();
 				eve.setId(this.resSet.getInt("REFEVEN"));
 				com = new Commentaire(id,resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
@@ -113,7 +113,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	 * @return true si le commentaire est ajouter
 	 */
 	public boolean create(Commentaire com) {
-		int refRepr = com.getRep().getId();
+		int refRepr = com.getRep().getIdR();
 		int refEvent = com.getEvenement().getId();
 		boolean change = false;
 		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";
