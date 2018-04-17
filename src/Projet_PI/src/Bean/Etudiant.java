@@ -74,10 +74,10 @@ public class Etudiant extends Representant{
 	 * @param adr la référence de l'<code>Adresse</code> de l'étudiant
 	 * @param sec la référence de la <code>Section</code> à laquelle l'étudiant appartient
 	 */
-	public Etudiant(String lastName, String firstName, int phone, String mail, String matricule, int id,
+	public Etudiant(int idR, String lastName, String firstName, int phone, String mail, String matricule, int id,
 			LocalDate dateNaissance, String paysNaissance, String lieuNaissance, String numNational,
 			String nationalite, String numBanque, boolean soutienSocial, String emplacementEcole, String role, Adresse adr, Section sec) {
-		super(id, lastName, firstName, phone, mail, matricule);
+		super(idR, lastName, firstName, phone, mail, matricule);
 		this.id = id;
 		this.dateNaissance = dateNaissance;
 		this.paysNaissance = paysNaissance;

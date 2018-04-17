@@ -55,8 +55,8 @@ public class Professeur extends Representant{
 	 * @param id l'identifiant (BD) de l'étudiant
 	 * @param nbParticipations le nombre total de participations du professeur aux événements
 	 */
-	public Professeur(String nom, String prenom, int numTel, String mail, String matricule, int id, int nbParticipations) {
-		super(id, nom, prenom, numTel, mail, matricule);				// Appelle le constructeur de la super-classe Representant
+	public Professeur(int idR,String nom, String prenom, int numTel, String mail, String matricule, int id, int nbParticipations) {
+		super(idR, nom, prenom, numTel, mail, matricule);				// Appelle le constructeur de la super-classe Representant
 		this.id = id;
 		this.nbParticipations = nbParticipations;
 	}

@@ -28,7 +28,7 @@ import java.util.LinkedList;
  * @see java.util.LinkedList
  */
 public class Representant {
-	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
+	private int idR;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
 	private String lastName;											// Attribut pour le nom du représentant
 	private String firstName;											// Attribut pour le prénom du représentant
 	private int phone;												// Attribut pour le numéro de téléphone du représentant
@@ -54,15 +54,15 @@ public class Representant {
 	 * Précondition: tous les paramètres sont correctement initialisés. <br>
 	 * Postcondition: l'objet est initialisé; les attributs <code>id, lastName, firstName, phone, mail</code> et <code>matricule</code>" sont initialisés avec la valeur du paramètre de même nom; <br>
 	 * 				les listes <code>posts</code> et <code>inscrits</code> ne sont pas initialisées. <br>
-	 * @param id l'identifiant (BD) de l'événement
+	 * @param idR l'identifiant (BD) de l'événement
 	 * @param lastName le nom du représentant
 	 * @param firstName  le prénom du représentant
 	 * @param phone le numéro de téléphone du représentant
 	 * @param mail l'adresse email du représentant
 	 * @param matricule l'identifiant -  propre à l'école -  du représentant
 	 */
-	public Representant(int id, String lastName, String firstName, int phone, String mail, String matricule) {
-		this.id = id;
+	public Representant(int idR, String lastName, String firstName, int phone, String mail, String matricule) {
+		this.idR = idR;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.phone = phone;
@@ -82,16 +82,16 @@ public class Representant {
 	 * Renvoie l'identifiant (BD) de l'événement.
 	 * @return l'identifiant (BD) de l'événement
 	 */
-	public int getId() {
-		return id;
+	public int getIdR() {
+		return idR;
 	}
 
 	/**
 	 * Affecte l'identifiant (BD) de l'événement.
-	 * @param id l'identifiant (BD) à affecter
+	 * @param idR l'identifiant (BD) à affecter
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setIdR(int idR) {
+		this.idR = idR;
 	}
 
 // Getter et setter pour l'attribut "lastName"
