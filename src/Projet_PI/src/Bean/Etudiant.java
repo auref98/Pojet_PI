@@ -120,7 +120,7 @@ public class Etudiant extends Representant{
 	
 	/**
 	 * Renvoie la date de naissance de l'étudiant (au format <code>LocalDate</code>).
-	 * @return la date de naissance de l'étudiant (au format )
+	 * @return la date de naissance de l'étudiant (au format <code>LocalDate</code>)
 	 */
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
