@@ -33,16 +33,16 @@ public class DAORepresentant extends DAO<Representant>{
 	ResultSet resSet;
 	
 	@Override
-	public Representant find(int idr) {
+	public Representant find(int id) {
 		// TODO Auto-generated method stub
 		Representant repr = null;
-		String sql = "SELECT * FROM representant WHERE idr = ?";
+		String sql = "SELECT * FROM representant WHERE id = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, idr);
+			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				repr = new Representant(idr,this.resSet.getString("LASTNAME"),
+				repr = new Representant(id,this.resSet.getString("LASTNAME"),
 										this.resSet.getString("FIRSTNAME"),
 										this.resSet.getInt("PHONE"),
 										this.resSet.getString("MAIL"),
@@ -68,13 +68,13 @@ public class DAORepresentant extends DAO<Representant>{
 		return repr;
 	}
 	
-	public LinkedList<Inscription> findCommentaire(int idr){
+	public LinkedList<Inscription> findCommentaire(int id){
 		LinkedList<Inscription> ins = new LinkedList<Inscription>();
 		String sql = "SELECT * FROM inscription WHERE refrepr = ?";
-		Representant rep = this.find(idr);
+		Representant rep = this.find(id);
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, idr);
+			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			while(this.resSet.next()){
 				Plage p = new Plage();
@@ -113,14 +113,26 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
 			change = (this.prStat.executeUpdate()>0)?true:false;
+			
+			this.resSet = this.prStat.getGeneratedKeys();
+			if(this.resSet.next()){
+				rep.setId(this.resSet.getInt(1));
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}finally{
 			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+			try {
 				this.prStat.close();
 			} catch (Exception e) {
 				// TODO: handle exception
+				System.out.println(e.getMessage());
 			}
 		}
 		return change;
@@ -142,7 +154,7 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat.setInt(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
-			this.prStat.setInt(6, rep.getIdR());
+			this.prStat.setInt(6, rep.getId());
 			change = (this.prStat.executeUpdate()>0)?true:false;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -166,7 +178,7 @@ public class DAORepresentant extends DAO<Representant>{
 		String sql = "DELETE FROM representant WHERE idr = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, rep.getIdR());
+			this.prStat.setInt(1, rep.getId());
 			change = (this.prStat.executeUpdate()>0)?true:false;
 		} catch (Exception e) {
 			// TODO: handle exception

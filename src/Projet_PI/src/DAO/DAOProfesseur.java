@@ -41,8 +41,8 @@ public class DAOProfesseur extends DAO<Professeur>{
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				Representant rep = new DAORepresentant().find(this.resSet.getInt("refrepr"));
-				prof = new Professeur(rep.getIdR(),rep.getFirstName(),rep.getLastName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
+				Representant rep = new DAORepresentant().find(id);
+				prof = new Professeur(rep.getFirstName(),rep.getLastName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -125,18 +125,19 @@ public class DAOProfesseur extends DAO<Professeur>{
 	@Override
 	public boolean create(Professeur prof) {
 		// TODO Auto-generated method stub
-		new DAORepresentant().create(new Representant(prof.getIdR(),
-														prof.getLastName(),
-														prof.getFirstName(),
-														prof.getPhone(),
-														prof.getMail(),
-														prof.getMatricule()));
+		Representant repr = new Representant(prof.getId(),
+											prof.getLastName(),
+											prof.getFirstName(),
+											prof.getPhone(),
+											prof.getMail(),
+											prof.getMatricule());
+		new DAORepresentant().create(repr);
 		boolean change = false;
-		String sql = "INSERT INTO professeur (nbParticipant,refrepr) VALUES (?)";
+		String sql = "INSERT INTO professeur (id,nbParticipant) VALUES (?,?)";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, prof.getNbParticipations());
-			this.prStat.setInt(2, prof.getIdR());
+			this.prStat.setInt(1, repr.getId());
+			this.prStat.setInt(2, prof.getNbParticipations());
 			change = (this.prStat.executeUpdate()>0)?true: false;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -155,7 +156,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 			this.prStat = connection.prepareStatement(sql);
 			for(Section enseigne : prof.getEnseigne()){
 				try{
-					this.prStat.setInt(1, prof.getId());
+					this.prStat.setInt(1, repr.getId());
 					this.prStat.setInt(2, enseigne.getId());
 					this.prStat.executeUpdate();
 				}catch(Exception e){

@@ -47,9 +47,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			if(this.resSet.next()){
 				Section sect = new DAOSection().find(this.resSet.getInt("REFSECT"));
 				Adresse adr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
-				Representant rep = new DAORepresentant().find(this.resSet.getInt("REFREPR"));
-				etu = new Etudiant(rep.getIdR(),
-									rep.getLastName(),
+				Representant rep = new DAORepresentant().find(this.resSet.getInt("ID"));
+				etu = new Etudiant(rep.getLastName(),
 									rep.getFirstName(),
 									rep.getPhone(),
 									rep.getMail(),
@@ -89,14 +88,16 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	@Override
 	public boolean create(Etudiant etu) {
 		// TODO Auto-generated method stub
-		new DAORepresentant().create(new Representant(etu.getIdR(),
-														etu.getLastName(),
-														etu.getFirstName(),
-														etu.getPhone(),
-														etu.getMail(),
-														etu.getMatricule()));
+		Representant repr = new Representant(etu.getId(),
+											etu.getLastName(),
+											etu.getFirstName(),
+											etu.getPhone(),
+											etu.getMail(),
+											etu.getMatricule());
+		new DAORepresentant().create(repr);
 		boolean change = false;
-		String sql = "INSERT INTO etudiant (datenaissance,"
+		String sql = "INSERT INTO etudiant ( id"
+											+ "datenaissance,"
 											+ "paysnaissance,"
 											+ "lieunaissance,"
 											+ "numnational,"
@@ -105,22 +106,21 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											+ "soutiensocial,"
 											+ "emplacementecole,"
 											+ "role,"
-											+ "refrepr,"
 											+ "refsect,"
 											+ "refaddr)"
 											+ "VALUES( to_date('?','yyyy-mm-dd'),?, ?,?,?,?,?,?,?,? ?,?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setString(1, etu.getDateNaissance().toString());
-			this.prStat.setString(2, etu.getPaysNaissance());
-			this.prStat.setString(3, etu.getLieuNaissance());
-			this.prStat.setString(4, etu.getNumNational());
-			this.prStat.setString(5, etu.getNationalite());
-			this.prStat.setString(6, etu.getNumBanque());
-			this.prStat.setInt(7, (etu.isSoutienSocial())?1:0);
-			this.prStat.setString(8, etu.getEmplacementEcole());
-			this.prStat.setString(9, etu.getRole());
-			this.prStat.setInt(10, etu.getIdR());
+			this.prStat.setInt(1, repr.getId());
+			this.prStat.setString(2, etu.getDateNaissance().toString());
+			this.prStat.setString(3, etu.getPaysNaissance());
+			this.prStat.setString(4, etu.getLieuNaissance());
+			this.prStat.setString(5, etu.getNumNational());
+			this.prStat.setString(6, etu.getNationalite());
+			this.prStat.setString(7, etu.getNumBanque());
+			this.prStat.setInt(8, (etu.isSoutienSocial())?1:0);
+			this.prStat.setString(9, etu.getEmplacementEcole());
+			this.prStat.setString(10, etu.getRole());
 			this.prStat.setInt(11, etu.getSec().getId());
 			this.prStat.setInt(12, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
@@ -151,7 +151,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											+ "soutiensocial = ?,"
 											+ "emplacementecole = ?,"
 											+ "role = ?,"
-											+ "refrepr = ?,"
 											+ "refsect = ?,"
 											+ "refaddr = ? WHERE id = ?";
 		try {
@@ -165,9 +164,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(7, (etu.isSoutienSocial())?1:0);
 			this.prStat.setString(8, etu.getEmplacementEcole());
 			this.prStat.setString(9, etu.getRole());
-			this.prStat.setInt(10, etu.getIdR());//representant
-			this.prStat.setInt(11, etu.getSec().getId());
-			this.prStat.setInt(12, etu.getAdr().getId());
+			this.prStat.setInt(10, etu.getSec().getId());
+			this.prStat.setInt(11, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
 		} catch (Exception e) {
 			// TODO: handle exception
