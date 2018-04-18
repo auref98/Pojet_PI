@@ -39,7 +39,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public Evenement find(int id)
 	{
 		String query = "select * from evenement where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		
 		try
 		{
@@ -55,15 +55,25 @@ public class DAOEvenement extends DAO<Evenement>
 			String image = resultSet.getString("image");
 			Adresse adr = new Adresse();
 			adr.setId(resultSet.getInt("refaddr"));
-			ps.close();
 			
 			return new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findEvent failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -77,7 +87,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public ArrayList<Plage> findListePlage(Evenement event)
 	{
 		String query = "select * from plage where refEvenement = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		ArrayList<Plage> listePlage = new ArrayList<Plage>();
 		
 		try
@@ -102,8 +112,19 @@ public class DAOEvenement extends DAO<Evenement>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListePlage failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -117,7 +138,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public LinkedList<Commentaire> findListeCom(Evenement event)
 	{
 		String query = "select * from commentaire where refEvenement = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		LinkedList<Commentaire> listeCom = new LinkedList<Commentaire>();
 		
 		try
@@ -142,8 +163,19 @@ public class DAOEvenement extends DAO<Evenement>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeCom failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -157,7 +189,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public LinkedList<Contact> findListeContact(Evenement event)
 	{
 		String query = "select * from Contact where refEvenement = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		LinkedList<Contact> listeContact = new LinkedList<Contact>();
 		
 		try
@@ -182,8 +214,19 @@ public class DAOEvenement extends DAO<Evenement>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeContact failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -197,7 +240,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public ArrayList<Section> findListeSection(Evenement event)
 	{
 		String query = "select s.* from EVENEMENT e, SECTION s, CONCERNE c where e.id = c.REFEVEN and s.id = c.REFSECT and e.id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		ArrayList<Section> listeSection = new ArrayList<Section>();
 		
 		try
@@ -220,8 +263,19 @@ public class DAOEvenement extends DAO<Evenement>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeSection failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -235,7 +289,8 @@ public class DAOEvenement extends DAO<Evenement>
 	public boolean create(Evenement event)
 	{
 		String query = "insert into evenement values(null, ?, ?, ?, ?, ?)";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -248,14 +303,25 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createEvent failed !");
-			return false;
+			resultat = false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 	
 	/**
@@ -269,7 +335,8 @@ public class DAOEvenement extends DAO<Evenement>
 	public boolean update(Evenement event)
 	{
 		String query = "update evenement set NOM = ?, NBPARTICIPANTREQUIS = ?, DESCRIPTION = ?, IMAGE = ?, REFADDR = ? where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -283,14 +350,25 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: updateEvent failed !");
-			return false;
+			resultat = false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -304,7 +382,8 @@ public class DAOEvenement extends DAO<Evenement>
 	public boolean delete(Evenement event)
 	{
 		String query = "delete from evenement where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -313,14 +392,25 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deleteEvent failed !");
-			return false;
+			resultat =  false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 }

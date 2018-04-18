@@ -21,11 +21,7 @@
 package DAO;
 
 import java.sql.*;
-import java.util.*;
-
 import Bean.Adresse;
-import Bean.Etudiant;
-import Bean.Evenement;
 
 public class DAOAdresse extends DAO<Adresse>
 {
@@ -41,7 +37,7 @@ public class DAOAdresse extends DAO<Adresse>
 	public Adresse find(int id)
 	{
 		String query = "select * from adresse where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		
 		try
 		{
@@ -57,15 +53,25 @@ public class DAOAdresse extends DAO<Adresse>
 			int numero = resultSet.getInt("numero");
 			String boite = resultSet.getString("Boite");
 			String pays = resultSet.getString("pays");
-			ps.close();
 			
 			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findAdr failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -126,7 +132,8 @@ public class DAOAdresse extends DAO<Adresse>
 	public boolean update(Adresse adr)
 	{
 		String query = "update adresse set CODEPOSTAL = ?, LOCALITE = ?, RUE = ?, NUMERO = ?, BOITE = ?, PAYS = ? where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -141,14 +148,25 @@ public class DAOAdresse extends DAO<Adresse>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: UpdateAdr failed !");
-			return false;
+			resultat = false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 	
 	/**
@@ -162,7 +180,8 @@ public class DAOAdresse extends DAO<Adresse>
 	public boolean delete(Adresse adr)
 	{
 		String query = "delete from adresse where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -171,13 +190,24 @@ public class DAOAdresse extends DAO<Adresse>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deleteAdr failed !");
-			return false;
+			resultat = false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 }
