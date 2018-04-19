@@ -40,7 +40,8 @@ public class DAOSection extends DAO<Section>
 	public Section find(int id)
 	{
 		String query = "select * from section where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		Section section = null;
 		
 		try
 		{
@@ -53,15 +54,25 @@ public class DAOSection extends DAO<Section>
 			String nom = resultSet.getString("nom");
 			Professeur relais = new Professeur();
 			relais.setId(resultSet.getInt("refRelais"));
-			ps.close();
 			
-			return new Section(id, nom, relais);
+			section = new Section(id, nom, relais);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findSection failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return section;
 	}
 	
 	/**
@@ -75,7 +86,7 @@ public class DAOSection extends DAO<Section>
 	public ArrayList<Etudiant> findListeEtudiant(Section section)
 	{
 		String query = "select * from etudiant where refSect = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		ArrayList<Etudiant> listeEtudiant = new ArrayList<Etudiant>();
 		
 		try
@@ -94,14 +105,24 @@ public class DAOSection extends DAO<Section>
 				listeEtudiant.add(etudiant);
 				
 			} while(resultSet.next());
-			
-			return listeEtudiant;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeEtudiant failed !");
-			return null;
+			listeEtudiant = null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listeEtudiant;
 	}
 	
 	/**
@@ -116,7 +137,7 @@ public class DAOSection extends DAO<Section>
 	{
 		String query = "select c.* from CONTACT c, SECTION s, INTERESSE i where c.id = i.REFCONTACT and s.id = i.REFSECT and s.id = ?";
 
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		ArrayList<Contact> listeContact = new ArrayList<Contact>();
 		
 		try
@@ -133,14 +154,24 @@ public class DAOSection extends DAO<Section>
 				listeContact.add(new DAOContact().find(idContact));
 				
 			} while(resultSet.next());
-			
-			return listeContact;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeContact failed !");
-			return null;
+			listeContact = null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listeContact;
 	}
 	
 	/**
@@ -155,7 +186,7 @@ public class DAOSection extends DAO<Section>
 	{
 		String query = "select p.* from PROFESSEUR p, SECTION s, ENSEIGNE e where p.id = e.REFPROF and s.id = e.REFSECT and s.id = ?";
 
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		ArrayList<Professeur> listeProf = new ArrayList<Professeur>();
 		
 		try
@@ -172,14 +203,24 @@ public class DAOSection extends DAO<Section>
 				listeProf.add(new DAOProfesseur().find(idProf));
 				
 			} while(resultSet.next());
-			
-			return listeProf;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeProf failed !");
-			return null;
+			listeProf = null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listeProf;
 	}
 
 	/**
@@ -193,7 +234,8 @@ public class DAOSection extends DAO<Section>
 	public boolean create(Section section)
 	{
 		String query = "insert into evenement values(null, ?, ?)";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -202,15 +244,25 @@ public class DAOSection extends DAO<Section>
 			ps.setInt(2, section.getRelais().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
-			
-			ps.close();
-			return true;
+
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createSection failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 	
 	/**
@@ -224,7 +276,8 @@ public class DAOSection extends DAO<Section>
 	public boolean update(Section section)
 	{
 		String query = "update evenement set NOM = ?, refRelais = ? where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -234,15 +287,25 @@ public class DAOSection extends DAO<Section>
 			ps.setInt(3, section.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
-			
-			ps.close();
-			return true;
+
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: updateSection failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -256,7 +319,8 @@ public class DAOSection extends DAO<Section>
 	public boolean delete(Section section)
 	{
 		String query = "delete from section where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -265,14 +329,24 @@ public class DAOSection extends DAO<Section>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deleteSection failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 }
