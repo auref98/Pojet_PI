@@ -41,7 +41,8 @@ public class DAOPlage extends DAO<Plage>
 	public Plage find(int id)
 	{
 		String query = "select * from plage where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		Plage plage = null;
 		
 		try
 		{
@@ -56,15 +57,25 @@ public class DAOPlage extends DAO<Plage>
 			LocalTime heureFin = resultSet.getTime("heureFin").toLocalTime();
 			Evenement event = new Evenement();
 			event.setId(resultSet.getInt("refEven"));
-			ps.close();
 			
-			return new Plage(id, datePlage, heureDeb, heureFin, event);
+			plage = new Plage(id, datePlage, heureDeb, heureFin, event);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findPlage failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return plage;
 	}
 	
 	/**
@@ -78,7 +89,7 @@ public class DAOPlage extends DAO<Plage>
 	public LinkedList<Inscription> findListeInscription(Plage plage)
 	{
 		String query = "select * from inscription where refPlage = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
 		LinkedList<Inscription> listeIncptn = new LinkedList<Inscription>();
 		
 		try
@@ -103,8 +114,20 @@ public class DAOPlage extends DAO<Plage>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeIncptn failed !");
-			return null;
+			listeIncptn = null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listeIncptn;
 	}
 
 	/**
@@ -118,7 +141,8 @@ public class DAOPlage extends DAO<Plage>
 	public boolean create(Plage plage)
 	{
 		String query = "insert into plage values(null, ?, ?, ?, ?)";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -129,15 +153,25 @@ public class DAOPlage extends DAO<Plage>
 			ps.setInt(4, plage.getEve().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
-			
-			ps.close();
-			return true;
+
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createPlage failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -151,7 +185,8 @@ public class DAOPlage extends DAO<Plage>
 	public boolean update(Plage plage)
 	{
 		String query = "update plage set datePlage = ?, heureDeb = ?, heureFin = ?, refEven = ? where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -163,15 +198,25 @@ public class DAOPlage extends DAO<Plage>
 			ps.setInt(5, plage.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
-			
-			ps.close();
-			return true;
+		
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: updatePlage failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -185,7 +230,8 @@ public class DAOPlage extends DAO<Plage>
 	public boolean delete(Plage plage)
 	{
 		String query = "delete from plage where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -194,13 +240,23 @@ public class DAOPlage extends DAO<Plage>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deletePlage failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 }

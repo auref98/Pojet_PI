@@ -40,6 +40,7 @@ public class DAOEvenement extends DAO<Evenement>
 	{
 		String query = "select * from evenement where id = ?";
 		PreparedStatement ps = null;
+		Evenement event = null;
 		
 		try
 		{
@@ -56,7 +57,7 @@ public class DAOEvenement extends DAO<Evenement>
 			Adresse adr = new Adresse();
 			adr.setId(resultSet.getInt("refaddr"));
 			
-			return new Evenement(id, nom, nbParticipantRequis, description, image, adr);
+			event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 		}
 		catch (SQLException ex)
 		{
@@ -73,7 +74,7 @@ public class DAOEvenement extends DAO<Evenement>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return event;
 	}
 
 	/**
@@ -106,12 +107,11 @@ public class DAOEvenement extends DAO<Evenement>
 				listePlage.add(plage);
 				
 			} while(resultSet.next());
-			
-			return listePlage;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListePlage failed !");
+			listePlage = null;
 		}
 		finally
 		{
@@ -124,7 +124,7 @@ public class DAOEvenement extends DAO<Evenement>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return listePlage;
 	}
 	
 	/**
@@ -157,12 +157,11 @@ public class DAOEvenement extends DAO<Evenement>
 				listeCom.add(com);
 				
 			} while(resultSet.next());
-			
-			return listeCom;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeCom failed !");
+			listeCom = null;
 		}
 		finally
 		{
@@ -175,7 +174,7 @@ public class DAOEvenement extends DAO<Evenement>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return listeCom;
 	}
 	
 	/**
@@ -208,12 +207,11 @@ public class DAOEvenement extends DAO<Evenement>
 				listeContact.add(contact);
 				
 			} while(resultSet.next());
-			
-			return listeContact;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeContact failed !");
+			listeContact = null;
 		}
 		finally
 		{
@@ -226,7 +224,7 @@ public class DAOEvenement extends DAO<Evenement>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return listeContact;
 	}
 	
 	/**
@@ -257,12 +255,11 @@ public class DAOEvenement extends DAO<Evenement>
 				listeSection.add(new DAOSection().find(idSection));
 				
 			} while(resultSet.next());
-			
-			return listeSection;
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListeSection failed !");
+			listeSection = null;
 		}
 		finally
 		{
@@ -275,7 +272,7 @@ public class DAOEvenement extends DAO<Evenement>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return listeSection;
 	}
 	
 	/**

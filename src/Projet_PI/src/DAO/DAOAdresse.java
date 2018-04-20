@@ -38,6 +38,7 @@ public class DAOAdresse extends DAO<Adresse>
 	{
 		String query = "select * from adresse where id = ?";
 		PreparedStatement ps = null;
+		Adresse adr = null;
 		
 		try
 		{
@@ -54,7 +55,7 @@ public class DAOAdresse extends DAO<Adresse>
 			String boite = resultSet.getString("Boite");
 			String pays = resultSet.getString("pays");
 			
-			return new Adresse(id, localite, codePostal, rue, numero, boite, pays);
+			adr = new Adresse(id, localite, codePostal, rue, numero, boite, pays);
 		}
 		catch (SQLException ex)
 		{
@@ -71,7 +72,7 @@ public class DAOAdresse extends DAO<Adresse>
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return adr;
 	}
 	
 	/**
@@ -105,7 +106,6 @@ public class DAOAdresse extends DAO<Adresse>
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createAdr failed !");
-			changed =  false;
 		}
 		finally
 		{
@@ -153,7 +153,6 @@ public class DAOAdresse extends DAO<Adresse>
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: UpdateAdr failed !");
-			resultat = false;
 		}
 		finally
 		{
@@ -195,7 +194,6 @@ public class DAOAdresse extends DAO<Adresse>
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deleteAdr failed !");
-			resultat = false;
 		}
 		finally
 		{

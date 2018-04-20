@@ -39,7 +39,8 @@ public class DAOInscription extends DAO<Inscription>
 	public Inscription find(int id)
 	{
 		String query = "select * from inscription where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		Inscription inscpt = null;
 		
 		try
 		{
@@ -54,15 +55,25 @@ public class DAOInscription extends DAO<Inscription>
 			representant.setIdR(resultSet.getInt("refRepr"));
 			Plage plage = new Plage();
 			plage.setId(resultSet.getInt("refPlage"));
-			ps.close();
 			
-			return new Inscription(id, valide, representant, plage);
+			inscpt = new Inscription(id, valide, representant, plage);
 		}
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findIncptn failed !");
-			return null;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return inscpt;
 	}
 
 	/**
@@ -76,7 +87,8 @@ public class DAOInscription extends DAO<Inscription>
 	public boolean create(Inscription incptn)
 	{
 		String query = "insert into inscription values(null, ?, ?, ?)";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -88,14 +100,24 @@ public class DAOInscription extends DAO<Inscription>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createIncptn failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -109,7 +131,8 @@ public class DAOInscription extends DAO<Inscription>
 	public boolean update(Inscription incptn)
 	{
 		String query = "update inscription set valide = ?, refPlage = ?, refRepr = ? where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -122,14 +145,24 @@ public class DAOInscription extends DAO<Inscription>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: UpdateIncptn failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 
 	/**
@@ -143,7 +176,8 @@ public class DAOInscription extends DAO<Inscription>
 	public boolean delete(Inscription incptn)
 	{
 		String query = "delete from inscription where id = ?";
-		PreparedStatement ps;
+		PreparedStatement ps = null;
+		boolean resultat = false;
 		
 		try
 		{
@@ -152,13 +186,23 @@ public class DAOInscription extends DAO<Inscription>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ps.close();
-			return true;
+			resultat = true;
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: deleteIncptn failed !");
-			return false;
 		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return resultat;
 	}
 }
