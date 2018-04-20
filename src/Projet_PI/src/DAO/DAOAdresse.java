@@ -106,6 +106,7 @@ public class DAOAdresse extends DAO<Adresse>
 		catch (SQLException e)
 		{
 			System.out.println("Erreur: createAdr failed !");
+			System.out.println(e.getMessage());
 		}
 		finally
 		{
