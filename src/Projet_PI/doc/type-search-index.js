@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"Servlet","l":"ServletIndex"}]
+typeSearchIndex = [{"p":"DAO","l":"DAO"}]

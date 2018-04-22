@@ -54,10 +54,12 @@ public class Evenement implements Serializable{
 	public Evenement() {}
 	
 	/**
-	 * Constructeur initialisant tous les paramètres. <br><br>
-	 * Précondition: tous les paramètres sont correctement initialisés. <br>
-	 * Postcondition: l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code> sont initialisés avec la valeur du paramètre de même nom;
-	 * les champs <code>listePlage, listeCommentaire, listeContact</code> et <code>listeSection</code> sont initialisés avec une liste vide de type approprié. <br>
+	 * <pre>
+	 * Constructeur initialisant tous les paramètres.
+	 * Précondition:		tous les paramètres sont correctement initialisés. 
+	 * Postcondition: 	l'objet est initialisé; les attributs <code>id, nom, nbParticipantsRequis, description, image</code> et <code>adresseEve</code> sont initialisés avec la valeur du paramètre de même nom;
+	 * 			les champs <code>listePlage, listeCommentaire, listeContact</code> et <code>listeSection</code> sont initialisés avec une liste vide de type approprié. 
+	 * </pre>
 	 * @param id l'identifiant (BD) de l'événement
 	 * @param nom le nom de l'événement
 	 * @param nbParticipantRequis le nombre total de participants requis pour représenter l'école lors de l'événement
@@ -110,16 +112,16 @@ public class Evenement implements Serializable{
 // Getter et setter pour l'attribut "id"	
 
 	/**
-	 * Renvoie l'identifiant (BD) de l'objet.
-	 * @return l'identifiant (BD) de l'objet
+	 * Renvoie l'identifiant (BD) de l'événement.
+	 * @return l'identifiant (BD) de l'événement
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Affecte  l'identifiant (BD) de l'objet.
-	 * @param id l'identifiant (BD) de l'objet
+	 * Affecte  l'identifiant (BD) de l'événement.
+	 * @param id l'identifiant (BD) de l'événement
 	 */
 	public void setId(int id) {
 		this.id = id;

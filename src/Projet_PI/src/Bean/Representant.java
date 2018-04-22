@@ -79,16 +79,16 @@ public class Representant {
 // Getter et setter pour l'attribut "id"
 	
 	/**
-	 * Renvoie l'identifiant (BD) de l'événement.
-	 * @return l'identifiant (BD) de l'événement
+	 * Renvoie l'identifiant (BD) du représentant.
+	 * @return l'identifiant (BD) du représentant
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Affecte l'identifiant (BD) de l'événement.
-	 * @param idR l'identifiant (BD) à affecter
+	 * Affecte l'identifiant (BD) du représentant.
+	 * @param id l'identifiant (BD) à affecter
 	 */
 	public void setId(int id) {
 		this.id = id;

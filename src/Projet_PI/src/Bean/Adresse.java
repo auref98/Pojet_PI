@@ -120,7 +120,7 @@ public class Adresse implements Serializable {
 	
 	/** 
 	 * Affecte le code postal correspondant à la localité.<br>
-	 * inv: codePostal > 0
+	 * inv: codePostal &gt;  0
 	 * @param codePostal le code postal à affecter
 	 */
 	public void setCodePostal(int codePostal) {

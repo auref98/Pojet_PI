@@ -45,7 +45,7 @@ public class ConnectionOracle
 	 */
 	private ConnectionOracle()
 		{
-		try																					// Risques: driver manquant, échec de connection
+		try																					// Risques: driver manquant, échec de connexion
 			{
 			Class.forName("oracle.jdbc.driver.OracleDriver");										// Charge le driver spécifique à Oracle
 			connection = DriverManager.getConnection(url, username, password);					// Tente de se connecter à la base de données avec les informations fournies
@@ -54,21 +54,21 @@ public class ConnectionOracle
 			{
 			System.out.println(e.getLocalizedMessage());
 			}
-		catch(SQLException e)																	// Echec de connection (erreur SQL)
+		catch(SQLException e)																	// Echec de connexion (erreur SQL)
 			{
 			System.out.println(e.getLocalizedMessage());
 			}
 		}
 	
 	/**
-	 * Methode permettant d'obtenir l'instance de la classe <code>Connection</code>. <br><br>
-	 * Une seule instance de la classe Connection peut exister, puisqu'il n'est pas utilie ni souhaitable de créer une nouvelle connection avec la base de données pour chaque opération. <br>
-	 * C'est pourquoi le constructeur de cette classe n'est pas accessible; à la place, cette méthode initialisera 
-	 * @return l'unique instance de cette classe
+	 * Methode <code>static</code> permettant d'obtenir l'instance de la classe <code>Connection</code>. <br><br>
+	 * Initialise cette instance si elle ne l'était pas encore lors de l'appel de la méthode..
+	 * @return l'unique instance de la classe <code>Connection</code>
+	 * @see java.sql.Connection
 	 */
 	public static Connection getInstance()
 		{
-		if(instance == null) instance = new ConnectionOracle();									// Si la connection n'a pas encore été créée (instance == null), appelle le constructeur qui va l'initialiser et affecte une valeur à la variable "instance" pour modifier le résultat de ce test lors des futurs appel à cette fonction
-		return connection;																	// Renvoie la référence de la Connection contenur dans la variable "connection", après qu'elle ait été créée dans cette fonction le cas échéant
+		if(instance == null) instance = new ConnectionOracle();									// Si la connection n'a pas encore été créée (instance == null), appelle le constructeur qui va l'initialiser et affecte une valeur à la variable "instance" pour modifier le résultat de ce test lors des futurs appel à cette méthode
+		return connection;																	// Renvoie la référence de la Connection contenur dans la variable "connection", après qu'elle ait été créée dans cette méthode le cas échéant
 		}
 	}
