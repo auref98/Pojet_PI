@@ -1,5 +1,5 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscritsptions à des événements

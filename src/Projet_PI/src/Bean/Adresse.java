@@ -1,5 +1,5 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
  * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
@@ -119,7 +119,8 @@ public class Adresse implements Serializable {
 	}
 	
 	/** 
-	 * Affecte le code postal correspondant à la localité.
+	 * Affecte le code postal correspondant à la localité.<br>
+	 * inv: codePostal > 0
 	 * @param codePostal le code postal à affecter
 	 */
 	public void setCodePostal(int codePostal) {

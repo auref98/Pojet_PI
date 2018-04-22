@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"Bean"}]
+packageSearchIndex = [{"l":"Servlet"}]
