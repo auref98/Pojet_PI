@@ -35,7 +35,7 @@ public class ConnectionOracle
 	private static ConnectionOracle instance = null;												// Référence vers la seule instance de cette classe créée; sert à indiquer si la connection a déjà été initialisée (auquel cas cette variable contient une référence) ou pas (cette variable est à null
 	
 	
-	private String url = "jdbc:oracle:thin:@"+ "127.0.0.1:12115:o11etu2"; 							// Initialise une variable avec l'url de la base de données à joindre 
+	private String url = "jdbc:oracle:thin:@"+ "172.16.110.172:2115:o11etu2"; 							// Initialise une variable avec l'url de la base de données à joindre 
 	private String username = "BDNamingException";											// Déclare une variable pour le nom d'utilisateur du représentant essayant de se connecter
 	private String password = "12345";															// Déclare une variable pour le mot de passe du représentant essayant de se connecter
 	
