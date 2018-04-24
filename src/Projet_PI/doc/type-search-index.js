@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"DAO","l":"DAO"}]
+typeSearchIndex = [{"p":"DAO","l":"ConnectionOracle"}]

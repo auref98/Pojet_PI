@@ -4,14 +4,15 @@
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
- * Groupe: NamingException {
- * 				Adam Ludovic;
- *				Arnould Killian;
- * 				De Bernardi Christophe;
- * 				Fockedey Aurelien;
- * 				Mathieu Robin;
- * 				Modave Louis;
- * 				}
+ * Groupe NamingException
+ * 			{
+ * 			Adam Ludovic;
+ *			Arnould Killian;
+ * 			De Bernardi Christophe;
+ * 			Fockedey Aurelien;
+ * 			Mathieu Robin;
+ * 			Modave Louis;
+ * 			}
  */
 
 package DAO;
@@ -31,7 +32,7 @@ import java.sql.*;
  * L'effet de ces méthodes peut varier dans chaque classe dérivée en fonction des besoins de l'application, de la nature des données et de leur lien entre elles. D'autres méthodes peuvent être implémentées pour 
  * répondre à des cas d'utilisation spécifiques. <br><br>
  * Cette classe abstraite contient également la référence de l'objet <code>Connection</code> nécessaire à la connexion à la base de données de l'appication. La référence sera donc accessible depuis les classes dérivées et 
- * il est inutile d'insérer une variable supplémentaire dans celles-ci.
+ * il est inutile d'insérer une variable supplémentaire dans celles-ci. <br>
  * @param <T> La classe du package <code>Bean</code> concernée par le DAO. L'usage de la généricité simplifie l'utilisation de classes spécifiques dans l'implémentation des méthodes définies ici. 
  */
 public abstract class DAO<T>
