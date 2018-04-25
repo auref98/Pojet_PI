@@ -152,25 +152,27 @@ public class DAOProfesseur extends DAO<Professeur>{
 		}
 		
 		sql = "INSERT INTO enseigne (refprof,refsect) VALUES(?,?)";
-		try{
-			this.prStat = connection.prepareStatement(sql);
-			for(Section enseigne : prof.getEnseigne()){
-				try{
-					this.prStat.setInt(1, repr.getId());
-					this.prStat.setInt(2, enseigne.getId());
-					this.prStat.executeUpdate();
-				}catch(Exception e){
+		if(prof.getEnseigne() != null){
+			try{
+				this.prStat = connection.prepareStatement(sql);
+				for(Section enseigne : prof.getEnseigne()){
+					try{
+						this.prStat.setInt(1, repr.getId());
+						this.prStat.setInt(2, enseigne.getId());
+						this.prStat.executeUpdate();
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+					}
+				}
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}finally{
+				try {
+					this.prStat.close();
+				} catch (Exception e) {
+					// TODO: handle exception
 					System.out.println(e.getMessage());
 				}
-			}
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}finally{
-			try {
-				this.prStat.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-				System.out.println(e.getMessage());
 			}
 		}
 		return change;
