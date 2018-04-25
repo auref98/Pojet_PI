@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
  * @see HttpServlet
  */
 
-@WebServlet("/index.jsp")																					// Balise indiquant au servlet la cible de la requete HTTP déclenchant son appel
+@WebServlet("/index.jsp")	// Balise indiquant au servlet la cible de la requete HTTP déclenchant son appel
 public class ServletIndex extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -53,8 +53,7 @@ public class ServletIndex extends HttpServlet
 	 * @see <code>javax.servlet.GenericServlet#getServletContext()</code>
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Connection.jsp").forward(request,  response);
 	}
