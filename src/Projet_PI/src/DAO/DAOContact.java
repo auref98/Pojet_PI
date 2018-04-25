@@ -127,6 +127,30 @@ public class DAOContact extends DAO<Contact>{
 				System.out.println(e.getMessage());
 			}
 		}
+		if(cont.getInteresse() != null){
+			sql = "INSERT INTO interesse (REFCONTACT, REFSECT) VALUES (?,?)";
+			try{
+				this.prStat = connection.prepareStatement(sql);
+				for(Section sect : cont.getInteresse()){
+					try{
+						this.prStat.setInt(1, cont.getId());
+						this.prStat.setInt(2, sect.getId());
+						this.prStat.executeUpdate();
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+					}
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try {
+					this.prStat.close();
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}
 		return change;
 	}
 
