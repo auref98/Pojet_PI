@@ -17,6 +17,8 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<img class="img-fluid" src="https://i.skyrock.net/0210/82940210/pics/3114147403_1_3_5Mv4quWv.jpg" alt="marche pas">
+		<header>
+			<img class="img-responsive" src="assets\img\logoHERS0.jpg" alt="logoHERS">
+		</header>
 	</body>
 </html>
