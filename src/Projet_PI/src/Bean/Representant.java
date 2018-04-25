@@ -31,7 +31,7 @@ public class Representant {
 	private int id;													// Attribut permettant de recuperer l'id référençant cette adresse dans la base de donnees	
 	private String lastName;											// Attribut pour le nom du représentant
 	private String firstName;											// Attribut pour le prénom du représentant
-	private int phone;												// Attribut pour le numéro de téléphone du représentant
+	private String phone;												// Attribut pour le numéro de téléphone du représentant
 	private String mail;												// Attribut pour l'adresse email du représentant
 	private String matricule;											//Attribut pour l'identifiant -  propre à l'école -  du représentant (e...... pour un étudiant, h...... pour un professeur)
 
@@ -61,7 +61,7 @@ public class Representant {
 	 * @param mail l'adresse email du représentant
 	 * @param matricule l'identifiant -  propre à l'école -  du représentant
 	 */
-	public Representant(int id, String lastName, String firstName, int phone, String mail, String matricule) {
+	public Representant(int id, String lastName, String firstName, String phone, String mail, String matricule) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -92,6 +92,10 @@ public class Representant {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public void setId(long id){
+		this.id = (int)id;
 	}
 
 // Getter et setter pour l'attribut "lastName"
@@ -136,7 +140,7 @@ public class Representant {
 	 * Renvoie le numero de téléphone du représentant.
 	 * @return le numero de téléphone du représentant
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
@@ -144,7 +148,7 @@ public class Representant {
 	 * Affecte e numero de téléphone du représentant.
 	 * @param phone le numero de téléphone à affecter
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
