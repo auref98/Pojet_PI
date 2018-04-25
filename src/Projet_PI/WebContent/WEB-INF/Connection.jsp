@@ -17,8 +17,10 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<header>
-			<img class="img-responsive" src="assets\img\logoHERS0.jpg" alt="logoHERS">
+		<header class="navbar navbar-dark bg-dark">
+			<div></div>
+    		<img src="assets\img\logoHERS0.jpg" width="150" height="100" alt="logoHERS0">
+    		<div></div>
 		</header>
 	</body>
 </html>
