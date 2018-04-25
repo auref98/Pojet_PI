@@ -409,5 +409,4 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		return resultat;
 	}
-
 }
