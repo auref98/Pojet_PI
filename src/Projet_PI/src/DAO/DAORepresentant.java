@@ -104,7 +104,7 @@ public class DAORepresentant extends DAO<Representant>{
 	@Override
 	public boolean create(Representant rep) {
 		boolean change = false;
-		String sql = "INSERT INTO representant(lastName, firstName, phone, mail, matricule) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO representant(lastName, firstName, phone, mail, matricule,password,salt) VALUES (?,?,?,?,?,STANDARD_HASH(?,'SHA256'),?)";
 		try {
 			this.prStat = connection.prepareStatement(sql,new String[] {"id"});
 			this.prStat.setString(1, rep.getLastName());
@@ -112,6 +112,10 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat.setString(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
+			String pass = this.RandomString(15);
+			String salt = this.RandomString(20);
+			this.prStat.setString(6, pass+salt);
+			this.prStat.setString(7, salt);
 			change = (this.prStat.executeUpdate()>0)?true:false;
 			
 			this.resSet = this.prStat.getGeneratedKeys();
@@ -191,5 +195,14 @@ public class DAORepresentant extends DAO<Representant>{
 			}
 		}
 		return change;
+	}
+	private String RandomString(int nbChar){
+		String allChar = "AZERTYUIOPQSDFGHJKLMWXCVBN123456789azertyuiopqsdfghjklmwxcvbn";
+		String random = "";
+		for(int i = 0; i < nbChar;i++){
+			int charAleatoire =(int)(Math.random() * (allChar.length() - 0));
+			random+=allChar.charAt(charAleatoire);
+		}
+		return random;
 	}
 }
