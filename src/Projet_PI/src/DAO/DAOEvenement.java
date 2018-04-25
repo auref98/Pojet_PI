@@ -46,8 +46,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery(query);
-			
+			ResultSet resultSet = ps.executeQuery();			
 			if(resultSet.next() == false) throw new SQLException();
 			
 			String nom = resultSet.getString("nom");
@@ -95,7 +94,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -145,7 +144,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -195,7 +194,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -245,7 +244,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -291,7 +290,7 @@ public class DAOEvenement extends DAO<Evenement>
 		
 		try
 		{
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query, new String[] {"id"});
 			ps.setString(1, event.getNom());
 			ps.setInt(2, event.getNbParticipantRequis());
 			ps.setString(3, event.getDescription());
@@ -299,6 +298,34 @@ public class DAOEvenement extends DAO<Evenement>
 			ps.setInt(5, event.getAdresseEve().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if(resultSet.next()) event.setId(resultSet.getInt(1));
+			
+			if(event.getSection() != null)
+			{
+				for(int i = 0; i < event.getSection().size(); i++)
+				{
+					query = "insert into concerne values(?, ?)";
+					
+					try 
+					{
+						ps.close();
+						ps = connection.prepareStatement(query);
+						
+						ps.setInt(1, event.getId());
+						ps.setInt(2, event.getSection().get(i).getId());
+						
+						if(ps.executeUpdate() == 0) throw new SQLException();
+					}
+					catch (SQLException e)
+					{
+						System.out.println("Erreur: createConcerne failed !");
+						System.out.println(e.getMessage());
+
+					}
+				}
+			}
 			
 			resultat = true;
 		}
@@ -346,6 +373,50 @@ public class DAOEvenement extends DAO<Evenement>
 			ps.setInt(6, event.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			if(event.getSection() != null)
+			{
+				query = "delete concerne where refEven = ?";
+				
+				try 
+				{
+					ps.close();
+					ps = connection.prepareStatement(query);
+					
+					ps.setInt(1, event.getId());
+					
+					if(ps.executeUpdate() == 0) throw new SQLException();
+					
+					for(int i = 0; i < event.getSection().size(); i++)
+					{
+						query = "insert into concerne values(?, ?)";
+						
+						try 
+						{
+							ps.close();
+							ps = connection.prepareStatement(query);
+							
+							ps.setInt(1, event.getId());
+							ps.setInt(2, event.getSection().get(i).getId());
+							
+							if(ps.executeUpdate() == 0) throw new SQLException();
+						}
+						catch (SQLException e)
+						{
+							System.out.println("Erreur: updateConcerne failed !");
+							System.out.println(e.getMessage());
+
+						}
+					}
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Erreur: deleteConcerne failed !");
+					System.out.println(e.getMessage());
+
+				}
+				
+			}
 			
 			resultat = true;
 		}
