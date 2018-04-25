@@ -44,7 +44,7 @@ public class DAOAdresse extends DAO<Adresse>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -60,6 +60,7 @@ public class DAOAdresse extends DAO<Adresse>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findAdr failed !");
+			System.out.println(ex.getMessage());
 		}
 		finally
 		{
@@ -90,7 +91,7 @@ public class DAOAdresse extends DAO<Adresse>
 		boolean changed = false;
 		try
 		{
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query, new String[] {"id"});
 			ps.setInt(1, adr.getCodePostal());
 			ps.setString(2, adr.getLocalite());
 			ps.setString(3, adr.getRue());
@@ -148,6 +149,9 @@ public class DAOAdresse extends DAO<Adresse>
 			ps.setInt(7, adr.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if(resultSet.next()) adr.setId(resultSet.getInt(1));
 			
 			resultat = true;
 		}

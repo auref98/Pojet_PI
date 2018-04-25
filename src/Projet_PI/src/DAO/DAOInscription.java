@@ -46,7 +46,7 @@ public class DAOInscription extends DAO<Inscription>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -92,13 +92,16 @@ public class DAOInscription extends DAO<Inscription>
 		
 		try
 		{
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query, new String[] {"id"});
 			int valide = (incptn.isValide() == true) ? 1 : 0;
 			ps.setInt(1, valide);
 			ps.setInt(2, incptn.getPlage().getId());
 			ps.setInt(3, incptn.getRepresentant().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if(resultSet.next()) incptn.setId(resultSet.getInt(1));
 			
 			resultat = true;
 		}

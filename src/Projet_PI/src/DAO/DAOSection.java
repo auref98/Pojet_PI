@@ -47,7 +47,7 @@ public class DAOSection extends DAO<Section>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -93,7 +93,7 @@ public class DAOSection extends DAO<Section>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -144,7 +144,7 @@ public class DAOSection extends DAO<Section>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -193,7 +193,7 @@ public class DAOSection extends DAO<Section>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -233,17 +233,20 @@ public class DAOSection extends DAO<Section>
 	@Override
 	public boolean create(Section section)
 	{
-		String query = "insert into evenement values(null, ?, ?)";
+		String query = "insert into section values(null, ?, ?)";
 		PreparedStatement ps = null;
 		boolean resultat = false;
 		
 		try
 		{
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query, new String[] {"id"});
 			ps.setString(1, section.getNom());
 			ps.setInt(2, section.getRelais().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if(resultSet.next()) section.setId(resultSet.getInt(1));
 
 			resultat = true;
 		}
@@ -275,7 +278,7 @@ public class DAOSection extends DAO<Section>
 	@Override
 	public boolean update(Section section)
 	{
-		String query = "update evenement set NOM = ?, refRelais = ? where id = ?";
+		String query = "update section set NOM = ?, refRelais = ? where id = ?";
 		PreparedStatement ps = null;
 		boolean resultat = false;
 		

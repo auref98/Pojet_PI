@@ -106,7 +106,7 @@ public class DAORepresentant extends DAO<Representant>{
 		boolean change = false;
 		String sql = "INSERT INTO representant(lastName, firstName, phone, mail, matricule) VALUES (?,?,?,?,?)";
 		try {
-			this.prStat = connection.prepareStatement(sql);
+			this.prStat = connection.prepareStatement(sql,new String[] {"id"});
 			this.prStat.setString(1, rep.getLastName());
 			this.prStat.setString(2, rep.getFirstName());
 			this.prStat.setInt(3, rep.getPhone());

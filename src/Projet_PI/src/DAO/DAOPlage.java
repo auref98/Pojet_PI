@@ -48,7 +48,7 @@ public class DAOPlage extends DAO<Plage>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -96,7 +96,7 @@ public class DAOPlage extends DAO<Plage>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, plage.getId());
-			ResultSet resultSet = ps.executeQuery(query);
+			ResultSet resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -146,13 +146,16 @@ public class DAOPlage extends DAO<Plage>
 		
 		try
 		{
-			ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query, new String[] {"id"});
 			ps.setDate(1, java.sql.Date.valueOf(plage.getDate()));
 			ps.setTime(2, java.sql.Time.valueOf(plage.getHeureDebut()));
 			ps.setTime(3, java.sql.Time.valueOf(plage.getHeureFin()));
 			ps.setInt(4, plage.getEve().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
+			
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if(resultSet.next()) plage.setId(resultSet.getInt(1));
 
 			resultat = true;
 		}
