@@ -44,7 +44,7 @@ public class DAORepresentant extends DAO<Representant>{
 			if(this.resSet.next()){
 				repr = new Representant(id,this.resSet.getString("LASTNAME"),
 										this.resSet.getString("FIRSTNAME"),
-										this.resSet.getInt("PHONE"),
+										this.resSet.getString("PHONE"),
 										this.resSet.getString("MAIL"),
 										this.resSet.getString("MATRICULE"));
 			}
@@ -109,7 +109,7 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat = connection.prepareStatement(sql,new String[] {"id"});
 			this.prStat.setString(1, rep.getLastName());
 			this.prStat.setString(2, rep.getFirstName());
-			this.prStat.setInt(3, rep.getPhone());
+			this.prStat.setString(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
 			change = (this.prStat.executeUpdate()>0)?true:false;
@@ -151,7 +151,7 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setString(1, rep.getLastName());
 			this.prStat.setString(2, rep.getFirstName());
-			this.prStat.setInt(3, rep.getPhone());
+			this.prStat.setString(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
 			this.prStat.setInt(6, rep.getId());
