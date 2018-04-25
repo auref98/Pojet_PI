@@ -68,6 +68,46 @@ public class DAORepresentant extends DAO<Representant>{
 		return repr;
 	}
 	
+	public Representant findRepr(String mail, String password){
+		String sql = "SELECT * FROM representant WHERE password = STANDARD_HASH(? || (SELECT salt FROM representant WHERE mail = ?),'SHA256') and mail = ?";
+		Representant rep = null;
+		try {
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setString(1, password);
+			this.prStat.setString(2, mail);
+			this.prStat.setString(3, mail);
+			this.resSet = this.prStat.executeQuery();
+			if(this.resSet.next()){
+				rep = new Representant(this.resSet.getInt("ID"),
+										this.resSet.getString("LASTNAME"),
+										this.resSet.getString("FIRSTNAME"),
+										this.resSet.getString("PHONE"),
+										this.resSet.getString("MAIL"),
+										this.resSet.getString("MATRICULE"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}finally{
+			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+			try {
+				this.prStat.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		return rep;
+	}
+	
 	public LinkedList<Inscription> findCommentaire(int id){
 		LinkedList<Inscription> ins = new LinkedList<Inscription>();
 		String sql = "SELECT * FROM inscription WHERE refrepr = ?";

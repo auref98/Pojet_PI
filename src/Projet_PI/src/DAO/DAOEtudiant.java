@@ -84,6 +84,12 @@ public class DAOEtudiant extends DAO<Etudiant>{
 		}
 		return etu;
 	}
+	
+	public Etudiant findEtu(String mail, String password){
+		Representant rep = new DAORepresentant().findRepr(mail, password);
+		if(rep != null)return this.find(rep.getId());
+		return null;
+	}
 
 	@Override
 	public boolean create(Etudiant etu) {

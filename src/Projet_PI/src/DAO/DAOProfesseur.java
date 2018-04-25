@@ -62,6 +62,12 @@ public class DAOProfesseur extends DAO<Professeur>{
 		return prof;
 	}
 	
+	public Professeur findProf(String mail,String password){
+		Representant repr = new DAORepresentant().findRepr(mail, password);
+		if(repr != null)return this.find(repr.getId());
+		return null;
+	}
+	
 	public ArrayList<Section> findRelais(int id){
 		ArrayList<Section> sect = new ArrayList<Section>();
 		String sql = "SELECT id FROM section WHERE refrelais = ?";
