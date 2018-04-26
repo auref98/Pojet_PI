@@ -20,5 +20,17 @@
 		<header class="navbar navbar-dark bg-secondary">
     		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
+		
+		<form class="offset-4">
+			<div class="form-group row">
+		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
+		    	<input type="email" class="form-control col-3 col-xs-12" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		  	</div>
+		  	<div class="form-group row">
+		    	<label for="exampleInputPassword1" class="col-2">Mot de passe:</label>
+		    	<input type="password" class="form-control col-3 col-xs-12" id="exampleInputPassword1" placeholder="Password">
+		  	</div>
+		  	<button type="submit" class="btn btn-primary row col-2 offset-1">Connexion</button>
+		</form>
 	</body>
 </html>
