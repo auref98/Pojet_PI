@@ -44,18 +44,21 @@ public class DAOProfesseur extends DAO<Professeur>{
 				Representant rep = new DAORepresentant().find(id);
 				prof = new Professeur(rep.getFirstName(),rep.getLastName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
+			System.out.println("Erreur: findProf failed !");
 			System.out.println(e.getMessage());
 		}finally{
 			try {
 				this.resSet.close();
-			} catch (Exception e) {
+			} catch (SQLException e) {
+				System.out.println("Erreur: resSetClose failed !");
 				System.out.println(e.getMessage());
 			}
 			try{
 				this.prStat.close();
-			}catch(Exception e){
+			}catch(SQLException e){
+				System.out.println("Erreur: prStatClose failed !");
 				System.out.println(e.getMessage());
 			}
 		}

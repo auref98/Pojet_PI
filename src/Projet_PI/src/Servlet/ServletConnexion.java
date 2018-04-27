@@ -43,21 +43,27 @@ public class ServletConnexion extends HttpServlet
 		String mail = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		Representant rep;
+		System.out.println("test1");
 		
-		if(mail.indexOf("student") != -1)
+		Representant rep = new DAOProfesseur().find("ludovic.adam@hers.be", "password");
+		
+		/*if(mail.indexOf("student") != -1)
 		{
 			System.out.println("Etudiant");
-			rep = new DAOEtudiant().find("mails@hers.be", "MDP");
+			rep = new DAOEtudiant().find("ludovic.adam@hers.be", "password");
 		}
 		else
 		{
 			System.out.println("Prof");
-			rep = new DAOProfesseur().find("mails@hers.be", "MDP");
-		}
+			rep = new DAOProfesseur().find("ludovic.adam@hers.be", "password");
+		}*/
 		
 		if(rep == null) System.out.println("Erreur !");
-		else System.out.println(rep.getLastName() + " " + rep.getFirstName());
+		else
+		{
+			//System.out.println(rep.getLastName() + " " + rep.getFirstName());
+			System.out.println(rep.getLastName() + " " + rep.getFirstName());
+		}
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
 	}
