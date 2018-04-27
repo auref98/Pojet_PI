@@ -68,7 +68,7 @@ public class DAORepresentant extends DAO<Representant>{
 		return repr;
 	}
 	
-	public Representant findRepr(String mail, String password){
+	public Representant find(String mail, String password){
 		String sql = "SELECT * FROM representant WHERE password = STANDARD_HASH(? || (SELECT salt FROM representant WHERE mail = ?),'SHA256') and mail = ?";
 		Representant rep = null;
 		try {
