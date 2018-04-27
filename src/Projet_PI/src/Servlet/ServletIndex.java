@@ -55,7 +55,7 @@ public class ServletIndex extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Connection.jsp").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 	}
 	
 }

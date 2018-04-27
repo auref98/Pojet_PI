@@ -1,0 +1,65 @@
+/*
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Informatique de geston, bloc 2	
+ * 
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
+ */
+
+package Servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import Bean.*;
+import DAO.*;
+
+@WebServlet("/Connexion")	// Balise indiquant au servlet la cible de la requete HTTP déclenchant son appel
+public class ServletConnexion extends HttpServlet
+{
+	private static final long serialVersionUID = 1L;
+
+	/* Constructeur par défaut, explicité pour générer la javadoc */
+	/**
+	 * Constructeur par défaut; ne fait rien.
+	 */
+	public ServletConnexion() {}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String mail = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		Representant rep;
+		
+		if(mail.indexOf("student") != -1)
+		{
+			System.out.println("Etudiant");
+			rep = new DAOEtudiant().find("mails@hers.be", "MDP");
+		}
+		else
+		{
+			System.out.println("Prof");
+			rep = new DAOProfesseur().find("mails@hers.be", "MDP");
+		}
+		
+		if(rep == null) System.out.println("Erreur !");
+		else System.out.println(rep.getLastName() + " " + rep.getFirstName());
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
+	}
+	
+}
