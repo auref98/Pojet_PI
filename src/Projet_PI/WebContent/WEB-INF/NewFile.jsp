@@ -17,6 +17,6 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h1>Connexion reussi !</h1>
+		<h1>Connexion reussie !</h1>
 	</body>
 </html>
