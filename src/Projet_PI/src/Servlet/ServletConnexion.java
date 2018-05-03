@@ -45,21 +45,29 @@ public class ServletConnexion extends HttpServlet
 		String mail = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession(true);
-		
+		boolean failed = false;
 		if(mail.indexOf("student") != -1)
 		{
-			System.out.println("Etudiant");
 			Etudiant etudiant = new DAOEtudiant().find(mail, password);
+			if(etudiant == null) {
+				request.setAttribute("conectionFailed", true);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
+				failed = true;
+			}
 			session.setAttribute("etudiant", etudiant);
 		}
 		else
 		{
-			System.out.println("Prof");
 			Professeur prof = new DAOProfesseur().find(mail, password);
+			if(prof == null) {
+				request.setAttribute("conectionFailed", true);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
+				failed = true;
+			}
 			session.setAttribute("professeur", prof);
 		}
 		
-		response.sendRedirect("/Profil");
+		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
 	}
 	
 }

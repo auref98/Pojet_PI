@@ -20,7 +20,9 @@
 		<header class="navbar navbar-dark bg-secondary">
     		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
-		
+		<c:if test="${conectionFailed == true}">
+			Message erreur
+		</c:if>
 		<form class="offset-4" method="post" action="Connexion">
 			<div class="form-group row">
 		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
@@ -32,7 +34,7 @@
 		  	</div>
 		  	<button type="submit" class="btn btn-primary row col-2 offset-2">Connexion</button>
 		</form>
-		<form class="offset-4" method="get" action="Inscription">
+		<form class="offset-4" method="get" action="/Inscription.jsp">
 			<button type="submit" class="btn btn-primary row col-2 offset-2">Inscription</button>
 		</form>
 	</body>
