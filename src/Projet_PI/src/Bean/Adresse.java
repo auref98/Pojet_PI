@@ -1,6 +1,6 @@
 /*
  * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
- * Informatique de geston, bloc 2	
+ * Bachelier en informatique de gestion, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -25,7 +25,10 @@ import java.io.Serializable;
  * @see Evenement
  */ 
 public class Adresse implements Serializable {
-  private int id;													// Attribut permettant de récuperer l'id référençant cette adresse dans la base de données
+  
+  /** Attribut permettant de récupérer l'id référençant cette adresse dans la base de données. */
+  private int id;
+  
   private String localite;
   private int codePostal;
   private String rue;
@@ -119,7 +122,7 @@ public class Adresse implements Serializable {
 	}
 	
 	/** 
-	 * Affecte le code postal correspondant à la localité.<br>
+	 * Affecte le code postal correspondant à la localité. <br>
 	 * inv: codePostal &gt;  0
 	 * @param codePostal le code postal à affecter
 	 */
