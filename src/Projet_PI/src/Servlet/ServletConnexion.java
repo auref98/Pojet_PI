@@ -23,6 +23,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import Bean.*;
 import DAO.*;
 
@@ -42,27 +44,18 @@ public class ServletConnexion extends HttpServlet
 	{
 		String mail = request.getParameter("email");
 		String password = request.getParameter("password");
+		HttpSession session = request.getSession(true);
 		
-		System.out.println("test1");
-		
-		Representant rep = new DAOProfesseur().find("ludovic.adam@hers.be", "password");
-		
-		/*if(mail.indexOf("student") != -1)
+		if(mail.indexOf("student") != -1)
 		{
 			System.out.println("Etudiant");
-			rep = new DAOEtudiant().find("ludovic.adam@hers.be", "password");
+			Etudiant etudiant = new DAOEtudiant().find(mail, password);
+			session.setAttribute("etudiant", etudiant);
 		}
 		else
 		{
 			System.out.println("Prof");
-			rep = new DAOProfesseur().find("ludovic.adam@hers.be", "password");
-		}*/
-		
-		if(rep == null) System.out.println("Erreur !");
-		else
-		{
-			//System.out.println(rep.getLastName() + " " + rep.getFirstName());
-			System.out.println(rep.getLastName() + " " + rep.getFirstName());
+			Professeur prof = new DAOProfesseur().find(mail, password);
 		}
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
