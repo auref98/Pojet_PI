@@ -99,6 +99,7 @@ public class DAOEvenement extends DAO<Evenement>
 				adr.setId(resultSet.getInt("refaddr"));
 				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 				if(!listEvent.contains(event)) listEvent.add(event);
+				else i--;
 			}
 		}
 		catch (SQLException ex)

@@ -8,15 +8,10 @@ public class PrincipaleTest
 {
 	public static void main(String[] args)
 	{
-		Representant rep = new DAOProfesseur().find("ludovic.adam@hers.be", "password");
+		ArrayList<Evenement> listEvent = new DAOEvenement().find(0, 2);
 
-
-		if(rep == null) System.out.println("Erreur !");
-		else
-		{
-			//System.out.println(rep.getLastName() + " " + rep.getFirstName());
-			System.out.println(rep.getLastName() + " " + rep.getFirstName());
-		}
+		System.out.println(listEvent.get(0).getNom());
+		System.out.println(listEvent.get(1).getNom());
 	
 		System.out.println("Hello World !");
 	}
