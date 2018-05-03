@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import Bean.Adresse;
 import Bean.Etudiant;
@@ -54,7 +55,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 									rep.getMail(),
 									rep.getMatricule(),
 									this.resSet.getInt("ID"),
-									LocalDate.parse(this.resSet.getString("DATENAISSANCE")),
+									LocalDate.parse(this.resSet.getString("DATENAISSANCE").split(" ")[0],DateTimeFormatter.ISO_DATE),
 									this.resSet.getString("PAYSNAISSANCE"),
 									this.resSet.getString("LIEUNAISSANCE"),
 									this.resSet.getString("NUMNATIONAL"),
@@ -102,19 +103,19 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											etu.getMatricule());
 		new DAORepresentant().create(repr);
 		boolean change = false;
-		String sql = "INSERT INTO etudiant ( id"
+		String sql = "INSERT INTO etudiant ( id,"
 											+ "datenaissance,"
 											+ "paysnaissance,"
 											+ "lieunaissance,"
 											+ "numnational,"
-											+ "natianalite,"
+											+ "nationalite,"
 											+ "numbanque,"
 											+ "soutiensocial,"
 											+ "emplacementecole,"
 											+ "role,"
 											+ "refsect,"
 											+ "refaddr)"
-											+ "VALUES( to_date('?','yyyy-mm-dd'),?, ?,?,?,?,?,?,?,? ?,?";
+											+ "VALUES(?, to_date(?,'yyyy-mm-dd'),?,?,?,?,?,?,?,?,?,?)";
 		try {
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, repr.getId());
@@ -133,6 +134,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}finally{
 			try {
 				this.prStat.close();
