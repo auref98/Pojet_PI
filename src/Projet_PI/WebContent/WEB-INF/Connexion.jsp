@@ -34,7 +34,7 @@
 		  	</div>
 		  	<button type="submit" class="btn btn-primary row col-2 offset-2">Connexion</button>
 		</form>
-		<form class="offset-4" method="get" action="/Inscription.jsp">
+		<form class="offset-4" method="get" action="Inscription">
 			<button type="submit" class="btn btn-primary row col-2 offset-2">Inscription</button>
 		</form>
 	</body>

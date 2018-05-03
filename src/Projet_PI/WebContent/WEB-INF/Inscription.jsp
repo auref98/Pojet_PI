@@ -26,7 +26,7 @@
 		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
 		    	<input type="email" class="form-control col-3 col-xs-12" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 		  	</div>
-		  	<button type="submit" class="btn btn-primary row col-2 offset-1">Demande de mot de passe</button>
+		  	<button type="submit" class="btn btn-primary row col-3 offset-1">Demande de mot de passe</button>
 		</form>
 	</body>
 </html>
