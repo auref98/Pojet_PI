@@ -98,8 +98,8 @@ public class DAOEvenement extends DAO<Evenement>
 				String image = resultSet.getString("image");
 				Adresse adr = new Adresse();
 				adr.setId(resultSet.getInt("refaddr"));
-					
-				listEvent.add(new Evenement(id, nom, nbParticipantRequis, description, image, adr));
+				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
+				if(!listEvent.contains(event)) listEvent.add(event);
 			}
 		}
 		catch (SQLException ex)
