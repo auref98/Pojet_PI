@@ -99,9 +99,11 @@ public class Evenement implements Serializable{
 	 * @param nom le nom de l'événement à comparer
 	 * @return <code>true</code> si "nom" est égal au nom de l'évènement, d'après la définition de la méthode equals(String) de la classe String; <code>false</code> sinon
 	 */
-	public boolean equals(String nom){
-		return nom.equals(this.nom);
+	public boolean equals(Object object){
+		Evenement event = (Evenement)object;
+		return event.id == this.id;
 	}
+	
 
 //###################################################################################################################################################################
 	

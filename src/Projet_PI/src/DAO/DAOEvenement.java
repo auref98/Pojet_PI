@@ -75,6 +75,50 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		return event;
 	}
+	
+	public ArrayList<Evenement> find(int debut, int cpt)
+	{
+		String query = "select e.* from evenement e, plage p where e.id = p.REFEVEN order by p.DATEPLAGE";
+		PreparedStatement ps = null;
+		ArrayList<Evenement> listEvent = new ArrayList<Evenement>();
+		
+		try
+		{
+			ps = connection.prepareStatement(query);
+			ResultSet resultSet = ps.executeQuery();
+			
+			for(int i = 0; i < debut; i++) if(resultSet.next() != false) throw new SQLException();
+			for(int i = 0; i < cpt && resultSet.next()  != false; i++)
+			{
+				int id = resultSet.getInt("id");
+				String nom = resultSet.getString("nom");
+				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
+				String description = resultSet.getString("description");
+				String image = resultSet.getString("image");
+				Adresse adr = new Adresse();
+				adr.setId(resultSet.getInt("refaddr"));
+				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
+				if(!listEvent.contains(event)) listEvent.add(event);
+				else i--;
+			}
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findEvent failed !");
+		}
+		finally
+		{
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listEvent;
+	}
 
 	/**
 	 * 
