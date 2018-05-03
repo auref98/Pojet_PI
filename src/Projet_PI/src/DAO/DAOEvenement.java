@@ -78,7 +78,6 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	public ArrayList<Evenement> find(int debut, int cpt)
 	{
-		debut--;
 		String query = "select e.* from evenement e, plage p where e.id = p.REFEVEN order by p.DATEPLAGE";
 		PreparedStatement ps = null;
 		ArrayList<Evenement> listEvent = new ArrayList<Evenement>();
