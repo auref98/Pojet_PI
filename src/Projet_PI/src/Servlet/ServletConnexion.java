@@ -56,9 +56,10 @@ public class ServletConnexion extends HttpServlet
 		{
 			System.out.println("Prof");
 			Professeur prof = new DAOProfesseur().find(mail, password);
+			session.setAttribute("professeur", prof);
 		}
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
+		response.sendRedirect("/Profil");
 	}
 	
 }

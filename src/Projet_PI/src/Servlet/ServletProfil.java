@@ -22,7 +22,7 @@ import DAO.DAOProfesseur;
 import DAO.DAORepresentant;
 import DAO.DAOSection;
 
-@WebServlet("/Profil.jsp")
+@WebServlet("/Profil")
 public class ServletProfil extends HttpServlet{
 	public ServletProfil(){}
 	private static final long serialVersionUID = 1L;
