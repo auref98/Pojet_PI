@@ -23,7 +23,7 @@
 		<c:if test="${conectionFailed == true}">
 			Message erreur
 		</c:if>
-		<form class="offset-4" method="post" action="Connexion">
+		<form class="offset-4" method="post" action="ListeEvenement">
 			<div class="form-group row">
 		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
 		    	<input type="email" class="form-control col-3 col-xs-12" name="email" placeholder="mail">

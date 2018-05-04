@@ -229,7 +229,7 @@ public class Evenement implements Serializable{
 	 * @see Plage
 	 * @see java.util.ArrayList
 	 */
-	public ArrayList<Plage> getPlage() {
+	public ArrayList<Plage> getListePlage() {
 		return listePlage;
 	}
 	

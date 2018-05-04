@@ -1,7 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Bean.Adresse;
 import Bean.Etudiant;
 import Bean.Professeur;
-import Bean.Representant;
-import Bean.Section;
 import DAO.DAOAdresse;
-import DAO.DAOEtudiant;
-import DAO.DAOProfesseur;
-import DAO.DAORepresentant;
-import DAO.DAOSection;
 
 @WebServlet("/Profil")
 public class ServletProfil extends HttpServlet{
