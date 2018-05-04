@@ -20,7 +20,10 @@ public class ServletDemandeMDP extends HttpServlet
 		String mail = request.getParameter("email");
 		
 		if(new DAORepresentant().find(mail) != null) request.setAttribute("inscriptionFailed", true);
-		else request.setAttribute("inscriptionSucess", true);
+		else
+		{
+			request.setAttribute("inscriptionSuccess", true);
+		}
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request,  response);
 	}
