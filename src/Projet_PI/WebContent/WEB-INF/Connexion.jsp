@@ -21,7 +21,7 @@
     		<img class="img-fluid text-center mx-auto" src="http://10.0.2.41:8080/Projet_PI/assets/img/logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
 		<div class="container">
-			<div class="text-center" style="padding-top: 80px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
+			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
 				<h3>Identification EVENEMENTS HERS</h3>
 			</div>
 			<form style="padding-top:15px;" class="container-fluid" method="post" action="Connexion">
@@ -36,9 +36,20 @@
 				</div>
 				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Connexion</button>
 			</form>
-			<form style="padding-top:10px;" class="container-fluid" method="get" action="Inscription">
+			<form style="padding-top:10px;padding-bottom: 30px" class="container-fluid" method="get" action="Inscription">
 				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Inscription</button>
 			</form>
+			
+			<c:if test="${connectionFailed == true}">
+				<div class="alert alert-danger alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Attention ! </strong>Email ou mot de passe incorrect
+				</div>
+				
+				<!--<div class="text-center offset-md-4 offset-1 col-md-4 col-10" style="font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em; border: 5px solid rgba(255, 0, 0, 0.0); border-radius: 5px;background-color: rgba(255, 0, 0, 0.5)">
+					<h4>E-mail ou mot de passe incorrect !</h4>
+				</div>-->
+			</c:if>
 		</div>
 	</body>
 </html>
