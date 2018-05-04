@@ -1,6 +1,6 @@
 /*
  * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
- * Bachelier en informatique de gestion, bloc 2		
+ * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscritsptions à des événements
  * 
@@ -34,6 +34,7 @@ public class Representant {
 	private String phone;												// Attribut pour le numéro de téléphone du représentant
 	private String mail;												// Attribut pour l'adresse email du représentant
 	private String matricule;											//Attribut pour l'identifiant -  propre à l'école -  du représentant (e...... pour un étudiant, h...... pour un professeur)
+	private String password;
 
 	private LinkedList<Commentaire> posts;							// Référence vers une liste de Commentaire (voir classe éponyme)
 	private LinkedList<Inscription> inscrits;								// Référence vers une liste d'Inscription (voir classe éponyme)
@@ -77,6 +78,20 @@ public class Representant {
 //###################################################################################################################################################################
 
 // Getter et setter pour l'attribut "id"
+	
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	/**
 	 * Renvoie l'identifiant (BD) du représentant.

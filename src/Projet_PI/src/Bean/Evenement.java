@@ -1,6 +1,6 @@
 /*
  * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
- * Bachelier en informatique de gestion, bloc 2	
+ * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -99,11 +99,9 @@ public class Evenement implements Serializable{
 	 * @param nom le nom de l'événement à comparer
 	 * @return <code>true</code> si "nom" est égal au nom de l'évènement, d'après la définition de la méthode equals(String) de la classe String; <code>false</code> sinon
 	 */
-	public boolean equals(Object object){
-		Evenement event = (Evenement)object;
-		return event.id == this.id;
+	public boolean equals(int id){
+		return id == this.id;
 	}
-	
 
 //###################################################################################################################################################################
 	

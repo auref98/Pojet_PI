@@ -1,6 +1,6 @@
 /*
  * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
- * Bachelier en informatique de gestion, bloc 2	
+ * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -44,7 +44,7 @@ public class ServletIndex extends HttpServlet
 	
 	/**
 	 * Called by the server (via the service method) to allow a servlet to handle a GET request <i>(summary from <code>HttpServlet</code>)</i>. <br><br>
-	 * Méthode redirigeant la requête HTTP vers la page ad hoc.  (En l'occurrence de la page "index" vers la page "connexion").
+	 * Méthode redirigeant la requête HTTP vers la page ad hoc.  (En l'occurrence de la page "index" vers la page "connection").
 	 * @param request un objet <code>HttpServletRequest</code> contenant la requête que le client a faite au servlet
 	 * @param response un objet <code>HttpServletResponse</code> contenant la réponse que le servlet envoie au client
 	 * @throws IOException si une erreur d'input ou d'output est détectée quand le servlet traite la requête GET

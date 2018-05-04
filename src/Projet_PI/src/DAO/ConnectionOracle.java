@@ -1,6 +1,6 @@
 /*
  * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
- * Bachelier en informatique de gestion, bloc 2	
+ * Informatique de geston, bloc 2	
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -74,8 +74,8 @@ public class ConnectionOracle
 	 * Constructeur privé, utilisé pour créer une unique instance de la classe <code>Connection</code>. <br><br>
 	 * <b>context</b> <code>ConnectionOracle :: ConnectionOracle()</code><br>
 	 * <b>pre: </b><br>
-	 * <code>connection == null</code>;<br>
-	 * <code>instance == null</code>;<br>
+	 * <code>connection = null</code>;<br>
+	 * <code>instance = null</code>;<br>
 	 * <code>url</code> référence un objet <code>java.lang.String</code> contenant l'url complète et valide de la base de données à joindre; <br>
 	 * <code>username</code> référence un objet <code>java.lang.String</code> représentant le nom d'utilisateur valide (base de données) du représentant essayant de se connecter; <br>
 	 * <code>password</code> référence un objet <code>java.lang.String</code> représentant le mot de passe valide et associé au nom d'utilisateur (base de données) du représentant essayant de se connecter;<br>
@@ -111,10 +111,12 @@ public class ConnectionOracle
 	 * Methode <code>static</code> permettant d'obtenir l'instance de la classe <code>Connection</code>. <br><br>
 	 * Initialise cette instance si elle ne l'était pas encore lors de l'appel de la méthode. <br><br>
 	 * <b>context</b> ConnectionOracle :: getInstance() <br>
-	 * <b>pre:</b> aucune<br>
+	 * <b>pre:</b><br>
+	 * 	none. <br>
 	 * <b>post:</b><br>
-	 * 	si <code>instance<code> n'était pas initialisé, <code>il l'est..</code><br>
-	 * 	si <code>instance était initialisé, l'objet courant est inchangé.</code>). <br><br>
+	 * 	(<code>instance@pre = null and instance != null</code>)<br>
+	 * 	or <br>
+	 * 	(<code>instance@pre != null and self = self@pre</code>). <br><br>
 	 * @return la référence de l'unique instance de la classe <code>Connection</code>
 	 * @see java.sql.Connection
 	 */

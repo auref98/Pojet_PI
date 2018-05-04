@@ -87,7 +87,7 @@ public class DAOEvenement extends DAO<Evenement>
 			ps = connection.prepareStatement(query);
 			ResultSet resultSet = ps.executeQuery();
 			
-			for(int i = 0; i < debut; i++) if(resultSet.next() != false) throw new SQLException();
+			for(int i = 0; i < debut; i++) if(resultSet.next() == false) throw new SQLException();
 			for(int i = 0; i < cpt && resultSet.next()  != false; i++)
 			{
 				int id = resultSet.getInt("id");
@@ -99,7 +99,6 @@ public class DAOEvenement extends DAO<Evenement>
 				adr.setId(resultSet.getInt("refaddr"));
 				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 				if(!listEvent.contains(event)) listEvent.add(event);
-				else i--;
 			}
 		}
 		catch (SQLException ex)
@@ -130,7 +129,7 @@ public class DAOEvenement extends DAO<Evenement>
 	 */
 	public ArrayList<Plage> findListePlage(Evenement event)
 	{
-		String query = "select * from plage where refEvenement = ?";
+		String query = "select * from plage where refEven = ?";
 		PreparedStatement ps = null;
 		ArrayList<Plage> listePlage = new ArrayList<Plage>();
 		
@@ -154,6 +153,7 @@ public class DAOEvenement extends DAO<Evenement>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findListePlage failed !");
+			System.out.println(ex.getMessage());
 			listePlage = null;
 		}
 		finally
