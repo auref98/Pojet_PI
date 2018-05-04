@@ -8,9 +8,10 @@ public class PrincipaleTest
 {
 	public static void main(String[] args)
 	{
-		Representant rep = new Representant(0," "," ","+00.000.00.00.00","ludovic.adam@hers.be","e000000");
+		Professeur prof = new Professeur(null,null,null,"petitRoux@hers.be",null,0,0);
 		//rep.setMail("ludovic.adam@hers.be");
-		new DAORepresentant().create(rep);
+		new DAOProfesseur().create(prof);
+		System.out.println(prof.getPassword());
 		//Representant rep = new DAOProfesseur().create("ludovic.adam@hers.be", "password");
 
 

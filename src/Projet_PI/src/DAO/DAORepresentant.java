@@ -18,6 +18,7 @@ package DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import Bean.Inscription;
@@ -66,6 +67,43 @@ public class DAORepresentant extends DAO<Representant>{
 			}
 		}
 		return repr;
+	}
+	
+	public Representant find(String mail){
+		String sql = "SELECT * FROM representant WHERE mail = ?";
+		Representant rep = null;
+		
+		try{
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setString(1, mail);
+			this.resSet = this.prStat.executeQuery();
+			if(this.resSet.next()){
+				rep = new Representant(this.resSet.getInt("ID"),
+						this.resSet.getString("LASTNAME"),
+						this.resSet.getString("FIRSTNAME"),
+						this.resSet.getString("PHONE"),
+						this.resSet.getString("MAIL"),
+						this.resSet.getString("MATRICULE"));
+			}
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally{
+			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+			try {
+				this.prStat.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		return rep;
 	}
 	
 	public Representant find(String mail, String password){
