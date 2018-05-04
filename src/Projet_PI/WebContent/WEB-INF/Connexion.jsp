@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<header class="navbar navbar-dark bg-secondary">
-    		<img class="img-fluid text-center mx-auto" src="http://10.0.2.41:8080/Projet_PI/assets/img/logoHERS1.png" width="400" height="100" alt="logoHERS0">
+    		<img class="img-fluid text-center mx-auto" src="assets/img/logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
 		<div class="container">
 			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
