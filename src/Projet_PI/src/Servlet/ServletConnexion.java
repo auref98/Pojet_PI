@@ -37,6 +37,7 @@ public class ServletConnexion extends HttpServlet
 	/**
 	 * Constructeur par défaut; ne fait rien.
 	 */
+	public ServletConnexion() {}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -45,8 +46,6 @@ public class ServletConnexion extends HttpServlet
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession(true);
 		boolean failed = false;
-		boolean firstConnection = false;
-		
 		if(mail.indexOf("student") != -1)
 		{
 			Etudiant etudiant = new DAOEtudiant().find(mail, password);
@@ -55,7 +54,6 @@ public class ServletConnexion extends HttpServlet
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
-			else if(etudiant.getFirstName() == null) firstConnection = true;
 			session.setAttribute("etudiant", etudiant);
 		}
 		else
@@ -66,10 +64,10 @@ public class ServletConnexion extends HttpServlet
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
-			else if(prof.getFirstName() == null) firstConnection = true;
 			session.setAttribute("professeur", prof);
 		}
 		
+<<<<<<< HEAD
 		if(!failed && firstConnection == false)
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
@@ -78,5 +76,9 @@ public class ServletConnexion extends HttpServlet
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}
+=======
+		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/ListeEvenement").forward(request,  response);
+>>>>>>> e0f77da3c07239c18a9364f9fa0633a286c2523b
 	}
+	
 }
