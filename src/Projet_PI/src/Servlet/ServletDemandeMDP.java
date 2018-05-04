@@ -8,18 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bean.Representant;
+import DAO.DAORepresentant;
 
 @WebServlet("/DemandeMDP")
 public class ServletDemandeMDP extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String mail = request.getParameter("email");
-		Representant rep;
 		
-		if()
+		if(new DAORepresentant().find(mail) != null) request.setAttribute("inscriptionFailed", true);
+		else request.setAttribute("inscriptionSucess", true);
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request,  response);
 	}
 
 }
