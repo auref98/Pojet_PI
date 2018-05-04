@@ -20,13 +20,30 @@
 		<header class="navbar navbar-dark bg-secondary">
     		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
-		
-		<form class="offset-4">
-			<div class="form-group row">
-		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
-		    	<input type="email" class="form-control col-3 col-xs-12" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-		  	</div>
-		  	<button type="submit" class="btn btn-primary row col-3 offset-1">Demande de mot de passe</button>
-		</form>
+		<div class="container">
+			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
+				<h3>Inscription EVENEMENTS HERS</h3>
+			</div>
+			<form style="padding-top:15px;padding-bottom: 30px" class="container-fluid" method="get" action="DemandeMDP">
+				<div style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1">
+			    	<label for="exampleInputEmail1" style="padding-top:5px;" class="col-md-2 col-10">Adresse Email:</label>
+			    	<input type="email" class="form-control col-md-6 col-10" name="email" placeholder="exemple@student.hers.be">
+			  	</div>
+			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
+			</form>
+			<c:if test="${inscriptionFailed == true}">
+				<div class="alert alert-danger alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Attention ! </strong>Email déjà utilisé !
+				</div>
+			</c:if>
+			<c:if test="${inscriptionSuccess == true}">
+				<div class="alert alert-success alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Réussi ! </strong>Un mail contenant un mot de passe provisoire vous a été envoyé
+  					<a href="/Projet_PI" class="alert-link">Retour à la connection</a>
+				</div>
+			</c:if>
+		</div>
 	</body>
 </html>

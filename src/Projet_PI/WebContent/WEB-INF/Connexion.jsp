@@ -18,24 +18,34 @@
 	</head>
 	<body>
 		<header class="navbar navbar-dark bg-secondary">
-    		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
+    		<img class="img-fluid text-center mx-auto" src="http://10.0.2.41:8080/Projet_PI/assets/img/logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
-		<c:if test="${conectionFailed == true}">
-			Message erreur
-		</c:if>
-		<form class="offset-4" method="post" action="Connexion">
-			<div class="form-group row">
-		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
-		    	<input type="email" class="form-control col-3 col-xs-12" name="email" placeholder="mail">
-		  	</div>
-		  	<div class="form-group row">
-		    	<label for="exampleInputPassword1" class="col-2">Mot de passe:</label>
-		    	<input type="password" class="form-control col-3 col-xs-12" name="password" placeholder="Password">
-		  	</div>
-		  	<button type="submit" class="btn btn-primary row col-2 offset-2">Connexion</button>
-		</form>
-		<form class="offset-4" method="get" action="Inscription">
-			<button type="submit" class="btn btn-primary row col-2 offset-2">Inscription</button>
-		</form>
+		<div class="container">
+			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
+				<h3>Identification EVENEMENTS HERS</h3>
+			</div>
+			<form style="padding-top:15px;" class="container-fluid" method="post" action="Connexion">
+				<div class="form-group row offset-md-3 offset-1">
+					<label style="padding-top:5px;" for="exampleInputEmail1" class="col-md-2 col-10">Adresse Email:</label>
+					<input type="email" class="form-control col-md-6 col-10" name="email" placeholder="exemple@student.hers.be">
+				</div>
+				
+				<div  style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1">
+					<label style="padding-top:5px;" for="exampleInputPassword1" class="col-md-2 col-10">Mot de passe:</label>
+					<input type="password" class="form-control col-md-6 col-10" name="password" placeholder="Mot de passe">
+				</div>
+				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Connexion</button>
+			</form>
+			<form style="padding-top:10px;padding-bottom: 30px" class="container-fluid" method="get" action="Inscription">
+				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Inscription</button>
+			</form>
+			
+			<c:if test="${connectionFailed == true}">
+				<div class="alert alert-danger alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Attention ! </strong>Email ou mot de passe incorrect
+				</div>
+			</c:if>
+		</div>
 	</body>
 </html>
