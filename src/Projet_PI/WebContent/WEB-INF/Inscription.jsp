@@ -21,7 +21,7 @@
     		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
 		
-		<form class="offset-4">
+		<form class="offset-4" method="post" action="DemmandeMDP">
 			<div class="form-group row">
 		    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
 		    	<input type="email" class="form-control col-3 col-xs-12" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
