@@ -31,7 +31,7 @@
 			  	</div>
 			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
 			</form>
-			<c:if test="${inscriptionFailed == true}">
+			<c:if test="${inscriptionSuccess == false}">
 				<div class="alert alert-danger alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Attention ! </strong>Email déjà utilisé !
