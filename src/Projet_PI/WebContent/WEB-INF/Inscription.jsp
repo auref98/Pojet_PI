@@ -24,7 +24,7 @@
 			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
 				<h3>Inscription EVENEMENTS HERS</h3>
 			</div>
-			<form style="padding-top:15px;" class="container-fluid" method="get" action="DemandeMDP">
+			<form style="padding-top:15px;padding-bottom: 30px" class="container-fluid" method="get" action="DemandeMDP">
 				<div style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1">
 			    	<label for="exampleInputEmail1" style="padding-top:5px;" class="col-md-2 col-10">Adresse Email:</label>
 			    	<input type="email" class="form-control col-md-6 col-10" name="email" placeholder="exemple@student.hers.be">
@@ -41,7 +41,7 @@
 				<div class="alert alert-success alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Réussi ! </strong>Un mail contenant un mot de passe provisoire vous a été envoyé
-  					<a href="Connection" class="alert-link">Retour à la connection</a>
+  					<a href="/Projet_PI" class="alert-link">Retour à la connection</a>
 				</div>
 			</c:if>
 		</div>
