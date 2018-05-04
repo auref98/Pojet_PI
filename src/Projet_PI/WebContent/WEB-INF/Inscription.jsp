@@ -22,15 +22,28 @@
 		</header>
 		<div class="container">
 			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
-				<h3>Inscription EVENEMENTS HERS </h3>
+				<h3>Inscription EVENEMENTS HERS</h3>
 			</div>
-			<form class="offset-4" method="post" action="DemandeMDP">
-				<div class="form-group row">
-			    	<label for="exampleInputEmail1" class="col-2">Adresse Email:</label>
-			    	<input type="email" class="form-control col-3 col-xs-12" name="email" placeholder="Enter email">
+			<form style="padding-top:15px;" class="container-fluid" method="get" action="DemandeMDP">
+				<div style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1">
+			    	<label for="exampleInputEmail1" style="padding-top:5px;" class="col-md-2 col-10">Adresse Email:</label>
+			    	<input type="email" class="form-control col-md-6 col-10" name="email" placeholder="exemple@student.hers.be">
 			  	</div>
-			  	<button type="submit" class="btn btn-primary row col-3 offset-1">Demande de mot de passe</button>
+			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
 			</form>
+			<c:if test="${InscriptionFailed == true}">
+				<div class="alert alert-danger alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Attention ! </strong>Email déjà utilisé !
+				</div>
+			</c:if>
+			<c:if test="${InscriptionSuccess == true}">
+				<div class="alert alert-success alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Réussi ! </strong>Un mail contenant un mot de passe provisoire vous a été envoyé
+  					<a href="Connection" class="alert-link">Retour à la connection</a>
+				</div>
+			</c:if>
 		</div>
 	</body>
 </html>

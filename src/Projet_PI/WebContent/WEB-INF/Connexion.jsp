@@ -45,10 +45,6 @@
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Attention ! </strong>Email ou mot de passe incorrect
 				</div>
-				
-				<!--<div class="text-center offset-md-4 offset-1 col-md-4 col-10" style="font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em; border: 5px solid rgba(255, 0, 0, 0.0); border-radius: 5px;background-color: rgba(255, 0, 0, 0.5)">
-					<h4>E-mail ou mot de passe incorrect !</h4>
-				</div>-->
 			</c:if>
 		</div>
 	</body>
