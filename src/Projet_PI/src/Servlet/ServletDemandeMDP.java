@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.Representant;
+
 @WebServlet("/DemandeMDP")
 public class ServletDemandeMDP extends HttpServlet
 {
@@ -14,7 +16,10 @@ public class ServletDemandeMDP extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		String mail = request.getParameter("email");
+		Representant rep;
 		
+		if()
 	}
 
 }

@@ -46,6 +46,8 @@ public class ServletConnexion extends HttpServlet
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession(true);
 		boolean failed = false;
+		boolean firstConnection = false;
+		
 		if(mail.indexOf("student") != -1)
 		{
 			Etudiant etudiant = new DAOEtudiant().find(mail, password);
@@ -67,7 +69,6 @@ public class ServletConnexion extends HttpServlet
 			session.setAttribute("professeur", prof);
 		}
 		
-<<<<<<< HEAD
 		if(!failed && firstConnection == false)
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
@@ -76,9 +77,5 @@ public class ServletConnexion extends HttpServlet
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}
-=======
-		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/ListeEvenement").forward(request,  response);
->>>>>>> e0f77da3c07239c18a9364f9fa0633a286c2523b
 	}
-	
 }
