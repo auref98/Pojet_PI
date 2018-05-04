@@ -64,16 +64,9 @@ public class ServletConnexion extends HttpServlet
 		boolean failed = false;
 		if(mail.indexOf("student") != -1)																// Si le nom d'utilisateur correspond à un étudiant
 		{
-<<<<<<< HEAD
-			Etudiant etudiant = new DAOEtudiant().find(mail, password);									// Cherche l'étudiant correspondant aux information reçues
-			if(etudiant == null) {																		// Si l'étudiant n'a pas été trouvé
-				request.setAttribute("conectionFailed", true);	
-				// Redirige sur la page de connexion
-=======
 			Etudiant etudiant = new DAOEtudiant().find(mail, password);
 			if(etudiant == null) {
 				request.setAttribute("connectionFailed", true);
->>>>>>> e7cd0813967d8bd600170dc0ca618eb9235d562d
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
@@ -81,16 +74,9 @@ public class ServletConnexion extends HttpServlet
 		}
 		else																							// Si le nom d'utilisateur correspond à un professeur
 		{
-<<<<<<< HEAD
-			Professeur prof = new DAOProfesseur().find(mail, password);									// Cherche le professeur correspondant aux information reçues
-			if(prof == null) {																			// Si le professeur n'a pas été trouvé
-				request.setAttribute("conectionFailed", true);
-				// Redirige sur la page de connection
-=======
 			Professeur prof = new DAOProfesseur().find(mail, password);
 			if(prof == null) {
 				request.setAttribute("connectionFailed", true);
->>>>>>> e7cd0813967d8bd600170dc0ca618eb9235d562d
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
