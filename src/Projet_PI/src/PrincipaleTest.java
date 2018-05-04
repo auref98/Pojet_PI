@@ -8,7 +8,7 @@ public class PrincipaleTest
 {
 	public static void main(String[] args)
 	{
-		Professeur prof = new Professeur(null,null,null,"petitRoux@hers.be",null,0,0);
+		Professeur prof = new Professeur("Fock","Auref","+32.000.00.00.00","test@hers.be","e000000",0,0);
 		//rep.setMail("ludovic.adam@hers.be");
 		new DAOProfesseur().create(prof);
 		System.out.println(prof.getPassword());

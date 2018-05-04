@@ -17,7 +17,9 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +58,7 @@ public class ServletConnexion extends HttpServlet
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
+			if(etudiant.getFirstName() == null) firstConnection = true;
 			session.setAttribute("etudiant", etudiant);
 		}
 		else
@@ -66,12 +69,21 @@ public class ServletConnexion extends HttpServlet
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
+			if(prof.getFirstName() == null) firstConnection = true;
 			session.setAttribute("professeur", prof);
 		}
 		
 		if(!failed && firstConnection == false)
 		{
-			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
+			ArrayList<Evenement> evens = new DAOEvenement().find(0,4);
+			for(Evenement even : evens){
+				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
+				even.setPlage(p);
+			}
+			request.setAttribute("evens", evens);
+			request.setAttribute("debut", 0);
+			request.setAttribute("cpt", 4);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request, response);
 		}
 		else if(!failed && firstConnection == true)
 		{

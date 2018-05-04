@@ -30,6 +30,8 @@ public class ServletListEvenement extends HttpServlet{
 			even.setPlage(p);
 		}
 		request.setAttribute("evens", evens);
+		request.setAttribute("debut", 0);
+		request.setAttribute("cpt", 4);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListEvenement.jsp");
 		reqDisp.forward(request, response);
 	}
