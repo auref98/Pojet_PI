@@ -22,7 +22,7 @@
 		</header>
 		<div class="container">
 			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
-				<h3>Inscription EVENEMENTS HERS</h3>
+				<h3>Inscription EVENEMENTS HERS </h3>
 			</div>
 			<form class="offset-4" method="post" action="DemandeMDP">
 				<div class="form-group row">
