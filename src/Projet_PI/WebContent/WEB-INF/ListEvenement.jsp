@@ -27,7 +27,7 @@
 	 	</c:if>
 	 	<div>
 	 		<h2>${even.nom}</h2>
-	 		<c:forEach items="${even.listePlage }" var="date">
+	 		<c:forEach items="${even.listPlage }" var="date">
 	 			<p>${date.date }</p>
 	 		</c:forEach>
 	 		<p>Description : <br>${even.description}</p>
@@ -45,11 +45,13 @@
 	 	</c:if>
 	 	<c:set var="i" value="${i+1}"/>
 	 </c:forEach>
-	 <form method="get" action="ListeEvenement">
+	 <form method="get" action="ListEvenSuivPrec">
 	 	<input type="submit" value="Précédent" name="Precedent">
+	 	<c:url var="prec"/>
 	 </form>
-	 <form method="get" action="ListeEvenement">
+	 <form method="get" action="ListEvenSuivPrec">
 	 	<input type="submit" value="Suivant" name="Suivant">
+	 	<c:url var="suiv"/>
 	 </form>
 	</body>
 </html>

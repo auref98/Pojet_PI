@@ -96,7 +96,15 @@
 	 		</div>
 	 		<div class="row texte">
 	 			<div class="form-group col-lig-3 center">
-		 			Matricule : ${rep.matricule}		 		
+	 				<label for="Matricule">
+		 			Matricule : 
+		 			</label>
+		 			<c:if test="${rep.matricule != null }">
+		 				${rep.matricule}
+		 			</c:if>
+		 			<c:if test="${rep.matricule == null }">
+		 				<input  class="inputClass" value="" type="text" placeholder="x000000" name="Matricule" id="Matricule">
+		 			</c:if>
 	 			</div>
 	 		</div>
 	 		<div class="row">

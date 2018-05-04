@@ -19,6 +19,7 @@ package Servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +74,7 @@ public class ServletConnexion extends HttpServlet
 		
 		if(!failed && firstConnection == false)
 		{
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,4);
+			ArrayList<Evenement> evens = new DAOEvenement().find(0,2);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				even.setListPlage(p);
@@ -85,6 +86,17 @@ public class ServletConnexion extends HttpServlet
 		}
 		else if(!failed && firstConnection == true)
 		{
+			Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+			Professeur prof = (Professeur)session.getAttribute("professeur");
+			boolean isEtu = (etu != null)?true:false;
+			if(isEtu){
+				if(etu.getAdr().getPays() == null)etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+				request.setAttribute("rep", etu);
+				request.setAttribute("adr", etu.getAdr());
+			}else{
+				request.setAttribute("rep", prof);
+			}
+			request.setAttribute("isEtu", isEtu);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}
 	}
