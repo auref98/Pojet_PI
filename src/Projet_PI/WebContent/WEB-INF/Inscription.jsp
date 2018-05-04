@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<header class="navbar navbar-dark bg-secondary">
-    		<img class="img-fluid text-center mx-auto" src="assets\img\logoHERS1.png" width="400" height="100" alt="logoHERS0">
+    		<img class="img-fluid text-center mx-auto" src="assets/img/logoHERS1.png" width="400" height="100" alt="logoHERS0">
 		</header>
 		<div class="container">
 			<div class="text-center" style="padding-top: 60px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em;">
@@ -31,7 +31,7 @@
 			  	</div>
 			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
 			</form>
-			<c:if test="${inscriptionFailed == true}">
+			<c:if test="${inscriptionSuccess == false}">
 				<div class="alert alert-danger alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Attention ! </strong>Email déjà utilisé !

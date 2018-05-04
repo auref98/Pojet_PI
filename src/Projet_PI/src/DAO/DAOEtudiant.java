@@ -131,6 +131,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(11, etu.getSec().getId());
 			this.prStat.setInt(12, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
+			connection.commit();
+			connection.setAutoCommit(true);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
