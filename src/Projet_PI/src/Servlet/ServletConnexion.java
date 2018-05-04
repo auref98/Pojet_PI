@@ -72,7 +72,7 @@ public class ServletConnexion extends HttpServlet
 		
 		if(!failed && firstConnection == false)
 		{
-			this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
 		}
 		else if(!failed && firstConnection == true)
 		{
