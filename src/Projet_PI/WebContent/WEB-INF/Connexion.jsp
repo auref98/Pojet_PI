@@ -39,7 +39,6 @@
 			<form style="padding-top:10px;" class="container-fluid" method="get" action="Inscription">
 				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Inscription</button>
 			</form>
-			test
 		</div>
 	</body>
 </html>
