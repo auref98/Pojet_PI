@@ -45,10 +45,10 @@
 	 	</c:if>
 	 	<c:set var="i" value="${i+1}"/>
 	 </c:forEach>
-	 <form method="get" action="/ListeEvenement">
+	 <form method="get" action="ListeEvenement">
 	 	<input type="submit" value="Précédent" name="Precedent">
 	 </form>
-	 <form method="get" action="/ListeEvenement">
+	 <form method="get" action="ListeEvenement">
 	 	<input type="submit" value="Suivant" name="Suivant">
 	 </form>
 	</body>
