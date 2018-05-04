@@ -27,7 +27,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		ArrayList<Evenement> evens = new DAOEvenement().find(0,4);
 		for(Evenement even : evens){
 			ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-			even.setListePlage(p);
+			even.setListPlage(p);
 		}
 		request.setAttribute("evens", evens);
 		request.setAttribute("debut", 0);
