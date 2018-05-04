@@ -55,7 +55,7 @@ public class ServletConnexion extends HttpServlet
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
-			if(etudiant.getFirstName() == null) firstConnection = true;
+			else if(etudiant.getFirstName() == null) firstConnection = true;
 			session.setAttribute("etudiant", etudiant);
 		}
 		else
@@ -70,7 +70,6 @@ public class ServletConnexion extends HttpServlet
 			session.setAttribute("professeur", prof);
 		}
 		
-<<<<<<< HEAD
 		if(!failed && firstConnection == false)
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
@@ -79,8 +78,5 @@ public class ServletConnexion extends HttpServlet
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}
-=======
-		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/ListeEvenement").forward(request,  response);
->>>>>>> e7a4328c49d40d1d63163d119b37e102f04700e1
 	}
 }
