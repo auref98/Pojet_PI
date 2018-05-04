@@ -27,7 +27,7 @@ public class ServletListEvenement extends HttpServlet{
 		ArrayList<Evenement> evens = new DAOEvenement().find(0,4);
 		for(Evenement even : evens){
 			ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-			even.setPlage(p);
+			even.setListePlage(p);
 		}
 		request.setAttribute("evens", evens);
 		request.setAttribute("debut", 0);
