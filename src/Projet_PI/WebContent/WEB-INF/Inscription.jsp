@@ -31,13 +31,13 @@
 			  	</div>
 			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
 			</form>
-			<c:if test="${InscriptionFailed == true}">
+			<c:if test="${inscriptionFailed == true}">
 				<div class="alert alert-danger alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Attention ! </strong>Email déjà utilisé !
 				</div>
 			</c:if>
-			<c:if test="${InscriptionSuccess == true}">
+			<c:if test="${inscriptionSuccess == true}">
 				<div class="alert alert-success alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Réussi ! </strong>Un mail contenant un mot de passe provisoire vous a été envoyé
