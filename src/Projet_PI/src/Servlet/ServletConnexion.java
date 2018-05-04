@@ -50,7 +50,7 @@ public class ServletConnexion extends HttpServlet
 		{
 			Etudiant etudiant = new DAOEtudiant().find(mail, password);
 			if(etudiant == null) {
-				request.setAttribute("conectionFailed", true);
+				request.setAttribute("connectionFailed", true);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
@@ -60,14 +60,14 @@ public class ServletConnexion extends HttpServlet
 		{
 			Professeur prof = new DAOProfesseur().find(mail, password);
 			if(prof == null) {
-				request.setAttribute("conectionFailed", true);
+				request.setAttribute("connectionFailed", true);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 				failed = true;
 			}
 			session.setAttribute("professeur", prof);
 		}
 		
-		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/NewFile.jsp").forward(request,  response);
+		if(!failed)this.getServletContext().getRequestDispatcher("/WEB-INF/ListeEvenement").forward(request,  response);
 	}
 	
 }

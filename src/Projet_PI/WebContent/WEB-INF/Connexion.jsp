@@ -39,6 +39,12 @@
 			<form style="padding-top:10px;" class="container-fluid" method="get" action="Inscription">
 				<button type="submit" class="btn btn-primary row offset-md-4 offset-4 col-md-4 col-4">Inscription</button>
 			</form>
+			
+			<c:if test="${connectionFailed == true}">
+				<div class="text-center" style="padding-top: 80px;font-family: 'Helvetica', 'Arial', sans-serif; font-size: 1em; border: 5px solid red; background-color: red">
+					<h4>E-mail ou mot de passe incorrect !</h4>
+				</div>
+			</c:if>
 		</div>
 	</body>
 </html>
