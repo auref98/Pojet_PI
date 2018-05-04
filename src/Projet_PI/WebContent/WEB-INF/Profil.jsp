@@ -59,7 +59,7 @@
 		 			<label for="Nom">
 			 		Nom
 			 		</label>
-			 		<input class="inputClass" value="${rep.firstName}"  type="text" placeholder="Nom" name="Nom" id="Nom">
+			 		<input class="inputClass" value="${rep.firstName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -67,7 +67,7 @@
 	 				<label for="Prenom">
 	 				Prenom
 	 				</label>
-	 				<input  class="inputClass" value="${rep.lastName}" type="text" placeholder="Prenom" name="Prenom" id="Prenom">
+	 				<input  class="inputClass" value="${rep.lastName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -75,7 +75,7 @@
 		 			<label for="Mail">
 			 		Mail
 			 		</label>
-			 		<input  class="inputClass" value="${rep.mail}" type="mail" placeholder="Mail" name="Mail" id="Mail">
+			 		<input  class="inputClass" value="${rep.mail}" type="mail" required="required" placeholder="Mail" name="Mail" id="Mail">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -83,7 +83,7 @@
 		 			<label for="MotDePasse">
 			 		Mot de passe
 			 		</label>
-			 		<input  class="inputClass" type="password" placeholder="Mot de passe" name="MotDePasse" id="MotDePasse">
+			 		<input  class="inputClass" type="password" required="required" placeholder="Mot de passe" name="MotDePasse" id="MotDePasse">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -91,7 +91,7 @@
 		 			<label for="ConfirmerMotDePasse">
 			 		Confirmer mot de passe
 			 		</label>
-			 		<input class="inputClass" type="password" placeholder="Confirmer mot de passe" name="ConfirmerMotDePasse" id="ConfirmerMotDePasse">
+			 		<input class="inputClass" type="password" required="required" placeholder="Confirmer mot de passe" name="ConfirmerMotDePasse" id="ConfirmerMotDePasse">
 	 			</div>
 	 		</div>
 	 		<div class="row texte">
@@ -103,7 +103,7 @@
 		 				${rep.matricule}
 		 			</c:if>
 		 			<c:if test="${rep.matricule == null }">
-		 				<input  class="inputClass" value="" type="text" placeholder="x000000" name="Matricule" id="Matricule">
+		 				<input  class="inputClass" value="" type="text" required="required" placeholder="x000000" name="Matricule" id="Matricule">
 		 			</c:if>
 	 			</div>
 	 		</div>
@@ -112,7 +112,7 @@
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
-	 				<input  class="inputClass" value="${rep.phone}" type="text" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
+	 				<input  class="inputClass" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
 	 			</div>
 	 		</div>
 	 		<c:if test="${isEtu == true}">
@@ -121,7 +121,7 @@
 			 			<label for="Pays">
 				 		Pays
 				 		</label>
-				 		<input  class="inputClass" value="${adr.pays}" type="text" placeholder="Pays" name="Pays" id="Pays">
+				 		<input  class="inputClass" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -129,7 +129,7 @@
 			 			<label for="codePostal">
 				 		Code postal
 				 		</label>
-				 		<input  class="inputClass" value="${adr.codePostal}" type="text" placeholder="Code postal" name="codePostal" id="codePostal">
+				 		<input  class="inputClass" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="codePostal" id="codePostal">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -137,7 +137,7 @@
 			 			<label for="Localite">
 				 		Localité
 				 		</label>
-				 		<input  class="inputClass" value="${adr.localite}" type="text" placeholder="Localité" name="Localite" id="Localite">
+				 		<input  class="inputClass" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -145,7 +145,7 @@
 			 			<label for="rue">
 				 		Rue
 				 		</label>
-				 		<input  class="inputClass" value="${adr.rue}" type="text" placeholder="Rue" name="rue" id="rue">
+				 		<input  class="inputClass" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="rue" id="rue">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -153,7 +153,7 @@
 			 			<label for="numero">
 				 		Numéro
 				 		</label>
-				 		<input  class="inputClass" value="${adr.numero}" type="text" placeholder="Numéro" name="numero" id="numero">
+				 		<input  class="inputClass" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="numero" id="numero">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -161,7 +161,7 @@
 			 			<label for="boite">
 				 		Boite
 				 		</label>
-				 		<input  class="inputClass" value="${adr.boite}" type="text" placeholder="Boite" name="boite" id="boite">
+				 		<input  class="inputClass" value="${adr.boite}" type="text" required="required" placeholder="Boite" name="boite" id="boite">
 		 			</div>
 		 		</div>
 	 			<div class="row">
@@ -169,7 +169,7 @@
 			 			<label for="DateNaissance">
 				 		Date de naissance
 				 		</label>
-				 		<input  class="inputClass" value="${rep.dateNaissance}" type="text" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
+				 		<input  class="inputClass" value="${rep.dateNaissance}" type="text" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -177,7 +177,7 @@
 			 			<label for="PaysNaissance">
 				 		Pays de naissance
 				 		</label>
-				 		<input  class="inputClass" value="${rep.paysNaissance}" type="text" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
+				 		<input  class="inputClass" value="${rep.paysNaissance}" type="text" required="required" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -185,7 +185,7 @@
 			 			<label for="lieuNaissance">
 				 		lieu de naissance
 				 		</label>
-				 		<input class="inputClass" value="${rep.lieuNaissance}" type="text" placeholder="lieu de naissance" name="lieuNaissance" id="lieuNaissance">
+				 		<input class="inputClass" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="lieuNaissance" id="lieuNaissance">
 		 			</div>
 		 		</div>
 		 		
@@ -194,7 +194,7 @@
 			 			<label for="numNational">
 				 		Numéro national
 				 		</label>
-				 		<input class="inputClass" value="${rep.numNational}" type="text" placeholder="Numéro national" name="numNational" id="numNational">
+				 		<input class="inputClass" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="numNational" id="numNational">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -202,7 +202,7 @@
 			 			<label for="nationalite">
 				 		Nationalitée
 				 		</label>
-				 		<input class="inputClass" value="${rep.nationalite}" type="text" placeholder="nationalitée" name="nationalite" id="nationalite">
+				 		<input class="inputClass" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="nationalite" id="nationalite">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -210,7 +210,7 @@
 			 			<label for="numBanque">
 				 		Numéro de banque
 				 		</label>
-				 		<input class="inputClass" value="${rep.numBanque}" type="text" placeholder="Numéro de banque" name="numBanque" id="numBanque">
+				 		<input class="inputClass" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="numBanque" id="numBanque">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -218,7 +218,7 @@
 			 			<label for="SoutienSocial">
 				 		Soutien social
 				 		</label>
-				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
+				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" required="required" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -226,7 +226,7 @@
 			 			<label for="emplacementEcole">
 				 		Emplacement de l'école
 				 		</label>
-				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" placeholder="Emplacement de l'école" name="emplacementEcole" id="emplacementEcole">
+				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" name="emplacementEcole" id="emplacementEcole">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -234,7 +234,7 @@
 			 			<label for="role">
 				 		Role
 				 		</label>
-				 		<input class="inputClass" value="${rep.role}" type="text" placeholder="Role" name="role" id="role">
+				 		<input class="inputClass" value="${rep.role}" type="text" required="required" placeholder="Role" name="role" id="role">
 		 			</div>
 		 		</div>
 	 		</c:if>
@@ -245,6 +245,11 @@
 			 		</div>
 		 		</div>
 	 		</c:if>
+	 		
+	 		<div class="col-lg-12 btn btn-default center-block">
+	 			<input type="submit" class="btn btn-primary value="Submit Button>
+	 		</div>>
+	 	
 	 	</form>
 	 </div>
 	</body>
