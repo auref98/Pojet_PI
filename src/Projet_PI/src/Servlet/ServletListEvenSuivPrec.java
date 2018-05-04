@@ -15,7 +15,7 @@ import Bean.Plage;
 import DAO.DAOEvenement;
 import DAO.DAOPlage;
 
-@WebServlet("/ListeEvenement")
+@WebServlet("/ListEvenSuivPrec")
 public class ServletListEvenSuivPrec extends HttpServlet{
 
 	/**

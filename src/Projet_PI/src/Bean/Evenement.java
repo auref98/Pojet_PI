@@ -227,7 +227,7 @@ public class Evenement implements Serializable{
 	 * @see Plage
 	 * @see java.util.ArrayList
 	 */
-	public ArrayList<Plage> getPlage() {
+	public ArrayList<Plage> getListPlage() {
 		return listePlage;
 	}
 	
@@ -237,7 +237,7 @@ public class Evenement implements Serializable{
 	 * @see Plage
 	 * @see java.util.ArrayList
 	 */
-	public void setPlage(ArrayList<Plage> p) {
+	public void setListPlage(ArrayList<Plage> p) {
 		listePlage = p;
 	}
 	
