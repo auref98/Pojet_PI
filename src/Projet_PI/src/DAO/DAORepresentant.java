@@ -193,7 +193,7 @@ public class DAORepresentant extends DAO<Representant>{
 			String pass = this.RandomString(15);
 			rep.setPassword(pass);
 			String salt = this.RandomString(20);
-			this.prStat.setString(6, pass+salt);
+			this.prStat.setString(6, "MDP"+salt);//------------------pass+salt
 			this.prStat.setString(7, salt);
 			change = (this.prStat.executeUpdate()>0)?true:false;
 			

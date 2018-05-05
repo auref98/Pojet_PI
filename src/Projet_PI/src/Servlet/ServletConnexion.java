@@ -74,14 +74,18 @@ public class ServletConnexion extends HttpServlet
 		
 		if(!failed && firstConnection == false)
 		{
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,2);
+			int cpt = 2;
+			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
+			int compteur = 0;
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-				even.setListPlage(p);
+				if(p != null)even.setListPlage(p);
+				compteur++;
 			}
 			request.setAttribute("evens", evens);
 			request.setAttribute("debut", 0);
-			request.setAttribute("cpt", 4);
+			request.setAttribute("suiv", compteur == cpt);
+			request.setAttribute("cpt", 1);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request, response);
 		}
 		else if(!failed && firstConnection == true)

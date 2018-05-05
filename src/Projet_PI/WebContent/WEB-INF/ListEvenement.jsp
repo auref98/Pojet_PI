@@ -18,6 +18,7 @@
 	 <style>
 	 	
 	 </style>
+	 <h1>Page <c:out value="${debut+cpt}"></c:out></h1>
 	 <c:set var="i" value="0"/>
 	 <c:forEach items="${ evens }" var="even">
 	 	<c:if test="${i%2==0 }">
@@ -45,13 +46,16 @@
 	 	</c:if>
 	 	<c:set var="i" value="${i+1}"/>
 	 </c:forEach>
-	 <form method="get" action="ListEvenSuivPrec">
-	 	<input type="submit" value="Précédent" name="Precedent">
-	 	<c:url var="prec"/>
-	 </form>
-	 <form method="get" action="ListEvenSuivPrec">
-	 	<input type="submit" value="Suivant" name="Suivant">
-	 	<c:url var="suiv"/>
-	 </form>
+	 <c:if test="${debut > 0}">
+	 	<form method="get" action="ListEvenSuivPrec">
+		 	<input type="submit" value="Page ${debut}" name="Precedent">
+		 </form>
+	 </c:if>
+	 <c:if test="${suiv == true }">
+		<form method="get" action="ListEvenSuivPrec">
+	 	
+	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
+	 	</form>
+	 </c:if>
 	</body>
 </html>
