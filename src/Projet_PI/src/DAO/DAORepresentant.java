@@ -190,7 +190,7 @@ public class DAORepresentant extends DAO<Representant>{
 			this.prStat.setString(3, rep.getPhone());
 			this.prStat.setString(4, rep.getMail());
 			this.prStat.setString(5, rep.getMatricule());
-			String pass = this.RandomString(15);
+			String pass = "MDP"; //this.RandomString(15);
 			rep.setPassword(pass);
 			String salt = this.RandomString(20);
 			this.prStat.setString(6, "MDP"+salt);//------------------pass+salt

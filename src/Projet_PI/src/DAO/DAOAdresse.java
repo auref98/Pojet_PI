@@ -95,6 +95,66 @@ public class DAOAdresse extends DAO<Adresse>
 		return adr;																		// Renvoie la référence de l'objet Adresse contenant les informations récupérées dans la base de données
 	}
 	
+	public void find(Adresse adr)
+	{
+		String query;
+		if(adr.getBoite() != null)
+			query = "select * from adresse where codePostal = ? and localite = ? and Rue = ? and Numero = ? and Boite = ? and Pays = ?";// Définit la requête SQL avec un paramètre
+		else
+			query = "select * from adresse where codePostal = ? and localite = ? and Rue = ? and Numero = ? and Pays = ?";// Définit la requête SQL avec un paramètre
+		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour executer la requête
+		ResultSet resultSet = null;															// Initialise un objet ResultSet pour récupérer le résultat de la requête																// Initialise un objet Adresse qui sera retourné par la méthode
+		
+		try																				// Erreurs possibles: accès à la base de données
+		{
+			ps = connection.prepareStatement(query);										// Initialise le PreparedStatement avec la requête définie plus haut								
+			ps.setInt(1, adr.getCodePostal());
+			ps.setString(2, adr.getLocalite());
+			ps.setString(3, adr.getRue());
+			ps.setInt(4, adr.getNumero());
+			if(adr.getBoite() != null)
+			{
+				ps.setString(5, adr.getBoite());
+				ps.setString(6, adr.getPays());
+			}
+			else ps.setString(5, adr.getPays());
+			
+			resultSet = ps.executeQuery();													// Exécute la requête
+			
+			if(resultSet.next() == false) throw new SQLException();							// Lance une exception si aucune ligne n'a été récupérée de la base de données
+			
+			// Initialise les attributs de l'objet à renvoyer
+			int id = resultSet.getInt("id");
+			
+			adr.setId(id);																// Renvoie l'objet créé
+		}
+		catch (SQLException ex)															// Si une erreur SQL a été rencontrée ou si aucun résultat n'a été trouvé
+		{
+			System.out.println("Erreur: findAdr failed !");
+			System.out.println(ex.getMessage());
+		}
+		finally																			// Bloc finally fermant le ResultSet et le PreparedStatement
+		{
+			adr = null;
+			try
+			{
+				resultSet.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}																// Renvoie la référence de l'objet Adresse contenant les informations récupérées dans la base de données
+	}
+	
 	/**
 	 * Permet d'insérer une ligne dans la table <code>Adresse</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
