@@ -35,6 +35,11 @@
 	  </div>
 	</nav>
 	
+	
+	
+	${enregistrementSuccess}
+	
+	
 	 <style>
 	 	.center{
 	 		margin:auto;

@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Bean.Adresse;
-import Bean.Etudiant;
-import Bean.Professeur;
-import Bean.Section;
+import Bean.*;
+import DAO.*;
 
 @WebServlet("/EnregistrerProfil")
 public class ServletEnregistrerProfil extends HttpServlet 
@@ -39,16 +37,23 @@ public class ServletEnregistrerProfil extends HttpServlet
 		
 		if(etu != null)
 		{						
+			etu.setLastname(lastName);
+			etu.setFirstname(firstName);
+			etu.setPhone(phone);
+			etu.setMail(mail);
+			etu.setMatricule(matricule);
+			etu.setPassword(password);
+			
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD/MM/YYYY");
-			LocalDate dateNaissance = LocalDate.parse(request.getParameter("DateNaissance"), formatter);			
-			String paysNaissance = request.getParameter("PaysNaissance");					
-			String lieuNaissance = request.getParameter("LieuNaissance");					
-			String numNational = request.getParameter("NumNational");			
-			String nationalite = request.getParameter("Nationalite");				
-			String numBanque = request.getParameter("NumBanque");					
-			//boolean soutienSocial = request.getParameter("SoutienSocial");							
-			String emplacementEcole = request.getParameter("EmplacementEcole");		
-			String role = request.getParameter("Role");		
+			etu.setDateNaissance(LocalDate.parse(request.getParameter("DateNaissance"), formatter));			
+			etu.setPaysNaissance(request.getParameter("PaysNaissance"));					
+			etu.setLieuNaissance(request.getParameter("LieuNaissance"));					
+			etu.setNumNational(request.getParameter("NumNational"));			
+			etu.setNationalite(request.getParameter("Nationalite"));				
+			etu.setNumBanque(request.getParameter("NumBanque"));					
+			//etu.setSoutienSocial(request.getParameter("SoutienSocial"));							
+			etu.setEmplacementEcole(request.getParameter("EmplacementEcole"));		
+			etu.setRole(request.getParameter("Role"));		
 
 			String localite = request.getParameter("Localite");
 			int codePostal = Integer.parseInt(request.getParameter("CodePostal"));
@@ -56,13 +61,31 @@ public class ServletEnregistrerProfil extends HttpServlet
 			int numero = Integer.parseInt(request.getParameter("Numero"));
 			String boite = request.getParameter("Boite");
 			String pays = request.getParameter("Pays");
-			Adresse adr = new Adresse(0, localite, codePostal, rue, numero, boite, pays);
-			Section sec;
+			Adresse adr = new Adresse(-1, localite, codePostal, rue, numero, boite, pays);
+			new DAOAdresse().find(adr);
+			if(adr.getId() == -1) new DAOAdresse().create(adr);
+			etu.setAdr(adr);
+			
+			//Section sec;
+			//etu.setSec(sec);
+			
+			new DAOEtudiant().update(etu);
+			session.setAttribute("etudiant", etu);
 		}
 		else
 		{
+			prof.setLastname(lastName);
+			prof.setFirstname(firstName);
+			prof.setPhone(phone);
+			prof.setMail(mail);
+			prof.setMatricule(matricule);
+			prof.setPassword(password);
 			
+			new DAOProfesseur().update(prof);
+			session.setAttribute("professeur", prof);
 		}
+		
+		request.setAttribute("enregistrementSuccess", true);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
 	}
-
 }
