@@ -23,6 +23,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import Bean.*;
 
 /**
  * Classe de type "servlet" principale, redirigeant les requêtes adressées à la page "index". <br><br> 
@@ -60,7 +63,11 @@ public class ServletIndex extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
+		HttpSession session = request.getSession(true);
+		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+		Professeur prof = (Professeur)session.getAttribute("professeur");
+		if(etu == null && prof == null) this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
+		else this.getServletContext().getRequestDispatcher("/ListeEvenement").forward(request,  response);
 	}
 	
 }
