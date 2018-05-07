@@ -53,7 +53,6 @@
 	 </c:if>
 	 <c:if test="${suiv == true }">
 		<form method="get" action="ListEvenSuivPrec">
-	 	
 	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
 	 	</form>
 	 </c:if>

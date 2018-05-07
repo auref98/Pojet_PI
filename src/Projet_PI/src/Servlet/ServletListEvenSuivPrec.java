@@ -31,7 +31,8 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		}
 		request.setAttribute("evens", evens);
 		request.setAttribute("debut", 0);
-		request.setAttribute("cpt", 2);
+		request.setAttribute("suiv", true);
+		request.setAttribute("cpt", 1);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListEvenement.jsp");
 		reqDisp.forward(request, response);
 	}

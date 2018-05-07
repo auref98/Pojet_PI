@@ -88,6 +88,6 @@ public class ServletEnregistrerProfil extends HttpServlet
 		}
 		
 		request.setAttribute("enregistrementSuccess", failed);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/Profil").forward(request,  response);
 	}
 }
