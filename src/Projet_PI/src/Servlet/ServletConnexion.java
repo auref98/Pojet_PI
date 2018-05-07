@@ -94,7 +94,7 @@ public class ServletConnexion extends HttpServlet
 			Professeur prof = (Professeur)session.getAttribute("professeur");
 			boolean isEtu = (etu != null)?true:false;
 			if(isEtu){
-				if(etu.getAdr().getPays() == null)etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+				if(etu.getAdr() != null) if(etu.getAdr().getPays() == null)etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 				request.setAttribute("rep", etu);
 				request.setAttribute("adr", etu.getAdr());
 			}else{

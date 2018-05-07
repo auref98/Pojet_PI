@@ -45,8 +45,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			etu.setMatricule(matricule);
 			etu.setPassword(password);
 			
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD/MM/YYYY");
-			etu.setDateNaissance(LocalDate.parse(request.getParameter("DateNaissance"), formatter));			
+			//etu.setDateNaissance(LocalDate.parse(request.getParameter("DateNaissance"), DateTimeFormatter.));			
 			etu.setPaysNaissance(request.getParameter("PaysNaissance"));					
 			etu.setLieuNaissance(request.getParameter("LieuNaissance"));					
 			etu.setNumNational(request.getParameter("NumNational"));			
