@@ -49,13 +49,15 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				//Section sect = new DAOSection().find(this.resSet.getInt("REFSECT"));
 				//Adresse adr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
 				Representant rep = new DAORepresentant().find(this.resSet.getInt("ID"));
+				LocalDate date = null;
+				if(this.resSet.getString("DATENAISSANCE") != null)date = LocalDate.parse(this.resSet.getString("DATENAISSANCE").split(" ")[0],DateTimeFormatter.ISO_DATE);
 				etu = new Etudiant(rep.getLastName(),
 									rep.getFirstName(),
 									rep.getPhone(),
 									rep.getMail(),
 									rep.getMatricule(),
 									this.resSet.getInt("ID"),
-									LocalDate.parse(this.resSet.getString("DATENAISSANCE").split(" ")[0],DateTimeFormatter.ISO_DATE),
+									date,
 									this.resSet.getString("PAYSNAISSANCE"),
 									this.resSet.getString("LIEUNAISSANCE"),
 									this.resSet.getString("NUMNATIONAL"),
