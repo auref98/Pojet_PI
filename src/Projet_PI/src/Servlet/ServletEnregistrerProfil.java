@@ -34,6 +34,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
+		boolean failed = false;
 		
 		if(etu != null)
 		{						
@@ -51,7 +52,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			etu.setNumNational(request.getParameter("NumNational"));			
 			etu.setNationalite(request.getParameter("Nationalite"));				
 			etu.setNumBanque(request.getParameter("NumBanque"));					
-			//etu.setSoutienSocial(request.getParameter("SoutienSocial"));							
+			etu.setSoutienSocial( (request.getParameter("SoutienSocial") != null)?true:false );							
 			etu.setEmplacementEcole(request.getParameter("EmplacementEcole"));		
 			etu.setRole(request.getParameter("Role"));		
 
@@ -69,7 +70,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			//Section sec;
 			//etu.setSec(sec);
 			
-			new DAOEtudiant().update(etu);
+			failed = new DAOEtudiant().update(etu);
 			session.setAttribute("etudiant", etu);
 		}
 		else
@@ -81,11 +82,11 @@ public class ServletEnregistrerProfil extends HttpServlet
 			prof.setMatricule(matricule);
 			prof.setPassword(password);
 			
-			new DAOProfesseur().update(prof);
+			failed = new DAOProfesseur().update(prof);
 			session.setAttribute("professeur", prof);
 		}
 		
-		request.setAttribute("enregistrementSuccess", true);
+		request.setAttribute("enregistrementSuccess", failed);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 	}
 }
