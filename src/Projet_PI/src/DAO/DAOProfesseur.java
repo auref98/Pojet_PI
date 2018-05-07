@@ -140,10 +140,11 @@ public class DAOProfesseur extends DAO<Professeur>{
 											prof.getPhone(),
 											prof.getMail(),
 											prof.getMatricule());
-		if(!new DAORepresentant().create(repr))return false;
 		boolean change = false;
 		String sql = "INSERT INTO professeur (id,nbParticipations) VALUES (?,?)";
 		try {
+			connection.setAutoCommit(false);
+			if(!new DAORepresentant().create(repr))throw new SQLException();
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, repr.getId());
 			this.prStat.setInt(2, prof.getNbParticipations());

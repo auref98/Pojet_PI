@@ -101,7 +101,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											etu.getPhone(),
 											etu.getMail(),
 											etu.getMatricule());
-		new DAORepresentant().create(repr);
 		boolean change = false;
 		String sql = "INSERT INTO etudiant ( id,"
 											+ "datenaissance,"
@@ -117,6 +116,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											+ "refaddr)"
 											+ "VALUES(?, to_date(?,'yyyy-mm-dd'),?,?,?,?,?,?,?,?,?,?)";
 		try {
+			connection.setAutoCommit(false);
+			if(!new DAORepresentant().create(repr))throw new SQLException();
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, repr.getId());
 			this.prStat.setString(2, etu.getDateNaissance().toString());
@@ -132,12 +133,17 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(12, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
 			connection.commit();
-			connection.setAutoCommit(true);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}finally{
+			try {
+				connection.setAutoCommit(true);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.err.println("Erreur, auto comit(Etudiant)");
+			}
 			try {
 				this.prStat.close();
 			} catch (Exception e) {
