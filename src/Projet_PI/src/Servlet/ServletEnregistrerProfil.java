@@ -86,6 +86,6 @@ public class ServletEnregistrerProfil extends HttpServlet
 		}
 		
 		request.setAttribute("enregistrementSuccess", true);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/ListEvenement.jsp").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 	}
 }
