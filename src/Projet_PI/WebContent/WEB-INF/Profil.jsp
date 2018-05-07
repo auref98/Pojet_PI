@@ -35,7 +35,27 @@
 	  </div>
 	</nav>
 	
-	
+	<script language="JavaScript">
+		function validation(f) {
+		  if (f.NouveauMotDePasse.value == '' || f.ConfirmerNouveauMotDePasse.value == '') {
+		    alert('Tous les champs ne sont pas remplis');
+		    f.NouveauMotDePasse.focus();
+		    return false;
+		    }
+		  else if (f.NouveauMotDePasse.value != f.ConfirmerNouveauMotDePasse.value) {
+		    alert('Ce ne sont pas les mêmes mots de passe!');
+		    f.mdp1.focus();
+		    return false;
+		    }
+		  else if (f.NouveauMotDePasse.value == f.ConfirmerNouveauMotDePasse.value) {
+		    return true;
+		    }
+		  else {
+		    f.mdp1.focus();
+		    return false;
+		    }
+		  }
+	</script>
 	
 	${enregistrementSuccess}
 	
@@ -88,7 +108,7 @@
 		 			<label for="MotDePasse">
 			 		Mot de passe
 			 		</label>
-			 		<input  class="inputClass" type="password" required="required" placeholder="Mot de passe" name="MotDePasse" id="MotDePasse">
+			 		<input  class="inputClass" type="password" required="required" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -96,7 +116,7 @@
 		 			<label for="ConfirmerMotDePasse">
 			 		Confirmer mot de passe
 			 		</label>
-			 		<input class="inputClass" type="password" required="required" placeholder="Confirmer mot de passe" name="ConfirmerMotDePasse" id="ConfirmerMotDePasse">
+			 		<input class="inputClass" type="password" required="required" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
 	 			</div>
 	 		</div>
 	 		<div class="row texte">
