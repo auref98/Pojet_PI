@@ -174,7 +174,7 @@
 			 			<label for="DateNaissance">
 				 		Date de naissance
 				 		</label>
-				 		<input  class="inputClass" value="${rep.dateNaissance}" type="text" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
+				 		<input  class="inputClass" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
 		 			</div>
 		 		</div>
 		 		<div class="row">

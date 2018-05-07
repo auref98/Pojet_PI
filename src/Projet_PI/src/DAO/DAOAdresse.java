@@ -135,7 +135,6 @@ public class DAOAdresse extends DAO<Adresse>
 		}
 		finally																			// Bloc finally fermant le ResultSet et le PreparedStatement
 		{
-			adr = null;
 			try
 			{
 				resultSet.close();

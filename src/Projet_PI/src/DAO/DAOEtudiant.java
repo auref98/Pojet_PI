@@ -221,11 +221,11 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	public boolean update(Etudiant etu) {
 		// TODO Auto-generated method stub
 		boolean change = false;
-		String sql = "UPDATE etudiant SET datenaissance = to_date(?,'yyyy-mm-dd)',"
+		String sql = "UPDATE etudiant SET datenaissance = to_date(?,'yyyy-mm-dd'),"
 											+ "paysnaissance = ?,"
 											+ "lieunaissance = ?,"
 											+ "numnational = ?,"
-											+ "natianalite = ?,"
+											+ "nationalite = ?,"
 											+ "numbanque = ?,"
 											+ "soutiensocial = ?,"
 											+ "emplacementecole = ?,"
@@ -246,8 +246,11 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(7, (etu.isSoutienSocial())?1:0);
 			this.prStat.setString(8, etu.getEmplacementEcole());
 			this.prStat.setString(9, etu.getRole());
-			this.prStat.setInt(10, etu.getSec().getId());
-			this.prStat.setInt(11, etu.getAdr().getId());
+			if(etu.getSec() != null)this.prStat.setInt(10, etu.getSec().getId());
+			else this.prStat.setNull(10, 0);
+			if(etu.getAdr() != null)this.prStat.setInt(11, etu.getAdr().getId());
+			else this.prStat.setNull(11, 0);
+			this.prStat.setInt(12, etu.getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
 			connection.commit();
 		} catch (Exception e) {
