@@ -12,9 +12,29 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<!-- 
-	Nav Bar
-	 -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" >
+	  <img src="assets/img/logo.png" alt="logo" style="width:100px;padding-right:15px" >
+	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navb">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
+	      </li>
+	    </ul>
+		<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+		<img src="assets/img/door.png" alt="door" style="width:40px;">
+	    <form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
+	    </form>
+	  </div>
+	</nav>
+	
 	 <style>
 	 	
 	 </style>

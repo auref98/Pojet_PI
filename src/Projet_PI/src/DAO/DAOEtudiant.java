@@ -119,7 +119,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	
 	public Adresse findAddr(int id){
 		Adresse addr = null;
-		String sql = "SELECT refsect FROM section WHERE id = ?";
+		String sql = "SELECT refaddr FROM etudiant WHERE id = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, id);

@@ -62,7 +62,31 @@ private static final long serialVersionUID = 1L;
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean isEtu = (etu != null)?true:false;
 		if(isEtu){
-			if(etu.getAdr() != null) if(etu.getAdr().getPays() == null)etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+			//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+			
+			System.out.println(etu.getAdr().getPays() + " ici ");
+			
+			request.setAttribute("rep", etu);
+			request.setAttribute("adr", etu.getAdr());
+		}else{
+			request.setAttribute("rep", prof);
+		}
+		request.setAttribute("isEtu", isEtu);
+		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+		reqDisp.forward(request, response);
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		HttpSession session = request.getSession(true);
+		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+		Professeur prof = (Professeur)session.getAttribute("professeur");
+		boolean isEtu = (etu != null)?true:false;
+		if(isEtu){
+			//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+
+			System.out.println(etu.getAdr().getPays() + " ici ");
+			
 			request.setAttribute("rep", etu);
 			request.setAttribute("adr", etu.getAdr());
 		}else{
