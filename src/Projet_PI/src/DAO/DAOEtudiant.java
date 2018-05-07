@@ -90,13 +90,13 @@ public class DAOEtudiant extends DAO<Etudiant>{
 	
 	public Section findSect(int id){
 		Section sec = null;
-		String sql = "SELECT refsect FROM section WHERE id = ?";
+		String sql = "SELECT refsect FROM etudiant WHERE id = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				sec = new DAOSection().find(this.resSet.getInt("REFSECT"));
+				if(this.resSet.getInt("REFSECT") != 0)sec = new DAOSection().find(this.resSet.getInt("REFSECT"));
 			}
 		}
 		catch(Exception e){

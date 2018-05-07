@@ -64,6 +64,8 @@ private static final long serialVersionUID = 1L;
 		if(isEtu){
 			//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
+			request.setAttribute("sects", new DAOSection().findAll());
 			request.setAttribute("rep", etu);
 			request.setAttribute("adr", etu.getAdr());
 		}else{
@@ -81,6 +83,8 @@ private static final long serialVersionUID = 1L;
 		if(isEtu){
 			//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
+			request.setAttribute("sects", new DAOSection().findAll());
 			request.setAttribute("rep", etu);
 			request.setAttribute("adr", etu.getAdr());
 		}else{

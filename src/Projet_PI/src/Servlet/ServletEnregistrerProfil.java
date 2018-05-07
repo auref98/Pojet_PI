@@ -66,8 +66,9 @@ public class ServletEnregistrerProfil extends HttpServlet
 			if(adr.getId() == -1) new DAOAdresse().create(adr);
 			etu.setAdr(adr);
 			
-			//Section sec;
-			//etu.setSec(sec);
+			int idSect = Integer.parseInt(request.getParameter("Section"));
+			Section sec = new DAOSection().find(idSect);
+			etu.setSec(sec);
 			failed = new DAOEtudiant().update(etu);
 			session.setAttribute("etudiant", etu);
 		}

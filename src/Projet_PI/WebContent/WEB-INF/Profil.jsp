@@ -249,7 +249,6 @@
 				 			<option <c:if test="${rep.emplacementEcole == 'Virton'}">selected="selected"</c:if> value="Virton">Virton</option>
 							<option <c:if test="${rep.emplacementEcole == 'Arlon'}">selected="selected"</c:if> value="Arlon">Arlon</option>
 				 		</select>
-				 		<input  value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" >
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -257,7 +256,22 @@
 			 			<label for="role">
 				 		Role
 				 		</label>
-				 		<input class="inputClass" value="${rep.role}" type="text" required="required" placeholder="Role" name="Role" id="Role">
+				 		<select name="Role" id="Role" class="inputClass">
+				 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">representant</option>
+				 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">ouvrier</option>
+				 		</select>
+		 			</div>
+		 		</div>
+		 		<div class="row">
+		 			<div class="form-group col-lig-3 center">
+			 			<label for="Section">
+				 		Section
+				 		</label>
+				 		<select id="Section" name="Section" class="inputClass">
+				 			<c:forEach items="${sects}" var="sect">
+				 				<option <c:if test="${sect.nom == rep.sec}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
+				 			</c:forEach>
+				 		</select>
 		 			</div>
 		 		</div>
 	 		</c:if>
