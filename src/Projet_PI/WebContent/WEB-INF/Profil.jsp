@@ -36,28 +36,16 @@
 	</nav>
 	
 	<script language="JavaScript">
-		function validation(f) {
-		  if (f.NouveauMotDePasse.value == '' || f.ConfirmerNouveauMotDePasse.value == '') {
-		    alert('Tous les champs ne sont pas remplis');
-		    f.NouveauMotDePasse.focus();
-		    return false;
-		    }
-		  else if (f.NouveauMotDePasse.value != f.ConfirmerNouveauMotDePasse.value) {
-		    alert('Ce ne sont pas les mêmes mots de passe!');
-		    f.mdp1.focus();
-		    return false;
-		    }
-		  else if (f.NouveauMotDePasse.value == f.ConfirmerNouveauMotDePasse.value) {
-		    return true;
-		    }
-		  else {
-		    f.mdp1.focus();
-		    return false;
-		    }
-		  }
+	
+		function validation(){
+			if(document.getElementById("ConfirmerNouveauMotDePasse").value != document.getElementById("NouveauMotDePasse").value){
+				document.getElementById("NouveauMotDePasse").focus();
+				alert('mot de passe différant');
+			}
+		}
 	</script>
 	
-	${enregistrementSuccess}
+	
 	
 	
 	 <style>
@@ -78,6 +66,7 @@
 	 	} 
 	 </style>
 	 <div class="container">
+	 <form method="post" onSubmit="return validation(this)" >
 	 	<form method="post" action="EnregistrerProfil" class="form">
 	 		<div class="row">
 	 			<div class="form-group col-lig-3 center">
@@ -103,22 +92,25 @@
 			 		<input  class="inputClass" value="${rep.mail}" type="mail" required="required" placeholder="Mail" name="Mail" id="Mail">
 	 			</div>
 	 		</div>
-	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
-		 			<label for="MotDePasse">
-			 		Mot de passe
-			 		</label>
-			 		<input  class="inputClass" type="password" required="required" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
-	 			</div>
-	 		</div>
-	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
-		 			<label for="ConfirmerMotDePasse">
-			 		Confirmer mot de passe
-			 		</label>
-			 		<input class="inputClass" type="password" required="required" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
-	 			</div>
-	 		</div>
+	 		
+		 	<div class="row">
+		 		<div class="form-group col-lig-3 center">
+			 		<label for="Nouveau Mot De Passe">
+				 	Mot de passe
+				 	</label>
+				 	<input  class="inputClass" type="password" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
+		 		</div>
+		 	</div>
+		 	<div class="row">
+		 		<div class="form-group col-lig-3 center">
+			 		<label for="Confirmer Nouveau Mot De Passe">
+				 	Confirmer mot de passe
+				 	</label>
+				 	<input onchange="validation()" class="inputClass" type="password" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
+		 		</div>
+		 	</div>
+		 		
+	 		
 	 		<div class="row texte">
 	 			<div class="form-group col-lig-3 center">
 	 				<label for="Matricule">
@@ -186,7 +178,7 @@
 			 			<label for="boite">
 				 		Boite
 				 		</label>
-				 		<input  class="inputClass" value="${adr.boite}" type="text" required="required" placeholder="Boite" name="Boite" id="Boite">
+				 		<input  class="inputClass" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
 		 			</div>
 		 		</div>
 	 			<div class="row">
@@ -243,7 +235,7 @@
 			 			<label for="SoutienSocial">
 				 		Soutien social
 				 		</label>
-				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" required="required" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
+				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -276,6 +268,15 @@
 	 		</div>>
 	 	
 	 	</form>
+	 	
+	 	<!-- erreur -->
+	 	<c:if test="${enregistrementSuccess == false}">
+			<div class="alert alert-danger alert-dismissible fade show">
+  				<button type="button" class="close" data-dismiss="alert">&times;</button>
+  				<strong>Attention ! </strong>Connection Failed
+			</div>
+		</c:if>
+	 	
 	 </div>
 	</body>
 </html>
