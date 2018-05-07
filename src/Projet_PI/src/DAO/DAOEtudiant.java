@@ -164,6 +164,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 											+ "refsect = ?,"
 											+ "refaddr = ? WHERE id = ?";
 		try {
+			connection.setAutoCommit(false);
+			if(!new DAORepresentant().update((Representant)etu))throw new SQLException();
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setString(1, etu.getDateNaissance().toString());
 			this.prStat.setString(2, etu.getPaysNaissance());
@@ -177,10 +179,16 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(10, etu.getSec().getId());
 			this.prStat.setInt(11, etu.getAdr().getId());
 			change = (this.prStat.executeUpdate() > 0)?true:false;
+			connection.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}finally{
+			try{
+				connection.setAutoCommit(true);
+			}catch(Exception e){
+				System.out.println("Erreur, auto comit (Etudiant)");
+			}
 			try {
 				this.prStat.close();
 			} catch (Exception e) {

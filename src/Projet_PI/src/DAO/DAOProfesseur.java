@@ -215,14 +215,23 @@ public class DAOProfesseur extends DAO<Professeur>{
 		boolean change = false;
 		String sql = "UPDATE professeur SET nbParticipant = ? WHERE id = ?";
 		try {
+			connection.setAutoCommit(false);
+			if(!new DAORepresentant().update(prof))throw new SQLException();
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, prof.getNbParticipations());
 			this.prStat.setInt(2, prof.getId());
 			change = (this.prStat.executeUpdate()>0)?true: false;
+			connection.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}finally{
+			try {
+				connection.setAutoCommit(true);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.err.println("Erreur, auto commit (Professeur)");
+			}
 			try {
 				this.prStat.close();
 			} catch (Exception e) {
