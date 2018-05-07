@@ -35,6 +35,11 @@
 	  </div>
 	</nav>
 	
+	
+	
+	${enregistrementSuccess}
+	
+	
 	 <style>
 	 	.center{
 	 		margin:auto;
@@ -53,7 +58,7 @@
 	 	} 
 	 </style>
 	 <div class="container">
-	 	<form method="post" action="" class="form">
+	 	<form method="post" action="EnregistrerProfil" class="form">
 	 		<div class="row">
 	 			<div class="form-group col-lig-3 center">
 		 			<label for="Nom">
@@ -129,7 +134,7 @@
 			 			<label for="codePostal">
 				 		Code postal
 				 		</label>
-				 		<input  class="inputClass" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="codePostal" id="codePostal">
+				 		<input  class="inputClass" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -145,7 +150,7 @@
 			 			<label for="rue">
 				 		Rue
 				 		</label>
-				 		<input  class="inputClass" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="rue" id="rue">
+				 		<input  class="inputClass" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="Rue" id="Rue">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -153,7 +158,7 @@
 			 			<label for="numero">
 				 		Numéro
 				 		</label>
-				 		<input  class="inputClass" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="numero" id="numero">
+				 		<input  class="inputClass" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -161,7 +166,7 @@
 			 			<label for="boite">
 				 		Boite
 				 		</label>
-				 		<input  class="inputClass" value="${adr.boite}" type="text" required="required" placeholder="Boite" name="boite" id="boite">
+				 		<input  class="inputClass" value="${adr.boite}" type="text" required="required" placeholder="Boite" name="Boite" id="Boite">
 		 			</div>
 		 		</div>
 	 			<div class="row">
@@ -185,7 +190,7 @@
 			 			<label for="lieuNaissance">
 				 		lieu de naissance
 				 		</label>
-				 		<input class="inputClass" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="lieuNaissance" id="lieuNaissance">
+				 		<input class="inputClass" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
 		 			</div>
 		 		</div>
 		 		
@@ -194,7 +199,7 @@
 			 			<label for="numNational">
 				 		Numéro national
 				 		</label>
-				 		<input class="inputClass" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="numNational" id="numNational">
+				 		<input class="inputClass" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -202,7 +207,7 @@
 			 			<label for="nationalite">
 				 		Nationalitée
 				 		</label>
-				 		<input class="inputClass" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="nationalite" id="nationalite">
+				 		<input class="inputClass" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -210,7 +215,7 @@
 			 			<label for="numBanque">
 				 		Numéro de banque
 				 		</label>
-				 		<input class="inputClass" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="numBanque" id="numBanque">
+				 		<input class="inputClass" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -226,7 +231,7 @@
 			 			<label for="emplacementEcole">
 				 		Emplacement de l'école
 				 		</label>
-				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" name="emplacementEcole" id="emplacementEcole">
+				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" name="EmplacementEcole" id="EmplacementEcole">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -234,7 +239,7 @@
 			 			<label for="role">
 				 		Role
 				 		</label>
-				 		<input class="inputClass" value="${rep.role}" type="text" required="required" placeholder="Role" name="role" id="role">
+				 		<input class="inputClass" value="${rep.role}" type="text" required="required" placeholder="Role" name="Role" id="Role">
 		 			</div>
 		 		</div>
 	 		</c:if>
@@ -247,7 +252,7 @@
 	 		</c:if>
 	 		
 	 		<div class="col-lg-12 btn btn-default center-block">
-	 			<input type="submit" class="btn btn-primary value="Submit Button>
+	 			<input type="submit" class="btn btn-primary" value="Enregistrer">
 	 		</div>>
 	 	
 	 	</form>

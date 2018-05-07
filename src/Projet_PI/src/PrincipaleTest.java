@@ -8,20 +8,13 @@ public class PrincipaleTest
 {
 	public static void main(String[] args)
 	{
-		Professeur prof = new Professeur("Fock","Auref","+32.000.00.00.00","test@hers.be","e000000",0,0);
-		//rep.setMail("ludovic.adam@hers.be");
-		new DAOProfesseur().create(prof);
-		System.out.println(prof.getPassword());
-		//Representant rep = new DAOProfesseur().create("ludovic.adam@hers.be", "password");
+		Adresse adr = new Adresse(-1, "Libramont", 6800, "vraiment pas loin d ci", 5, "R", "Belgique");
+		System.out.println(adr.getId());
+		new DAOAdresse().find(adr);
+		if(adr.getId() != -1) System.out.println("C'est pas null " + adr.getId());
+		else System.out.println("c'est null " + adr);
 
-
-		/*if(rep == null) System.out.println("Erreur !");
-		else
-		{
-			//System.out.println(rep.getLastName() + " " + rep.getFirstName());
-			System.out.println(rep.getLastName() + " " + rep.getFirstName());
-		}
-		*/
+		
 		System.out.println("Hello World !");
 	}
 
