@@ -214,7 +214,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 	public boolean update(Professeur prof) {
 		// TODO Auto-generated method stub
 		boolean change = false;
-		String sql = "UPDATE professeur SET nbParticipant = ? WHERE id = ?";
+		String sql = "UPDATE professeur SET nbParticipations = ? WHERE id = ?";
 		try {
 			connection.setAutoCommit(false);
 			if(!new DAORepresentant().update(prof))throw new SQLException();
