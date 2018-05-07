@@ -120,7 +120,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			if(!new DAORepresentant().create(repr))throw new SQLException();
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, repr.getId());
-			this.prStat.setString(2, etu.getDateNaissance().toString());
+			if(etu.getDateNaissance() != null)this.prStat.setString(2, etu.getDateNaissance().toString());
+			else this.prStat.setNull(2, 0);
 			this.prStat.setString(3, etu.getPaysNaissance());
 			this.prStat.setString(4, etu.getLieuNaissance());
 			this.prStat.setString(5, etu.getNumNational());
@@ -129,8 +130,10 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(8, (etu.isSoutienSocial())?1:0);
 			this.prStat.setString(9, etu.getEmplacementEcole());
 			this.prStat.setString(10, etu.getRole());
-			this.prStat.setInt(11, etu.getSec().getId());
-			this.prStat.setInt(12, etu.getAdr().getId());
+			if(etu.getSec() != null)this.prStat.setInt(11, etu.getSec().getId());
+			else this.prStat.setNull(11, 0);
+			if(etu.getAdr() != null)this.prStat.setInt(12, etu.getAdr().getId());
+			else this.prStat.setNull(12, 0);
 			change = (this.prStat.executeUpdate() > 0)?true:false;
 			connection.commit();
 		} catch (Exception e) {
