@@ -21,7 +21,7 @@
 	  <div class="collapse navbar-collapse" id="navb">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
-	        <a class="nav-link" href="javascript:void(0)">Liste des évènements</a>
+	        <a class="nav-link" href="/ListEvenSuivPrec">Liste des évènements</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>

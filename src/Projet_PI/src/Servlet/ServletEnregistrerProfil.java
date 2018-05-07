@@ -45,7 +45,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			etu.setMatricule(matricule);
 			etu.setPassword(password);
 			
-			//etu.setDateNaissance(LocalDate.parse(request.getParameter("DateNaissance"), DateTimeFormatter.));			
+			etu.setDateNaissance(LocalDate.parse(request.getParameter("DateNaissance"), DateTimeFormatter.ISO_DATE));			
 			etu.setPaysNaissance(request.getParameter("PaysNaissance"));					
 			etu.setLieuNaissance(request.getParameter("LieuNaissance"));					
 			etu.setNumNational(request.getParameter("NumNational"));			
@@ -63,11 +63,8 @@ public class ServletEnregistrerProfil extends HttpServlet
 			String pays = request.getParameter("Pays");
 			Adresse adr = new Adresse(-1, localite, codePostal, rue, numero, boite, pays);
 			new DAOAdresse().find(adr);
-			if(adr.getId() == -1)
-			{
-				new DAOAdresse().create(adr);
-				etu.setAdr(adr);
-			}
+			if(adr.getId() == -1) new DAOAdresse().create(adr);
+			etu.setAdr(adr);
 			
 			//Section sec;
 			//etu.setSec(sec);
@@ -88,6 +85,6 @@ public class ServletEnregistrerProfil extends HttpServlet
 		}
 		
 		request.setAttribute("enregistrementSuccess", failed);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/Profil").forward(request,  response);
 	}
 }

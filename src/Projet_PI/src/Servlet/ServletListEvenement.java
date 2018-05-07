@@ -23,15 +23,16 @@ public class ServletListEvenement extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		ArrayList<Evenement> evens = new DAOEvenement().find(0,4);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		ArrayList<Evenement> evens = new DAOEvenement().find(0,2);
 		for(Evenement even : evens){
 			ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 			even.setListPlage(p);
 		}
 		request.setAttribute("evens", evens);
 		request.setAttribute("debut", 0);
-		request.setAttribute("cpt", 4);
+		request.setAttribute("suiv", true);
+		request.setAttribute("cpt", 1);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListEvenement.jsp");
 		reqDisp.forward(request, response);
 	}
