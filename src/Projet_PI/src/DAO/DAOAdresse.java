@@ -130,7 +130,7 @@ public class DAOAdresse extends DAO<Adresse>
 		}
 		catch (SQLException ex)															// Si une erreur SQL a été rencontrée ou si aucun résultat n'a été trouvé
 		{
-			System.out.println("Erreur: findAdr failed !");
+			System.out.println("Erreur: findIdAdr failed !");
 			System.out.println(ex.getMessage());
 		}
 		finally																			// Bloc finally fermant le ResultSet et le PreparedStatement

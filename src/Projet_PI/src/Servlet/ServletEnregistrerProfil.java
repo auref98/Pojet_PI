@@ -63,12 +63,14 @@ public class ServletEnregistrerProfil extends HttpServlet
 			String pays = request.getParameter("Pays");
 			Adresse adr = new Adresse(-1, localite, codePostal, rue, numero, boite, pays);
 			new DAOAdresse().find(adr);
-			if(adr.getId() == -1) new DAOAdresse().create(adr);
-			etu.setAdr(adr);
+			if(adr.getId() == -1)
+			{
+				new DAOAdresse().create(adr);
+				etu.setAdr(adr);
+			}
 			
 			//Section sec;
 			//etu.setSec(sec);
-			
 			failed = new DAOEtudiant().update(etu);
 			session.setAttribute("etudiant", etu);
 		}

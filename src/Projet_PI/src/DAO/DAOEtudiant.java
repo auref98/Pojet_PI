@@ -251,6 +251,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			connection.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}finally{
 			try{
