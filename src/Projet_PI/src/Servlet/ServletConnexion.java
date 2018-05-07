@@ -39,7 +39,6 @@ public class ServletConnexion extends HttpServlet
 	/**
 	 * Constructeur par défaut; ne fait rien.
 	 */
-	public ServletConnexion() {}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{

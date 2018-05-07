@@ -28,7 +28,7 @@
 	      </li>
 	    </ul>
 		<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
-		<img src="assets/img/door.png" alt="door" style="width:40px;">
+		<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
 	    </form>
