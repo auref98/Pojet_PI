@@ -20,7 +20,8 @@ public class ServletDemandeMDP extends HttpServlet
 		String mail = request.getParameter("email");
 		String[] nomDom = mail.split("@");
 		
-		if(new DAORepresentant().find(mail) != null && !nomDom[1].equals("student.hers.be") && !nomDom[1].equals("hers.be"))
+		System.out.println(nomDom[1]);
+		if(new DAORepresentant().find(mail) != null || (!nomDom[1].equals("student.hers.be") && !nomDom[1].equals("hers.be")))
 			request.setAttribute("inscriptionSuccess", false);
 		else
 		{
