@@ -269,7 +269,7 @@
 				 		</label>
 				 		<select id="Section" name="Section" class="inputClass">
 				 			<c:forEach items="${sects}" var="sect">
-				 				<option <c:if test="${sect.nom == rep.sec}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
+				 				<option <c:if test="${sect.nom == rep.sec.nom}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
 				 			</c:forEach>
 				 		</select>
 		 			</div>
