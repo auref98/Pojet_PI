@@ -46,8 +46,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
-				Section sect = new DAOSection().find(this.resSet.getInt("REFSECT"));
-				Adresse adr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
+				//Section sect = new DAOSection().find(this.resSet.getInt("REFSECT"));
+				//Adresse adr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
 				Representant rep = new DAORepresentant().find(this.resSet.getInt("ID"));
 				etu = new Etudiant(rep.getLastName(),
 									rep.getFirstName(),
@@ -64,8 +64,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 									(this.resSet.getInt("SOUTIENSOCIAL")==1)?true:false,
 									this.resSet.getString("EMPLACEMENTECOLE"),
 									this.resSet.getString("ROLE"),
-									adr,
-									sect);
+									null,
+									null);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -84,6 +84,64 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			}
 		}
 		return etu;
+	}
+	
+	public Section findSect(int id){
+		Section sec = null;
+		String sql = "SELECT refsect FROM section WHERE id = ?";
+		try {
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setInt(1, id);
+			this.resSet = this.prStat.executeQuery();
+			if(this.resSet.next()){
+				sec = new DAOSection().find(this.resSet.getInt("REFSECT"));
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+			try{
+				this.prStat.close();
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return sec;
+	}
+	
+	public Adresse findAddr(int id){
+		Adresse addr = null;
+		String sql = "SELECT refsect FROM section WHERE id = ?";
+		try {
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setInt(1, id);
+			this.resSet = this.prStat.executeQuery();
+			if(this.resSet.next()){
+				addr = new DAOAdresse().find(this.resSet.getInt("REFADDR"));
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				this.resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+			try{
+				this.prStat.close();
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return addr;
 	}
 	
 	public Etudiant find(String mail, String password){
