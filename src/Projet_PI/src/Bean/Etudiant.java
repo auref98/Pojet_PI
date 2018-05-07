@@ -131,7 +131,7 @@ public class Etudiant extends Representant{
 	 * @param dateNaissance la date de naissance à affecter (au format <code>LocalDate</code>)
 	 */
 	public void setDateNaissance(LocalDate dateNaissance) {
-		this.dateNaissance = dateNaissance;
+		if(dateNaissance != null)this.dateNaissance = dateNaissance;
 	}
 
 // Getter et setter pour l'attribut "paysNaissance" 
@@ -149,7 +149,7 @@ public class Etudiant extends Representant{
 	 * @param paysNaissance le pays de naissance à affecter
 	 */
 	public void setPaysNaissance(String paysNaissance) {
-		this.paysNaissance = paysNaissance;
+		if(paysNaissance != null)this.paysNaissance = paysNaissance;
 	}
 
 // Getter et setter pour l'attribut "lieuNaissance" 
@@ -167,7 +167,7 @@ public class Etudiant extends Representant{
 	 * @param lieuNaissance le lieu de naissance à affecter
 	 */
 	public void setLieuNaissance(String lieuNaissance) {
-		this.lieuNaissance = lieuNaissance;
+		if(lieuNaissance != null)this.lieuNaissance = lieuNaissance;
 	}
 
 // Getter et setter pour l'attribut "numeroNatioanl" 
@@ -185,7 +185,7 @@ public class Etudiant extends Representant{
 	 * @param numNational le numéro national à affecter
 	 */
 	public void setNumNational(String numNational) {
-		this.numNational = numNational;
+		if(numNational != null)this.numNational = numNational;
 	}
 
 // Getter et setter pour l'attribut "nationalite" 
@@ -203,7 +203,7 @@ public class Etudiant extends Representant{
 	 * @param nationalite la nationalité à affecter
 	 */
 	public void setNationalite(String nationalite) {
-		this.nationalite = nationalite;
+		if(nationalite != null)this.nationalite = nationalite;
 	}
 
 // Getter et setter pour l'attribut "numBanque" 
@@ -221,7 +221,7 @@ public class Etudiant extends Representant{
 	 * @param numBanque le numéro numBanque du compte bancaire à affecter
 	 */
 	public void setNumBanque(String numBanque) {
-		this.numBanque = numBanque;
+		if(numBanque != null)this.numBanque = numBanque;
 	}
 
 // Getter et setter pour l'attribut "soutienSocial" 
@@ -257,7 +257,7 @@ public class Etudiant extends Representant{
 	 * @param emplacementEcole l'implantation (ville) de l'école à affecter
 	 */
 	public void setEmplacementEcole(String emplacementEcole) {
-		this.emplacementEcole = emplacementEcole;
+		if(emplacementEcole != null)this.emplacementEcole = emplacementEcole;
 	}
 
 // Getter et setter pour l'attribut "role" 
@@ -275,7 +275,7 @@ public class Etudiant extends Representant{
 	 * @param role le rôle de l'étudiant à affecter
 	 */
 	public void setRole(String role) {
-		this.role = role;
+		if(role != null)this.role = role;
 	}
 
 // Getter et setter pour l'attribut "adr" 
@@ -295,7 +295,7 @@ public class Etudiant extends Representant{
 	 * @see Adresse
 	 */
 	public void setAdr(Adresse adr) {
-		this.adr = adr;
+		if(adr != null)this.adr = adr;
 	}
 
 // Getter et setter pour l'attribut "sec" 
@@ -314,7 +314,7 @@ public class Etudiant extends Representant{
 	 * @see Section
 	 */
 	public void setSec(Section sec) {
-		this.sec = sec;
+		if(sec != null)this.sec = sec;
 	}
 	
 }

@@ -37,7 +37,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		boolean failed = false;
 		
 		if(etu != null)
-		{						
+		{
 			etu.setLastname(lastName);
 			etu.setFirstname(firstName);
 			etu.setPhone(phone);
@@ -50,7 +50,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			etu.setLieuNaissance(request.getParameter("LieuNaissance"));					
 			etu.setNumNational(request.getParameter("NumNational"));			
 			etu.setNationalite(request.getParameter("Nationalite"));				
-			etu.setNumBanque(request.getParameter("NumBanque"));					
+			etu.setNumBanque(request.getParameter("NumBanque"));			
 			etu.setSoutienSocial( (request.getParameter("SoutienSocial") != null)?true:false );							
 			etu.setEmplacementEcole(request.getParameter("EmplacementEcole"));		
 			etu.setRole(request.getParameter("Role"));		

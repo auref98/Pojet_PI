@@ -90,7 +90,7 @@ public class Representant {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		this.password = password;
+		if(password != null)this.password = password;
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class Representant {
 	 * @param lastName le nom à affecter.
 	 */
 	public void setLastname(String lastName) {
-		this.lastName = lastName;
+		if(lastName != null)this.lastName = lastName;
 	}
 
 // Getter et setter pour l'attribut "firstName"
@@ -146,7 +146,7 @@ public class Representant {
 	 * @param firstName le prénom à affecter
 	 */
 	public void setFirstname(String firstName) {
-		this.firstName = firstName;
+		if(firstName != null)this.firstName = firstName;
 	}
 
 // Fetter et setter pour l'attribut "phone"
@@ -164,7 +164,7 @@ public class Representant {
 	 * @param phone le numero de téléphone à affecter
 	 */
 	public void setPhone(String phone) {
-		this.phone = phone;
+		if(phone != null)this.phone = phone;
 	}
 
 // Getter et setter pour l'attribut "mail"
@@ -182,7 +182,7 @@ public class Representant {
 	 * @param mail l'adresse email à affecter
 	 */
 	public void setMail(String mail) {
-		this.mail = mail;
+		if(mail != null)this.mail = mail;
 	}
 
 // Getter et setter pour l'attribut "matricule"
@@ -200,7 +200,7 @@ public class Representant {
 	 * @param matricule l'identifiant -  propre à l'école - à affecter
 	 */
 	public void setMatricule(String matricule) {
-		this.matricule = matricule;
+		if(matricule != null)this.matricule = matricule;
 	}
 
 // getter et setter pour l'attribut "posts"
@@ -222,7 +222,7 @@ public class Representant {
 	 * @see java.util.LinkedList
 	 */
 	public void setPosts(LinkedList<Commentaire> posts) {
-		this.posts = posts;
+		if(posts != null)this.posts = posts;
 	}
 
 // Getter et setter pour l'attribut "inscrits"
@@ -244,7 +244,7 @@ public class Representant {
 	 * @see java.util.LinkedList
 	 */
 	public void setInscrits(LinkedList<Inscription> inscrits) {
-		this.inscrits = inscrits;
+		if(inscrits != null)this.inscrits = inscrits;
 	}
 	
 }

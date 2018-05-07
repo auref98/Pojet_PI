@@ -39,6 +39,8 @@
 	
 		function validation(){
 			if(document.getElementById("ConfirmerNouveauMotDePasse").value != document.getElementById("NouveauMotDePasse").value){
+				document.getElementById("ConfirmerNouveauMotDePasse").value = "";
+				document.getElementById("NouveauMotDePasse").value = "";
 				document.getElementById("NouveauMotDePasse").focus();
 				alert('mot de passe différant');
 			}
@@ -66,7 +68,6 @@
 	 	} 
 	 </style>
 	 <div class="container">
-	 <form method="post" onSubmit="return validation(this)" >
 	 	<form method="post" action="EnregistrerProfil" class="form">
 	 		<div class="row">
 	 			<div class="form-group col-lig-3 center">
@@ -243,7 +244,12 @@
 			 			<label for="emplacementEcole">
 				 		Emplacement de l'école
 				 		</label>
-				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" name="EmplacementEcole" id="EmplacementEcole">
+				 		<select name="EmplacementEcole" id="EmplacementEcole" class="inputClass">
+				 			<option <c:if test="${rep.emplacementEcole == 'Libramont'}">selected="selected"</c:if> value="Libramont">Libramont</option>
+				 			<option <c:if test="${rep.emplacementEcole == 'Virton'}">selected="selected"</c:if> value="Virton">Virton</option>
+							<option <c:if test="${rep.emplacementEcole == 'Arlon'}">selected="selected"</c:if> value="Arlon">Arlon</option>
+				 		</select>
+				 		<input  value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" >
 		 			</div>
 		 		</div>
 		 		<div class="row">
