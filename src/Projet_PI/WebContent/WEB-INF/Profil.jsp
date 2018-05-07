@@ -21,14 +21,14 @@
 	  <div class="collapse navbar-collapse" id="navb">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
-	        <a class="nav-link" href="/ListEvenSuivPrec">Liste des évènements</a>
+	        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
 	      </li>
 	    </ul>
-		<img src="assets/img/profil.png" alt="profil" style="width:40px;">
-		<img src="assets/img/door.png" alt="door" style="width:40px;">
+		<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+		<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
 	    </form>
