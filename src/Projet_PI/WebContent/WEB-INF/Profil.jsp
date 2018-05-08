@@ -45,6 +45,14 @@
 				alert('les mots de passe ne sont pas identiques');
 			}
 		}
+		function validNum(){
+			let phone = document.getElementById("Phone").value;
+			let regExp = /^\+(32|33)(\.)\d{3}(\.)\d{2}(\.)\d{2}(\.)\d{2}$/;
+			if(!regExp.test(phone)){
+				alert("Le numero de téléphone ne correspond pas\nExemple : +32.000.00.00.00");
+				document.getElementById("Phone").value = "";
+			}
+		}
 	</script>
 	
 	
@@ -130,7 +138,7 @@
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
-	 				<input  class="inputClass" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
+	 				<input  onchange="validNum()" class="inputClass" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
 	 			</div>
 	 		</div>
 	 		<c:if test="${isEtu == true}">
