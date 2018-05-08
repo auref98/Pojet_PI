@@ -84,7 +84,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			enregistrementSuccess = new DAOProfesseur().update(prof);
 			session.setAttribute("professeur", prof);
 		}
-		
+		if(enregistrementSuccess && (boolean)session.getAttribute("firstConnection"))session.setAttribute("firstConnection", false);
 		request.setAttribute("enregistrementSuccess", enregistrementSuccess);
 		this.getServletContext().getRequestDispatcher("/Profil").forward(request,  response);
 	}
