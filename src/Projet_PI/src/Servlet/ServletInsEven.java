@@ -18,7 +18,10 @@ public class ServletInsEven extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		String[] id = request.getParameterValues("id");
-		System.out.println(id[0]);
+		Enumeration names = request.getParameterNames();
+		while(names.hasMoreElements()){
+			//System.out.println((String)names.nextElement());
+			System.out.println(request.getParameter((String)names.nextElement()));
+		}
 	}
 }

@@ -65,7 +65,7 @@
 			 		</c:forEach>
 		 			<p>Description : <br>${even.description}</p>
 			 		<form method="post" action="inscriptionEvenement" name="${even.id }">
-			 			<input type="submit" class="btn btn-info" value="Inscription">
+			 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
 			 		</form>
 			 		<form method="post" action="DetailEvenement">
 			 			<input type="submit" class="btn btn-info" value="Detail">
