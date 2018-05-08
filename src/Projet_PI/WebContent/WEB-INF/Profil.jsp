@@ -40,7 +40,7 @@
 		function validation(){
 			if(document.getElementById("ConfirmerNouveauMotDePasse").value != document.getElementById("NouveauMotDePasse").value){
 				document.getElementById("NouveauMotDePasse").focus();
-				alert('mot de passe différant');
+				alert('les mots de passe ne sont pas identiques');
 			}
 		}
 	</script>
