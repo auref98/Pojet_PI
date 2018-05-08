@@ -66,8 +66,21 @@ public class ServletIndex extends HttpServlet
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
+		boolean firstConnection = false;
+		try
+		{
+			firstConnection = (boolean)session.getAttribute("firstConnection");	
+		}
+		catch(NullPointerException ex)
+		{
+			System.out.println("erreur: " + ex.getMessage());
+		}
 		if(etu == null && prof == null) this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
-		else this.getServletContext().getRequestDispatcher("/ListeEvenement").forward(request,  response);
+		else 
+		{
+			if(firstConnection) this.getServletContext().getRequestDispatcher("/Profil").forward(request,  response);
+			else this.getServletContext().getRequestDispatcher("/ListeEvenement").forward(request,  response);
+		}
 	}
 	
 }
