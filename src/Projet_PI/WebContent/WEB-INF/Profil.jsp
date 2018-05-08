@@ -293,7 +293,14 @@
 	 	<c:if test="${enregistrementSuccess == false}">
 			<div class="alert alert-danger alert-dismissible fade show">
   				<button type="button" class="close" data-dismiss="alert">&times;</button>
-  				<strong>Attention ! </strong>Connection Failed
+  				<strong>Attention ! </strong>La connection a échoué
+			</div>
+		</c:if>
+		
+		<c:if test="${enregistrementSuccess == true}">
+			<div class="alert alert-success alert-dismissible fade show">
+  				<button type="button" class="close" data-dismiss="alert">&times;</button>
+  				<strong>OK ! </strong>connection réussie
 			</div>
 		</c:if>
 	 	
