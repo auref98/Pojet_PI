@@ -47,6 +47,7 @@ public class ServletConnexion extends HttpServlet
 		HttpSession session = request.getSession(true);
 		boolean failed = false;
 		boolean firstConnection = false;
+		session.setAttribute("firstConnection", firstConnection);
 		
 		if(mail.indexOf("student") != -1)
 		{
