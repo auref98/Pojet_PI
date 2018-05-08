@@ -38,14 +38,14 @@
 			<div class="collapse navbar-collapse" id="navb">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item">
-		        <p class="nav-link">Liste des évènements</p>
+		        <a class="nav-link">Liste des évènements</a>
 		      </li>
 		      <li class="nav-item">
-		        <p class="nav-link">Mes inscriptions</p>
+		        <a class="nav-link">Mes inscriptions</a>
 		      </li>
 		    </ul>
 			<img src="assets/img/profil.png" alt="profil" style="width:40px;">
-			<img src="assets/img/door.png" alt="door" style="width:40px;">
+			<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
 		    <form class="form-inline my-2 my-lg-0">
 		      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
 		    </form>
