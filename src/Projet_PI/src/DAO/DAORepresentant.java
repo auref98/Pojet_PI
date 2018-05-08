@@ -221,9 +221,33 @@ public class DAORepresentant extends DAO<Representant>{
 		return change;
 	}
 	
+	public boolean update(String mail, String password){
+		boolean change = false;
+		String sql = "UPDATE representant set password = STANDARD_HASH( ? || (SELECT salt FROM representant WHERE mail = ?),'SHA256') WHERE mail = ?";
+		try {
+			this.prStat = connection.prepareStatement(sql);
+			this.prStat.setString(1, password);
+			this.prStat.setString(2, mail);
+			this.prStat.setString(3, mail);
+			change = (this.prStat.executeUpdate()>0)?true:false;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				this.prStat.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return change;
+	}
+	
 	@Override
 	public boolean update(Representant rep) {
 		// TODO Auto-generated method stub
+		if(rep.getPassword() != null && rep.getPassword() != "")this.update(rep.getMail(), rep.getPassword());
 		boolean change = false;
 		String sql = "UPDATE representant SET lastname = ?,"
 											+ "firstname = ?,"

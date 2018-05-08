@@ -29,7 +29,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		String phone = request.getParameter("Phone");										
 		String mail = request.getParameter("Mail");	
 		String matricule = request.getParameter("Matricule");		
-		String password = request.getParameter("MotDePasse");
+		String password = request.getParameter("ConfirmerNouveauMotDePasse");
 		
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");

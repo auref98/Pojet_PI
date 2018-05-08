@@ -74,7 +74,7 @@
 		 			<label for="Nom">
 			 		Nom
 			 		</label>
-			 		<input class="inputClass" value="${rep.firstName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
+			 		<input class="inputClass" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -82,7 +82,7 @@
 	 				<label for="Prenom">
 	 				Prenom
 	 				</label>
-	 				<input  class="inputClass" value="${rep.lastName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
+	 				<input  class="inputClass" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
