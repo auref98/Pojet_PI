@@ -29,7 +29,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		String phone = request.getParameter("Phone");										
 		String mail = request.getParameter("Mail");	
 		String matricule = request.getParameter("Matricule");		
-		String password = request.getParameter("MotDePasse");
+		String password = request.getParameter("ConfirmerNouveauMotDePasse");
 		
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
@@ -37,7 +37,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		boolean failed = false;
 		
 		if(etu != null)
-		{						
+		{
 			etu.setLastname(lastName);
 			etu.setFirstname(firstName);
 			etu.setPhone(phone);
@@ -50,7 +50,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			etu.setLieuNaissance(request.getParameter("LieuNaissance"));					
 			etu.setNumNational(request.getParameter("NumNational"));			
 			etu.setNationalite(request.getParameter("Nationalite"));				
-			etu.setNumBanque(request.getParameter("NumBanque"));					
+			etu.setNumBanque(request.getParameter("NumBanque"));			
 			etu.setSoutienSocial( (request.getParameter("SoutienSocial") != null)?true:false );							
 			etu.setEmplacementEcole(request.getParameter("EmplacementEcole"));		
 			etu.setRole(request.getParameter("Role"));		
@@ -66,8 +66,9 @@ public class ServletEnregistrerProfil extends HttpServlet
 			if(adr.getId() == -1) new DAOAdresse().create(adr);
 			etu.setAdr(adr);
 			
-			//Section sec;
-			//etu.setSec(sec);
+			int idSect = Integer.parseInt(request.getParameter("Section"));
+			Section sec = new DAOSection().find(idSect);
+			etu.setSec(sec);
 			failed = new DAOEtudiant().update(etu);
 			session.setAttribute("etudiant", etu);
 		}

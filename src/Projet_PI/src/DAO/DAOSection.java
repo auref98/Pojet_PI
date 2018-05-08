@@ -20,6 +20,7 @@
 
 package DAO;
 
+import java.lang.reflect.Array;
 import java.sql.*;
 import java.util.*;
 
@@ -42,12 +43,12 @@ public class DAOSection extends DAO<Section>
 		String query = "select * from section where id = ?";
 		PreparedStatement ps = null;
 		Section section = null;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -60,9 +61,15 @@ public class DAOSection extends DAO<Section>
 		catch (SQLException ex)
 		{
 			System.out.println("Erreur: findSection failed !");
+			ex.printStackTrace();
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				System.out.println("Erreur: fermeture de resultSet");
+			}
 			try
 			{
 				ps.close();
@@ -73,6 +80,38 @@ public class DAOSection extends DAO<Section>
 			}
 		}
 		return section;
+	}
+	
+	public ArrayList<Section> findAll(){
+		ArrayList <Section> sects = new ArrayList<Section>();
+		String sql = "SELECT * FROM section";
+		PreparedStatement prStat = null;
+		ResultSet resSet = null;
+		try {
+			prStat = connection.prepareStatement(sql);
+			resSet = prStat.executeQuery();
+			while(resSet.next()){
+				sects.add(new Section(resSet.getInt("id"),resSet.getString("nom"),new DAOProfesseur().find(resSet.getInt("refRelais"))));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("Erreur : findAll section");
+		}finally{
+			try {
+				resSet.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Erreur : resSet impossible a fermer (findAll section)");
+			}
+			try {
+				prStat.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Erreur : prStat impossible a fermer (findAll section)");
+			}
+		}
+		return sects;
 	}
 	
 	/**

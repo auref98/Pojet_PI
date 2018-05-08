@@ -19,6 +19,6 @@ public class ServletDeconection extends HttpServlet {
 	{
 		HttpSession session = request.getSession(true);
 		session.invalidate();
-		this.getServletContext().getRequestDispatcher("/Connexion").forward(request,  response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 	}
 }

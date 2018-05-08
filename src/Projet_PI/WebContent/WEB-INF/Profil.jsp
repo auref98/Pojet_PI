@@ -21,14 +21,14 @@
 	  <div class="collapse navbar-collapse" id="navb">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
-	        <a class="nav-link" href="/ListEvenSuivPrec">Liste des évènements</a>
+	        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
 	      </li>
 	    </ul>
-		<img src="assets/img/profil.png" alt="profil" style="width:40px;">
-		<img src="assets/img/door.png" alt="door" style="width:40px;">
+		<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+		<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
 	    </form>
@@ -39,6 +39,8 @@
 	
 		function validation(){
 			if(document.getElementById("ConfirmerNouveauMotDePasse").value != document.getElementById("NouveauMotDePasse").value){
+				document.getElementById("ConfirmerNouveauMotDePasse").value = "";
+				document.getElementById("NouveauMotDePasse").value = "";
 				document.getElementById("NouveauMotDePasse").focus();
 				alert('les mots de passe ne sont pas identiques');
 			}
@@ -66,14 +68,13 @@
 	 	} 
 	 </style>
 	 <div class="container">
-	 <form method="post" onSubmit="return validation(this)" >
 	 	<form method="post" action="EnregistrerProfil" class="form">
 	 		<div class="row">
 	 			<div class="form-group col-lig-3 center">
 		 			<label for="Nom">
 			 		Nom
 			 		</label>
-			 		<input class="inputClass" value="${rep.firstName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
+			 		<input class="inputClass" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -81,7 +82,7 @@
 	 				<label for="Prenom">
 	 				Prenom
 	 				</label>
-	 				<input  class="inputClass" value="${rep.lastName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
+	 				<input  class="inputClass" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -243,7 +244,11 @@
 			 			<label for="emplacementEcole">
 				 		Emplacement de l'école
 				 		</label>
-				 		<input class="inputClass" value="${rep.emplacementEcole}" type="text" required="required" placeholder="Emplacement de l'école" name="EmplacementEcole" id="EmplacementEcole">
+				 		<select name="EmplacementEcole" id="EmplacementEcole" class="inputClass">
+				 			<option <c:if test="${rep.emplacementEcole == 'Libramont'}">selected="selected"</c:if> value="Libramont">Libramont</option>
+				 			<option <c:if test="${rep.emplacementEcole == 'Virton'}">selected="selected"</c:if> value="Virton">Virton</option>
+							<option <c:if test="${rep.emplacementEcole == 'Arlon'}">selected="selected"</c:if> value="Arlon">Arlon</option>
+				 		</select>
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -251,7 +256,22 @@
 			 			<label for="role">
 				 		Role
 				 		</label>
-				 		<input class="inputClass" value="${rep.role}" type="text" required="required" placeholder="Role" name="Role" id="Role">
+				 		<select name="Role" id="Role" class="inputClass">
+				 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">representant</option>
+				 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">ouvrier</option>
+				 		</select>
+		 			</div>
+		 		</div>
+		 		<div class="row">
+		 			<div class="form-group col-lig-3 center">
+			 			<label for="Section">
+				 		Section
+				 		</label>
+				 		<select id="Section" name="Section" class="inputClass">
+				 			<c:forEach items="${sects}" var="sect">
+				 				<option <c:if test="${sect.nom == rep.sec.nom}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
+				 			</c:forEach>
+				 		</select>
 		 			</div>
 		 		</div>
 	 		</c:if>
