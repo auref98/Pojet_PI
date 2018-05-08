@@ -34,7 +34,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		boolean failed = false;
+		boolean enregistrementSuccess = false;
 		
 		if(etu != null)
 		{
@@ -69,7 +69,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 			int idSect = Integer.parseInt(request.getParameter("Section"));
 			Section sec = new DAOSection().find(idSect);
 			etu.setSec(sec);
-			failed = new DAOEtudiant().update(etu);
+			enregistrementSuccess = new DAOEtudiant().update(etu);
 			session.setAttribute("etudiant", etu);
 		}
 		else
@@ -81,11 +81,11 @@ public class ServletEnregistrerProfil extends HttpServlet
 			prof.setMatricule(matricule);
 			prof.setPassword(password);
 			
-			failed = new DAOProfesseur().update(prof);
+			enregistrementSuccess = new DAOProfesseur().update(prof);
 			session.setAttribute("professeur", prof);
 		}
 		
-		request.setAttribute("enregistrementSuccess", failed);
+		request.setAttribute("enregistrementSuccess", enregistrementSuccess);
 		this.getServletContext().getRequestDispatcher("/Profil").forward(request,  response);
 	}
 }
