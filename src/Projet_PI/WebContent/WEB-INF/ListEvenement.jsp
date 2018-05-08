@@ -52,8 +52,8 @@
 	 			<p>${date.date }</p>
 	 		</c:forEach>
 	 		<p>Description : <br>${even.description}</p>
-	 		<form method="post" action="inscriptionEvenement" name="${even.id }">
-	 			<input type="submit" value="Inscription">
+	 		<form method="post" action="inscriptionEvenement" name="${enven.id }">
+	 			<input type="submit" value="Inscription" name="${enven.id }" id="${enven.id }">
 	 		</form>
 	 		<form method="post" action="DetailEvenement">
 	 			<input type="submit" value="Detail">
