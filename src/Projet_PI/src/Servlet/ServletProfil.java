@@ -61,6 +61,7 @@ private static final long serialVersionUID = 1L;
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean isEtu = (etu != null)?true:false;
+		request.setAttribute("firstConnection", (boolean) session.getAttribute("firstConnection"));
 		if(isEtu){
 			//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
@@ -79,6 +80,7 @@ private static final long serialVersionUID = 1L;
 		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
+		request.setAttribute("firstConnection", (boolean) session.getAttribute("firstConnection"));
 		boolean isEtu = (etu != null)?true:false;
 		if(isEtu){
 			//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));

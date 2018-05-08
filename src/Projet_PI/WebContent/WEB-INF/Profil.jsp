@@ -117,11 +117,11 @@
 	 				<label for="Matricule">
 		 			Matricule : 
 		 			</label>
-		 			<c:if test="${rep.matricule != null }">
-		 				${rep.matricule}
-		 			</c:if>
-		 			<c:if test="${rep.matricule == null }">
+		 			<c:if test="${rep.matricule == null || firstConnection == true}">
 		 				<input  class="inputClass" value="" type="text" required="required" placeholder="x000000" name="Matricule" id="Matricule">
+		 			</c:if>
+		 			<c:if test="${rep.matricule != null && firstConnection == false}">
+		 				${rep.matricule}
 		 			</c:if>
 	 			</div>
 	 		</div>
@@ -285,7 +285,7 @@
 	 		
 	 		<div class="col-lg-12 btn btn-default center-block">
 	 			<input type="submit" class="btn btn-primary" value="Enregistrer">
-	 		</div>>
+	 		</div>
 	 	
 	 	</form>
 	 	

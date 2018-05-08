@@ -91,6 +91,7 @@ public class ServletConnexion extends HttpServlet
 		{
 			Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 			Professeur prof = (Professeur)session.getAttribute("professeur");
+			session.setAttribute("firstConnection", firstConnection);
 			request.setAttribute("firstConnection", firstConnection);
 			boolean isEtu = (etu != null)?true:false;
 			if(isEtu){
