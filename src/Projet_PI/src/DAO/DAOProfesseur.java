@@ -149,10 +149,16 @@ public class DAOProfesseur extends DAO<Professeur>{
 			this.prStat.setInt(1, repr.getId());
 			this.prStat.setInt(2, prof.getNbParticipations());
 			change = (this.prStat.executeUpdate()>0)?true: false;
+			connection.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}finally{
+			try{
+				connection.setAutoCommit(true);
+			}catch(Exception e){
+				System.out.println("Erreur: auto commit (create profeseur)");
+			}
 			try {
 				this.prStat.close();
 			} catch (Exception e) {

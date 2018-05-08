@@ -91,6 +91,7 @@ public class ServletConnexion extends HttpServlet
 		{
 			Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 			Professeur prof = (Professeur)session.getAttribute("professeur");
+			request.setAttribute("firstConnection", firstConnection);
 			boolean isEtu = (etu != null)?true:false;
 			if(isEtu){
 				etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
