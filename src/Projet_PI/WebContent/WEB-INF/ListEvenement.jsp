@@ -72,7 +72,6 @@
 			 		</form>
 			 	</div>
 		 	</div>
-		 	
 	 		<c:set var="i" value="${i+1}"/>
 		</c:forEach>
 	</div>
