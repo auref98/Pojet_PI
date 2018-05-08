@@ -17,22 +17,40 @@
 	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
-	
-	  <div class="collapse navbar-collapse" id="navb">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
-	      </li>
-	    </ul>
-		<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
-		<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
-	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
-	    </form>
-	  </div>
+	  	<c:if test="${firstConnection == false}">
+		  <div class="collapse navbar-collapse" id="navb">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
+		      </li>
+		    </ul>
+			<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+			<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
+		    </form>
+		  </div>
+		</c:if>
+		<c:if test="${firstConnection == true}">
+			<div class="collapse navbar-collapse" id="navb">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <p class="nav-link">Liste des évènements</p>
+		      </li>
+		      <li class="nav-item">
+		        <p class="nav-link">Mes inscriptions</p>
+		      </li>
+		    </ul>
+			<img src="assets/img/profil.png" alt="profil" style="width:40px;">
+			<img src="assets/img/door.png" alt="door" style="width:40px;">
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="text" placeholder="Recherche">
+		    </form>
+		  </div>
+		</c:if>
 	</nav>
 	
 	<script language="JavaScript">
@@ -49,7 +67,7 @@
 			let phone = document.getElementById("Phone").value;
 			let regExp = /^\+(32|33)(\.)\d{3}(\.)\d{2}(\.)\d{2}(\.)\d{2}$/;
 			if(!regExp.test(phone)){
-				alert("Le numero de téléphone ne correspond pas\nExemple : +32.000.00.00.00");
+				alert("Le numero de téléphone ne correspond pas\nchanger: 0475.00.00.00 -> +32.475.00.00.00\nExemple : +32.000.00.00.00");
 				document.getElementById("Phone").value = "";
 			}
 		}
