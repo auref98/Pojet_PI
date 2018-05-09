@@ -146,7 +146,7 @@ public class DAORepresentant extends DAO<Representant>{
 		return rep;
 	}
 	
-	public LinkedList<Inscription> findCommentaire(int id){
+	public LinkedList<Inscription> findInscription(int id){
 		LinkedList<Inscription> ins = new LinkedList<Inscription>();
 		String sql = "SELECT * FROM inscription WHERE refrepr = ?";
 		Representant rep = this.find(id);

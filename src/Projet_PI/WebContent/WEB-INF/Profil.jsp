@@ -24,7 +24,7 @@
 		        <a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="javascript:void(0)">Mes inscriptions</a>
+		        <a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
 		      </li>
 		    </ul>
 			<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>

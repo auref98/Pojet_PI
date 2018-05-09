@@ -38,12 +38,14 @@
 	 <style>
 	 	
 	 </style>
-	 <h1>Page <c:out value="${debut+cpt}"></c:out></h1>
-	 
+	 <!-- <h1>Page <c:out value="${debut+cpt}"></c:out></h1> -->
+	
 	 <!-- container principal liste evenements -->
 	 <div class="container" style="margin-top:30px">
+	 	<c:set var="isEvenement" value="false"></c:set>
 	 	<c:set var="i" value="0"/>
 	 	<c:forEach items="${ evens }" var="even">
+	 		<c:set var="isEvenement" value="true"></c:set>
 	 		<!-- container pour un event -->
 	 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
 			 	<!-- container image -->
@@ -74,10 +76,16 @@
 		 	</div>
 	 		<c:set var="i" value="${i+1}"/>
 		</c:forEach>
+		<c:if test="${isEvenement == false }">
+	 	<h1>
+	 		Vous n'etes inscrit à aucun évenement pour le moment.
+	 	</h1>
+	 	<img alt="Smiley triste" src="https://data.photofunky.net/output/image/0/e/5/9/0e59c9/photofunky.png">
+	 </c:if>
 	</div>
 		 
 	 
-	 <c:if test="${debut > 0}">
+	 <!--<c:if test="${debut > 0}">
 	 	<form method="get" action="ListEvenSuivPrec">
 		 	<input type="submit" value="Page ${debut}" name="Precedent">
 		 </form>
@@ -86,6 +94,6 @@
 		<form method="get" action="ListEvenSuivPrec">
 	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
 	 	</form>
-	 </c:if>
+	 </c:if>-->
 	</body>
 </html>
