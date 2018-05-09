@@ -40,10 +40,31 @@
 		<h1>${even.nom }</h1>
 		<c:forEach items="${even.listePlage }" var="plage">
 			<div>
-				<p>${plage.date} - (${plage.heureDebut } - ${plage.heureFin })</p>
-				<form action="Inscription">
-					<input type="submit" value="S'inscrire" name="${plage.id }">
-				</form>
+				<p>
+					${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
+				</p>
+				<c:if test="${inscri == true }">
+					<c:set var="i" value="false"></c:set>
+					<c:forEach items="${plage.listeInscription }" var="inscri" >
+						Vous-etes inscris.
+						<c:set var="i" value="true"></c:set>
+					</c:forEach>
+					<c:if test="${i == true}">
+						<form method="post" action="DesinscriptionEven">
+							<input type="submit" value="Désinscrire" name="${plage.id }-${even.id}">
+						</form>
+					</c:if>
+					<c:if test="${i == false}">
+						<form method="post" action="InscriptionEven">
+							<input type="submit" value="S'inscrire" name="${plage.id }-${even.id}">
+						</form>
+					</c:if>
+				</c:if>
+				<c:if test="${inscri == false }">
+					<form method="post" action="InscriptionEven">
+						<input type="submit" value="S'inscrire" name="${plage.id }-${even.id}">
+					</form>
+				</c:if>
 			</div>
 		</c:forEach>
 		<div>

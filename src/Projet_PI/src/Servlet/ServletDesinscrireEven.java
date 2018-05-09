@@ -2,7 +2,6 @@ package Servlet;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +15,6 @@ import Bean.Commentaire;
 import Bean.Etudiant;
 import Bean.Evenement;
 import Bean.Inscription;
-import Bean.Plage;
 import Bean.Professeur;
 import Bean.Representant;
 import DAO.DAOAdresse;
@@ -24,21 +22,24 @@ import DAO.DAOEvenement;
 import DAO.DAOInscription;
 import DAO.DAORepresentant;
 
-@WebServlet("/DetailEvenement")
-public class ServletDetailEven extends HttpServlet{
-
-	/**
-	 * 
-	 */
+@WebServlet("/DesinscriptionEven")
+public class ServletDesinscrireEven extends HttpServlet{
+	
 	private static final long serialVersionUID = 1L;
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		HttpSession session = request.getSession(true);
 		Enumeration names = request.getParameterNames();
-		int id = 0;
+		int idPlage = 0;
+		int idEven = 0;
 		if(names.hasMoreElements()){
-			id = Integer.parseInt((String)names.nextElement());
+			String ids = (String)names.nextElement();
+			String [] tabIds = ids.split("-");
+			idEven = Integer.parseInt(tabIds[1]);
+			idPlage = Integer.parseInt(tabIds[0]);
 		}
 		DAOEvenement DAOeven = new DAOEvenement();
-		Evenement even = DAOeven.find(id);
+		Evenement even = DAOeven.find(idEven);
 		even.setListPlage(DAOeven.findListePlage(even));
 		even.setSection(DAOeven.findListeSection(even));
 		even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
@@ -48,24 +49,18 @@ public class ServletDetailEven extends HttpServlet{
 				com.setRep(new DAORepresentant().find(com.getRep().getId()));
 			}
 		}
-		request.setAttribute("even", even);
 		
-		HttpSession session = request.getSession(true);
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		boolean inscri = false;
-		if(etu != null | prof != null){
+		if(idPlage != 0 && (etu != null | prof != null)){
 			Representant rep = etu;
 			if(rep == null)rep = prof;
-			for(Plage p : even.getListePlage()){
-				Inscription ins = new DAOInscription().find(rep.getId(), p.getId());
-				if(ins != null){
-					p.addInscription(ins);
-					inscri = true;
-				}
-			}
+			
+			Inscription ins = new DAOInscription().find(rep.getId(),idPlage);
+			new DAOInscription().delete(ins);
 		}
-		request.setAttribute("inscri", inscri);
+		request.setAttribute("even", even);
+		request.setAttribute("inscri", true);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
 		reqDisp.forward(request, response);
 	}

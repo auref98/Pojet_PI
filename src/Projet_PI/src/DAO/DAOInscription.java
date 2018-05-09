@@ -75,6 +75,52 @@ public class DAOInscription extends DAO<Inscription>
 		}
 		return inscpt;
 	}
+	
+	public Inscription find(int idRepr,int idPlage){
+		String sql = "select * from inscription where refplage = ? AND refRepr = ?";
+		PreparedStatement ps = null;
+		Inscription inscpt = null;
+		ResultSet resultSet = null;
+		try
+		{
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, idPlage);
+			ps.setInt(2, idRepr);
+			resultSet = ps.executeQuery();
+			
+			if(resultSet.next() == false) throw new SQLException();
+			
+			boolean valide = (resultSet.getInt("valide") == 0) ? false : true;
+			Representant representant = new Representant();
+			representant.setId(resultSet.getInt("refRepr"));
+			Plage plage = new Plage();
+			plage.setId(resultSet.getInt("refPlage"));
+			int id = resultSet.getInt("id");
+			
+			inscpt = new Inscription(id, valide, representant, plage);
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findIncptn failed !");
+		}
+		finally
+		{
+			try{
+				resultSet.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return inscpt;
+	}
 
 	/**
 	 * 

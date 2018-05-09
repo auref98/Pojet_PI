@@ -49,7 +49,9 @@ public class Plage implements Serializable{
 //###################################################################################################################################################################
 	
 	/** Constructeur sans paramètre. */
-	public Plage() {}
+	public Plage() {
+		this.listeInscription = new LinkedList<Inscription>();
+	}
 	
 	/**
 	 * Constructeur initialisant tous les attributs de l'objet. <br><br>
@@ -67,6 +69,7 @@ public class Plage implements Serializable{
 		this.heureDebut=heureDebut;
 		this.heureFin=heureFin;
 		this.eve = eve;
+		this.listeInscription = new LinkedList<Inscription>();
   	}
 	
 //###################################################################################################################################################################
