@@ -180,7 +180,7 @@ public class DAOEvenement extends DAO<Evenement>
 	 */
 	public LinkedList<Commentaire> findListeCom(Evenement event)
 	{
-		String query = "select * from commentaire where refEvenement = ?";
+		String query = "select * from commentaire where refEven = ?";
 		PreparedStatement ps = null;
 		LinkedList<Commentaire> listeCom = new LinkedList<Commentaire>();
 		
@@ -336,7 +336,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query, new String[] {"id"});
 			ps.setString(1, event.getNom());
-			ps.setInt(2, event.getNbParticipantRequis());
+			ps.setInt(2, event.getNbParticipantsRequis());
 			ps.setString(3, event.getDescription());
 			ps.setString(4, event.getImage());
 			ps.setInt(5, event.getAdresseEve().getId());
@@ -346,9 +346,9 @@ public class DAOEvenement extends DAO<Evenement>
 			ResultSet resultSet = ps.getGeneratedKeys();
 			if(resultSet.next()) event.setId(resultSet.getInt(1));
 			
-			if(event.getSection() != null)
+			if(event.getListeSection() != null)
 			{
-				for(int i = 0; i < event.getSection().size(); i++)
+				for(int i = 0; i < event.getListeSection().size(); i++)
 				{
 					query = "insert into concerne values(?, ?)";
 					
@@ -358,7 +358,7 @@ public class DAOEvenement extends DAO<Evenement>
 						ps = connection.prepareStatement(query);
 						
 						ps.setInt(1, event.getId());
-						ps.setInt(2, event.getSection().get(i).getId());
+						ps.setInt(2, event.getListeSection().get(i).getId());
 						
 						if(ps.executeUpdate() == 0) throw new SQLException();
 					}
@@ -410,7 +410,7 @@ public class DAOEvenement extends DAO<Evenement>
 		{
 			ps = connection.prepareStatement(query);
 			ps.setString(1, event.getNom());
-			ps.setInt(2, event.getNbParticipantRequis());
+			ps.setInt(2, event.getNbParticipantsRequis());
 			ps.setString(3, event.getDescription());
 			ps.setString(4, event.getImage());
 			ps.setInt(5, event.getAdresseEve().getId());
@@ -418,7 +418,7 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			if(event.getSection() != null)
+			if(event.getListeSection() != null)
 			{
 				query = "delete concerne where refEven = ?";
 				
@@ -431,7 +431,7 @@ public class DAOEvenement extends DAO<Evenement>
 					
 					if(ps.executeUpdate() == 0) throw new SQLException();
 					
-					for(int i = 0; i < event.getSection().size(); i++)
+					for(int i = 0; i < event.getListeSection().size(); i++)
 					{
 						query = "insert into concerne values(?, ?)";
 						
@@ -441,7 +441,7 @@ public class DAOEvenement extends DAO<Evenement>
 							ps = connection.prepareStatement(query);
 							
 							ps.setInt(1, event.getId());
-							ps.setInt(2, event.getSection().get(i).getId());
+							ps.setInt(2, event.getListeSection().get(i).getId());
 							
 							if(ps.executeUpdate() == 0) throw new SQLException();
 						}

@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  * @see HttpServlet
  */
 @WebServlet("/Inscription")	// Balise indiquant au servlet la cible de la requete HTTP déclenchant son appel
-public class ServletInscription extends HttpServlet
+public class ServletDescription extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class ServletInscription extends HttpServlet
 	/**
 	 * Constructeur par défaut; ne fait rien.
 	 */
-	public ServletInscription() {}
+	public ServletDescription() {}
 	
 	/**
 	 * <i>Called by the server (via the service method) to allow a servlet to handle a GET request </i>(summary from <code>HttpServlet</code>). <br><br>

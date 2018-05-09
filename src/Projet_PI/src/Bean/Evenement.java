@@ -151,7 +151,7 @@ public class Evenement implements Serializable{
 	 * Renvoie le nombre de participants requis pour cet événement.
 	 * @return le nombre de participants requis
 	 */
-	public int getNbParticipantRequis() {
+	public int getNbParticipantsRequis() {
 		return nbParticipantsRequis;
 	}
 
@@ -227,7 +227,7 @@ public class Evenement implements Serializable{
 	 * @see Plage
 	 * @see java.util.ArrayList
 	 */
-	public ArrayList<Plage> getListPlage() {
+	public ArrayList<Plage> getListePlage() {
 		return listePlage;
 	}
 	
@@ -249,7 +249,7 @@ public class Evenement implements Serializable{
 	 * @see Commentaire
 	 * @see java.util.LinkedList
 	 */
-	public LinkedList<Commentaire> getCommentaire() {
+	public LinkedList<Commentaire> getListeCommentaire() {
 		return listeCommentaire;
 	}
 	
@@ -293,7 +293,7 @@ public class Evenement implements Serializable{
 	 * @see Section
 	 * @see java.util.ArrayList
 	 */
-	public ArrayList<Section> getSection() {
+	public ArrayList<Section> getListeSection() {
 		return listeSection;
 	}
 	

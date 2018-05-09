@@ -60,7 +60,7 @@
 			 	<!-- container texte -->
 		 		<div class="col-md-8 bg-light" >
 		 			<h4>${even.nom}</h4>
-			 		<c:forEach items="${even.listPlage }" var="date">
+			 		<c:forEach items="${even.listePlage }" var="date">
 			 			<p>${date.date }</p>
 			 		</c:forEach>
 		 			<p>Description : <br>${even.description}</p>
@@ -68,7 +68,7 @@
 			 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
 			 		</form>
 			 		<form method="post" action="DetailEvenement">
-			 			<input type="submit" class="btn btn-info" value="Detail">
+			 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
 			 		</form>
 			 	</div>
 		 	</div>

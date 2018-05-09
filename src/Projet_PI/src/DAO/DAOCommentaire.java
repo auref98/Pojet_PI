@@ -40,7 +40,7 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	 */
 	public Commentaire find(int id) {
 		int idCommentaire = id;
-		String query = "Select contenu From Commentaire where id=?";
+		String query = "Select * From Commentaire where id=?";
 		Commentaire com = null;
 		try{
 			prStat = connection.prepareStatement(query);
@@ -51,7 +51,9 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				rep.setId(this.resSet.getInt("REFREPR"));
 				Evenement eve = new Evenement();
 				eve.setId(this.resSet.getInt("REFEVEN"));
-				com = new Commentaire(id,resSet.getString("contenu"));//----------------A modifier le constructeur-------------------------------
+				com = new Commentaire(id,resSet.getString("contenu"));
+				com.setRep(rep);
+				com.setEvenement(eve);
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
