@@ -18,6 +18,7 @@ package Servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,16 +65,20 @@ private static final long serialVersionUID = 1L;
 		boolean firstConnection = false;
 		firstConnection = (boolean) session.getAttribute("firstConnection");
 		request.setAttribute("firstConnection", firstConnection);
+		ArrayList<Section> sects = new DAOSection().findAll();
 		if(isEtu){
 			//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
 			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
-			request.setAttribute("sects", new DAOSection().findAll());
 			request.setAttribute("rep", etu);
 			request.setAttribute("adr", etu.getAdr());
 		}else{
 			request.setAttribute("rep", prof);
+			for(Section sect : sects){
+				sect.setProf(new DAOSection().findListeProfesseur(sect));
+			}
 		}
+		request.setAttribute("sects", sects);
 		request.setAttribute("isEtu", isEtu);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
 		reqDisp.forward(request, response);
@@ -86,16 +91,20 @@ private static final long serialVersionUID = 1L;
 		firstConnection = (boolean) session.getAttribute("firstConnection");
 		request.setAttribute("firstConnection", firstConnection);
 		boolean isEtu = (etu != null)?true:false;
+		ArrayList<Section> sects = new DAOSection().findAll();
 		if(isEtu){
 			//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
 			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
 			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
-			request.setAttribute("sects", new DAOSection().findAll());
 			request.setAttribute("rep", etu);
 			request.setAttribute("adr", etu.getAdr());
 		}else{
 			request.setAttribute("rep", prof);
+			for(Section sect : sects){
+				sect.setProf(new DAOSection().findListeProfesseur(sect));
+			}
 		}
+		request.setAttribute("sects", sects);
 		request.setAttribute("isEtu", isEtu);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
 		reqDisp.forward(request, response);

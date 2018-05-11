@@ -176,7 +176,7 @@ public class Section implements Serializable {
 	 * @return la référence de la liste des <code>Professeur</code> enseignant dans la section
 	 * @see Professeur
 	 */
-	public ArrayList<Professeur> getProfesseur() {
+	public ArrayList<Professeur> getListeProf() {
 		return listeProf;
 	}
 	

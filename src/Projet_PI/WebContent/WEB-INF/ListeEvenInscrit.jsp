@@ -78,7 +78,7 @@
 		</c:forEach>
 		<c:if test="${isEvenement == false }">
 	 	<h1>
-	 		Vous n'etes inscrit à aucun évenement pour le moment.
+	 		Vous n'êtes inscrit à aucun événement pour le moment.
 	 	</h1>
 	 	<img alt="Smiley triste" src="https://data.photofunky.net/output/image/0/e/5/9/0e59c9/photofunky.png">
 	 </c:if>

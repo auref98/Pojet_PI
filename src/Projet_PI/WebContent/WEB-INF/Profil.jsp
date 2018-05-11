@@ -302,6 +302,25 @@
 		 		</div>
 	 		</c:if>
 	 		<c:if test="${isEtu == false}">
+	 			<div class="row">
+	 				<div class="form-group col-lig-3 center">
+	 					<p>
+	 						Sections
+	 					</p>
+				 		<c:forEach items="${sects}" var="sect">
+				 			<label for="Sections">
+				 				${sect.nom }
+				 			</label>
+				 			<c:set var="check" value="false"/>
+				 			<c:forEach items="${sect.listeProf }" var="prof">
+				 				<c:if test="${prof.id == rep.id }">
+				 					<c:set var="check" value="true"/>
+				 				</c:if>
+				 			</c:forEach>
+				 			<input type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> >
+				 		</c:forEach>
+		 			</div>
+	 			</div>
 	 			<div class="row texte">
 		 			<div class="form-group col-lig-3 center">
 			 			Nombre de participation : ${rep.nbParticipations}

@@ -3,6 +3,8 @@ package Servlet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -80,6 +82,28 @@ public class ServletEnregistrerProfil extends HttpServlet
 			prof.setMail(mail);
 			prof.setMatricule(matricule);
 			prof.setPassword(password);
+			
+			Enumeration sections = request.getParameterNames();
+			DAOProfesseur daoProf = new DAOProfesseur();
+			prof.setEnseigne(daoProf.findEnseigne(prof.getId()));
+			for(Section sect : prof.getEnseigne()){
+				daoProf.removeEnseigne(prof.getId(), sect.getId());
+			}
+			while(sections.hasMoreElements()){
+				String section = (String)sections.nextElement();
+				String []sect = section.split("-");
+				if(sect[0].equals("section")){
+					int id = -1;
+					try{
+						id = Integer.parseInt(sect[1]);
+					}catch(Exception e){
+						System.out.println("Integer parse -> ServletEnrgistrement");
+					}
+					if(id > 0){
+						daoProf.addEnseigne(prof.getId(), id);
+					}
+				}
+			}
 			
 			enregistrementSuccess = new DAOProfesseur().update(prof);
 			session.setAttribute("professeur", prof);

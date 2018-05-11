@@ -95,15 +95,19 @@ public class ServletConnexion extends HttpServlet
 			session.setAttribute("firstConnection", firstConnection);
 			request.setAttribute("firstConnection", firstConnection);
 			boolean isEtu = (etu != null)?true:false;
+			ArrayList<Section> sects = new DAOSection().findAll();
 			if(isEtu){
 				etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
 				etu.setSec(new DAOEtudiant().findSect(etu.getId()));
-				request.setAttribute("sects", new DAOSection().findAll());
 				request.setAttribute("rep", etu);
 				request.setAttribute("adr", etu.getAdr());
 			}else{
 				request.setAttribute("rep", prof);
+				for(Section sect : sects){
+					sect.setProf(new DAOSection().findListeProfesseur(sect));
+				}
 			}
+			request.setAttribute("sects", sects);
 			request.setAttribute("isEtu", isEtu);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}

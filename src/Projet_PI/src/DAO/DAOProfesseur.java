@@ -272,7 +272,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 	
 	public boolean removeEnseigne(int idProf,int idSection){
 		boolean change = false;
-		String sql = "DELETE FROM enseigne WHERE refsect = ? && refprof = ?";
+		String sql = "DELETE FROM enseigne WHERE refsect = ? AND refprof = ?";
 		try{
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, idSection);
