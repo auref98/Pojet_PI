@@ -26,6 +26,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
 					</li>
+					<c:if test="${relais == true }">
+						<li class="nav-item">
+							<a class="nav-link" href="CreeEvenement">Créé un événement</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
+						</li>
+					</c:if>
 				</ul>
 				<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
 				<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
