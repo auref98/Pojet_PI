@@ -51,6 +51,8 @@ public class ServletDetailEven extends HttpServlet{
 		request.setAttribute("even", even);
 		
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean inscri = false;

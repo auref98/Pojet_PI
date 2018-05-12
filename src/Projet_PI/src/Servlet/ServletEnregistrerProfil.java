@@ -34,6 +34,8 @@ public class ServletEnregistrerProfil extends HttpServlet
 		String password = request.getParameter("ConfirmerNouveauMotDePasse");
 		
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean enregistrementSuccess = false;

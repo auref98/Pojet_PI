@@ -29,6 +29,8 @@ public class ServletDesinscrireEven extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Enumeration names = request.getParameterNames();
 		int idPlage = 0;
 		int idEven = 0;

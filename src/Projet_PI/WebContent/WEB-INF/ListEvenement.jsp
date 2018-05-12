@@ -38,6 +38,8 @@
 	 <style>
 	 	
 	 </style>
+	 <c:if test="${relais == true }">Vous etes relais</c:if>
+	 <c:if test="${relais == false }">Pas RELAIS</c:if>
 	 <h1>Page <c:out value="${debut+cpt}"></c:out></h1>
 	 
 	 <!-- container principal liste evenements -->

@@ -74,6 +74,13 @@ public class ServletConnexion extends HttpServlet
 		
 		if(!failed && firstConnection == false)
 		{
+			Professeur prof = (Professeur) session.getAttribute("professeur");
+			if(prof != null && new DAOProfesseur().findRelais(prof.getId()) != null){
+				session.setAttribute("relais", true);
+			}else{
+				session.setAttribute("relais", false);
+			}
+			
 			int cpt = 2;
 			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
 			int compteur = 0;
@@ -82,6 +89,7 @@ public class ServletConnexion extends HttpServlet
 				if(p != null)even.setListPlage(p);
 				compteur++;
 			}
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			request.setAttribute("evens", evens);
 			request.setAttribute("debut", 0);
 			request.setAttribute("suiv", compteur == cpt);

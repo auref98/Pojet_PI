@@ -59,6 +59,8 @@ private static final long serialVersionUID = 1L;
 	}*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean isEtu = (etu != null)?true:false;
@@ -85,6 +87,8 @@ private static final long serialVersionUID = 1L;
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		boolean firstConnection = false;

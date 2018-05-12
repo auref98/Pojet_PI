@@ -29,6 +29,8 @@ public class ServletListeEvenInscri  extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
+		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+		
 		Professeur prof = (Professeur)session.getAttribute("professeur");
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Representant rep = etu;
