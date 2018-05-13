@@ -45,6 +45,11 @@
 		<div>
 			<img alt="Evenement" src="${even.image }">
 		</div>
+		<c:if test="${relais == true }">
+			<form action="SupprimerEvenement" method="post">
+				<input type="submit" value="supprimer l'événement" name="event-${even.id }">
+			</form>
+		</c:if>
 		<h1>${even.nom }</h1>
 		<c:forEach items="${even.listePlage }" var="plage">
 			<div>
