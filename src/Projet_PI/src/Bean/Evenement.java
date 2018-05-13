@@ -92,12 +92,12 @@ public class Evenement implements Serializable{
 	}
 	*/
 	/**
-	 * Compare un objet <code>java.lang.String</code> passé en paramètre avec  le nom de l'objet courant. 
+	 * Compare un objet <code>java.lang.String</code> passé en paramètre avec  l'id de l'objet courant. 
 	 * Précondition: l'objet courant est initialisé.
 	 * Postcondition: l'objet courant est inchangé.
 	 * @author Aurelien
-	 * @param nom le nom de l'événement à comparer
-	 * @return <code>true</code> si "nom" est égal au nom de l'évènement, d'après la définition de la méthode equals(String) de la classe String; <code>false</code> sinon
+	 * @param id l'id de l'événement à comparer
+	 * @return <code>true</code> si <code>id</code> est égal à l'id de l'évènement; <code>false</code> sinon
 	 */
 	public boolean equals(int id){
 		return id == this.id;

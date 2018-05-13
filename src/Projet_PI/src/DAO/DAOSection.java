@@ -1,6 +1,6 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
- * Informatique de geston, bloc 2	
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Bachelier en informatique de gestion, bloc 2
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -116,7 +116,7 @@ public class DAOSection extends DAO<Section>
 	
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	section est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		Etudiant, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null
@@ -166,7 +166,7 @@ public class DAOSection extends DAO<Section>
 	
 	/**
 	 * 
-	 * @param	Contact est initialisé
+	 * @param	section est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		contact, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null
@@ -215,7 +215,7 @@ public class DAOSection extends DAO<Section>
 	
 	/**
 	 * 
-	 * @param	Prof est initialisé
+	 * @param	section est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		professeur, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null

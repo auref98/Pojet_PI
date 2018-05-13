@@ -27,8 +27,8 @@ import Bean.Adresse;
  * Classe d'accès à la base de données avec le paramètre générique de type <code>Adresse</code>. <br><br>
  * Hérite de la classe abstraite <code>DAO</code> qui fourni une référence vers l'instance de la classe <code>Connection</code>. <br> 
  * Permet de récupérer, créer, modifier et supprimer une ligne de la table <code>adresse</code>.
- * @see <code>DAO</code>
- * @see <code>Bean.Adresse</code>
+ * @see DAO
+ * @see Bean.Adresse
  */
 public class DAOAdresse extends DAO<Adresse>
 {
@@ -98,10 +98,10 @@ public class DAOAdresse extends DAO<Adresse>
 	
 	/**
 	 * Permet de récupérer l'identifiant d'une ligne de la table <code>adresse</code>. <br><br>
-	 * récupère tous les champs de la table. <br><br>
+	 * Récupère tous les champs de la table. <br><br>
 	 * pre: none
 	 * post: l'état de la base de donnée est inchangé
-	 * @param	adr la référence de l'objet <code>Adresse<code> contenant les informations de l'adresse recherchée
+	 * @param	adr la référence de l'objet <code>Adresse</code> contenant les informations de l'adresse recherchée
 	 */
 	public void find(Adresse adr)
 	{

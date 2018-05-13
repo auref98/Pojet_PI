@@ -1,6 +1,6 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
- * Informatique de geston, bloc 2	
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Bachelier en informatique de gestion, bloc 2
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -121,7 +121,7 @@ public class DAOEvenement extends DAO<Evenement>
 
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	event est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		plage, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null
@@ -172,7 +172,7 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	event est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		commentaire, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null
@@ -222,7 +222,7 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	event est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		contact, elles seront retournées sous forme d'objet de type LinkedList
 	 *  		sinon return null
@@ -272,7 +272,7 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	event est initialisé
 	 * @return 	si une plusieurs lignes ont été trouvées dans la table
 	 *  		Section, elles seront retournées sous forme d'objet de type ArrayList
 	 *  		sinon return null
@@ -320,7 +320,7 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	/**
 	 * 
-	 * @param	evenement est initialisé
+	 * @param	event est initialisé
 	 * @return 	true si l'objet event à bien été ajouté dans la table evenement
 	 * 			false si un problème à été rencontré
 	 *

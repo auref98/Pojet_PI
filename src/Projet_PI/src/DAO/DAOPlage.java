@@ -1,6 +1,6 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
- * Informatique de geston, bloc 2	
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Bachelier en informatique de gestion, bloc 2
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 

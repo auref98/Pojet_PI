@@ -19,22 +19,18 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 import Bean.Commentaire;
 import Bean.Evenement;
 import Bean.Representant;
 
-/**
- * @author Aurelien
- */
-
 /** 
  * Classe d'accès à la base de données avec le paramètre générique de type <code>Commentaire</code>. <br><br>
  * Hérite de la classe abstraite <code>DAO</code> qui fourni une référence vers l'instance de la classe <code>Connection</code>. <br> 
  * Permet de récupérer, créer, modifier et supprimer une ligne de la table <code>commentaire</code>.
- * @see <code>DAO</code>
- * @see <code>Bean.Commentaire</code>
+ * @author Aurelien
+ * @see DAO
+ * @see Bean.Commentaire
  */
 public class DAOCommentaire extends DAO<Commentaire> {
 	
@@ -53,11 +49,12 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	 * 			colonnes correspondantes de la table<br>
 	 *  			null dans le cas contraire
 	 */
+	@Override
 	public Commentaire find(int id) {
 		int idCommentaire = id;															// Initialise une variable avec la valeur de l'id de la ligne cherchée
 		String query = "Select * From Commentaire where id=?";								// Définit la requête SQL avec un paramètre (id à rechercher)
 		Commentaire com = null;															// Initialise un objet Commentaire qui sera retourné par la méthode
-		try{																				// Erreurs possibles: accès à la base de données
+		try{	
 			prStat = connection.prepareStatement(query);									// Initialise le PreparedStatement avec la requête définie plus haut	
 			prStat.setInt(1, idCommentaire);												// Assigne l'id à chercher au premier (et seul) paramètre de la requête
 			resSet = prStat.executeQuery();													// Exécute la requête
