@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"DAO","l":"DAOContact"}]
+typeSearchIndex = [{"p":"DAO","l":"ConnectionOracle"},{"p":"DAO","l":"DAO"},{"p":"DAO","l":"DAOAdresse"},{"p":"DAO","l":"DAOCommentaire"},{"p":"DAO","l":"DAOContact"},{"p":"DAO","l":"DAOEtudiant"},{"p":"DAO","l":"DAOEvenement"},{"p":"DAO","l":"DAOInscription"},{"p":"DAO","l":"DAOPlage"},{"p":"DAO","l":"DAOProfesseur"},{"p":"DAO","l":"DAORepresentant"},{"p":"DAO","l":"DAOSection"}]

@@ -32,12 +32,32 @@ import Bean.Adresse;
  */
 public class DAOAdresse extends DAO<Adresse>
 {
+
+//###################################################################################################################################################################
+	
+	// Conctructeurs
+	
+//###################################################################################################################################################################
+
+	// Constructeur par défaut, explicité pour la javadoc
+	/**
+	 * Constructeur par défaut. <br>
+	 * Ne fait rien.
+	 */
+	public DAOAdresse() {}
+
+//###################################################################################################################################################################
+	
+	// Méthodes
+	
+//###################################################################################################################################################################
+	
 	/**
 	 * Permet de récupérer une ligne de la table <code>adresse</code> d'après l'<code>id</code> de la ligne. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
 	 * récupère tous les champs de la table. <br><br>
-	 * pre: none
-	 * post: l'état de la base de donnée est inchangé
+	 * pre: none<br>
+	 * post: l'état de la base de donnée est inchangé; <code>id</code> est inchangé
 	 * @param	id l'identifiant (BD) de la ligne à récupérer
 	 * @return 	un objet de type <code>Adresse</code> si une ligne a été trouvée dans la table <code>adresse</code>; les attributs de cet objet contienent les valeurs contenues dans les 
 	 * 			colonnes correspondantes de la table<br>
@@ -49,7 +69,7 @@ public class DAOAdresse extends DAO<Adresse>
 		String query = "select * from adresse where id = ?";									// Définit la requête SQL avec un paramètre (id à rechercher)
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		ResultSet resultSet = null;															// Initialise un objet ResultSet pour récupérer le résultat de la requête
-		Adresse adr = null;																// Initialise un objet Adresse qui sera retourné par la méthode
+		Adresse adr = null;																// Initialise un objet Adresse qui sera renvoyé par la méthode
 		
 		try																				// Erreurs possibles: accès à la base de données
 		{
@@ -99,8 +119,8 @@ public class DAOAdresse extends DAO<Adresse>
 	/**
 	 * Permet de récupérer l'identifiant d'une ligne de la table <code>adresse</code>. <br><br>
 	 * Récupère tous les champs de la table. <br><br>
-	 * pre: none
-	 * post: l'état de la base de donnée est inchangé
+	 * pre: none<br>
+	 * post: l'état de la base de donnée est inchangé; <code>adr</code> a pu être modifié: si un résultat a été trouvé dans la base de données, <code>adr</code> contient l'identifiant de cette ligne
 	 * @param	adr la référence de l'objet <code>Adresse</code> contenant les informations de l'adresse recherchée
 	 */
 	public void find(Adresse adr)
@@ -166,8 +186,10 @@ public class DAOAdresse extends DAO<Adresse>
 	 * Permet d'insérer une ligne dans la table <code>adresse</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
 	 * définit tous les champs de la table sauf <code>id</code>. <br><br>
-	 * pre: none
-	 * post: une ligne a été ajoutée dans la table <code>adresse</code> si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * pre: none<br>
+	 * post:<br>
+	 * 		une ligne a été ajoutée dans la table <code>adresse</code> si la requête SQL a abouti; l'état de la base de données est inchangé sinon<br>
+	 * 		<code>adr</code> est inchangé
 	 * @param	adr la référence de l'objet <code>Adresse</code> contenant les informations à ajouter
 	 * @return 	<code>true</code> si la ligne a été ajoutée avec succès, <code>false</code> sinon
 	 */
@@ -227,8 +249,10 @@ public class DAOAdresse extends DAO<Adresse>
 	 * Permet de modifier une ligne de la table <code>adresse</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
 	 * redéfinit tous les champs de la table sauf <code>id</code>. <br><br>
-	 * pre: none
-	 * post: une ligne de la table  <code>adresse</code> a été modifiée si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * pre: none<br>
+	 * post:<br>
+	 * 		une ligne de la table  <code>adresse</code> a été modifiée si la requête SQL a abouti; l'état de la base de données est inchangé sinon<br>
+	 * 		<code>adr</code> est inchangé
 	 * @param	adr la référence de l'objet <code>Adresse</code> contenant les informations de la ligne à modifier
 	 * @return 	<code>true</code> si la ligne a été modifiée avec succès, <code>false</code> sinon
 	 */
@@ -277,9 +301,11 @@ public class DAOAdresse extends DAO<Adresse>
 	/**
 	 * Permet de suprimer une ligne de la table <code>adresse</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>. <br>
-	 * pre: none
-	 * post: une ligne de la table  <code>adresse</code> a été supprimée si la table contenait une ligne dont l'identifiant était égal 
-	 * à celui spécifié dans l'attribut <code>id</code> du paramètre <code>adr</code>, et si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * pre: none<br>
+	 * post:<br>
+	 * 		une ligne de la table  <code>adresse</code> a été supprimée si la table contenait une ligne dont l'identifiant était égal 
+	 * 		à celui spécifié dans l'attribut <code>id</code> du paramètre <code>adr</code>, et si la requête SQL a abouti; l'état de la base de données est inchangé sinon<br>
+	 * 		<code>adr</code> est inchangé
 	 * @param	adr la référence de l'objet <code>Adresse</code> contenant l'identifiant BD de la ligne à supprimer
 	 * @return 	<code>true</code> si la ligne a été supprimée avec succès, <code>false</code> sinon
 	 */

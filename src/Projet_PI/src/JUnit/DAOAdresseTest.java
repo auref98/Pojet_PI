@@ -1,3 +1,19 @@
+/*
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Bachelier en informatique de gestion, bloc 2	
+ * 
+ * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
+ * 
+ * Groupe: NamingException {
+ * 				Adam Ludovic;
+ *				Arnould Killian;
+ * 				De Bernardi Christophe;
+ * 				Fockedey Aurelien;
+ * 				Mathieu Robin;
+ * 				Modave Louis;
+ * 				}
+ */
+
 package JUnit;
 
 import static org.junit.jupiter.api.Assertions.*;

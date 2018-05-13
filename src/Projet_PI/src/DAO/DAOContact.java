@@ -34,16 +34,47 @@ import Bean.Section;
  * @see Bean.Contact
  */
 public class DAOContact extends DAO<Contact>{
+
+//###################################################################################################################################################################
+	
+	// Attributs
+	
+//###################################################################################################################################################################
+
+	/**
+	 * Référence pour un objet <code>PreparedStatement</code>, utilisée pour exécuter toutes les requêtes SQL de cette classe. 
+	 */
 	PreparedStatement prStat;																// Déclare un objet PreparedStatement pour exécuter les requêtes
+	/**
+	 * Référence pour un objet <code>ResultSet</code>, utilisée pour recueillir le résultat de toutes les requêtes SQL de cette classe. 
+	 */
 	ResultSet resSet;																		// Initialise un objet ResultSet pour récupérer le résultat des requêtes
 
+//###################################################################################################################################################################
+	
+	// Conctructeurs
+	
+//###################################################################################################################################################################
+	
+	// Constructeur par défaut, explicité pour la javadoc
+	/**
+	 * Constructeur par défaut. <br>
+	 * Ne fait rien.
+	 */
+	public DAOContact() {}
+	
+//###################################################################################################################################################################
+	
+	// Méthodes
+	
+//###################################################################################################################################################################
+	
 	/**
 	 * Permet de récupérer une ligne de la table <code>contact</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
 	 * récupère tous les champs de la table. <br><br>
-	 * pre: none
-	 * post: l'état de la base de donnée est inchangé
-	 * @author Aurelien.
+	 * pre: none<br>
+	 * post: l'état de la base de donnée est inchangé; <code>id</code> est inchangé
 	 * @param	id l'identifiant (BD) de la ligne à récupérer
 	 * @return 	un objet de type <code>Contact</code> si une ligne a été trouvée dans la table <code>contact</code>; les attributs de cet objet contienent les valeurs contenues dans les 
 	 * 			colonnes correspondantes de la table<br>
@@ -53,7 +84,7 @@ public class DAOContact extends DAO<Contact>{
 	public Contact find(int id) {
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM contact where id = ?";									// Définit la requête SQL avec un paramètre (id à rechercher)
-		Contact cont = null;																// Initialise un objet Contact qui sera retourné par la méthode
+		Contact cont = null;																// Initialise un objet Contact qui sera renvoyé par la méthode
 		try{	
 			this.prStat = connection.prepareStatement(query);								// Initialise le PreparedStatement avec la requête définie plus haut	
 			this.prStat.setInt(1, id);															// Assigne l'id à chercher au premier (et seul) paramètre de la requête
@@ -85,9 +116,8 @@ public class DAOContact extends DAO<Contact>{
 
 	/**
 	 * Permet de récupérer une liste d'objets <code>Section</code> associées à une ligne de la table <code>contact</code>. <br><br>
-	 * pre: none
-	 * post: l'état de la base de donnée est inchangé
-	 * @author Aurelien.
+	 * pre: none<br>
+	 * post: l'état de la base de donnée est inchangé; <code>id</code> est inchangé
 	 * @param	id l'identifiant (BD) du contact dont on souhaite récupérer les sections associées
 	 * @return 	un objet de type <code>ArrayList</code> de <code>Section</code>:<br>
 	 * 			référençant les sections liées au contact si une ligne dont l'id est égale au paramètre a été trouvée dans la table <code>contact</code> et qu'au moins une section est lié au contact; 
@@ -135,11 +165,12 @@ public class DAOContact extends DAO<Contact>{
 	/**
 	 * Permet d'insérer une ligne dans la table <code>contact</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
-	 * définit tous les champs <code>mail</code> et <code>refeven</code> de la table. <br><br>
-	 * pre: none
-	 * post: une ligne a été ajoutée dans la table <code>contact</code> et des lignes ont pu être ajoutée dans la table <code>interesse</code> si la requête SQL a abouti; 
-	 * 	     l'état de la base de données est inchangé sinon
-	 * @author Aurelien
+	 * définit les champs <code>mail</code> et <code>refeven</code> de la table. <br><br>
+	 * pre: none<br>
+	 * post:<br>
+	 * 		 une ligne a été ajoutée dans la table <code>contact</code> et des lignes ont pu être ajoutée dans la table <code>interesse</code> si la requête SQL a abouti; 
+	 * 	     	l'état de la base de données est inchangé sinon<br>
+	 * 		<code>cont</code> est inchangé
 	 * @param	cont la référence de l'objet <code>Contact</code> contenant les informations à ajouter
 	 * @return 	<code>true</code> si la ligne a été ajoutée avec succès, <code>false</code> sinon
 	 */
@@ -152,7 +183,7 @@ public class DAOContact extends DAO<Contact>{
 			this.prStat = connection.prepareStatement(sql);									// Initialise le PreparedStatement avec la requête définie plus haut
 			this.prStat.setString(1, cont.getMail());											// Assigne l'adresse mail du contact à modifier au premier paramètre de la requête
 			this.prStat.setInt(2, cont.getEve().getId());										// Assigne l'id de l'événement lié au contact au deuxième paramètre de la requête
-			change = (this.prStat.executeUpdate()>0)? true:false;								// Met la valeur de retour à true si la requête a abouti
+			change = (this.prStat.executeUpdate()>0)? true:false;								// Exécute la requête et met la valeur de retour à true si au moins une ligne a été ajoutée
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -195,8 +226,10 @@ public class DAOContact extends DAO<Contact>{
 	 * Permet de modifier une ligne de la table <code>contact</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
 	 * redéfinit le champ <code>mail</code>. <br><br>
-	 * pre: none
-	 * post: une ligne de la table  <code>contact</code> a été modifiée si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * pre: none<br>
+	 * post:<br>
+	 * 		 une ligne de la table  <code>contact</code> a été modifiée si la requête SQL a abouti; l'état de la base de données est inchangé sinon<br>
+	 * 		<code>cont</code> est inchangé
 	 * @param	cont la référence de l'objet <code>Contact</code> contenant les informations de la ligne à modifier
 	 * @return 	<code>true</code> si la ligne a été modifiée avec succès, <code>false</code> sinon
 	 */
@@ -209,7 +242,7 @@ public class DAOContact extends DAO<Contact>{
 			this.prStat = connection.prepareStatement(sql);									// Initialise le PreparedStatement avec la requête définie plus haut
 			this.prStat.setString(1, cont.getMail());											// Assigne l'adresse mail du contact à modifier au premier paramètre de la requête
 			this.prStat.setInt(2, cont.getId());												// Assigne l'id à chercher au deuxième paramètre de la requête
-			change = (this.prStat.executeUpdate()>0)?true:false;								// Met la valeur de retour à true si la requête a abouti
+			change = (this.prStat.executeUpdate()>0)?true:false;								// Exécute la requête et met la valeur de retour à true si au moins une ligne a été modifiée
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -227,9 +260,11 @@ public class DAOContact extends DAO<Contact>{
 	/**
 	 * Permet de suprimer une ligne de la table <code>contact</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>. <br>
-	 * pre: none
-	 * post: une ligne de la table  <code>contact</code> a été supprimée si la table contenait une ligne dont l'identifiant était égal 
-	 * 	     à celui spécifié dans l'attribut <code>id</code> du paramètre <code>cont</code>, et si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * pre: none<br>
+	 * post:<br>
+	 * 		une ligne de la table  <code>contact</code> a été supprimée si la table contenait une ligne dont l'identifiant était égal 
+	 * 	     	à celui spécifié dans l'attribut <code>id</code> du paramètre <code>cont</code>, et si la requête SQL a abouti; l'état de la base de données est inchangé sinon<br>
+	 * 		<code>cont</code> est inchangé
 	 * @param	cont la référence de l'objet <code>Contact</code> contenant l'identifiant BD de la ligne à supprimer
 	 * @return 	<code>true</code> si la ligne a été supprimée avec succès, <code>false</code> sinon
 	 */
@@ -241,7 +276,7 @@ public class DAOContact extends DAO<Contact>{
 		try {
 			this.prStat = connection.prepareStatement(sql);									// Initialise le PreparedStatement avec la requête définie plus haut
 			this.prStat.setInt(1, cont.getId());												// Assigne l'id à chercher au premier (et seul) paramètre de la requête
-			change = (this.prStat.executeUpdate()>0)?true:false;								// Met la valeur de retour à true si la requête a abouti
+			change = (this.prStat.executeUpdate()>0)?true:false;								// Exécute la requête et met la valeur de retour à true si au moins une ligne a été supprimée
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
