@@ -1,6 +1,6 @@
 /*
- * Haute école Robert Schuman - Libramont, annee scolaire 2017 - 2018
- * Informatique de geston, bloc 2	
+ * Haute école Robert Schuman - Libramont, année scolaire 2017 - 2018
+ * Bachelier en informatique de gestion, bloc 2
  * 
  * Projet integré: réalisation d'un logiciel de gestion des inscriptions à des événements
  * 
@@ -28,36 +28,51 @@ import Bean.Representant;
 /**
  * @author Aurelien
  */
+
+/** 
+ * Classe d'accès à la base de données avec le paramètre générique de type <code>Commentaire</code>. <br><br>
+ * Hérite de la classe abstraite <code>DAO</code> qui fourni une référence vers l'instance de la classe <code>Connection</code>. <br> 
+ * Permet de récupérer, créer, modifier et supprimer une ligne de la table <code>commentaire</code>.
+ * @see <code>DAO</code>
+ * @see <code>Bean.Commentaire</code>
+ */
 public class DAOCommentaire extends DAO<Commentaire> {
 	
-	PreparedStatement prStat;
-	ResultSet resSet;
+	PreparedStatement prStat;													// Déclare un objet PreparedStatement pour exécuter les requêtes
+	ResultSet resSet;															// Initialise un objet ResultSet pour récupérer le résultat des requêtes
 	
 	/**
+	 * Permet de récupérer une ligne de la table <code>commentaire</code>. <br><br>
+	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
+	 * récupère tous les champs de la table. <br><br>
+	 * pre: none
+	 * post: l'état de la base de donnée est inchangé
 	 * @author Aurelien.
-	 * @param id
-	 * @return le commentaire dont l'id correspond au commentaire 
+	 * @param	id l'identifiant (BD) de la ligne à récupérer
+	 * @return 	un objet de type <code>Commentaire</code> si une ligne a été trouvée dans la table <code>commentaire</code>; les attributs de cet objet contienent les valeurs contenues dans les 
+	 * 			colonnes correspondantes de la table<br>
+	 *  			null dans le cas contraire
 	 */
 	public Commentaire find(int id) {
-		int idCommentaire = id;
-		String query = "Select * From Commentaire where id=?";
-		Commentaire com = null;
-		try{
-			prStat = connection.prepareStatement(query);
-			prStat.setInt(1, idCommentaire);
-			resSet = prStat.executeQuery();
-			if(resSet.next()){
-				Representant rep = new Representant();
-				rep.setId(this.resSet.getInt("REFREPR"));
-				Evenement eve = new Evenement();
-				eve.setId(this.resSet.getInt("REFEVEN"));
-				com = new Commentaire(id,resSet.getString("contenu"));
-				com.setRep(rep);
-				com.setEvenement(eve);
+		int idCommentaire = id;															// Initialise une variable avec la valeur de l'id de la ligne cherchée
+		String query = "Select * From Commentaire where id=?";								// Définit la requête SQL avec un paramètre (id à rechercher)
+		Commentaire com = null;															// Initialise un objet Commentaire qui sera retourné par la méthode
+		try{																				// Erreurs possibles: accès à la base de données
+			prStat = connection.prepareStatement(query);									// Initialise le PreparedStatement avec la requête définie plus haut	
+			prStat.setInt(1, idCommentaire);												// Assigne l'id à chercher au premier (et seul) paramètre de la requête
+			resSet = prStat.executeQuery();													// Exécute la requête
+			if(resSet.next()){																// Si un résultat a été trouvé
+				Representant rep = new Representant();										// Initialise un objet Représentant
+				rep.setId(this.resSet.getInt("REFREPR"));										// Affecte l'id de l 'objet Representant
+				Evenement eve = new Evenement();											// Initialise un objet Evenement
+				eve.setId(this.resSet.getInt("REFEVEN"));										// Affecte l'id de l 'objet Evenement
+				com = new Commentaire(id,resSet.getString("contenu"));						// Initialise la variable "com"
+				com.setRep(rep);															// Affecte la référence de l'objet Representant crée ci-dessus à la variable de l'objet Commentaire
+				com.setEvenement(eve);													// Affecte la référence de l'objet Evenement crée ci-dessus à la variable de l'objet Commentaire
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}finally{
+		}finally{																			// Bloc finally fermant le ResultSet et le PreparedStatement
 			try {
 				resSet.close();
 			} catch (SQLException e) {
@@ -71,10 +86,10 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				System.out.println(e.getMessage());
 			}
 		}
-		return com;
+		return com;																		// Renvoie la référence de l'objet Commentaire contenant les informations récupérées dans la base de données
 	}
 	
-	/** POUR LUDOVIC
+	/* POUR LUDOVIC
 	 * Recherche dans la BD tout les commentaire relier a idEve.
 	 * @param idEve
 	 * @return LinkedList de commentaire relier a un evenement.
@@ -108,27 +123,32 @@ public class DAOCommentaire extends DAO<Commentaire> {
 	}*/
 	
 	/**
+	 * Permet d'insérer une ligne dans la table <code>commentaire</code>. <br><br>
+	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
+	 * définit tous les champs de la table sauf <code>id</code>. <br><br>
+	 * pre: none
+	 * post: une ligne a été ajoutée dans la table <code>commentaire</code> si la requête SQL a abouti; l'état de la base de données est inchangé sinon
 	 * @author Aurelien
-	 * @param com
-	 * @param refRepr
-	 * @param regEvent
-	 * @return true si le commentaire est ajouter
+	 * @param	com la référence de l'objet <code>Commentaire</code> contenant les informations à ajouter
+	 * @return 	<code>true</code> si la ligne a été ajoutée avec succès, <code>false</code> sinon
 	 */
+	@Override
 	public boolean create(Commentaire com) {
-		int refRepr = com.getRep().getId();
-		int refEvent = com.getEvenement().getId();
-		boolean change = false;
-		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";
+		int refRepr = com.getRep().getId();													// Initialise une variable avec la valeur de l'id des informations du representant lié à ce commentaire
+		int refEvent = com.getEvenement().getId();											// Initialise une variable avec la valeur de l'id des informations de l'événement lié à ce commentaire
+		boolean change = false;															// Initialise la variable qui sera retournée à false (échec) par défaut
+		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";		// Définit la requête SQL avec des paramètres
 		try{
-			this.prStat = connection.prepareStatement(query);
+			this.prStat = connection.prepareStatement(query);								// Initialise le PreparedStatement avec la requête définie plus haut
+			// Assigne les valeurs provenant de l'objet passé en paramètre de la méthode aux paramètres de la requête
 			this.prStat.setString(0, com.getContenu());
 			this.prStat.setInt(2, refRepr);
 			this.prStat.setInt(3, refEvent);
-			int nbChange = this.prStat.executeUpdate();
-			change = (nbChange > 0) ? true : false;
+			int nbChange = this.prStat.executeUpdate();										// Exécute la requête et récupère le nombre de lignes modifiées dans une nouvelle variable
+			change = (nbChange > 0) ? true : false;											// Met la valeur de retour à true si la requête a abouti
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-		}finally{
+		}finally{																			// Bloc finally fermant le PreparedStatement
 			try {
 				prStat.close();
 			} catch (SQLException e) {
@@ -136,21 +156,30 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				System.out.println(e.getMessage());
 			}
 		}
-		return change;
+		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
 	
+	/**
+	 * Permet de modifier une ligne de la table <code>commentaire</code>. <br><br>
+	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
+	 * redéfinit le champ <code>contenu</code>. <br><br>
+	 * pre: none
+	 * post: une ligne de la table  <code>commentaire</code> a été modifiée si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * @param	com la référence de l'objet <code>Commentaire</code> contenant les informations de la ligne à modifier
+	 * @return 	<code>true</code> si la ligne a été modifiée avec succès, <code>false</code> sinon
+	 */
 	@Override
 	public boolean update(Commentaire com) {
-		String query = "UPDATE commentaire SET contenu = ? where id = ?";
-		boolean change = false;
+		String query = "UPDATE commentaire SET contenu = ? where id = ?";					// Définit la requête SQL avec des paramètres
+		boolean change = false;															// Initialise la variable qui sera retournée à false (échec) par défaut
 		try{
-			this.prStat = connection.prepareStatement(query);
-			this.prStat.setString(1, com.getContenu());
-			this.prStat.setInt(2, com.getId());
-			change = (this.prStat.executeUpdate()>0) ? true : false;
+			this.prStat = connection.prepareStatement(query);								// Initialise le PreparedStatement avec la requête définie plus haut
+			this.prStat.setString(1, com.getContenu());										// Assigne le contenu du commentaire à modifier au premier paramètre de la requête
+			this.prStat.setInt(2, com.getId());												// Assigne l'id à chercher au deuxième paramètre de la requête
+			change = (this.prStat.executeUpdate()>0) ? true : false;							// Met la valeur de retour à true si la requête a abouti
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-		}finally{
+		}finally{																			// Bloc finally fermant le PreparedStatement
 			try {
 				prStat.close();
 			} catch (SQLException e) {
@@ -158,28 +187,36 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				System.out.println(e.getMessage());
 			}
 		}
-		return change;
+		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
+	
+	/**
+	 * Permet de suprimer une ligne de la table <code>commentaire</code>. <br><br>
+	 * Méthode héritée de la classe abstraite <code>DAO</code>. <br>
+	 * pre: none
+	 * post: une ligne de la table  <code>commentaire</code> a été supprimée si la table contenait une ligne dont l'identifiant était égal 
+	 * 	     à celui spécifié dans l'attribut <code>id</code> du paramètre <code>com</code>, et si la requête SQL a abouti; l'état de la base de données est inchangé sinon
+	 * @param	com la référence de l'objet <code>Commentaire</code> contenant l'identifiant BD de la ligne à supprimer
+	 * @return 	<code>true</code> si la ligne a été supprimée avec succès, <code>false</code> sinon
+	 */
 	@Override
 	public boolean delete(Commentaire com) {
-		String query = "DELETE FROM commentaire WHERE id=?";
-		boolean change = false;
+		String query = "DELETE FROM commentaire WHERE id=?";								// Définit la requête SQL avec un paramètre (id à rechercher)
+		boolean change = false;															// Initialise la variable qui sera retournée à false (échec) par défaut
 		try{
-			this.prStat = connection.prepareStatement(query);
-			this.prStat.setInt(1, com.getId());
-			change = (this.prStat.executeUpdate()>0)?true:false;
+			this.prStat = connection.prepareStatement(query);								// Initialise le PreparedStatement avec la requête définie plus haut
+			this.prStat.setInt(1, com.getId());												// Assigne l'id à chercher au premier (et seul) paramètre de la requête
+			change = (this.prStat.executeUpdate()>0)?true:false;								// Met la valeur de retour à true si la requête a abouti
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-		}finally{
+		}finally{																			// Bloc finally fermant le PreparedStatement
 			try{
 				this.prStat.close();
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
 		}
-		return change;
+		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
-	
-	
 	
 }
