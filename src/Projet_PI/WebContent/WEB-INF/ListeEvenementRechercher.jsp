@@ -42,58 +42,38 @@
 				</form>
 			</div>
 		</nav>
-	
-	 <style>
-	 	
-	 </style>
-	 <h1>Page <c:out value="${debut+cpt}"></c:out></h1>
 	 
-	 <!-- container principal liste evenements -->
-	 <div class="container" style="margin-top:30px">
-	 	<c:set var="i" value="0"/>
-	 	<c:forEach items="${ evens }" var="even">
-	 		<!-- container pour un event -->
-	 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
-			 	<!-- container image -->
-			 	<c:if test="${i%2==0 }">
-			 		<div class="col-md-4 order-first" >
-						<img width="auto" height="200" alt="enements" src="${even.image}" />
-					</div>
-			 	</c:if>
-			 	<c:if test="${i%2==1 }">
-				 	<div class="col-md-4 order-first order-md-4" >
-						<img width="auto" height="200" alt="enements" src="${even.image}" />
-					</div>
-			 	</c:if>
-			 	<!-- container texte -->
-		 		<div class="col-md-8 bg-light" >
-		 			<h4>${even.nom}</h4>
-			 		<c:forEach items="${even.listePlage }" var="date">
-			 			<p>${date.date }</p>
-			 		</c:forEach>
-		 			<p>Description : <br>${even.description}</p>
-			 		<!--<form method="post" action="inscriptionEvenement" name="${even.id }">
-			 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
-			 		</form>-->
-			 		<form method="post" action="DetailEvenement">
-			 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
-			 		</form>
+		 <!-- container principal liste evenements -->
+		 <div class="container" style="margin-top:30px">
+		 	<c:set var="i" value="0"/>
+		 	<c:forEach items="${ events }" var="even">
+		 		<!-- container pour un event -->
+		 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
+				 	<!-- container image -->
+				 	<c:if test="${i%2==0 }">
+				 		<div class="col-md-4 order-first" >
+							<img width="auto" height="200" alt="enements" src="${even.image}" />
+						</div>
+				 	</c:if>
+				 	<c:if test="${i%2==1 }">
+					 	<div class="col-md-4 order-first order-md-4" >
+							<img width="auto" height="200" alt="enements" src="${even.image}" />
+						</div>
+				 	</c:if>
+				 	<!-- container texte -->
+			 		<div class="col-md-8 bg-light" >
+			 			<h4>${even.nom}</h4>
+				 		<c:forEach items="${even.listePlage }" var="date">
+				 			<p>${date.date }</p>
+				 		</c:forEach>
+			 			<p>Description : <br>${even.description}</p>
+				 		<form method="post" action="DetailEvenement">
+				 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
+				 		</form>
+				 	</div>
 			 	</div>
-		 	</div>
-	 		<c:set var="i" value="${i+1}"/>
-		</c:forEach>
-	</div>
-		 
-	 
-	 <c:if test="${debut > 0}">
-	 	<form method="get" action="ListEvenSuivPrec">
-		 	<input type="submit" value="Page ${debut}" name="Precedent">
-		 </form>
-	 </c:if>
-	 <c:if test="${suiv == true }">
-		<form method="get" action="ListEvenSuivPrec">
-	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
-	 	</form>
-	 </c:if>
+		 		<c:set var="i" value="${i+1}"/>
+			</c:forEach>
+		</div>
 	</body>
 </html>
