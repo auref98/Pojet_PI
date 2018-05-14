@@ -24,12 +24,22 @@ public class ServletCreeEvenement extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
-		ArrayList<Section> sects = new DAOSection().findAll();
-		request.setAttribute("sects", sects);
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/CreeEvenement.jsp");
-		reqDisp.forward(request, response);
+		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+		Professeur prof = (Professeur)session.getAttribute("professeur");
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
+		}else{
+		
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			ArrayList<Section> sects = new DAOSection().findAll();
+			request.setAttribute("sects", sects);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/CreeEvenement.jsp");
+			reqDisp.forward(request, response);
+		}
 	}
 
 }

@@ -59,58 +59,78 @@ private static final long serialVersionUID = 1L;
 	}*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		boolean isEtu = (etu != null)?true:false;
-		boolean firstConnection = false;
-		firstConnection = (boolean) session.getAttribute("firstConnection");
-		request.setAttribute("firstConnection", firstConnection);
-		ArrayList<Section> sects = new DAOSection().findAll();
-		if(isEtu){
-			//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
-			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
-			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
-			request.setAttribute("rep", etu);
-			request.setAttribute("adr", etu.getAdr());
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
 		}else{
-			request.setAttribute("rep", prof);
-			for(Section sect : sects){
-				sect.setProf(new DAOSection().findListeProfesseur(sect));
+		
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			//Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+			//Professeur prof = (Professeur)session.getAttribute("professeur");
+			boolean isEtu = (etu != null)?true:false;
+			boolean firstConnection = false;
+			firstConnection = (boolean) session.getAttribute("firstConnection");
+			request.setAttribute("firstConnection", firstConnection);
+			ArrayList<Section> sects = new DAOSection().findAll();
+			if(isEtu){
+				//if(etu.getAdr() == null) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+				etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+				etu.setSec(new DAOEtudiant().findSect(etu.getId()));
+				request.setAttribute("rep", etu);
+				request.setAttribute("adr", etu.getAdr());
+			}else{
+				request.setAttribute("rep", prof);
+				for(Section sect : sects){
+					sect.setProf(new DAOSection().findListeProfesseur(sect));
+				}
 			}
+			request.setAttribute("sects", sects);
+			request.setAttribute("isEtu", isEtu);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+			reqDisp.forward(request, response);
 		}
-		request.setAttribute("sects", sects);
-		request.setAttribute("isEtu", isEtu);
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
-		reqDisp.forward(request, response);
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		boolean firstConnection = false;
-		firstConnection = (boolean) session.getAttribute("firstConnection");
-		request.setAttribute("firstConnection", firstConnection);
-		boolean isEtu = (etu != null)?true:false;
-		ArrayList<Section> sects = new DAOSection().findAll();
-		if(isEtu){
-			//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
-			etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
-			etu.setSec(new DAOEtudiant().findSect(etu.getId()));
-			request.setAttribute("rep", etu);
-			request.setAttribute("adr", etu.getAdr());
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
 		}else{
-			request.setAttribute("rep", prof);
-			for(Section sect : sects){
-				sect.setProf(new DAOSection().findListeProfesseur(sect));
+		
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			//Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+			//Professeur prof = (Professeur)session.getAttribute("professeur");
+			boolean firstConnection = false;
+			firstConnection = (boolean) session.getAttribute("firstConnection");
+			request.setAttribute("firstConnection", firstConnection);
+			boolean isEtu = (etu != null)?true:false;
+			ArrayList<Section> sects = new DAOSection().findAll();
+			if(isEtu){
+				//if(etu.getAdr() != null && ) etu.setAdr(new DAOAdresse().find(etu.getAdr().getId()));
+				etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
+				etu.setSec(new DAOEtudiant().findSect(etu.getId()));
+				request.setAttribute("rep", etu);
+				request.setAttribute("adr", etu.getAdr());
+			}else{
+				request.setAttribute("rep", prof);
+				for(Section sect : sects){
+					sect.setProf(new DAOSection().findListeProfesseur(sect));
+				}
 			}
+			request.setAttribute("sects", sects);
+			request.setAttribute("isEtu", isEtu);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+			reqDisp.forward(request, response);
 		}
-		request.setAttribute("sects", sects);
-		request.setAttribute("isEtu", isEtu);
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
-		reqDisp.forward(request, response);
 	}
 }

@@ -79,12 +79,20 @@
 				input_fin.name = "fin-"+i;
 				input_fin.id = "fin-"+i;
 				
+				let input_button = document.createElement("input");
+				input_button.type = "button";
+				input_button.value = "X";
+				input_button.name = "sup-"+i;
+				input_button.addEventListener("click",() => {supprimerPlage("plage-" + i)});
+				
 				let div = document.createElement("div");
+				div.id = "plage-"+i;
 				div.appendChild(input_date);
 				div.appendChild(label_Debut);
 				div.appendChild(input_debut);
 				div.appendChild(label_Fin);
 				div.appendChild(input_fin);
+				div.appendChild(input_button);
 				
 				document.getElementById("plageHoraire").appendChild(div);
 			}
@@ -92,6 +100,11 @@
 				image = document.getElementById("image");
 				input = document.getElementById("input-image");
 				image.src = input.value;
+			}
+			function supprimerPlage(id){
+				let div = document.getElementById(id);
+				let par = document.getElementById("plageHoraire");
+				par.removeChild(div);
 			}
 		</script>
 		
@@ -110,13 +123,14 @@
 					<div>
 						<p>Entrer une plage horaire </p>
 						<div id="plageHoraire">
-							<div>
+							<div id="plage-1">
 								<input type="date" id="date-1" name="date-1">
 								<label for="debut-1">début</label><input name="debut-1" type="time" id="debut-1">
 								<label for="fin-1">fin</label><input name="fin-1" type="time" id="fin-1">
+								<input type="button" value="X" name="sup-1" onclick="supprimerPlage('plage-1')">
 							</div>
 						</div>
-						<button class="btn btn-info" onclick="ajouterHoraire(event)">Ajouter une plage horaire</button>
+						<input type="button" value="Ajouter une plage horaire" class="btn btn-info" onclick="ajouterHoraire(event)">
 					</div>
 				</div>
 			</div>

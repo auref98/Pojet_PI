@@ -29,21 +29,31 @@ public class ServletListeEvenInscri  extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
-		Professeur prof = (Professeur)session.getAttribute("professeur");
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
-		Representant rep = etu;
-		if(rep == null)rep = prof;
+		Professeur prof = (Professeur)session.getAttribute("professeur");
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
+		}else{
 		
-		LinkedList<Evenement> evens = new LinkedList<Evenement>();
-		rep.setInscrits(new DAORepresentant().findInscription(rep.getId()));
-		for(Inscription inscri : rep.getInscrits()){
-			Plage p = new DAOPlage().find(inscri.getPlage().getId());
-			evens.add(new DAOEvenement().find(p.getEve().getId()));
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			//Professeur prof = (Professeur)session.getAttribute("professeur");
+			//Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+			Representant rep = etu;
+			if(rep == null)rep = prof;
+			
+			LinkedList<Evenement> evens = new LinkedList<Evenement>();
+			rep.setInscrits(new DAORepresentant().findInscription(rep.getId()));
+			for(Inscription inscri : rep.getInscrits()){
+				Plage p = new DAOPlage().find(inscri.getPlage().getId());
+				evens.add(new DAOEvenement().find(p.getEve().getId()));
+			}
+			request.setAttribute("evens", evens);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeEvenInscrit.jsp");
+			reqDisp.forward(request, response);
 		}
-		request.setAttribute("evens", evens);
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeEvenInscrit.jsp");
-		reqDisp.forward(request, response);
 	}
 }

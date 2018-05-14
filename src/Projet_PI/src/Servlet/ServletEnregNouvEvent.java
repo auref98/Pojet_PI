@@ -31,64 +31,74 @@ public class ServletEnregNouvEvent extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
-		String rue = request.getParameter("input-rue");
-		int numero = Integer.parseInt(request.getParameter("input-numero"));
-		String boite = request.getParameter("input-boite");
-		int codePostal = Integer.parseInt(request.getParameter("input-codePostal"));
-		String localite = request.getParameter("input-localite");
-		String pays = request.getParameter("input-pays");
-		Adresse adr = new Adresse(-1,localite,codePostal,rue,numero,boite,pays);
-		new DAOAdresse().find(adr);
-		boolean adrCree = false;
-		if(adr.getId() == -1){
-			new DAOAdresse().create(adr);
-			adrCree = true;
-		}
+		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+		Professeur prof = (Professeur)session.getAttribute("professeur");
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
+		}else{
 		
-		String nomEven = request.getParameter("nomEvenement");
-		int nbParticipant = Integer.parseInt(request.getParameter("input-personnerequise"));
-		String description = request.getParameter("input-description");
-		String img = request.getParameter("image");
-		
-		ArrayList<Section> sects = new ArrayList<Section>();
-		Enumeration names = request.getParameterNames();
-		while(names.hasMoreElements()){
-			String nom = (String)names.nextElement();
-			String[] noms = nom.split("-");
-			if(noms[0].equals("section")){
-				int id = -1;
-				try{
-					id = Integer.parseInt(noms[1]);
-				}catch(Exception e){
-					System.out.println("Parse int impossible");
-				}
-				if(id > 0){
-					sects.add(new DAOSection().find(id));
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			String rue = request.getParameter("input-rue");
+			int numero = Integer.parseInt(request.getParameter("input-numero"));
+			String boite = request.getParameter("input-boite");
+			int codePostal = Integer.parseInt(request.getParameter("input-codePostal"));
+			String localite = request.getParameter("input-localite");
+			String pays = request.getParameter("input-pays");
+			Adresse adr = new Adresse(-1,localite,codePostal,rue,numero,boite,pays);
+			new DAOAdresse().find(adr);
+			boolean adrCree = false;
+			if(adr.getId() == -1){
+				new DAOAdresse().create(adr);
+				adrCree = true;
+			}
+			
+			String nomEven = request.getParameter("nomEvenement");
+			int nbParticipant = Integer.parseInt(request.getParameter("input-personnerequise"));
+			String description = request.getParameter("input-description");
+			String img = request.getParameter("image");
+			
+			ArrayList<Section> sects = new ArrayList<Section>();
+			Enumeration names = request.getParameterNames();
+			while(names.hasMoreElements()){
+				String nom = (String)names.nextElement();
+				String[] noms = nom.split("-");
+				if(noms[0].equals("section")){
+					int id = -1;
+					try{
+						id = Integer.parseInt(noms[1]);
+					}catch(Exception e){
+						System.out.println("Parse int impossible");
+					}
+					if(id > 0){
+						sects.add(new DAOSection().find(id));
+					}
 				}
 			}
-		}
-		
-		Evenement eve = new Evenement(-1,nomEven,nbParticipant,description,img,adr);
-		eve.setSection(sects);
-		if(!new DAOEvenement().create(eve) && adrCree)new DAOAdresse().delete(adr);
-		else{
-			Enumeration enume = request.getParameterNames();
-			while(enume.hasMoreElements()){
-				String name = (String)enume.nextElement();
-				String [] nameSplit = name.split("-");
-				if(nameSplit[0].equals("date")){
-					//int id = Integer.parseInt(nameSplit[1]);
-					LocalDate date = LocalDate.parse(request.getParameter(name), DateTimeFormatter.ISO_DATE);
-					LocalTime HDebut = LocalTime.parse(request.getParameter("debut-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
-					LocalTime HFin = LocalTime.parse(request.getParameter("fin-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
-					Plage p = new Plage(-1,date,HDebut,HFin,eve);
-					new DAOPlage().create(p);
+			
+			Evenement eve = new Evenement(-1,nomEven,nbParticipant,description,img,adr);
+			eve.setSection(sects);
+			if(!new DAOEvenement().create(eve) && adrCree)new DAOAdresse().delete(adr);
+			else{
+				Enumeration enume = request.getParameterNames();
+				while(enume.hasMoreElements()){
+					String name = (String)enume.nextElement();
+					String [] nameSplit = name.split("-");
+					if(nameSplit[0].equals("date")){
+						//int id = Integer.parseInt(nameSplit[1]);
+						LocalDate date = LocalDate.parse(request.getParameter(name), DateTimeFormatter.ISO_DATE);
+						LocalTime HDebut = LocalTime.parse(request.getParameter("debut-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
+						LocalTime HFin = LocalTime.parse(request.getParameter("fin-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
+						Plage p = new Plage(-1,date,HDebut,HFin,eve);
+						new DAOPlage().create(p);
+					}
 				}
 			}
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
+			reqDisp.forward(request, response);
 		}
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
-		reqDisp.forward(request, response);
 	}
 }

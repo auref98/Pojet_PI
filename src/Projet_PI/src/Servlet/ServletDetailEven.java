@@ -33,48 +33,59 @@ public class ServletDetailEven extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		Enumeration names = request.getParameterNames();
-		int id = 0;
-		if(names.hasMoreElements()){
-			id = Integer.parseInt((String)names.nextElement());
-		}
-		DAOEvenement DAOeven = new DAOEvenement();
-		Evenement even = DAOeven.find(id);
-		even.setListPlage(DAOeven.findListePlage(even));
-		boolean posterCom = false;
-		for(Plage p : even.getListePlage()){
-			posterCom=(p.getDate().toString().compareTo(LocalDate.now().toString()) < 0 )?true:false;
-		}
-		even.setSection(DAOeven.findListeSection(even));
-		even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
-		even.setCommentaire(DAOeven.findListeCom(even));
-		if(even.getListeCommentaire()!=null){
-			for(Commentaire com : even.getListeCommentaire()){
-				com.setRep(new DAORepresentant().find(com.getRep().getId()));
-			}
-		}
-		
 		HttpSession session = request.getSession(true);
-		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		boolean inscri = false;
-		if(etu != null | prof != null){
-			Representant rep = etu;
-			if(rep == null)rep = prof;
+		if(etu == null & prof == null){
+			session.invalidate();
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
+			reqDisp.forward(request, response);
+		}else{
+		
+			Enumeration names = request.getParameterNames();
+			int id = 0;
+			if(names.hasMoreElements()){
+				id = Integer.parseInt((String)names.nextElement());
+			}
+			DAOEvenement DAOeven = new DAOEvenement();
+			Evenement even = DAOeven.find(id);
+			even.setListPlage(DAOeven.findListePlage(even));
+			boolean posterCom = false;
 			for(Plage p : even.getListePlage()){
-				Inscription ins = new DAOInscription().find(rep.getId(), p.getId());
-				if(ins != null){
-					p.addInscription(ins);
-					inscri = true;
+				posterCom=(p.getDate().toString().compareTo(LocalDate.now().toString()) < 0 )?true:false;
+			}
+			even.setSection(DAOeven.findListeSection(even));
+			even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
+			even.setCommentaire(DAOeven.findListeCom(even));
+			if(even.getListeCommentaire()!=null){
+				for(Commentaire com : even.getListeCommentaire()){
+					com.setRep(new DAORepresentant().find(com.getRep().getId()));
 				}
 			}
+			
+			
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			//Etudiant etu = (Etudiant)session.getAttribute("etudiant");
+			//Professeur prof = (Professeur)session.getAttribute("professeur");
+			boolean inscri = false;
+			if(etu != null | prof != null){
+				Representant rep = etu;
+				if(rep == null)rep = prof;
+				for(Plage p : even.getListePlage()){
+					Inscription ins = new DAOInscription().find(rep.getId(), p.getId());
+					if(ins != null){
+						p.addInscription(ins);
+						inscri = true;
+					}
+				}
+			}
+			request.setAttribute("even", even);
+			request.setAttribute("inscri", inscri);
+			request.setAttribute("postercom", posterCom);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
+			reqDisp.forward(request, response);
 		}
-		request.setAttribute("even", even);
-		request.setAttribute("inscri", inscri);
-		request.setAttribute("postercom", posterCom);
-		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
-		reqDisp.forward(request, response);
 	}
 }
