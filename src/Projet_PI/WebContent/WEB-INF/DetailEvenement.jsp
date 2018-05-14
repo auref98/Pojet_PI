@@ -43,70 +43,91 @@
 				</form>
 			</div>
 		</nav>
-		<div>
-			<img alt="Evenement" src="${even.image }">
-		</div>
-		<c:if test="${relais == true }">
-			<form action="SupprimerEvenement" method="post">
-				<input type="submit" value="supprimer l'événement" name="event-${even.id }">
-			</form>
-		</c:if>
-		<h1>${even.nom }</h1>
-		<c:forEach items="${even.listePlage }" var="plage">
+		
+		<div class="container bg-light" style="margin-top:30px">
+			<div class="row">
+				
+				<!-- image -->
+				<div class="col-md-4 t">
+					<img alt="Evenement" src="${even.image }">
+				</div>
+				
+				<!-- nom + details -->
+				<div class="col-md-6 offset-md-2 ">
+					<!--<c:if test="${relais == true }">
+						<form action="SupprimerEvenement" method="post">
+							<input type="submit" value="supprimer l'événement" name="event-${even.id }">
+						</form>
+					</c:if>-->
+					
+					<h1>${even.nom }</h1>
+					<c:forEach items="${even.listePlage }" var="plage">
+						<div>
+							<p>
+								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
+							</p>
+							<c:if test="${inscri == true }">
+								<c:set var="i" value="false"></c:set>
+								<c:forEach items="${plage.listeInscription }" var="inscri" >
+									Vous-etes inscrit.
+									<c:set var="i" value="true"></c:set>
+								</c:forEach>
+								<c:if test="${i == true}">
+									<form method="post" action="DesinscriptionEven">
+										<input type="submit" class="btn btn-info" value="Désinscrire" name="${plage.id }-${even.id}">
+									</form>
+								</c:if>
+								<c:if test="${i == false}">
+									<form method="post" action="InscriptionEven">
+										<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
+									</form>
+								</c:if>
+							</c:if>
+							<c:if test="${inscri == false }">
+								<form method="post" action="InscriptionEven">
+									<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
+								</form>
+							</c:if>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+			
+			<!-- Description -->
+			<div>
+				<h2>Description</h2>
+				<p>${even.description }</p>
+			</div>
+			<div>
+				<p>Nombre de personne requise : ${even.nbParticipantsRequis }</p>
+				<p>
+					Section requise : <br>
+					<c:forEach items="${even.listeSection}" var="section">
+						${section.nom} <br>
+					</c:forEach>
+				</p>
+				<p>
+					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
+				</p>
+			</div>
 			<div>
 				<p>
-					${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
-				</p>
-				<c:if test="${inscri == true }">
-					<c:set var="i" value="false"></c:set>
-					<c:forEach items="${plage.listeInscription }" var="inscri" >
-						Vous-etes inscris.
-						<c:set var="i" value="true"></c:set>
+					Commentaire <br>
+					<c:forEach items="${even.listeCommentaire }" var="com">
+						<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
+						<span>
+							${com.contenu }
+						</span>
 					</c:forEach>
-					<c:if test="${i == true}">
-						<form method="post" action="DesinscriptionEven">
-							<input type="submit" value="Désinscrire" name="${plage.id }-${even.id}">
-						</form>
-					</c:if>
-					<c:if test="${i == false}">
-						<form method="post" action="InscriptionEven">
-							<input type="submit" value="S'inscrire" name="${plage.id }-${even.id}">
-						</form>
-					</c:if>
-				</c:if>
-				<c:if test="${inscri == false }">
-					<form method="post" action="InscriptionEven">
-						<input type="submit" value="S'inscrire" name="${plage.id }-${even.id}">
-					</form>
-				</c:if>
+				</p>
 			</div>
-		</c:forEach>
-		<div>
-			<h2>Description</h2>
-			<p>${even.description }</p>
-		</div>
-		<div>
-			<p>Nombre de personne requise : ${even.nbParticipantsRequis }</p>
-			<p>
-				Section requise : <br>
-				<c:forEach items="${even.listeSection}" var="section">
-					${section.nom} <br>
-				</c:forEach>
-			</p>
-			<p>
-				Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
-			</p>
-		</div>
-		<div>
-			<p>
-				Commentaire <br>
-				<c:forEach items="${even.listeCommentaire }" var="com">
-					<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
-					<span>
-						${com.contenu }
-					</span>
-				</c:forEach>
-			</p>
+				<div class="offset-5">
+					<c:if test="${relais == true }">
+						<form action="SupprimerEvenement" method="post">
+							<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
+						</form>
+					</c:if>
+				</div>
 		</div>
 	</body>
 </html>

@@ -94,78 +94,55 @@
 			}
 		</script>
 		
-		<form class="container-fluid bg-light" style="margin-top:30px;margin-bottom:30px;" action="EnregistrerEvenement" method="post">
-			<div class="row">
-				<!-- image -->
-				<div class="col-md-4 order-first">
-					<img id="image" alt="Inserer une image" src="http://www.paanpaan.com/wp-content/uploads/2017/02/no-image.png" width="auto" height="200">
-					<input type="text" name="image" id="input-image" value="http://www.paanpaan.com/wp-content/uploads/2017/02/no-image.png" onchange="changerImage()">
+		<div>
+			<form action="EnregistrerEvenement" method="post">
+				<div>
+					<img id="image" alt="Inserer une image" src="${event.image }" width="auto" height="200">
+					<input type="text" name="image" id="input-image" value="${event.image }" onchange="changerImage()">
 				</div>
-				
-				<!-- nom -->
-				<div class="col-md-8 ">
-					<h1>Nom</h1>
-					<input name="nomEvenement" id="nomEvenement" type="text" placeholder="Nom de l'evenement">
-					<div>
-						<p>Entrer une plage horaire </p>
-						<div id="plageHoraire">
+				<h1>Nom</h1>
+				<input value="${event.nom }" name="nomEvenement" id="nomEvenement" type="text" placeholder="Nom de l'evenement">
+				<div>
+					<p>Entrer une plage horaire </p>
+					<div id="plageHoraire">
+						<c:set var="i" value="1"></c:set>
+						<c:forEach items="${event.listePlage }" var="plage">
 							<div>
-								<input type="date" id="date-1" name="date-1">
-								<label for="debut-1">début</label><input name="debut-1" type="time" id="debut-1">
-								<label for="fin-1">fin</label><input name="fin-1" type="time" id="fin-1">
+								<input value="${plage.date }" type="date" id="date-${i }" name="date-${i }">
+								<label for="debut-${i }">début</label><input value="${plage.heureDebut }" name="debut-${i }" type="time" id="debut-${i }">
+								<label for="fin-${i }">fin</label><input value="${plage.heureFin }" name="fin-${i }" type="time" id="fin-${i }">
 							</div>
-						</div>
-						<button class="btn btn-info" onclick="ajouterHoraire(event)">Ajouter une plage horaire</button>
+						</c:forEach>
 					</div>
+					<button onclick="ajouterHoraire(event)">Ajouter une plage horaire</button>
 				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-4" style="margin-top:30px;">
-					<div>
-						<h2>Description</h2>
-						<input id="input-description" type="text" name="input-description" style="margin-top: 25px;" placeholder="Entrer une description">
-					</div>
-					
-					<div>
-						<input name="input-personnerequise" id="input-personnerequise" style="margin-top: 10px;" placeholder="Nombre de personne requise" type="number" onchange="if(document.getElementById('input-personnerequise').value < 0 )document.getElementById('input-personnerequise').value = 0"></p>
-							<h2>Section requise</h2>
-							<br>
-							<c:forEach items="${sects}" var="sect">
-					 			<label for="Sections">
-					 				${sect.nom }
-					 			</label>
-					 			<input type="checkbox" name="section-${sect.id}"> <br>
-					 		</c:forEach>
-						</p>
-					</div>
+				<div>
+					<h2>Description</h2>
+					<input value="${event.description }" id="input-description" type="text" name="input-description" placeholder="Entrer une description">
 				</div>
-				
-				<div class="col-md-8 " style="margin-top:15px;">
+				<div>
+					<p>Nombre de personne requise <input value="${event.nbParticipantsRequis}" name="input-personnerequise" id="input-personnerequise" type="number" onchange="if(document.getElementById('input-personnerequise').value < 0 )document.getElementById('input-personnerequise').value = 0"></p>
 					<p>
-						<h2>Adresse de l'evenement : </h2>
-						<br>
-						<input style="margin-bottom: 10px;" type="text" name="input-rue" id="input-rue" placeholder="Entrer la rue"> 
-						<br>
-						<input style="margin-bottom: 10px;" type="number" name="input-numero" id="input-numero" placeholder="Entrer le numero" onchange="if(document.getElementById('input-numero').value < 0 )document.getElementById('input-numero').value = 0">
-						<br>
-						<input style="margin-bottom: 10px;" type="text" name="input-boite" id="input-boite" placeholder="Entrer la boite">
-						<br>
-						<input style="margin-bottom: 10px;" type="number" name="input-codePostal" id="input-codePostal" placeholder="Entrer le Code postal" onchange="if(document.getElementById('input-codePostal').value < 0 )document.getElementById('input-codePostal').value = 0">
-						<br>
-						<input style="margin-bottom: 10px;" type="text" name="input-localite" id="input-localite" placeholder="Entrer la localité"> 
-						<br>
-						<input style="margin-bottom: 10px;" type="text" name="input-pays" id="input-pays" placeholder="Entrer le pays">
+						Section requise <br>
+						<c:forEach items="${sects}" var="sect">
+				 			<label for="Sections">
+				 				${sect.nom }
+				 			</label>
+				 			<input type="checkbox" name="section-${sect.id}"> <br>
+				 		</c:forEach>
+					</p>
+					<p>
+						Adresse de l'evenement : 
+						<input value="${event.adresseEve.rue }" type="text" name="input-rue" id="input-rue" placeholder="Entrer la rue"> 
+						<input value="${event.adresseEve.numero }" type="number" name="input-numero" id="input-numero" placeholder="Entrer le numero" onchange="if(document.getElementById('input-numero').value < 0 )document.getElementById('input-numero').value = 0">
+						<input value="${event.adresseEve.boite }" type="text" name="input-boite" id="input-boite" placeholder="Entrer la boite">
+						<input value="${event.adresseEve.codePostal }" type="number" name="input-codePostal" id="input-codePostal" placeholder="Entrer le Code postal" onchange="if(document.getElementById('input-codePostal').value < 0 )document.getElementById('input-codePostal').value = 0">
+						<input value="${event.adresseEve.localite }" type="text" name="input-localite" id="input-localite" placeholder="Entrer la localité"> 
+						<input value="${event.adresseEve.pays }" type="text" name="input-pays" id="input-pays" placeholder="Entrer le pays">
 					</p>
 				</div>
-				
-			</div>		
-			<!-- description -->
-			
-			<div class="offset-5">
-				<input class="btn btn-info" type="submit" value="Enregistrer" style="margin-bottom:30px;">
-			</div>
-			
-		</form>
+				<input type="submit" value="Enregistrer">
+			</form>
+		</div>
 	</body>
 </html>
