@@ -96,7 +96,7 @@
 		<div>
 			<form action="EnregistrerEvenement" method="post">
 				<div>
-					<img id="image" alt="Inserer une image" src="http://www.paanpaan.com/wp-content/uploads/2017/02/no-image.png">
+					<img id="image" alt="Inserer une image" src="http://www.paanpaan.com/wp-content/uploads/2017/02/no-image.png" width="auto" height="200">
 					<input type="text" name="image" id="input-image" value="http://www.paanpaan.com/wp-content/uploads/2017/02/no-image.png" onchange="changerImage()">
 				</div>
 				<h1>Nom</h1>
