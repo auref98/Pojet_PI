@@ -7,6 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Accueil</title>
 		<link rel="icon" href="assets/img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -44,57 +45,57 @@
 			</div>
 		</nav>
 	
-	 <style>
-	 	
-	 </style>
-	 <h1>Page <c:out value="${debut+cpt}"></c:out></h1>
-	 
-	 <!-- container principal liste evenements -->
-	 <div class="container" style="margin-top:30px">
-	 	<c:set var="i" value="0"/>
-	 	<c:forEach items="${ evens }" var="even">
-	 		<!-- container pour un event -->
-	 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
-			 	<!-- container image -->
-			 	<c:if test="${i%2==0 }">
-			 		<div class="col-md-4 order-first" >
-						<img width="auto" height="200" alt="enements" src="${even.image}" />
-					</div>
-			 	</c:if>
-			 	<c:if test="${i%2==1 }">
-				 	<div class="col-md-4 order-first order-md-4" >
-						<img width="auto" height="200" alt="enements" src="${even.image}" />
-					</div>
-			 	</c:if>
-			 	<!-- container texte -->
-		 		<div class="col-md-8 bg-light" >
-		 			<h4>${even.nom}</h4>
-			 		<c:forEach items="${even.listePlage }" var="date">
-			 			<p>${date.date }</p>
-			 		</c:forEach>
-		 			<p>Description : <br>${even.description}</p>
-			 		<!--<form method="post" action="inscriptionEvenement" name="${even.id }">
-			 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
-			 		</form>-->
-			 		<form method="post" action="DetailEvenement">
-			 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
-			 		</form>
+		<!-- container principal liste evenements -->
+		<div class="container" style="margin-top:30px">
+		 	<c:set var="i" value="0"/>
+		 	<c:forEach items="${ evens }" var="even">
+		 		<!-- container pour un event -->
+		 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
+					<!-- container image -->
+				 	<c:if test="${i%2==0 }">
+				 		<div class="col-lg-4 order-first" >
+							<img width="auto" height="200" alt="enements" src="${even.image}" />
+						</div>
+				 	</c:if>
+				 	<c:if test="${i%2==1 }">
+					 	<div class="col-lg-4 order-first order-lg-4" >
+							<img width="auto" height="200" alt="enements" src="${even.image}" />
+						</div>
+				 	</c:if>
+				 	<!-- container texte -->
+			 		<div class="col-lg-8 bg-light" >
+			 			<h4>${even.nom}</h4>
+				 		<c:forEach items="${even.listePlage }" var="date">
+				 			<p>${date.date }</p>
+				 		</c:forEach>
+			 			<p>Description : <br>${even.description}</p>
+				 		<!--<form method="post" action="inscriptionEvenement" name="${even.id }">
+				 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
+				 		</form>-->
+				 		<form method="post" action="DetailEvenement">
+				 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
+				 		</form>
+				 	</div>
 			 	</div>
-		 	</div>
-	 		<c:set var="i" value="${i+1}"/>
-		</c:forEach>
-	</div>
+		 		<c:set var="i" value="${i+1}"/>
+			</c:forEach>
+		</div>
 		 
-	 
-	 <c:if test="${debut > 0}">
-	 	<form method="get" action="ListEvenSuivPrec">
-		 	<input type="submit" value="Page ${debut}" name="Precedent">
-		 </form>
-	 </c:if>
-	 <c:if test="${suiv == true }">
-		<form method="get" action="ListEvenSuivPrec">
-	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
-	 	</form>
-	 </c:if>
+	 	<c:if test="${!(debut > 0)}">
+	 		<div style="padding-top:15px;" class="row container-fluid offset-lg-5 offset-4">
+	 	</c:if>
+		<c:if test="${debut > 0}">
+			<div style="padding-top:15px;" class="row container-fluid offset-lg-3">
+			<form class="col-4 col-lg-2" method="get" action="ListEvenSuivPrec">
+		 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
+			</form>
+		</c:if>
+	 	<label style="margin-top:5px;" class="col-4 col-lg-2 bg-info">Page <c:out value="${debut+cpt}"></c:out></label> 
+		<c:if test="${suiv == true }">
+			<form class="col-4 col-lg-2" method="get" action="ListEvenSuivPrec">
+				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
+			</form>
+		</c:if>
+		</div>
 	</body>
 </html>
