@@ -15,6 +15,7 @@ import Bean.Commentaire;
 import Bean.Etudiant;
 import Bean.Evenement;
 import Bean.Inscription;
+import Bean.Plage;
 import Bean.Professeur;
 import Bean.Representant;
 import DAO.DAOAdresse;
@@ -60,6 +61,13 @@ public class ServletDesinscrireEven extends HttpServlet{
 			
 			Inscription ins = new DAOInscription().find(rep.getId(),idPlage);
 			new DAOInscription().delete(ins);
+			
+			for(Plage pl : even.getListePlage()){
+				Inscription insc = new DAOInscription().find(rep.getId(), pl.getId());
+				if(insc != null){
+					pl.addInscription(insc);
+				}
+			}
 		}
 		request.setAttribute("even", even);
 		request.setAttribute("inscri", true);

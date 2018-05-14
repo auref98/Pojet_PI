@@ -53,7 +53,6 @@ public class ServletDetailEven extends HttpServlet{
 				com.setRep(new DAORepresentant().find(com.getRep().getId()));
 			}
 		}
-		request.setAttribute("even", even);
 		
 		HttpSession session = request.getSession(true);
 		request.setAttribute("relais", (boolean)session.getAttribute("relais"));
@@ -72,6 +71,7 @@ public class ServletDetailEven extends HttpServlet{
 				}
 			}
 		}
+		request.setAttribute("even", even);
 		request.setAttribute("inscri", inscri);
 		request.setAttribute("postercom", posterCom);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
