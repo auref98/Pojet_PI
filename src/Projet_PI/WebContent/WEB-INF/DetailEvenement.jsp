@@ -49,12 +49,12 @@
 			<div class="row">
 				
 				<!-- image -->
-				<div class="col-md-4 t">
+				<div class="col-md-4 offset-1">
 					<img alt="Evenement" src="${even.image }">
 				</div>
 				
 				<!-- nom + details -->
-				<div class="col-md-6 offset-md-2 ">
+				<div class="col-md-6">
 					<!--<c:if test="${relais == true }">
 						<form action="SupprimerEvenement" method="post">
 							<input type="submit" value="supprimer l'événement" name="event-${even.id }">
@@ -63,23 +63,23 @@
 					
 					<h1>${even.nom }</h1>
 					<c:forEach items="${even.listePlage }" var="plage">
-						<div>
-							<p>
+						<div class="row container-fluid">
+							<p class="col-8" style="padding-top:5px;">
 								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
 							</p>
 							<c:if test="${inscri == true }">
 								<c:set var="i" value="false"></c:set>
 								<c:forEach items="${plage.listeInscription }" var="inscri" >
-									Vous-etes inscrit.
+									<label class="col-2">Vous êtes inscrit</label>
 									<c:set var="i" value="true"></c:set>
 								</c:forEach>
 								<c:if test="${i == true}">
-									<form method="post" action="DesinscriptionEven">
+									<form class="col-2" method="post" action="DesinscriptionEven">
 										<input type="submit" class="btn btn-info" value="Désinscrire" name="${plage.id }-${even.id}">
 									</form>
 								</c:if>
 								<c:if test="${i == false}">
-									<form method="post" action="InscriptionEven">
+									<form class="col-2" method="post" action="InscriptionEven">
 										<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
 									</form>
 								</c:if>
@@ -122,7 +122,7 @@
 					</c:forEach>
 				</p>
 			</div>
-				<div class="offset-5">
+				<div class="offset-md-5 offset-3">
 					<c:if test="${relais == true }">
 						<form action="SupprimerEvenement" method="post">
 							<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
