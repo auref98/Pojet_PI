@@ -47,8 +47,27 @@
 	 
 		 <!-- container principal liste evenements -->
 		 <div>
+		 	<script language="JavaScript">
+		 		function rechercher(){
+		 			let rech = document.getElementById("recherche").value;
+		 			rech = rech.toLowerCase();
+		 			if(rech != null){
+			 			let i = 0;
+			 			let div = document.getElementsByClassName("even");
+			 			while(i < div.length){
+			 				if(div[i].id.toLowerCase().indexOf(rech) < 0){
+			 			    	div[i].style = "display:none;";
+							}else{
+								div[i].style = "";
+							}
+			 				i++;
+			 			}
+		 			}
+		 		}
+		 	</script>
+		 	<input type="text" id="recherche" placeholder="rechercher" onchange="rechercher()">
 		 	<c:forEach items="${ events }" var="even">
-		 		<div name="${even.nom }">
+		 		<div class="even" id="${even.nom}">
 			 		<div>
 			 			<img alt="Evenement" src="${even.image}">
 			 		</div>
