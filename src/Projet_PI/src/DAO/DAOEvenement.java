@@ -21,6 +21,7 @@
 package DAO;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.*;
 
 import Bean.*;
@@ -78,13 +79,19 @@ public class DAOEvenement extends DAO<Evenement>
 	
 	public ArrayList<Evenement> find(int debut, int cpt)
 	{
-		String query = "select e.* from evenement e, plage p where e.id = p.REFEVEN order by p.DATEPLAGE";
+		String query = "select e.* from evenement e, plage p where (e.id = p.REFEVEN and p.datePlage >= to_date(?,'yyyy-mm-dd') ) order by p.DATEPLAGE";
 		PreparedStatement ps = null;
 		ArrayList<Evenement> listEvent = new ArrayList<Evenement>();
 		
+		LocalDate d = LocalDate.now();
+		int jour = d.getDayOfYear();
+		int year = (jour - 30 < 0)?1:0;
+		jour = (jour - 30 < 0 )?365+(jour-30):jour-30;
+		d = LocalDate.ofYearDay(d.getYear()-year, jour);
 		try
 		{
 			ps = connection.prepareStatement(query);
+			ps.setString(1, d.toString());
 			ResultSet resultSet = ps.executeQuery();
 			
 			for(int i = 0; i < debut; i++) if(resultSet.next() == false) throw new SQLException();

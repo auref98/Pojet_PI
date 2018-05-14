@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -40,6 +41,10 @@ public class ServletDetailEven extends HttpServlet{
 		DAOEvenement DAOeven = new DAOEvenement();
 		Evenement even = DAOeven.find(id);
 		even.setListPlage(DAOeven.findListePlage(even));
+		boolean posterCom = false;
+		for(Plage p : even.getListePlage()){
+			posterCom=(p.getDate().toString().compareTo(LocalDate.now().toString()) < 0 )?true:false;
+		}
 		even.setSection(DAOeven.findListeSection(even));
 		even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
 		even.setCommentaire(DAOeven.findListeCom(even));
@@ -68,6 +73,7 @@ public class ServletDetailEven extends HttpServlet{
 			}
 		}
 		request.setAttribute("inscri", inscri);
+		request.setAttribute("postercom", posterCom);
 		RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
 		reqDisp.forward(request, response);
 	}
