@@ -39,14 +39,17 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,2);
+			int cpt = 5;
+			int compteur = 0;
+			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				even.setListPlage(p);
+				compteur++;
 			}
 			request.setAttribute("evens", evens);
 			request.setAttribute("debut", 0);
-			request.setAttribute("suiv", true);
+			request.setAttribute("suiv", compteur == cpt);
 			request.setAttribute("cpt", 1);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListEvenement.jsp");
 			reqDisp.forward(request, response);
@@ -68,7 +71,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 			String suivant = request.getParameter("Suivant");
 			String precedent = request.getParameter("Precedent");
 			int nb = 0;
-			int cpt = 2;
+			int cpt = 5;
 			if(suivant != null){
 				String [] suiv = suivant.split("age ");
 				nb = Integer.parseInt(suiv[1]);
