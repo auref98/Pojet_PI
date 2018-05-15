@@ -150,11 +150,11 @@
 							<h2>Section requise</h2>
 							<br>
 							<c:forEach items="${sects}" var="sect">
-					 			<label for="Sections">
-					 				${sect.nom }
-					 			</label>
-					 			<input type="checkbox" name="section-${sect.id}"> <br>
-					 		</c:forEach>
+								<label for="Sections">
+									${sect.nom }
+								</label>
+								<input type="checkbox" name="section-${sect.id}"> <br>
+							</c:forEach>
 						</p>
 					</div>
 				</div>
@@ -163,7 +163,7 @@
 					<p>
 						<h2>Adresse de l'evenement : </h2>
 						<br>
-						<input style="margin-bottom: 10px;" required="required" type="text" name="input-rue" id="input-rue" placeholder="Entrer la rue"> 
+						<input style="margin-bottom: 10px;" required="required" type="text" name="input-rue" id="input-rue" placeholder="Entrer la rue">
 						<br>
 						<input style="margin-bottom: 10px;" required="required" type="number" name="input-numero" id="input-numero" placeholder="Entrer le numero" onchange="if(document.getElementById('input-numero').value < 0 )document.getElementById('input-numero').value = 0">
 						<br>
@@ -171,7 +171,7 @@
 						<br>
 						<input style="margin-bottom: 10px;" required="required" type="number" name="input-codePostal" id="input-codePostal" placeholder="Entrer le Code postal" onchange="if(document.getElementById('input-codePostal').value < 0 )document.getElementById('input-codePostal').value = 0">
 						<br>
-						<input style="margin-bottom: 10px;" required="required" type="text" name="input-localite" id="input-localite" placeholder="Entrer la localité"> 
+						<input style="margin-bottom: 10px;" required="required" type="text" name="input-localite" id="input-localite" placeholder="Entrer la localité">
 						<br>
 						<input style="margin-bottom: 10px;" required="required" type="text" name="input-pays" id="input-pays" placeholder="Entrer le pays">
 					</p>
