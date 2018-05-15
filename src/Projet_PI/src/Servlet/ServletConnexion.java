@@ -82,7 +82,7 @@ public class ServletConnexion extends HttpServlet
 				session.setAttribute("relais", false);
 			}
 			
-			int cpt = 2;
+			int cpt = 5; // nombre d'evenement
 			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
 			int compteur = 0;
 			for(Evenement even : evens){
