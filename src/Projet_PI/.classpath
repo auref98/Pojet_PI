@@ -15,5 +15,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="E:/Desktop/Cours HERS 2 eme Informatique/Paoo/WorkSpace/mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
