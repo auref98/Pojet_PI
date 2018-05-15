@@ -25,7 +25,7 @@ import DAO.DAOEvenement;
 import DAO.DAOInscription;
 import DAO.DAORepresentant;
 
-@WebServlet("/poterCommentaire")
+@WebServlet("/posterCommentaire")
 public class ServletPosterCommentaire extends HttpServlet{
 
 	/**
