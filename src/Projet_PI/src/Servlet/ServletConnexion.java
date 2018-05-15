@@ -109,9 +109,13 @@ public class ServletConnexion extends HttpServlet
 				etu.setAdr(new DAOEtudiant().findAddr(etu.getId()));
 				etu.setSec(new DAOEtudiant().findSect(etu.getId()));
 				request.setAttribute("rep", etu);
+				request.setAttribute("mail", etu.getMail().split("@")[0]);
+				request.setAttribute("hers", "@"+etu.getMail().split("@")[1]);
 				request.setAttribute("adr", etu.getAdr());
 			}else{
 				request.setAttribute("rep", prof);
+				request.setAttribute("mail", prof.getMail().split("@")[0]);
+				request.setAttribute("hers", "@"+prof.getMail().split("@")[1]);
 				for(Section sect : sects){
 					sect.setProf(new DAOSection().findListeProfesseur(sect));
 				}
