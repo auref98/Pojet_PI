@@ -102,7 +102,8 @@
 	 	label{
 	 		margin-bottom:2px;
 	 		padding-top:15px;
-	 		display: block;
+	 		width:178px;
+	 		
 	 	}
 	 	.inputClass{
 	 		width:200px;
@@ -111,10 +112,10 @@
 	 		padding-top:15px;
 	 	} 
 	 </style>
-	 <div class="container">
+	 <div class=" offset-4" style="margin: 0 auto;">
 	 	<form method="post" action="EnregistrerProfil" class="form">
-	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
 		 			<label for="Nom">
 			 		Nom
 			 		</label>
@@ -122,32 +123,33 @@
 	 			</div>
 	 		</div>
 	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
+	 			<div class="form-group col-lig-3">
 	 				<label for="Prenom">
 	 				Prenom
 	 				</label>
 	 				<input  class="inputClass" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 			</div>
 	 		</div>
-	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
 		 			<label for="Mail">
 			 		Mail
 			 		</label>
-			 		<input  class="inputClass" value="${rep.mail}" type="mail" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<input  class="inputClass" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<span>${hers}</span>
 	 			</div>
 	 		</div>
 	 		
 		 	<div class="row">
-		 		<div class="form-group col-lig-3 center">
+		 		<div class="form-group col-lig-3">
 			 		<label for="Nouveau Mot De Passe">
 				 	Mot de passe
 				 	</label>
 				 	<input  class="inputClass" type="password" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
 		 		</div>
 		 	</div>
-		 	<div class="row">
-		 		<div class="form-group col-lig-3 center">
+		 	<div class="row bg-light">
+		 		<div class="form-group col-lig-3">
 			 		<label for="Confirmer Nouveau Mot De Passe">
 				 	Confirmer mot de passe
 				 	</label>
@@ -157,7 +159,7 @@
 		 		
 	 		
 	 		<div class="row texte">
-	 			<div class="form-group col-lig-3 center">
+	 			<div class="form-group col-lig-3">
 	 				<label for="Matricule">
 		 			Matricule : 
 		 			</label>
@@ -169,8 +171,8 @@
 		 			</c:if>
 	 			</div>
 	 		</div>
-	 		<div class="row">
-	 			<div class="form-group col-lig-3 center">
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
@@ -179,15 +181,15 @@
 	 		</div>
 	 		<c:if test="${isEtu == true}">
 	 			<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="Pays">
 				 		Pays
 				 		</label>
 				 		<input  class="inputClass" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="codePostal">
 				 		Code postal
 				 		</label>
@@ -195,15 +197,15 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="Localite">
 				 		Localité
 				 		</label>
 				 		<input  class="inputClass" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="rue">
 				 		Rue
 				 		</label>
@@ -211,15 +213,15 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="numero">
 				 		Numéro
 				 		</label>
 				 		<input  class="inputClass" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="boite">
 				 		Boite
 				 		</label>
@@ -227,15 +229,15 @@
 		 			</div>
 		 		</div>
 	 			<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="DateNaissance">
 				 		Date de naissance
 				 		</label>
 				 		<input  class="inputClass" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="PaysNaissance">
 				 		Pays de naissance
 				 		</label>
@@ -243,7 +245,7 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="lieuNaissance">
 				 		lieu de naissance
 				 		</label>
@@ -251,8 +253,8 @@
 		 			</div>
 		 		</div>
 		 		
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="numNational">
 				 		Numéro national
 				 		</label>
@@ -260,15 +262,15 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="nationalite">
 				 		Nationalitée
 				 		</label>
 				 		<input class="inputClass" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="numBanque">
 				 		Numéro de banque
 				 		</label>
@@ -276,15 +278,15 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="SoutienSocial">
 				 		Soutien social
 				 		</label>
 				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="emplacementEcole">
 				 		Emplacement de l'école
 				 		</label>
@@ -296,7 +298,7 @@
 		 			</div>
 		 		</div>
 		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			<label for="role">
 				 		Role
 				 		</label>
@@ -306,8 +308,8 @@
 				 		</select>
 		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3 center">
+		 		<div class="row bg-light">
+		 			<div class="form-group col-lig-3">
 			 			<label for="Section">
 				 		Section
 				 		</label>
@@ -321,7 +323,7 @@
 	 		</c:if>
 	 		<c:if test="${isEtu == false}">
 	 			<div class="row">
-	 				<div class="form-group col-lig-3 center">
+	 				<div class="form-group col-lig-3">
 	 					<p>
 	 						Sections
 	 					</p>
@@ -340,33 +342,36 @@
 		 			</div>
 	 			</div>
 	 			<div class="row texte">
-		 			<div class="form-group col-lig-3 center">
+		 			<div class="form-group col-lig-3">
 			 			Nombre de participation : ${rep.nbParticipations}
 			 		</div>
 		 		</div>
 	 		</c:if>
 	 		
-	 		<div class="col-lg-12 btn btn-default center-block">
+	 		<div style="margin-bottom:30px;">
 	 			<input type="submit" class="btn btn-primary" value="Enregistrer">
 	 		</div>
 	 	
 	 	</form>
 	 	
-	 	<!-- erreur -->
+	 	
+	 	
+	 </div>
+	 
+	 <!-- erreur -->
 	 	<c:if test="${enregistrementSuccess == false}">
-			<div class="alert alert-danger alert-dismissible fade show">
+			<div class="alert alert-danger alert-dismissible fade show text-center">
   				<button type="button" class="close" data-dismiss="alert">&times;</button>
   				<strong>Attention ! </strong>La connection a échoué
 			</div>
 		</c:if>
 		
 		<c:if test="${enregistrementSuccess == true}">
-			<div class="alert alert-success alert-dismissible fade show">
+			<div class="alert alert-success alert-dismissible fade show text-center">
   				<button type="button" class="close" data-dismiss="alert">&times;</button>
   				<strong>OK ! </strong>connection réussie
 			</div>
 		</c:if>
-	 	
-	 </div>
+	 
 	</body>
 </html>
