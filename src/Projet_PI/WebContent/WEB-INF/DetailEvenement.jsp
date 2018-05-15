@@ -111,28 +111,30 @@
 					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
 				</p>
 			</div>
-			<div>
-				<p>
-					Commentaire <br>
-					<c:forEach items="${even.listeCommentaire }" var="com">
-						<div>
-							<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
-							<span>
-								${com.contenu }
-							</span>
-							<c:if test="${(relais == true) or (rep.id == com.rep.id)}">
-								<form method="post" action="supprimerCommentaire">
-									<input type="submit" value="X" name="${com.id }-${even.id }">
+			<div style="margin: 0.5em;border: solid 1px black;border-radius: 20px;">
+				<div style="margin: 0.5em;padding: 0.5em;height:250px;overflow-y: scroll;">
+					<p>
+						Commentaire <br>
+						<c:forEach items="${even.listeCommentaire }" var="com">
+							<div style="border:solid 1px black;margin:0.5em;padding:0.5em;border-radius:20px;">
+								<form method="post" action="supprimerCommentaire" style="display: flex;justify-content: space-between;">
+									<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
+									<c:if test="${(relais == true) or (rep.id == com.rep.id)}">
+										<input type="submit" value="X" name="${com.id }-${even.id }">
+									</c:if>
 								</form>
-							</c:if>
-						</div>
-					</c:forEach>
-					<c:if test="${postercom == true}">
-						<form method="post" action="poterCommentaire">
-							<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire...">
-						</form>
-					</c:if>
-				</p>
+								<span>
+									${com.contenu }
+								</span>
+							</div>
+						</c:forEach>
+						<c:if test="${postercom == true}">
+							<form method="post" action="poterCommentaire" style="display: flex;justify-content: center;">
+								<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;">
+							</form>
+						</c:if>
+					</p>
+				</div>
 			</div>
 			<div class="offset-md-5 offset-3">
 				<c:if test="${relais == true }">
