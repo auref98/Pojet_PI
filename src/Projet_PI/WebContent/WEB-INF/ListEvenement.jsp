@@ -21,7 +21,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navb">
-				<ul class="navbar-nav mr-auto">
+				<ul class="navbar-nav mr-auto order-first">
 					<li class="nav-item">
 						<a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 					</li>
@@ -30,24 +30,20 @@
 					</li>
 					<c:if test="${relais == true }">
 						<li class="nav-item">
-							<a class="nav-link" href="CreeEvenement">Créer un évènement</a>
+							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
 						</li>
 					</c:if>
 				</ul>
-				<div class="ml-auto">
 				
-					<a href="Profil" class="order-first order-md-2"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
-					<a href="Deconnection" class="order-first order-md-3"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
-					
-					<form method="post" action="RechercherEvent" class="form-inline my-2 my-md-0 order-last order-md-first">
-						<input name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche">
-					</form>
-					
-				</div>
-					
+				<a href="Profil" class="order-first order-md-last"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+				<a href="Deconnection" class="order-first order-md-last"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
+				
+				<form method="post" action="RechercherEvent" class="form-inline my-2 my-md-0 order-md-first">
+					<input name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche">
+				</form>
 			</div>
 		</nav>
 		<div style="margin-top:80px;"></div>
