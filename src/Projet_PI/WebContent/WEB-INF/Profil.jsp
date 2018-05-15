@@ -112,7 +112,7 @@
 	 		padding-top:15px;
 	 	} 
 	 </style>
-	 <div class=" offset-4" style="margin: 0 auto;">
+	 <div class="" style="margin: 0 auto;display:block;width:33.333333%;">
 	 	<form method="post" action="EnregistrerProfil" class="form">
 	 		<div class="row bg-light">
 	 			<div class="form-group col-lig-3">
@@ -337,7 +337,7 @@
 				 					<c:set var="check" value="true"/>
 				 				</c:if>
 				 			</c:forEach>
-				 			<input type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> >
+				 			<input type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> ><br>
 				 		</c:forEach>
 		 			</div>
 	 			</div>
