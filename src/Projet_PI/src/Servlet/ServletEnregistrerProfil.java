@@ -56,7 +56,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 				etu.setLastname(lastName);
 				etu.setFirstname(firstName);
 				etu.setPhone(phone);
-				etu.setMail(mail);
+				etu.setMail(mail+"@student.hers.be");
 				etu.setMatricule(matricule);
 				etu.setPassword(password);
 				
@@ -92,7 +92,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 				prof.setLastname(lastName);
 				prof.setFirstname(firstName);
 				prof.setPhone(phone);
-				prof.setMail(mail);
+				prof.setMail(mail+"@hers.be");
 				prof.setMatricule(matricule);
 				prof.setPassword(password);
 				

@@ -14,14 +14,14 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" >
+		<nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
 			<img src="assets/img/logo.png" alt="logo" style="width:100px;padding-right:15px" >
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navb">
-				<ul class="navbar-nav mr-auto">
+				<ul class="navbar-nav mr-auto order-first">
 					<li class="nav-item">
 						<a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 					</li>
@@ -30,21 +30,24 @@
 					</li>
 					<c:if test="${relais == true }">
 						<li class="nav-item">
-							<a class="nav-link" href="CreeEvenement">Créé un événement</a>
+							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
 						</li>
 					</c:if>
 				</ul>
-				<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
-				<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
-				<form method="post" action="RechercherEvent" class="form-inline my-2 my-lg-0">
+				
+				<a href="Profil" class="order-first order-md-last"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+				<a href="Deconnection" class="order-first order-md-last"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
+				
+				<form method="post" action="RechercherEvent" class="form-inline my-2 my-md-0 order-md-first">
 					<input name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche">
 				</form>
 			</div>
 		</nav>
-	
+		<div style="margin-top:80px;"></div>
+		
 		<!-- container principal liste evenements -->
 		<div class="container" style="margin-top:30px">
 		 	<c:set var="i" value="0"/>
@@ -53,17 +56,17 @@
 		 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
 					<!-- container image -->
 				 	<c:if test="${i%2==0 }">
-				 		<div class="col-lg-4 order-first" >
+				 		<div class="col-md-4 order-first" >
 							<img width="auto" height="200" alt="enements" src="${even.image}" />
 						</div>
 				 	</c:if>
 				 	<c:if test="${i%2==1 }">
-					 	<div class="col-lg-4 order-first order-lg-4" >
+					 	<div class="col-md-4 order-first order-md-4" >
 							<img width="auto" height="200" alt="enements" src="${even.image}" />
 						</div>
 				 	</c:if>
 				 	<!-- container texte -->
-			 		<div class="col-lg-8 bg-light" >
+			 		<div class="col-md-8 bg-light" >
 			 			<h4>${even.nom}</h4>
 				 		<c:forEach items="${even.listePlage }" var="date">
 				 			<p>${date.date }</p>
@@ -82,17 +85,17 @@
 		</div>
 		 
 	 	<c:if test="${!(debut > 0)}">
-	 		<div style="padding-top:15px;" class="row container-fluid offset-lg-5 offset-4">
+	 		<div style="padding-top:15px;" class="row container-fluid offset-md-5 offset-4">
 	 	</c:if>
 		<c:if test="${debut > 0}">
-			<div style="padding-top:15px;" class="row container-fluid offset-lg-3">
-			<form class="col-4 col-lg-2" method="get" action="ListEvenSuivPrec">
+			<div style="padding-top:15px;" class="row container-fluid offset-md-3">
+			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
 		 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
 			</form>
 		</c:if>
-	 	<label style="margin-top:5px;" class="col-4 col-lg-2 bg-info">Page <c:out value="${debut+cpt}"></c:out></label> 
+	 	<label style="margin-top:5px;" class="col-4 col-md-2 bg-info">Page <c:out value="${debut+cpt}"></c:out></label> 
 		<c:if test="${suiv == true }">
-			<form class="col-4 col-lg-2" method="get" action="ListEvenSuivPrec">
+			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
 				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
 			</form>
 		</c:if>

@@ -38,15 +38,17 @@ public class ServletListEvenement extends HttpServlet{
 		}else{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
-			
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,2);
+			int cpt = 5;
+			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
+			int compteur = 0;
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				even.setListPlage(p);
+				compteur++;
 			}
 			request.setAttribute("evens", evens);
 			request.setAttribute("debut", 0);
-			request.setAttribute("suiv", true);
+			request.setAttribute("suiv", compteur == cpt);
 			request.setAttribute("cpt", 1);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListEvenement.jsp");
 			reqDisp.forward(request, response);
