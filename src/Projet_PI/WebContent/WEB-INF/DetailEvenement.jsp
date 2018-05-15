@@ -49,12 +49,12 @@
 			<div class="row">
 				
 				<!-- image -->
-				<div class="col-md-4 offset-1">
-					<img alt="Evenement" src="${even.image }">
+				<div class="col-md-5">
+					<img style ="max-width:100%;" alt="Evenement" src="${even.image }">
 				</div>
 				
 				<!-- nom + details -->
-				<div class="col-md-6">
+				<div class="col-md-6 offset-1">
 					<!--<c:if test="${relais == true }">
 						<form action="SupprimerEvenement" method="post">
 							<input type="submit" value="supprimer l'événement" name="event-${even.id }">
