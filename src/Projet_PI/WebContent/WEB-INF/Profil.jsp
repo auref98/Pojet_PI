@@ -134,7 +134,8 @@
 		 			<label for="Mail">
 			 		Mail
 			 		</label>
-			 		<input  class="inputClass" value="${rep.mail}" type="mail" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<input  class="inputClass" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<span>${hers}</span>
 	 			</div>
 	 		</div>
 	 		
