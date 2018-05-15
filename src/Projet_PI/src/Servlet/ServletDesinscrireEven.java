@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -53,6 +54,10 @@ public class ServletDesinscrireEven extends HttpServlet{
 			DAOEvenement DAOeven = new DAOEvenement();
 			Evenement even = DAOeven.find(idEven);
 			even.setListPlage(DAOeven.findListePlage(even));
+			boolean posterCom = false;
+			for(Plage p : even.getListePlage()){
+				posterCom=(p.getDate().toString().compareTo(LocalDate.now().toString()) < 0 )?true:false;
+			}
 			even.setSection(DAOeven.findListeSection(even));
 			even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
 			even.setCommentaire(DAOeven.findListeCom(even));
@@ -77,9 +82,11 @@ public class ServletDesinscrireEven extends HttpServlet{
 						pl.addInscription(insc);
 					}
 				}
+				request.setAttribute("rep",rep);
 			}
 			request.setAttribute("even", even);
 			request.setAttribute("inscri", true);
+			request.setAttribute("postercom", posterCom);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
 			reqDisp.forward(request, response);
 		}

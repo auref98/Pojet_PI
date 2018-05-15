@@ -166,11 +166,11 @@ public class DAOCommentaire extends DAO<Commentaire> {
 		int refRepr = com.getRep().getId();													// Initialise une variable avec la valeur de l'id des informations du representant lié à ce commentaire
 		int refEvent = com.getEvenement().getId();											// Initialise une variable avec la valeur de l'id des informations de l'événement lié à ce commentaire
 		boolean change = false;															// Initialise la variable qui sera retournée à false (échec) par défaut
-		String query = "INSERT INTO commentaire (contenu,refrepr,refeven) VALUES (?,?,?)";		// Définit la requête SQL avec des paramètres
+		String query = "INSERT INTO commentaire (CONTENU,REFREPR,REFEVEN) VALUES (?,?,?)";		// Définit la requête SQL avec des paramètres
 		try{
 			this.prStat = connection.prepareStatement(query);								// Initialise le PreparedStatement avec la requête définie plus haut
 			// Assigne les valeurs provenant de l'objet passé en paramètre de la méthode aux paramètres de la requête
-			this.prStat.setString(0, com.getContenu());
+			this.prStat.setString(1, com.getContenu());
 			this.prStat.setInt(2, refRepr);
 			this.prStat.setInt(3, refEvent);
 			int nbChange = this.prStat.executeUpdate();										// Exécute la requête et récupère le nombre de lignes modifiées dans une nouvelle variable

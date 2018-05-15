@@ -230,7 +230,7 @@ public class DAOEvenement extends DAO<Evenement>
 	 */
 	public LinkedList<Commentaire> findListeCom(Evenement event)
 	{
-		String query = "select * from commentaire where refEven = ?";
+		String query = "select * from commentaire where refEven = ? order by id";
 		PreparedStatement ps = null;
 		LinkedList<Commentaire> listeCom = new LinkedList<Commentaire>();
 		

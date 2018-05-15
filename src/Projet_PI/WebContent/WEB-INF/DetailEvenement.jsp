@@ -115,20 +115,32 @@
 				<p>
 					Commentaire <br>
 					<c:forEach items="${even.listeCommentaire }" var="com">
-						<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
-						<span>
-							${com.contenu }
-						</span>
+						<div>
+							<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
+							<span>
+								${com.contenu }
+							</span>
+							<c:if test="${(relais == true) or (rep.id == com.rep.id)}">
+								<form method="post" action="supprimerCommentaire">
+									<input type="submit" value="X" name="${com.id }-${even.id }">
+								</form>
+							</c:if>
+						</div>
 					</c:forEach>
-				</p>
-			</div>
-				<div class="offset-md-5 offset-3">
-					<c:if test="${relais == true }">
-						<form action="SupprimerEvenement" method="post">
-							<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
+					<c:if test="${postercom == true}">
+						<form method="post" action="poterCommentaire">
+							<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire...">
 						</form>
 					</c:if>
-				</div>
+				</p>
+			</div>
+			<div class="offset-md-5 offset-3">
+				<c:if test="${relais == true }">
+					<form action="SupprimerEvenement" method="post">
+						<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
+					</form>
+				</c:if>
+			</div>
 		</div>
 	</body>
 </html>

@@ -80,6 +80,7 @@ public class ServletDetailEven extends HttpServlet{
 						inscri = true;
 					}
 				}
+				request.setAttribute("rep",rep);
 			}
 			request.setAttribute("even", even);
 			request.setAttribute("inscri", inscri);
