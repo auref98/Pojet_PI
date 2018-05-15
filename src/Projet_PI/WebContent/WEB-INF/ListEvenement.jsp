@@ -92,6 +92,7 @@
 			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
 		 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
 			</form>
+			</div>
 		</c:if>
 	 	<label style="margin-top:5px;" class="col-4 col-md-2 bg-info">Page <c:out value="${debut+cpt}"></c:out></label> 
 		<c:if test="${suiv == true }">
@@ -99,6 +100,5 @@
 				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
 			</form>
 		</c:if>
-		</div>
 	</body>
 </html>
