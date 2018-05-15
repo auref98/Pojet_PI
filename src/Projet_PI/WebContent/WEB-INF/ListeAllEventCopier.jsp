@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Accueil</title>
+		<title>Copier évènement</title>
 		<link rel="icon" href="assets/img/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -30,10 +30,10 @@
 					</li>
 					<c:if test="${relais == true }">
 						<li class="nav-item">
-							<a class="nav-link" href="CreeEvenement">Créé un événement</a>
+							<a class="nav-link" href="CreeEvenement">Créé un évènement</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
+							<a class="nav-link" href="CopierEvenement">Copier un évènement</a>
 						</li>
 					</c:if>
 				</ul>
@@ -46,9 +46,9 @@
 		</nav>
 	 
 		 <!-- container principal liste evenements -->
-		 <div>
-		 	<script language="JavaScript">
-		 		function rechercher(){
+	 		
+	 		<script language="JavaScript">
+	 			function rechercher(){
 		 			let rech = document.getElementById("recherche").value;
 		 			rech = rech.toLowerCase();
 		 			if(rech != null){
@@ -63,23 +63,36 @@
 			 				i++;
 			 			}
 		 			}
-		 		}
-		 	</script>
-		 	<input type="text" id="recherche" placeholder="rechercher" onchange="rechercher()">
-		 	<c:forEach items="${ events }" var="even">
-		 		<div class="even" id="${even.nom}">
-			 		<div>
-			 			<img alt="Evenement" src="${even.image}">
+	 			}
+	 		</script>
+	 		
+	 		<div class="offset-md-5 offset-3">
+	 			<input class="border-secondary" type="text" id="recherche" placeholder="Chercher event a copier" onchange="rechercher()">
+	 		</div>
+	 		
+		 	<!-- container pour un event -->
+	 		<div class="container" style="margin-top:30px">
+	 			<c:forEach items="${ events }" var="even">
+	 				<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;" id="${even.nom}">
+	 					
+	 					<!-- container image -->
+	 					
+		 				<div class="col-md-4">
+		 					<img width="auto" height="200" alt="Evenement" src="${even.image}">
+		 				</div>
+		 				
+		 				<!-- container texte  -->
+		 				
+		 				<div class="col-md-8 bg-light" >
+		 					<h4>${even.nom}</h4>
+		 					<p>Description : <br>${even.description}</p>
+			 				<form method="post" action="CopierCreeEvent">
+			 					<input type="submit" class="btn btn-info offset-5" value="Copier" name="event-${even.id }">
+			 				</form>
+			 			</div>
 			 		</div>
-			 		<div class="col-md-8 bg-light" >
-			 			<h4>${even.nom}</h4>
-			 			<p>Description : <br>${even.description}</p>
-				 		<form method="post" action="CopierCreeEvent">
-				 			<input type="submit" class="btn btn-info" value="Copier" name="event-${even.id }">
-				 		</form>
-				 	</div>
-				 </div>
-			</c:forEach>
-		</div>
+				</c:forEach>
+	 		
+	 	</div>
 	</body>
 </html>

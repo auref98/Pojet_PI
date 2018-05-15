@@ -54,7 +54,7 @@
 				</div>
 				
 				<!-- nom + details -->
-				<div class="col-md-6 offset-1">
+				<div class="col-md-6 offset-md-1">
 					<!--<c:if test="${relais == true }">
 						<form action="SupprimerEvenement" method="post">
 							<input type="submit" value="supprimer l'événement" name="event-${even.id }">
@@ -70,7 +70,6 @@
 							<c:if test="${inscri == true }">
 								<c:set var="i" value="false"></c:set>
 								<c:forEach items="${plage.listeInscription }" var="inscri" >
-									<label class="col-2">Vous êtes inscrit</label>
 									<c:set var="i" value="true"></c:set>
 								</c:forEach>
 								<c:if test="${i == true}">
