@@ -154,7 +154,6 @@ public class DAOEvenement extends DAO<Evenement>
 				}
 				if(add) listEvent.add(event);
 				else i--;
-				System.out.println(event.getNom());
 			}
 		}
 		catch (SQLException ex)

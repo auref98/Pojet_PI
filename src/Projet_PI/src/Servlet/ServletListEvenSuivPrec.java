@@ -44,7 +44,15 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-				even.setListPlage(p);
+				ArrayList<Plage> plage = new ArrayList<Plage>();
+				for(Plage pl : p){
+					boolean add = true;
+					for(Plage pls : plage){
+						if(add)add = (!pls.getDate().toString().equals(pl.getDate().toString()));
+					}
+					if(add)plage.add(pl);
+				}
+				even.setListPlage(plage);
 				compteur++;
 			}
 			request.setAttribute("evens", evens);
@@ -88,7 +96,15 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 			ArrayList<Evenement> evens = new DAOEvenement().find(nb,cpt);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-				even.setListPlage(p);
+				ArrayList<Plage> plage = new ArrayList<Plage>();
+				for(Plage pl : p){
+					boolean add = true;
+					for(Plage pls : plage){
+						if(add)add = (!pls.getDate().toString().equals(pl.getDate().toString()));
+					}
+					if(add)plage.add(pl);
+				}
+				even.setListPlage(plage);
 				compteur++;
 			}
 			request.setAttribute("evens", evens);

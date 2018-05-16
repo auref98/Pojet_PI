@@ -45,9 +45,9 @@ public class ServletListEvenement extends HttpServlet{
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				ArrayList<Plage> plage = new ArrayList<Plage>();
 				boolean add = true;
-				for(Plage pl : p){
-					for(Plage pls : plage){
-						if(add)add = (pls.getId() == pl.getId())?true:false;
+				for(Plage pl : plage){
+					for(Plage pls : p){
+						if(add)add = (!pls.getDate().equals(pl.getDate()) )?true:false;
 					}
 				}
 				if(add)even.setListPlage(plage);
