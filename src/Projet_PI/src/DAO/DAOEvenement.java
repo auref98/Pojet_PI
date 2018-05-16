@@ -131,7 +131,6 @@ public class DAOEvenement extends DAO<Evenement>
 		int year = (jour - 30 < 0)?1:0;
 		jour = (jour - 30 < 0 )?365+(jour-30):jour-30;
 		d = LocalDate.ofYearDay(d.getYear()-year, jour);
-		System.out.println(d.toString());
 		try
 		{
 			ps = connection.prepareStatement(query);
@@ -151,9 +150,11 @@ public class DAOEvenement extends DAO<Evenement>
 				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
 				boolean add = true;
 				for(Evenement eve : listEvent){
-					if(add)add = (!eve.equals(event.getId()))?true:false;
+					if(add)add = (!(eve.getId() == event.getId()))?true:false;
 				}
 				if(add) listEvent.add(event);
+				else i--;
+				System.out.println(event.getNom());
 			}
 		}
 		catch (SQLException ex)
