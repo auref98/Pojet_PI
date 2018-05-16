@@ -14,14 +14,15 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" >
+		<!-- NavBar -->
+		<nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
 			<img src="assets/img/logo.png" alt="logo" style="width:100px;padding-right:15px" >
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navb">
-				<ul class="navbar-nav mr-auto">
+				<ul class="navbar-nav mr-auto order-first">
 					<li class="nav-item">
 						<a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 					</li>
@@ -30,20 +31,23 @@
 					</li>
 					<c:if test="${relais == true }">
 						<li class="nav-item">
-							<a class="nav-link" href="CreeEvenement">Créé un événement</a>
+							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
 						</li>
 					</c:if>
 				</ul>
-				<a href="Profil"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
-				<a href="Deconnection"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
-				<form method="post" action="RechercherEvent" class="form-inline my-2 my-lg-0">
+				
+				<a href="Profil" class="order-first order-md-last"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
+				<a href="Deconnection" class="order-first order-md-last"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
+				
+				<form method="post" action="RechercherEvent" class="form-inline my-2 my-md-0 order-md-first">
 					<input name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche">
 				</form>
 			</div>
 		</nav>
+		<div style="margin-top:80px;"></div>
 		
 		<script language="JavaScript">
 	
@@ -57,7 +61,7 @@
 				}
 			}
 		}
-	</script>
+		</script>
 		
 		<div class="container bg-light" style="margin-top:30px">
 			<div class="row">

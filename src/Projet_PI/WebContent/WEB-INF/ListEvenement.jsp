@@ -14,6 +14,7 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<!-- NavBar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
 			<img src="assets/img/logo.png" alt="logo" style="width:100px;padding-right:15px" >
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
@@ -89,12 +90,14 @@
 	 	</c:if>
 		<c:if test="${debut > 0}">
 			<div style="padding-top:15px;" class="row container-fluid offset-md-3">
-			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
-		 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
-			</form>
+				<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
+			 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
+				</form>
 			</div>
 		</c:if>
-	 	<label style="margin-top:5px;" class="col-4 col-md-2 bg-info">Page <c:out value="${debut+cpt}"></c:out></label> 
+		<div class="col-4 col-md-2 bg-info">
+	 		<label style="margin-top:5px;">Page <c:out value="${debut+cpt}"></c:out></label> 
+		</div>
 		<c:if test="${suiv == true }">
 			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
 				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
