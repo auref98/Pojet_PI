@@ -49,6 +49,7 @@ public class ServletConnexion extends HttpServlet
 		boolean firstConnection = false;
 		session.setAttribute("firstConnection", firstConnection);
 		session.setAttribute("relais", false);
+		session.setAttribute("charge", false);
 		
 		if(mail.indexOf("student") != -1)
 		{
