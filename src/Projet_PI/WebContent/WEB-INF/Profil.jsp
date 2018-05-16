@@ -113,7 +113,11 @@
 		 			<label for="Mail">
 			 		Mail
 			 		</label>
-			 		${rep.mail}
+			 		<input  class="form-control mr-sm-2" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<span>${hers}</span>
+			 		
+			 		
+			 		<!-- ${rep.mail} -->
 	 			</div>
 	 		</div>
 	 		
