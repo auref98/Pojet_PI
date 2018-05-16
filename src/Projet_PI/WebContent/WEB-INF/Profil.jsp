@@ -80,7 +80,7 @@
 	 	label{
 	 		margin-bottom:2px;
 	 		padding-top:15px;
-	 		width:178px;
+	 		width:300px;
 	 		
 	 	}
 	 	.inputClass{
@@ -97,7 +97,7 @@
 		 			<label for="Nom">
 			 		Nom
 			 		</label>
-			 		<input class="inputClass" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
+			 		<input class="form-control mr-sm-2" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -105,7 +105,7 @@
 	 				<label for="Prenom">
 	 				Prenom
 	 				</label>
-	 				<input  class="inputClass" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
+	 				<input  class="form-control mr-sm-2" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 			</div>
 	 		</div>
 	 		<div class="row bg-light">
@@ -113,7 +113,7 @@
 		 			<label for="Mail">
 			 		Mail
 			 		</label>
-			 		<input  class="inputClass" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+			 		<input  class="form-control mr-sm-2" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
 			 		<span>${hers}</span>
 	 			</div>
 	 		</div>
@@ -123,7 +123,7 @@
 			 		<label for="Nouveau Mot De Passe">
 				 	Mot de passe
 				 	</label>
-				 	<input  class="inputClass" type="password" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
+				 	<input  class="form-control mr-sm-2" type="password" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
 		 		</div>
 		 	</div>
 		 	<div class="row bg-light">
@@ -131,7 +131,7 @@
 			 		<label for="Confirmer Nouveau Mot De Passe">
 				 	Confirmer mot de passe
 				 	</label>
-				 	<input onchange="validation()" class="inputClass" type="password" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
+				 	<input onchange="validation()" class="form-control mr-sm-2" type="password" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
 		 		</div>
 		 	</div>
 		 		
@@ -142,7 +142,7 @@
 		 			Matricule : 
 		 			</label>
 		 			<c:if test="${rep.matricule == null || firstConnection == true}">
-		 				<input  class="inputClass" value="" type="text" required="required" placeholder="x000000" name="Matricule" id="Matricule">
+		 				<input  class="form-control mr-sm-2" value="" type="text" required="required" placeholder="x000000" name="Matricule" id="Matricule">
 		 			</c:if>
 		 			<c:if test="${rep.matricule != null && firstConnection == false}">
 		 				${rep.matricule}
@@ -154,7 +154,7 @@
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
-	 				<input  onchange="validNum()" class="inputClass" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
+	 				<input  onchange="validNum()" class="form-control mr-sm-2" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
 	 			</div>
 	 		</div>
 	 		<c:if test="${isEtu == true}">
@@ -163,7 +163,7 @@
 			 			<label for="Pays">
 				 		Pays
 				 		</label>
-				 		<input  class="inputClass" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
+				 		<input  class="form-control mr-sm-2" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -171,7 +171,7 @@
 			 			<label for="codePostal">
 				 		Code postal
 				 		</label>
-				 		<input  class="inputClass" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
+				 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -179,7 +179,7 @@
 			 			<label for="Localite">
 				 		Localité
 				 		</label>
-				 		<input  class="inputClass" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
+				 		<input  class="form-control mr-sm-2" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -187,7 +187,7 @@
 			 			<label for="rue">
 				 		Rue
 				 		</label>
-				 		<input  class="inputClass" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="Rue" id="Rue">
+				 		<input  class="form-control mr-sm-2" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="Rue" id="Rue">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -195,7 +195,7 @@
 			 			<label for="numero">
 				 		Numéro
 				 		</label>
-				 		<input  class="inputClass" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
+				 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -203,7 +203,7 @@
 			 			<label for="boite">
 				 		Boite
 				 		</label>
-				 		<input  class="inputClass" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
+				 		<input  class="form-control mr-sm-2" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
 		 			</div>
 		 		</div>
 	 			<div class="row">
@@ -211,7 +211,7 @@
 			 			<label for="DateNaissance">
 				 		Date de naissance
 				 		</label>
-				 		<input  class="inputClass" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
+				 		<input  class="form-control mr-sm-2" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -219,7 +219,7 @@
 			 			<label for="PaysNaissance">
 				 		Pays de naissance
 				 		</label>
-				 		<input  class="inputClass" value="${rep.paysNaissance}" type="text" required="required" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
+				 		<input  class="form-control mr-sm-2" value="${rep.paysNaissance}" type="text" required="required" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -227,7 +227,7 @@
 			 			<label for="lieuNaissance">
 				 		lieu de naissance
 				 		</label>
-				 		<input class="inputClass" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
+				 		<input class="form-control mr-sm-2" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
 		 			</div>
 		 		</div>
 		 		
@@ -236,7 +236,7 @@
 			 			<label for="numNational">
 				 		Numéro national
 				 		</label>
-				 		<input class="inputClass" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
+				 		<input class="form-control mr-sm-2" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -244,7 +244,7 @@
 			 			<label for="nationalite">
 				 		Nationalitée
 				 		</label>
-				 		<input class="inputClass" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
+				 		<input class="form-control mr-sm-2" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -252,7 +252,7 @@
 			 			<label for="numBanque">
 				 		Numéro de banque
 				 		</label>
-				 		<input class="inputClass" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
+				 		<input class="form-control mr-sm-2" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
 		 			</div>
 		 		</div>
 		 		<div class="row">
@@ -260,7 +260,7 @@
 			 			<label for="SoutienSocial">
 				 		Soutien social
 				 		</label>
-				 		<input class="inputClass" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
+				 		<input class="form-control mr-sm-2" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
 		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
@@ -319,14 +319,14 @@
 				 		</c:forEach>
 		 			</div>
 	 			</div>
-	 			<div class="row texte">
+	 			<div class="row texte bg-light">
 		 			<div class="form-group col-lig-3">
 			 			Nombre de participation : ${rep.nbParticipations}
 			 		</div>
 		 		</div>
 	 		</c:if>
 	 		
-	 		<div style="margin-bottom:30px;">
+	 		<div style="margin-bottom:30px;display:block;margin:0 auto;width:20%">
 	 			<input type="submit" class="btn btn-primary" value="Enregistrer">
 	 		</div>
 	 	
