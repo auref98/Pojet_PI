@@ -19,6 +19,7 @@ public class ServletDemandeMDP extends HttpServlet
 	{
 		String mail = request.getParameter("email");
 		String[] nomDom = mail.split("@");
+		EnvoieMail envoieMail = new EnvoieMail();
 		
 		if(new DAORepresentant().find(mail) != null)
 			request.setAttribute("inscriptionSuccess", false);
@@ -29,12 +30,14 @@ public class ServletDemandeMDP extends HttpServlet
 				Professeur prof = new Professeur();
 				prof.setMail(mail);
 				new DAOProfesseur().create(prof);
+				System.out.println(prof.getPassword());
 			}
-			else
+			else if(nomDom[1].equals("student.hers.be"))
 			{
 				Etudiant etud = new Etudiant();
 				etud.setMail(mail);
 				new DAOEtudiant().create(etud);
+				System.out.println(etud.getPassword());
 			}
 			request.setAttribute("inscriptionSuccess", true);
 		}

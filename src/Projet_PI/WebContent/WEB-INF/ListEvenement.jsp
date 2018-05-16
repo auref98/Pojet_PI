@@ -84,7 +84,6 @@
 		 		<c:set var="i" value="${i+1}"/>
 			</c:forEach>
 		</div>
-		 
 	 	<c:if test="${!(debut > 0)}">
 	 		<div style="padding-top:15px;" class="row container-fluid offset-md-5 offset-4">
 	 	</c:if>
@@ -93,7 +92,6 @@
 				<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
 			 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
 				</form>
-			</div>
 		</c:if>
 		<div class="col-4 col-md-2 bg-info">
 	 		<label style="margin-top:5px;">Page <c:out value="${debut+cpt}"></c:out></label> 
@@ -103,5 +101,6 @@
 				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
 			</form>
 		</c:if>
+		</div>
 	</body>
 </html>
