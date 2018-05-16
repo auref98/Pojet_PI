@@ -142,7 +142,7 @@
 							</div>
 						</c:forEach>
 						<c:if test="${postercom == true}">
-							<form method="post" action="poterCommentaire" style="display: flex;justify-content: center;">
+							<form method="post" action="posterCommentaire" style="display: flex;justify-content: center;">
 								<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;" onkeypress="validation(event)">
 							</form>
 						</c:if>
