@@ -145,6 +145,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 		try {
 			connection.setAutoCommit(false);
 			if(!new DAORepresentant().create(repr))throw new SQLException();
+			prof.setPassword(repr.getPassword());
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, repr.getId());
 			this.prStat.setInt(2, prof.getNbParticipations());

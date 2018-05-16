@@ -269,6 +269,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 		try {
 			connection.setAutoCommit(false);													// Désactive l'auto-commit pour réaliser les opérations en un bloc
 			if(!new DAORepresentant().create(repr))throw new SQLException();						// Tente de ajouter la ligne associée à l'étudiant dans la table representant et lance une exception en cas d'échec
+			etu.setPassword(repr.getPassword());
 			this.prStat = connection.prepareStatement(sql);										// Initialise le PreparedStatement avec la requête définie plus haut
 			this.prStat.setInt(1, repr.getId());													// Assigne l'id du Representant dont est dérivé l'Etudiant à créer au premier paramètre de la requête
 			if(etu.getDateNaissance() != null)this.prStat.setString(2, etu.getDateNaissance().toString());	// Si l'objet Etudiant contient une date de naissance, assigne celle-ci au deuxieme paramètre de la requête

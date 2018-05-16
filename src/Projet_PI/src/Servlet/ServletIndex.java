@@ -73,7 +73,7 @@ public class ServletIndex extends HttpServlet
 		}
 		catch(NullPointerException ex)
 		{
-			System.out.println("erreur: " + ex.getMessage());
+			System.out.println("erreur: Attributs de session innexistants");
 		}
 		if(etu == null && prof == null) this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
 		else 
