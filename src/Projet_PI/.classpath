@@ -14,7 +14,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/WebContent/WEB-INF/lib/mail.jar"/>
-	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/src/DAO/mail.jar"/>
+	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/src/DAO/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
