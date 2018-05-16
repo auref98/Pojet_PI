@@ -45,6 +45,20 @@
 			</div>
 		</nav>
 		
+		<script language="JavaScript">
+	
+		function validation(event){
+			if(event.key == "Enter"){
+				let input = document.getElementById("posterCommentaire");
+				if(input.value.length > 200 | input.value == ""){
+					event.preventDefault();
+					alert("votre commentaire dois faire moins de 200 carractère ("+input.value.length+")");
+					input.value = "";
+				}
+			}
+		}
+	</script>
+		
 		<div class="container bg-light" style="margin-top:30px">
 			<div class="row">
 				
@@ -129,7 +143,7 @@
 						</c:forEach>
 						<c:if test="${postercom == true}">
 							<form method="post" action="poterCommentaire" style="display: flex;justify-content: center;">
-								<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;">
+								<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;" onkeypress="validation(event)">
 							</form>
 						</c:if>
 					</p>

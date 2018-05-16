@@ -106,6 +106,13 @@
 				let par = document.getElementById("plageHoraire");
 				par.removeChild(div);
 			}
+			function verifierLenght(id,length){
+				let input = document.getElementById(id);
+				if(input != null && input.value.length > length){
+					input.value = "";
+					document.getElementById(id).focus();
+				}
+			}
 		</script>
 		
 		<form class="container-fluid bg-light text-center" style="margin-top:30px;margin-bottom:30px;" action="EnregistrerEvenement" method="post">
@@ -139,7 +146,7 @@
 				<div class="col-md-4" style="margin-top:30px;">
 					<div>
 						<h2>Description</h2>
-						<input id="input-description" required="required" type="text" name="input-description" style="margin-top: 25px;" placeholder="Entrer une description">
+						<textarea id="input-description" required="required" type="text" name="input-description" style="margin-top: 25px;width: 99%;" placeholder="Entrer une description"></textarea>
 					</div>
 					
 					<div>
@@ -167,7 +174,7 @@
 						<br>
 						<input style="margin-bottom: 10px;" required="required" type="number" name="input-numero" id="input-numero" placeholder="Entrer le numero" onchange="if(document.getElementById('input-numero').value < 0 )document.getElementById('input-numero').value = 0">
 						<br>
-						<input style="margin-bottom: 10px;" required="required" type="text" name="input-boite" id="input-boite" placeholder="Entrer la boite">
+						<input style="margin-bottom: 10px;" onchange="verifierLenght('input-boite',1)" type="text" name="input-boite" id="input-boite" placeholder="Entrer la boite">
 						<br>
 						<input style="margin-bottom: 10px;" required="required" type="number" name="input-codePostal" id="input-codePostal" placeholder="Entrer le Code postal" onchange="if(document.getElementById('input-codePostal').value < 0 )document.getElementById('input-codePostal').value = 0">
 						<br>
