@@ -77,7 +77,7 @@
 				 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
 				 		</form>-->
 				 		<form method="post" action="DetailEvenement">
-				 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
+				 			<input type="submit" class="btn btn-info" value="Détails" name="${even.id }">
 				 		</form>
 				 	</div>
 			 	</div>

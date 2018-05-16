@@ -131,6 +131,7 @@ public class DAOEvenement extends DAO<Evenement>
 		int year = (jour - 30 < 0)?1:0;
 		jour = (jour - 30 < 0 )?365+(jour-30):jour-30;
 		d = LocalDate.ofYearDay(d.getYear()-year, jour);
+		System.out.println(d.toString());
 		try
 		{
 			ps = connection.prepareStatement(query);

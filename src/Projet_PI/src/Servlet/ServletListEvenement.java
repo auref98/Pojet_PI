@@ -43,7 +43,14 @@ public class ServletListEvenement extends HttpServlet{
 			int compteur = 0;
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-				even.setListPlage(p);
+				ArrayList<Plage> plage = new ArrayList<Plage>();
+				boolean add = true;
+				for(Plage pl : p){
+					for(Plage pls : plage){
+						if(add)add = (pls.getId() == pl.getId())?true:false;
+					}
+				}
+				if(add)even.setListPlage(plage);
 				compteur++;
 			}
 			request.setAttribute("evens", evens);
