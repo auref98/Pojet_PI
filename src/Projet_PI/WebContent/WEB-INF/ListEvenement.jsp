@@ -84,23 +84,24 @@
 		 		<c:set var="i" value="${i+1}"/>
 			</c:forEach>
 		</div>
-	 	<c:if test="${!(debut > 0)}">
-	 		<div style="padding-top:15px;" class="row container-fluid offset-md-5 offset-4">
-	 	</c:if>
-		<c:if test="${debut > 0}">
-			<div style="padding-top:15px;" class="row container-fluid offset-md-3">
-				<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
+		<div style="padding-top:15px;padding-bottom:15px;" class="row container-fluid text-center fixed-bottom">
+		 	<c:if test="${!(debut > 0)}">
+		 		<div class="col-4 col-md-2 offset-md-3"></div>
+		 	</c:if>
+			<c:if test="${debut > 0}">
+				<form class="col-4 col-md-2 offset-md-3" method="get" action="ListEvenSuivPrec">
 			 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
 				</form>
-		</c:if>
-		<div class="col-4 col-md-2 bg-info">
-	 		<label style="margin-top:5px;">Page <c:out value="${debut+cpt}"></c:out></label> 
+			</c:if>
+			<div class="col-4 col-md-2 btn-info disabled" style="border-radius: 0.25rem;">
+		 		<label style="margin-top:5px;">Page <c:out value="${debut+cpt}"></c:out></label> 
+			</div>
+			<c:if test="${suiv == true }">
+				<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
+					<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
+				</form>
+			</c:if>
 		</div>
-		<c:if test="${suiv == true }">
-			<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
-				<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
-			</form>
-		</c:if>
-		</div>
+		<div style="margin-top:80px;"></div>
 	</body>
 </html>
