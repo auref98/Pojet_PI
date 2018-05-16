@@ -30,7 +30,7 @@ public class ServletDemandeMDP extends HttpServlet
 				prof.setMail(mail);
 				new DAOProfesseur().create(prof);
 			}
-			else
+			else if(nomDom[1].equals("student.hers.be"))
 			{
 				Etudiant etud = new Etudiant();
 				etud.setMail(mail);

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="src/DAO/ojdbc6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
@@ -15,6 +14,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="E:/Desktop/Cours HERS 2 eme Informatique/Paoo/WorkSpace/mail.jar"/>
+	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/WebContent/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="E:/Documents/GitHub/Pojet_PI/src/Projet_PI/WebContent/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
