@@ -74,21 +74,21 @@
 	 	<!-- Infos basiques -->
 	 	<div class="row container col-md-6"> 
 	 		<h2 class="col-12 offset-1">Infos basiques</h2>
-	 		<div class="row bg-light form-group col-md-5 col-10 offset-1">
+	 		<div class="row bg-light form-group col-md-5 col-12 offset-1">
 		 			<label for="Nom">
 		 				Nom
 		 			</label>
 			 		<input class="form-control" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 		</div>
 	 		
-	 		<div class="row bg-light form-group col-md-5 col-10 offset-1">
+	 		<div class="row bg-light form-group col-md-5 col-12 offset-1">
 	 				<label for="Prenom">
 	 					Prénom
 	 				</label>
 	 				<input  class="form-control mr-sm-2" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
 	 		</div>
 	 		
-	 		<div class="row form-group col-10 container-fluid offset-1">
+	 		<div class="row form-group col-12 container-fluid offset-1">
 		 			<label for="Mail" class="col-12" style="padding-left: 0px;">Mail</label>
 		 			<div class="row container-fluid col-12">
 				 		<input class="form-control mr-sm-2 col-7" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
@@ -98,21 +98,21 @@
 				 	</div>
 	 		</div>
 	 		
-		 	<div class="row form-group col-md-5 col-10 offset-1  bg-light">
+		 	<div class="row form-group col-md-5 col-12 offset-1  bg-light">
 			 		<label for="Nouveau Mot De Passe">
 			 			Nouveau mot de passe
 			 		</label>
 				 	<input  class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
 		 	</div>
 		 	
-		 	<div class="row bg-light form-group col-md-5 col-10 offset-1">
+		 	<div class="row bg-light form-group col-md-5 col-12 offset-1">
 			 		<label for="Confirmer Nouveau Mot De Passe">
 				 		Confirmer le mot de passe
 				 	</label>
 				 	<input onchange="validation()" class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
 		 	</div>
 	 	
-	 		<div class="row texte form-group col-md-5 col-10 offset-1">
+	 		<div class="row texte form-group col-md-5 col-12 offset-1">
 	 				<label for="Matricule">
 		 				Matricule
 		 			</label>
@@ -124,7 +124,7 @@
 		 			</c:if>
 	 		</div>
 	 		
-	 		<div class="row form-group col-md-5 col-10 offset-1">
+	 		<div class="row form-group col-md-5 col-12 offset-1">
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
@@ -133,50 +133,49 @@
 	 	</div>
 	 	
  		<c:if test="${isEtu == true}">
- 			<div class="container-fluid col-md-6"> <!-- Adresse -->
- 			<h2>Adresse</h2>
- 				<div class="row bg-light form-group col-lig-3">
+ 			<!-- Adresse -->
+ 			<div class="row container-fluid col-md-6">
+ 				<h2 class="col-12 offset-1">Adresse</h2>
+ 				<div class="row bg-light form-group col-12 offset-1 offset-md-0">
 			 			<label for="rue">
 				 			Rue
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="Rue" id="Rue">
 		 		</div>
-		 		
-		 		<div class="row form-group col-lig-3">
+		 		<div class="row form-group col-md-6 col-6 offset-1 offset-md-0">
+			 			<label for="numero">
+				 			Numéro
+				 		</label>
+				 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
+		 		</div>
+		 		<div class="row bg-light form-group col-md-6 col-6 ml-auto offset-1 offset-md-0">
+			 			<label for="boite">
+				 			Boite
+				 		</label>
+				 		<input  class="form-control mr-sm-2" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
+		 		</div>
+		 		<div class="row form-group col-md-6 col-12 offset-1 offset-md-0">
 			 			<label for="Localite">
 				 			Localité
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
 		 		</div>
 		 		
-		 		<div class="row bg-light form-group col-lig-3">
+		 		<div class="row bg-light form-group col-12 col-md-6 ml-auto offset-1 offset-md-0">
 			 			<label for="codePostal">
 				 			Code postal
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
 		 		</div>
 		 		
-	 			<div class="row form-group col-lig-3">
+	 			<div class="row form-group col-12 offset-1 offset-md-0">
 			 			<label for="Pays">
 				 			Pays
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
 		 		</div>
 		 		
-		 		<div class="row form-group col-lig-3">
-			 			<label for="numero">
-				 			Numéro
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="boite">
-				 		Boite
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
-		 			</div>
-		 		</div>
+		 		
 		 	</div>
 		 	
  			<div class="row">
