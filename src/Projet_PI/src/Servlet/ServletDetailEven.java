@@ -82,6 +82,7 @@ public class ServletDetailEven extends HttpServlet{
 				}
 				request.setAttribute("rep",rep);
 			}
+			request.setAttribute("nbPlage", even.getListePlage().size());
 			request.setAttribute("even", even);
 			request.setAttribute("inscri", inscri);
 			request.setAttribute("postercom", posterCom);
