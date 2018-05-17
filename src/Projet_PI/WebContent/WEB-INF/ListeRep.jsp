@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Accueil</title>
+		<title>Profil</title>
 		<link rel="icon" href="assets/img/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -37,7 +36,7 @@
 							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="Statistique">Statistique</a>
+							<a class="nav-link" href="ListeRep">Liste des utilisateurs</a>
 						</li>
 					</c:if>
 				</ul>
@@ -51,38 +50,6 @@
 			</div>
 		</nav>
 		<div style="margin-top:80px;"></div>
-	 
-		 <!-- container principal liste evenements -->
-		 <div class="container" style="margin-top:30px">
-		 	<c:set var="i" value="0"/>
-		 	<c:forEach items="${ events }" var="even">
-		 		<!-- container pour un event -->
-		 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
-				 	<!-- container image -->
-				 	<c:if test="${i%2==0 }">
-				 		<div class="col-md-4 order-first" >
-							<img width="auto" height="200" alt="enements" src="${even.image}" />
-						</div>
-				 	</c:if>
-				 	<c:if test="${i%2==1 }">
-					 	<div class="col-md-4 order-first order-md-4" >
-							<img width="auto" height="200" alt="enements" src="${even.image}" />
-						</div>
-				 	</c:if>
-				 	<!-- container texte -->
-			 		<div class="col-md-8 bg-light" >
-			 			<h4>${even.nom}</h4>
-				 		<c:forEach items="${even.listePlage }" var="date">
-				 			<p>${date.date }</p>
-				 		</c:forEach>
-			 			<p>Description : <br>${even.description}</p>
-				 		<form method="post" action="DetailEvenement">
-				 			<input type="submit" class="btn btn-info" value="Detail" name="${even.id }">
-				 		</form>
-				 	</div>
-			 	</div>
-		 		<c:set var="i" value="${i+1}"/>
-			</c:forEach>
-		</div>
+		bite !
 	</body>
 </html>
