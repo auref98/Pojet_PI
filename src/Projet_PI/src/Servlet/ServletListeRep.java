@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,6 +34,9 @@ public class ServletListeRep extends HttpServlet
 		else
 		{
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			
+			ArrayList<Professeur> tabProf = new DAOProfesseur().findAll();
+			ArrayList<Etudiant> tabEtud = new DAOEtudiant().findAll();
 			
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeRep.jsp");
 			reqDisp.forward(request, response);

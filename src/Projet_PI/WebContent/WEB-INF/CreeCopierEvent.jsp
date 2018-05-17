@@ -90,7 +90,7 @@
 			input_button.type = "button";
 			input_button.value = "X";
 			input_button.name = "sup-"+i;
-			input_button.addEventListener("click",()=>{supprimerPlage("plage-" + i)});
+			input_button.addEventListener("click",()=> {supprimerPlage("plage-" + i)});
 			
 			let div = document.createElement("div");
 			div.id = "plage-"+i;

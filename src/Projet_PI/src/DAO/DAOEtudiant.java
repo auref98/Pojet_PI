@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import Bean.Adresse;
 import Bean.Etudiant;
@@ -231,6 +232,24 @@ public class DAOEtudiant extends DAO<Etudiant>{
 		return null;																			// Renvoie null par défaut
 	}
 
+	public ArrayList<Etudiant> findAll()
+	{
+		ArrayList<Representant> tabRep = new DAORepresentant().findAll();
+		ArrayList<Etudiant> tabEtud = new ArrayList<Etudiant>();
+		
+		if(tabRep != null)
+		{
+			for(Representant rep : tabRep)
+			{
+				Etudiant etud = find(rep.getId());
+				if(etud != null) tabEtud.add(etud);
+			}
+		}
+		else tabEtud = null;
+		
+		return tabEtud;
+	}
+	
 	/**
 	 * Permet d'ajouter un étudiant à la base de données <code>etudiant</code>. <br><br>
 	 * Méthode héritée de la classe abstraite <code>DAO</code>; <br>
