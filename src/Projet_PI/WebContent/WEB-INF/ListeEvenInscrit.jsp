@@ -34,7 +34,10 @@
 							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
+							<a class="nav-link" href="CopierEvenement">archives</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="ListeRep">Liste des utilisateurs</a>
 						</li>
 					</c:if>
 				</ul>
