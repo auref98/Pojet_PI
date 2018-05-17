@@ -3,6 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Enumeration;
+import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ import DAO.DAOAdresse;
 import DAO.DAOEvenement;
 import DAO.DAOInscription;
 import DAO.DAOPlage;
+import DAO.DAOProfesseur;
 import DAO.DAORepresentant;
 
 @WebServlet("/InscriptionEven")
@@ -87,6 +89,25 @@ public class ServletInscriptionEven extends HttpServlet{
 				}
 				request.setAttribute("rep",rep);
 			}
+			
+			LinkedList<Professeur> profs = new LinkedList<Professeur>();
+			if(prof != null){
+				for(Plage p : even.getListePlage()){
+					LinkedList<Inscription> inscris = new DAOPlage().findListeInscription(p);
+					if(inscris != null){
+						for(Inscription ins : inscris){
+							Professeur pr = new DAOProfesseur().find(ins.getRepresentant().getId());
+							boolean add = true;
+							for(Professeur prf : profs){
+								if(add)add = !(prf.getId() == pr.getId());
+							}
+							if(add)profs.add(pr);
+						}
+					}
+				}
+			}
+			
+			request.setAttribute("profs", profs);
 			request.setAttribute("even", even);
 			request.setAttribute("postercom", posterCom);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");

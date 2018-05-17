@@ -49,7 +49,12 @@ public class ServletListeEvenInscri  extends HttpServlet{
 			rep.setInscrits(new DAORepresentant().findInscription(rep.getId()));
 			for(Inscription inscri : rep.getInscrits()){
 				Plage p = new DAOPlage().find(inscri.getPlage().getId());
-				evens.add(new DAOEvenement().find(p.getEve().getId()));
+				Evenement eve = new DAOEvenement().find(p.getEve().getId());
+				boolean add = true;
+				for(Evenement e : evens){
+					if(add)add = !(e.getId() == eve.getId());
+				}
+				if(add)evens.add(eve);
 			}
 			request.setAttribute("evens", evens);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeEvenInscrit.jsp");
