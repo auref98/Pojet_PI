@@ -56,7 +56,9 @@ public class DAOInscription extends DAO<Inscription>
 			Plage plage = new Plage();
 			plage.setId(resultSet.getInt("refPlage"));
 			
+			boolean present = (resultSet.getInt("PRESENT") == 1)? true : false;
 			inscpt = new Inscription(id, valide, representant, plage);
+			inscpt.setPresent(present);
 		}
 		catch (SQLException ex)
 		{
@@ -97,7 +99,9 @@ public class DAOInscription extends DAO<Inscription>
 			plage.setId(resultSet.getInt("refPlage"));
 			int id = resultSet.getInt("id");
 			
+			boolean present = (resultSet.getInt("PRESENT") == 1)? true : false;
 			inscpt = new Inscription(id, valide, representant, plage);
+			inscpt.setPresent(present);
 		}
 		catch (SQLException ex)
 		{
@@ -132,7 +136,7 @@ public class DAOInscription extends DAO<Inscription>
 	@Override
 	public boolean create(Inscription incptn)
 	{
-		String query = "insert into inscription values(null, ?, ?, ?)";
+		String query = "insert into inscription values(null, ?, ?, ?, ?)";
 		PreparedStatement ps = null;
 		boolean resultat = false;
 		
@@ -141,8 +145,9 @@ public class DAOInscription extends DAO<Inscription>
 			ps = connection.prepareStatement(query, new String[] {"id"});
 			int valide = (incptn.isValide() == true) ? 1 : 0;
 			ps.setInt(1, valide);
-			ps.setInt(2, incptn.getPlage().getId());
-			ps.setInt(3, incptn.getRepresentant().getId());
+			ps.setInt(2, (incptn.isPresent())?1:0 );
+			ps.setInt(3, incptn.getPlage().getId());
+			ps.setInt(4, incptn.getRepresentant().getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
@@ -179,7 +184,7 @@ public class DAOInscription extends DAO<Inscription>
 	@Override
 	public boolean update(Inscription incptn)
 	{
-		String query = "update inscription set valide = ?, refPlage = ?, refRepr = ? where id = ?";
+		String query = "update inscription set valide = ?, present = ?, refPlage = ?, refRepr = ? where id = ?";
 		PreparedStatement ps = null;
 		boolean resultat = false;
 		
@@ -188,9 +193,10 @@ public class DAOInscription extends DAO<Inscription>
 			ps = connection.prepareStatement(query);
 			int valide = (incptn.isValide() == true) ? 1 : 0;
 			ps.setInt(1, valide);
-			ps.setInt(2, incptn.getPlage().getId());
-			ps.setInt(3, incptn.getRepresentant().getId());
-			ps.setInt(4, incptn.getId());
+			ps.setInt(2, (incptn.isPresent())?1:0 );
+			ps.setInt(3, incptn.getPlage().getId());
+			ps.setInt(4, incptn.getRepresentant().getId());
+			ps.setInt(5, incptn.getId());
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
