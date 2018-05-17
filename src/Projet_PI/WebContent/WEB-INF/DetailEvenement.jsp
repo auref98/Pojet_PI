@@ -93,26 +93,28 @@
 							<p class="col-8" style="padding-top:5px;">
 								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
 							</p>
-							<c:if test="${inscri == true }">
-								<c:set var="i" value="false"></c:set>
-								<c:forEach items="${plage.listeInscription }" var="inscri" >
-									<c:set var="i" value="true"></c:set>
-								</c:forEach>
-								<c:if test="${i == true}">
-									<form class="col-2" method="post" action="DesinscriptionEven">
-										<input type="submit" class="btn btn-info" value="Désinscrire" name="${plage.id }-${even.id}">
-									</form>
+							<c:if test="${relais == false}">
+								<c:if test="${inscri == true }">
+									<c:set var="i" value="false"></c:set>
+									<c:forEach items="${plage.listeInscription }" var="inscri" >
+										<c:set var="i" value="true"></c:set>
+									</c:forEach>
+									<c:if test="${i == true}">
+										<form class="col-2" method="post" action="DesinscriptionEven">
+											<input type="submit" class="btn btn-info" value="Désinscrire" name="${plage.id }-${even.id}">
+										</form>
+									</c:if>
+									<c:if test="${i == false}">
+										<form class="col-2" method="post" action="InscriptionEven">
+											<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
+										</form>
+									</c:if>
 								</c:if>
-								<c:if test="${i == false}">
-									<form class="col-2" method="post" action="InscriptionEven">
+								<c:if test="${inscri == false }">
+									<form method="post" action="InscriptionEven">
 										<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
 									</form>
 								</c:if>
-							</c:if>
-							<c:if test="${inscri == false }">
-								<form method="post" action="InscriptionEven">
-									<input type="submit" class="btn btn-info" value="S'inscrire" name="${plage.id }-${even.id}">
-								</form>
 							</c:if>
 						</div>
 					</c:forEach>
@@ -136,6 +138,20 @@
 					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
 				</p>
 			</div>
+			<c:if test="${relais == true && ListeInscris != null}">
+				<div style="margin:0.5em;padding:0.5em;border:solid 1px black;border-radius:15px">
+					<div style="padding:0.5em;max-heigth:250px;overflow-y:scroll;">
+						<form action="validerPresence" method="post">
+							<c:forEach items="${ListeInscris}" var="inscri">
+								<div style="display:flex;justify-content:space-between">
+									<span style="margin-left:0.5em;">${inscri.firstName} - ${inscri.lastName}</span><span style="margin-right:0.5em;"><input type="checkbox" name="present-${inscri.id}" value="valider"></span>
+								</div>
+							</c:forEach>
+							<input type="submit" value="valider présecence" style="float:right;">
+						</form>
+					</div>
+				</div>
+			</c:if>
 			
 			<c:if test="${profs != null}">
 				<div style="margin:0.5em;border:solid 1px black;border-radius:15px;padding:0.5em;">
@@ -148,31 +164,33 @@
 				</div>
 			</c:if>
 			
-			<div style="margin: 0.5em;border: solid 1px black;border-radius: 20px;">
-				<div style="margin: 0.5em;padding: 0.5em;height:250px;overflow-y: scroll;">
-					<p>
-						Commentaire <br>
-						<c:forEach items="${even.listeCommentaire }" var="com">
-							<div style="border:solid 1px black;margin:0.5em;padding:0.5em;border-radius:20px;">
-								<form method="post" action="supprimerCommentaire" style="display: flex;justify-content: space-between;">
-									<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
-									<c:if test="${(relais == true) or (rep.id == com.rep.id)}">
-										<input type="submit" value="X" name="${com.id }-${even.id }">
-									</c:if>
+			<c:if test="${com == true}">
+				<div style="margin: 0.5em;border: solid 1px black;border-radius: 20px;">
+					<div style="margin: 0.5em;padding: 0.5em;max-height:250px;overflow-y: scroll;">
+						<p>
+							Commentaire <br>
+							<c:forEach items="${even.listeCommentaire }" var="com">
+								<div style="border:solid 1px black;margin:0.5em;padding:0.5em;border-radius:20px;">
+									<form method="post" action="supprimerCommentaire" style="display: flex;justify-content: space-between;">
+										<p>De : ${com.rep.lastName } ${com.rep.firstName }</p>
+										<c:if test="${(relais == true) or (rep.id == com.rep.id)}">
+											<input type="submit" value="X" name="${com.id }-${even.id }">
+										</c:if>
+									</form>
+									<span>
+										${com.contenu }
+									</span>
+								</div>
+							</c:forEach>
+							<c:if test="${postercom == true}">
+								<form method="post" action="posterCommentaire" style="display: flex;justify-content: center;">
+									<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;" onkeypress="validation(event)">
 								</form>
-								<span>
-									${com.contenu }
-								</span>
-							</div>
-						</c:forEach>
-						<c:if test="${postercom == true}">
-							<form method="post" action="posterCommentaire" style="display: flex;justify-content: center;">
-								<input id="posterCommentaire" name="commentaire-${even.id }" type="text" placeholder="Commentaire..." style="width: 100%;margin: 0.5em;" onkeypress="validation(event)">
-							</form>
-						</c:if>
-					</p>
+							</c:if>
+						</p>
+					</div>
+				</c:if>
 				</div>
-			</div>
 			<div class="offset-md-5 offset-3">
 				<c:if test="${relais == true }">
 					<form action="SupprimerEvenement" method="post">
