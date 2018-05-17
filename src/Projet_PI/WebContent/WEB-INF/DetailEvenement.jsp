@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Détail</title>
+		<title>${even.nom}</title>
 		<link rel="icon" href="assets/img/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -65,21 +65,26 @@
 		
 		<div class="container bg-light" style="margin-top:30px">
 			<div class="row">
+				<!--  titre -->
+				<div class = "col-md-12 offset-4">
+					<h1>${even.nom }</h1>
+				</div>
 				
 				<!-- image -->
 				<div class="col-md-5">
-					<img style ="max-width:100%;" alt="Evenement" src="${even.image }">
+					<img  style ="max-width:100%;" alt="Evenement" src="${even.image }">
 				</div>
 				
 				<!-- nom + details -->
 				<div class="col-md-6 offset-md-1">
-					<!--<c:if test="${relais == true }">
-						<form action="SupprimerEvenement" method="post">
-							<input type="submit" value="supprimer l'événement" name="event-${even.id }">
-						</form>
-					</c:if>-->
+										
+					<c:if test="${nbPlage > 1}">
+						<h2>Plages disponibles </h2>
+					</c:if>
+					<c:if test="${nbPlage == 1}">
+						<h2>Plage disponible </h2>
+					</c:if>
 					
-					<h1>${even.nom }</h1>
 					<c:forEach items="${even.listePlage }" var="plage">
 						<div class="row container-fluid">
 							<p class="col-8" style="padding-top:5px;">
