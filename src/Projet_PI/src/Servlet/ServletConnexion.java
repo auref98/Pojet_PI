@@ -96,7 +96,7 @@ public class ServletConnexion extends HttpServlet
 					}
 					if(add)plage.add(pl);
 				}
-				even.setListPlage(p);
+				even.setListPlage(plage);
 				compteur++;
 			}
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));

@@ -36,6 +36,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="CopierEvenement">Copier un événement</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="Statistique">Statistique</a>
+						</li>
 					</c:if>
 				</ul>
 				

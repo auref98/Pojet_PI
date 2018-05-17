@@ -72,15 +72,17 @@ public class DAOProfesseur extends DAO<Professeur>{
 	}
 	
 	public ArrayList<Section> findRelais(int id){
-		ArrayList<Section> sect = new ArrayList<Section>();
+		ArrayList<Section> sect = null;
 		String sql = "SELECT id FROM section WHERE refrelais = ?";
 		try {
 			this.prStat = connection.prepareStatement(sql);
 			this.prStat.setInt(1, id);
 			this.resSet = this.prStat.executeQuery();
-			while(this.resSet.next()){
+			if(!this.resSet.next())throw new SQLException();
+			sect = new ArrayList<Section>();
+			do{
 				sect.add(new DAOSection().find(this.resSet.getInt("id")));
-			}
+			}while(this.resSet.next());
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
