@@ -45,7 +45,7 @@ public class ServletDemandeMDP extends HttpServlet
 				Etudiant etud = new Etudiant();
 				etud.setMail(mail);
 				new DAOEtudiant().create(etud);
-				text += "<strong>" + etud.getPassword() + "</strong>";
+				text += etud.getPassword();
 			}
 			
 			signature = "\n\nBien à vous,\n"
