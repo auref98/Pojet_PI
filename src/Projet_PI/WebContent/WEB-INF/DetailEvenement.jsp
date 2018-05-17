@@ -138,10 +138,10 @@
 			</div>
 			
 			<c:if test="${profs != null}">
-				<div>
+				<div style="margin:0.5em;border:solid 1px black;border-radius:15px;padding:0.5em;">
 				<p>liste des professeur inscrits</p>
 					<c:forEach items="${profs }" var="prof">
-						<div>
+						<div style="padding-left:1.5em;">
 							${prof.firstName} - ${prof.lastName}
 						</div>
 					</c:forEach>
