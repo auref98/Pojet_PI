@@ -19,8 +19,11 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import Bean.Adresse;
+import Bean.Evenement;
 import Bean.Inscription;
 import Bean.Plage;
 import Bean.Representant;
@@ -144,6 +147,52 @@ public class DAORepresentant extends DAO<Representant>{
 			}
 		}
 		return rep;
+	}
+	
+	public ArrayList<Representant> findAll()
+	{
+		String query = "select * from representant";
+		PreparedStatement ps = null;
+		ResultSet resultSet = null;
+		ArrayList<Representant> tabRep = new ArrayList<Representant>();
+		try
+		{
+			ps = connection.prepareStatement(query);
+			resultSet = ps.executeQuery();			
+			while(resultSet.next())
+			{
+				Representant repr = new Representant(resultSet.getInt("id"),
+													resultSet.getString("LASTNAME"),
+													resultSet.getString("FIRSTNAME"),
+													resultSet.getString("PHONE"),
+													resultSet.getString("MAIL"),
+													resultSet.getString("MATRICULE"));
+											
+				tabRep.add(repr);
+			}
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Erreur: findAllRep failed !");
+		}
+		finally
+		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		if(tabRep.isEmpty()) tabRep = null;
+		return tabRep;
 	}
 	
 	public LinkedList<Inscription> findInscription(int id){
