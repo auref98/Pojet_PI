@@ -90,24 +90,64 @@
 		 	</div>
 	 		<c:set var="i" value="${i+1}"/>
 		</c:forEach>
+		
+		<!-- Pas inscrit -->
+		
 		<c:if test="${isEvenement == false }">
-	 	<h1>
-	 		Vous n'êtes inscrit à aucun événement pour le moment.
-	 	</h1>
-	 	<img alt="Smiley triste" src="https://data.photofunky.net/output/image/0/e/5/9/0e59c9/photofunky.png">
-	 </c:if>
+			<h1>
+				Vous n'êtes inscrit à aucun événement pour le moment.
+			</h1>
+			
+			<div id="demo" class="carousel slide" data-ride="carousel">
+			  <ul class="carousel-indicators">
+			    <li data-target="#demo" data-slide-to="0" class="active"></li>
+			    <li data-target="#demo" data-slide-to="1"></li>
+			    <li data-target="#demo" data-slide-to="2"></li>
+			  </ul>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="assets/img/ludo1.jpg" alt="Los Angeles" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h3>Coucou</h3>
+			        <p>je suis en rute</p>
+			      </div>   
+			    </div>
+			    <div class="carousel-item">
+			      <img src="assets/img/ludo1.jpg" alt="Chicago" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h3>tu veux</h3>
+			        <p>je suis en rute</p>
+			      </div>   
+			    </div>
+			    <div class="carousel-item">
+			      <img src="assets/img/ludo1.jpg" alt="New York" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h3>voir ma bite ?</h3>
+			        <p>je suis en rute</p>
+			      </div>   
+			    </div>
+			  </div>
+			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+			    <span class="carousel-control-prev-icon"></span>
+			  </a>
+			  <a class="carousel-control-next" href="#demo" data-slide="next">
+			    <span class="carousel-control-next-icon"></span>
+			  </a>
+			</div>
+			
+		</c:if>
 	</div>
-		 
-	 
-	 <!--<c:if test="${debut > 0}">
-	 	<form method="get" action="ListEvenSuivPrec">
-		 	<input type="submit" value="Page ${debut}" name="Precedent">
-		 </form>
-	 </c:if>
-	 <c:if test="${suiv == true }">
+	
+	
+	<!--<c:if test="${debut > 0}">
 		<form method="get" action="ListEvenSuivPrec">
-	 		<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
-	 	</form>
-	 </c:if>-->
+			<input type="submit" value="Page ${debut}" name="Precedent">
+		</form>
+	</c:if>
+	<c:if test="${suiv == true}">
+		<form method="get" action="ListEvenSuivPrec">
+			<input type="submit" value="Page ${debut+cpt+1}" name="Suivant">
+		</form>
+	</c:if>-->
 	</body>
 </html>
