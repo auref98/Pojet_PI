@@ -28,6 +28,7 @@ public class Inscription implements Serializable{
 	
 	private int id;												// Attribut permettant de récuperer l'id référençant cette adresse dans la base de donnees
 	private boolean valide;										// Attribut indiquant si le représentant a bien effectué sa tâche
+	private boolean present;
 	private Representant representant;								// Référence vers l'objet Représentant lié à cette inscription
 	private Plage plage;											// Référence vers l'objet Plage correspondant à la date de cette inscription (date de la prestation à effectuer)
 	
@@ -64,6 +65,20 @@ public class Inscription implements Serializable{
 	
 // Getter et setter pour l'attribut "id" 	
 
+	/**
+	 * @return the present
+	 */
+	public boolean isPresent() {
+		return present;
+	}
+
+	/**
+	 * @param present the present to set
+	 */
+	public void setPresent(boolean present) {
+		this.present = present;
+	}
+	
 	/**
 	 * Renvoie l'identifiant (BD) de l'inscription.
 	 * @return l'identifiant (BD) de l'inscription

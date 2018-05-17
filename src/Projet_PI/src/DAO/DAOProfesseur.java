@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
+import Bean.Etudiant;
 import Bean.Professeur;
 import Bean.Representant;
 import Bean.Section;
@@ -131,6 +131,24 @@ public class DAOProfesseur extends DAO<Professeur>{
 			}
 		}
 		return sect;
+	}
+	
+	public ArrayList<Professeur> findAll()
+	{
+		ArrayList<Representant> tabRep = new DAORepresentant().findAll();
+		ArrayList<Professeur> tabProf = new ArrayList<Professeur>();
+		
+		if(tabRep != null)
+		{
+			for(Representant rep : tabRep)
+			{
+				Professeur prof = find(rep.getId());
+				if(prof != null) tabProf.add(prof);
+			}
+		}
+		else tabProf = null;
+		
+		return tabProf;
 	}
 
 	@Override

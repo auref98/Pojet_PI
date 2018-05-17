@@ -50,6 +50,31 @@
 			</div>
 		</nav>
 		<div style="margin-top:80px;"></div>
-		bite !
+		
+		<div>
+			<label>Tri:</label>
+			<select name="optionTri" id="optionTri" class="inputClass">
+				<option value="Nom">Nom</option>
+				<option value="Prenom">Prenom</option>
+				<option value="Participation">Participation</option>
+			</select>
+		</div>
+		<div>
+    		<input type="radio" id="etudiant" name="representant" value="etudiant">
+    		<label for="etudiant">Etudiant</label>
+    		<input type="radio" id="professeur" name="representant" value="professeur">
+    		<label for="professeur">Professeur</label>
+  		</div>
+  		<div id="listeRep">
+			<c:set var="i" value="1"></c:set>
+			<c:forEach items="${event.listePlage }" var="plage">
+				<div id="plage-${i }">
+					<input value="${plage.date }" type="date" id="date-${i }" name="date-${i }">
+					<label for="debut-${i }">début</label><input value="${plage.heureDebut }" name="debut-${i }" type="time" id="debut-${i }">
+					<label for="fin-${i }">fin</label><input value="${plage.heureFin }" name="fin-${i }" type="time" id="fin-${i }">
+					<input type="button" value="X" name="sup-${i }" onclick="supprimerPlage('plage-${i }')">
+				</div>
+			</c:forEach>
+		</div>
 	</body>
 </html>

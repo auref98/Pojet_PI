@@ -136,6 +136,18 @@
 					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
 				</p>
 			</div>
+			
+			<c:if test="${profs != null}">
+				<div>
+				<p>liste des professeur inscrits</p>
+					<c:forEach items="${profs }" var="prof">
+						<div>
+							${prof.firstName} - ${prof.lastName}
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
+			
 			<div style="margin: 0.5em;border: solid 1px black;border-radius: 20px;">
 				<div style="margin: 0.5em;padding: 0.5em;height:250px;overflow-y: scroll;">
 					<p>
