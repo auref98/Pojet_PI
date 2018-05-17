@@ -69,80 +69,52 @@
 		}
 	</script>
 	
-	
-	
-	
-	 <style>
-	 	.center{
-	 		margin:auto;
-	 		float:none;
-	 	}
-	 	label{
-	 		margin-bottom:2px;
-	 		padding-top:15px;
-	 		width:300px;
-	 		
-	 	}
-	 	.inputClass{
-	 		width:200px;
-	 	}
-	 	.texte{
-	 		padding-top:15px;
-	 	} 
-	 </style>
-	 <div class="" style="margin: 0 auto;display:block;width:33.333333%;">
-	 	<form method="post" action="EnregistrerProfil" class="form">
-	 		<div class="row bg-light">
-	 			<div class="form-group col-lig-3">
+	 
+ 	<form method="post" action="EnregistrerProfil" class="row container-fluid">
+	 	<!-- Infos basiques -->
+	 	<div class="row container col-md-6"> 
+	 		<h2 class="col-12 offset-1">Infos basiques</h2>
+	 		<div class="row bg-light form-group col-md-5 col-10 offset-1">
 		 			<label for="Nom">
-			 		Nom
-			 		</label>
-			 		<input class="form-control mr-sm-2" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
-	 			</div>
+		 				Nom
+		 			</label>
+			 		<input class="form-control" value="${rep.lastName}"  type="text" required="required" placeholder="Nom" name="Nom" id="Nom">
 	 		</div>
-	 		<div class="row">
-	 			<div class="form-group col-lig-3">
+	 		
+	 		<div class="row bg-light form-group col-md-5 col-10 offset-1">
 	 				<label for="Prenom">
-	 				Prenom
+	 					Prénom
 	 				</label>
 	 				<input  class="form-control mr-sm-2" value="${rep.firstName}" type="text" required="required" placeholder="Prenom" name="Prenom" id="Prenom">
-	 			</div>
-	 		</div>
-	 		<div class="row bg-light">
-	 			<div class="form-group col-lig-3">
-		 			<label for="Mail">
-			 		Mail
-			 		</label>
-			 		<input  class="form-control mr-sm-2" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
-			 		<span>${hers}</span>
-			 		
-			 		
-			 		<!-- ${rep.mail} -->
-	 			</div>
 	 		</div>
 	 		
-		 	<div class="row">
-		 		<div class="form-group col-lig-3">
+	 		<div class="row form-group col-10 container-fluid offset-1">
+		 			<label for="Mail" class="col-12" style="padding-left: 0px;">Mail</label>
+		 			<div class="row container-fluid col-12">
+				 		<input class="form-control mr-sm-2 col-7" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+				 		<span class="col-4" style="margin-top:5px;padding-left:0px;">
+							${hers}
+				 		</span>
+				 	</div>
+	 		</div>
+	 		
+		 	<div class="row form-group col-md-5 col-10 offset-1  bg-light">
 			 		<label for="Nouveau Mot De Passe">
-				 	Mot de passe
-				 	</label>
-				 	<input  class="form-control mr-sm-2" type="password" placeholder="Nouveau mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
-		 		</div>
+			 			Nouveau mot de passe
+			 		</label>
+				 	<input  class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="NouveauMotDePasse" id="NouveauMotDePasse">
 		 	</div>
-		 	<div class="row bg-light">
-		 		<div class="form-group col-lig-3">
+		 	
+		 	<div class="row bg-light form-group col-md-5 col-10 offset-1">
 			 		<label for="Confirmer Nouveau Mot De Passe">
-				 	Confirmer mot de passe
+				 		Confirmer le mot de passe
 				 	</label>
-				 	<input onchange="validation()" class="form-control mr-sm-2" type="password" placeholder="Confirmer nouveau mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
-		 		</div>
+				 	<input onchange="validation()" class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="ConfirmerNouveauMotDePasse" id="ConfirmerNouveauMotDePasse">
 		 	</div>
-		 		
-	 		
-	 		<div class="row texte">
-	 			<div class="form-group col-lig-3">
+	 	
+	 		<div class="row texte form-group col-md-5 col-10 offset-1">
 	 				<label for="Matricule">
-		 			Matricule : 
+		 				Matricule
 		 			</label>
 		 			<c:if test="${rep.matricule == null || firstConnection == true}">
 		 				<input  class="form-control mr-sm-2" value="" type="text" required="required" placeholder="x000000" name="Matricule" id="Matricule">
@@ -150,56 +122,52 @@
 		 			<c:if test="${rep.matricule != null && firstConnection == false}">
 		 				${rep.matricule}
 		 			</c:if>
-	 			</div>
 	 		</div>
-	 		<div class="row bg-light">
-	 			<div class="form-group col-lig-3">
+	 		
+	 		<div class="row form-group col-md-5 col-10 offset-1">
 	 				<label for="Phone">
 	 				Téléphone
 	 				</label>
 	 				<input  onchange="validNum()" class="form-control mr-sm-2" value="${rep.phone}" type="text" required="required" placeholder="+32.000.00.00.00" name="Phone" id="Phone">
-	 			</div>
 	 		</div>
-	 		<c:if test="${isEtu == true}">
-	 			<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="Pays">
-				 		Pays
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="codePostal">
-				 		Code postal
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
-		 			</div>
-		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="Localite">
-				 		Localité
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
+	 	</div>
+	 	
+ 		<c:if test="${isEtu == true}">
+ 			<div class="container-fluid col-md-6"> <!-- Adresse -->
+ 			<h2>Adresse</h2>
+ 				<div class="row bg-light form-group col-lig-3">
 			 			<label for="rue">
-				 		Rue
+				 			Rue
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.rue}" type="text" required="required" placeholder="Rue" name="Rue" id="Rue">
-		 			</div>
 		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
+		 		
+		 		<div class="row form-group col-lig-3">
+			 			<label for="Localite">
+				 			Localité
+				 		</label>
+				 		<input  class="form-control mr-sm-2" value="${adr.localite}" type="text" required="required" placeholder="Localité" name="Localite" id="Localite">
+		 		</div>
+		 		
+		 		<div class="row bg-light form-group col-lig-3">
+			 			<label for="codePostal">
+				 			Code postal
+				 		</label>
+				 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
+		 		</div>
+		 		
+	 			<div class="row form-group col-lig-3">
+			 			<label for="Pays">
+				 			Pays
+				 		</label>
+				 		<input  class="form-control mr-sm-2" value="${adr.pays}" type="text" required="required" placeholder="Pays" name="Pays" id="Pays">
+		 		</div>
+		 		
+		 		<div class="row form-group col-lig-3">
 			 			<label for="numero">
-				 		Numéro
+				 			Numéro
 				 		</label>
 				 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
-		 			</div>
 		 		</div>
 		 		<div class="row bg-light">
 		 			<div class="form-group col-lig-3">
@@ -209,135 +177,134 @@
 				 		<input  class="form-control mr-sm-2" value="${adr.boite}" type="text" placeholder="Boite" name="Boite" id="Boite">
 		 			</div>
 		 		</div>
-	 			<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="DateNaissance">
-				 		Date de naissance
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="PaysNaissance">
-				 		Pays de naissance
-				 		</label>
-				 		<input  class="form-control mr-sm-2" value="${rep.paysNaissance}" type="text" required="required" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
-		 			</div>
-		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="lieuNaissance">
-				 		lieu de naissance
-				 		</label>
-				 		<input class="form-control mr-sm-2" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
-		 			</div>
-		 		</div>
-		 		
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="numNational">
-				 		Numéro national
-				 		</label>
-				 		<input class="form-control mr-sm-2" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
-		 			</div>
-		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="nationalite">
-				 		Nationalitée
-				 		</label>
-				 		<input class="form-control mr-sm-2" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="numBanque">
-				 		Numéro de banque
-				 		</label>
-				 		<input class="form-control mr-sm-2" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
-		 			</div>
-		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="SoutienSocial">
-				 		Soutien social
-				 		</label>
-				 		<input class="form-control mr-sm-2" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="emplacementEcole">
-				 		Emplacement de l'école
-				 		</label>
-				 		<select name="EmplacementEcole" id="EmplacementEcole" class="inputClass">
-				 			<option <c:if test="${rep.emplacementEcole == 'Libramont'}">selected="selected"</c:if> value="Libramont">Libramont</option>
-				 			<option <c:if test="${rep.emplacementEcole == 'Virton'}">selected="selected"</c:if> value="Virton">Virton</option>
-							<option <c:if test="${rep.emplacementEcole == 'Arlon'}">selected="selected"</c:if> value="Arlon">Arlon</option>
-				 		</select>
-		 			</div>
-		 		</div>
-		 		<div class="row">
-		 			<div class="form-group col-lig-3">
-			 			<label for="role">
-				 		Role
-				 		</label>
-				 		<select name="Role" id="Role" class="inputClass">
-				 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">representant</option>
-				 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">ouvrier</option>
-				 		</select>
-		 			</div>
-		 		</div>
-		 		<div class="row bg-light">
-		 			<div class="form-group col-lig-3">
-			 			<label for="Section">
-				 		Section
-				 		</label>
-				 		<select id="Section" name="Section" class="inputClass">
-				 			<c:forEach items="${sects}" var="sect">
-				 				<option <c:if test="${sect.nom == rep.sec.nom}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
-				 			</c:forEach>
-				 		</select>
-		 			</div>
-		 		</div>
-	 		</c:if>
-	 		<c:if test="${isEtu == false}">
-	 			<div class="row">
-	 				<div class="form-group col-lig-3">
-	 					<p>
-	 						Sections
-	 					</p>
-				 		<c:forEach items="${sects}" var="sect">
-				 			<label for="Sections">
-				 				${sect.nom }
-				 			</label>
-				 			<c:set var="check" value="false"/>
-				 			<c:forEach items="${sect.listeProf }" var="prof">
-				 				<c:if test="${prof.id == rep.id }">
-				 					<c:set var="check" value="true"/>
-				 				</c:if>
-				 			</c:forEach>
-				 			<input type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> ><br>
-				 		</c:forEach>
-		 			</div>
+		 	</div>
+		 	
+ 			<div class="row">
+	 			<div class="form-group col-lig-3">
+		 			<label for="DateNaissance">
+			 		Date de naissance
+			 		</label>
+			 		<input  class="form-control mr-sm-2" value="${rep.dateNaissance}" type="date" required="required" placeholder="Date de naissance" name="DateNaissance" id="DateNaissance">
 	 			</div>
-	 			<div class="row texte bg-light">
-		 			<div class="form-group col-lig-3">
-			 			Nombre de participation : ${rep.nbParticipations}
-			 		</div>
-		 		</div>
-	 		</c:if>
-	 		
-	 		<div style="margin-bottom:30px;display:block;margin:0 auto;width:20%">
-	 			<input type="submit" class="btn btn-primary" value="Enregistrer">
 	 		</div>
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
+		 			<label for="PaysNaissance">
+			 		Pays de naissance
+			 		</label>
+			 		<input  class="form-control mr-sm-2" value="${rep.paysNaissance}" type="text" required="required" placeholder="Pays de naissance" name="PaysNaissance" id="PaysNaissance">
+	 			</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="form-group col-lig-3">
+		 			<label for="lieuNaissance">
+			 		lieu de naissance
+			 		</label>
+			 		<input class="form-control mr-sm-2" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
+	 			</div>
+	 		</div>
+	 		
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
+		 			<label for="numNational">
+			 		Numéro national
+			 		</label>
+			 		<input class="form-control mr-sm-2" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
+	 			</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="form-group col-lig-3">
+		 			<label for="nationalite">
+			 		Nationalitée
+			 		</label>
+			 		<input class="form-control mr-sm-2" value="${rep.nationalite}" type="text" required="required" placeholder="nationalitée" name="Nationalite" id="Nationalite">
+	 			</div>
+	 		</div>
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
+		 			<label for="numBanque">
+			 		Numéro de banque
+			 		</label>
+			 		<input class="form-control mr-sm-2" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
+	 			</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="form-group col-lig-3">
+		 			<label for="SoutienSocial">
+			 		Soutien social
+			 		</label>
+			 		<input class="form-control mr-sm-2" value="${rep.soutienSocial}" type="checkBox" placeholder="Soutien social" name="SoutienSocial" id="SoutienSocial">
+	 			</div>
+	 		</div>
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
+		 			<label for="emplacementEcole">
+			 		Emplacement de l'école
+			 		</label>
+			 		<select name="EmplacementEcole" id="EmplacementEcole" class="inputClass">
+			 			<option <c:if test="${rep.emplacementEcole == 'Libramont'}">selected="selected"</c:if> value="Libramont">Libramont</option>
+			 			<option <c:if test="${rep.emplacementEcole == 'Virton'}">selected="selected"</c:if> value="Virton">Virton</option>
+						<option <c:if test="${rep.emplacementEcole == 'Arlon'}">selected="selected"</c:if> value="Arlon">Arlon</option>
+			 		</select>
+	 			</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="form-group col-lig-3">
+		 			<label for="role">
+			 		Role
+			 		</label>
+			 		<select name="Role" id="Role" class="inputClass">
+			 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">representant</option>
+			 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">ouvrier</option>
+			 		</select>
+	 			</div>
+	 		</div>
+	 		<div class="row bg-light">
+	 			<div class="form-group col-lig-3">
+		 			<label for="Section">
+			 		Section
+			 		</label>
+			 		<select id="Section" name="Section" class="inputClass">
+			 			<c:forEach items="${sects}" var="sect">
+			 				<option <c:if test="${sect.nom == rep.sec.nom}">selected="selected"</c:if> value="${sect.id }" > ${sect.nom }</option>
+			 			</c:forEach>
+			 		</select>
+	 			</div>
+	 		</div>
+ 		</c:if>
+ 		<c:if test="${isEtu == false}">
+ 			<div class="row">
+ 				<div class="form-group col-lig-3">
+ 					<p>
+ 						Sections
+ 					</p>
+			 		<c:forEach items="${sects}" var="sect">
+			 			<label for="Sections">
+			 				${sect.nom }
+			 			</label>
+			 			<c:set var="check" value="false"/>
+			 			<c:forEach items="${sect.listeProf }" var="prof">
+			 				<c:if test="${prof.id == rep.id }">
+			 					<c:set var="check" value="true"/>
+			 				</c:if>
+			 			</c:forEach>
+			 			<input type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> ><br>
+			 		</c:forEach>
+	 			</div>
+ 			</div>
+ 			<div class="row texte bg-light">
+	 			<div class="form-group col-lig-3">
+		 			Nombre de participation : ${rep.nbParticipations}
+		 		</div>
+	 		</div>
+ 		</c:if>
+ 		
+ 		<div style="margin-bottom:30px;display:block;margin:0 auto;width:20%">
+ 			<input type="submit" class="btn btn-primary" value="Enregistrer">
+ 		</div>
+ 	
+ 	</form>
 	 	
-	 	</form>
-	 	
-	 	
-	 	
-	 </div>
 	 
 	 <!-- erreur -->
 	 	<c:if test="${enregistrementSuccess == false}">

@@ -88,7 +88,15 @@ public class ServletConnexion extends HttpServlet
 			int compteur = 0;
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
-				if(p != null)even.setListPlage(p);
+				ArrayList<Plage> plage = new ArrayList<Plage>();
+				for(Plage pl : p){
+					boolean add = true;
+					for(Plage pls : plage){
+						if(add)add = (!pls.getDate().toString().equals(pl.getDate().toString()));
+					}
+					if(add)plage.add(pl);
+				}
+				even.setListPlage(plage);
 				compteur++;
 			}
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));

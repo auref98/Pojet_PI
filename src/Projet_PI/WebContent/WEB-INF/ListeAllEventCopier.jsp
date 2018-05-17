@@ -77,7 +77,7 @@
 		 	<!-- container pour un event -->
 	 		<div class="container" style="margin-top:30px">
 	 			<c:forEach items="${ events }" var="even">
-	 				<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;" id="${even.nom}">
+	 				<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary even" style="padding-bottom:10px;padding-top:10px;" id="${even.nom}">
 	 					
 	 					<!-- container image -->
 	 					
