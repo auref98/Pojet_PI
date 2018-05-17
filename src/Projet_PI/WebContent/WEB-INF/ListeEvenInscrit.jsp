@@ -113,14 +113,14 @@
 			      </div>   
 			    </div>
 			    <div class="carousel-item">
-			      <img src="assets/img/ludo1.jpg" alt="Chicago" width="1100" height="500">
+			      <img src="assets/img/ludo2.jpg" alt="Chicago" width="1100" height="500">
 			      <div class="carousel-caption">
 			        <h3>tu veux</h3>
 			        <p>je suis en rute</p>
 			      </div>   
 			    </div>
 			    <div class="carousel-item">
-			      <img src="assets/img/ludo1.jpg" alt="New York" width="1100" height="500">
+			      <img src="assets/img/ludo4.jpg" alt="New York" width="1100" height="500">
 			      <div class="carousel-caption">
 			        <h3>voir ma bite ?</h3>
 			        <p>je suis en rute</p>
