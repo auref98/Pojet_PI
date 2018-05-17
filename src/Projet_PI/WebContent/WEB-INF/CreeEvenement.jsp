@@ -58,47 +58,97 @@
 				while(document.getElementById(d+i) != null){
 				    i++;
 				}
+				let label_Date = document.createElement("label");
+				label_Date.innerText = "date";
+				label_Date.style.marginTop ="5px";
+				label_Date.className = "col-2";
+				
+				
 				let input_date = document.createElement("input");
 				input_date.type = "date";
-				input_date.name = "date-"+i
-				input_date.id = d+i;
+				input_date.name = "date-"+i;
+				input_date.id = "date-"+i;
+				input_date.className = "form-control";
+				input_date.attributes["required"] = "required";
+				
+				//Création du div Date
+				let divDate = document.createElement("div");
+				divDate.className = "row container-fluid col-md-3 offset-md-1 col-10";
+				divDate.id = "date";
+				divDate.appendChild(label_Date);
+				divDate.appendChild(input_date);
+				
 				
 				let label_Debut = document.createElement("label");
 				label_Debut.innerText = "début";
-				label_Debut.name = "debut-"+i;
-				label_Debut.id = "debut-"+i;
+				label_Debut.style.marginTop ="5px";
+				label_Debut.className = "col-2";
 				
 				let input_debut = document.createElement("input");
 				input_debut.type = "time";
 				input_debut.name = "debut-"+i;
 				input_debut.id = "debut-"+i;
+				input_debut.className = "form-control";
+				input_debut.attributes["required"] = "required";
+								
+				//Création du div Debut
+				let divDebut = document.createElement("div");
+				divDebut.className = " row container-fluid col-md-3 offset-md-1 col-10";
+				divDebut.id = "debut";
+				divDebut.appendChild(label_Debut);
+				divDebut.appendChild(input_debut);
 				
 				let label_Fin = document.createElement("label");
 				label_Fin.innerText = "fin";
-				label_Fin.name = "fin-"+i;
-				label_Fin.id = "fin-"+i; 
+				label_Fin.style.marginTop ="5px";
+				label_Fin.className = "col-2";
 				
 				let input_fin = document.createElement("input");
 				input_fin.type = "time";
 				input_fin.name = "fin-"+i;
 				input_fin.id = "fin-"+i;
+				input_fin.className = "form-control";
+				input_fin.attributes["required"] = "required";
 				
+
+				//Création du div Fin
+				let divFin = document.createElement("div");
+				divFin.className = "row container-fluid col-md-3 offset-md-1 col-10";
+				divFin.id = "fin";
+				divFin.appendChild(label_Fin);
+				divFin.appendChild(input_fin);
+				
+				//Création du input Button
 				let input_button = document.createElement("input");
+				input_button.style.padingLeft ="5px";
+				input_button.style.padingLeft ="5px";
+				input_button.className = "btn btn-danger col-12";
 				input_button.type = "button";
 				input_button.value = "X";
+				input_button.attributes["required"] = "required";
 				input_button.name = "sup-"+i;
 				input_button.addEventListener("click",() => {supprimerPlage("plage-" + i)});
 				
-				let div = document.createElement("div");
-				div.id = "plage-"+i;
-				div.appendChild(input_date);
-				div.appendChild(label_Debut);
-				div.appendChild(input_debut);
-				div.appendChild(label_Fin);
-				div.appendChild(input_fin);
-				div.appendChild(input_button);
+				//Création du div Button
+				let divButton = document.createElement("div");
+				divButton.className = "container col-md-1 col-2 ml-auto";
+				divButton.appendChild(input_button);
 				
-				document.getElementById("plageHoraire").appendChild(div);
+				//Création du div qui reprend le div_Dabut, div_Debut, div_Fin
+				let divDDF = document.createElement("div");
+				divDDF.className = "row container-fluid col-md-10";
+				divDDF.id = "ddf";
+				divDDF.appendChild(divDate);
+				divDDF.appendChild(divDebut);
+				divDDF.appendChild(divFin);
+				
+				let divPlage = document.createElement("div");
+				divPlage.id = "plage-"+i;
+				divPlage.className = "row container-fluid";
+				divPlage.appendChild(divDDF);
+				divPlage.appendChild(divButton);
+				
+				document.getElementById("plageHoraire").appendChild(divPlage);
 			}
 			function changerImage(){
 				image = document.getElementById("image");
@@ -141,28 +191,31 @@
 							<div id="plage-1" class="row container-fluid">
 							
 								<!-- div date+debut+fin -->
-								<div class="container-fluid col-md-11">
+								<div class="row container-fluid col-md-10" id="ddf">
 								
 									<!-- div date -->
-									<div class="row container-fluid col-md-12 col-10 offset-md-5 offset-2">
-								 		<label for="date-1" class=" col-md-2 col-2" style="margin-top:5px;"> date </label>
-								 		<input class="form-control col-md-2 col-8 offset-md-0 offset-2" type="date" required="required" id="date-1" name="date-1">
+									<div class="row container-fluid col-md-3 offset-md-1 col-10" id="date">
+								 		<label  class="col-2" style="margin-top:5px;"> date </label>
+								 		<input class="form-control" type="date" required="required" id="date-1" name="date-1">
 	 								</div>
 	 								
 	 								<!-- div debut -->
-	 								<div class=" row container-fluid col-md-12 col-10 offset-md-5 offset-2">
-										<label for="debut-1" class="col-2" style="margin-top:5px;"> début </label>
-										<input class="form-control col-md-2 col-8 offset-md-0 offset-2" name="debut-1" required="required" type="time" id="debut-1">
+	 								<div class=" row container-fluid col-md-3 offset-md-1 col-10" id="debut">
+										<label class="col-2" style="margin-top:5px;"> début </label>
+										<input class="form-control" name="debut-1" required="required" type="time" id="debut-1">
 									</div>
 									
 									<!-- div fin -->
-									<div class="row container-fluid col-md-12 col-10 offset-md-5 offset-2">
-										<label for="fin-1" class="col-2" style="margin-top:5px;">fin </label>
-										<input class="form-control col-md-2 col-8 offset-md-0 offset-2" name="fin-1" required="required" type="time" id="fin-1">
+									<div class="row container-fluid col-md-3 offset-md-1 col-10" id="fin">
+										<label class="col-2" style="margin-top:5px;">fin </label>
+										<input class="form-control" name="fin-1" required="required" type="time" id="fin-1">
 									</div>
 								</div>
-								<input class="col-md-1 col-2 ml-auto" type="button" required="required" value="X" name="sup-1" onclick="supprimerPlage('plage-1')"><!-- 
-						--></div>
+								<div class="container col-md-1 col-2 ml-auto">
+									<span class="col-12"> </span>
+									<input style="padding-left:5px;padding-right:5px;" class="btn btn-danger col-12" type="button" required="required" value="X" name="sup-1" onclick="supprimerPlage('plage-1')">
+								</div>
+							</div>
 						</div>
 							<input type="button" value="Ajouter une plage horaire" class="btn btn-info" onclick="ajouterHoraire(event)">
 						</div>
