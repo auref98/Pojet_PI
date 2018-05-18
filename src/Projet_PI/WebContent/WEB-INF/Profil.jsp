@@ -27,9 +27,11 @@
 						<li class="nav-item">
 							<a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
-						</li>
+						<c:if test="${relais == false }">
+							<li class="nav-item">
+								<a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
+							</li>
+						</c:if>
 						<c:if test="${relais == true }">
 							<li class="nav-item">
 								<a class="nav-link" href="CreeEvenement">Créer un événement</a>

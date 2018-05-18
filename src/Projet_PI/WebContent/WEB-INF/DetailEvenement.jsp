@@ -26,9 +26,11 @@
 					<li class="nav-item">
 						<a class="nav-link" href="ListEvenSuivPrec">Liste des évènements</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
-					</li>
+					<c:if test="${relais == false }">
+						<li class="nav-item">
+							<a class="nav-link" href="ListEvenInscrit">Mes inscriptions</a>
+						</li>
+					</c:if>
 					<c:if test="${relais == true }">
 						<li class="nav-item">
 							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
@@ -144,10 +146,15 @@
 						<form action="validerPresence" method="post">
 							<c:forEach items="${ListeInscris}" var="inscri">
 								<div style="display:flex;justify-content:space-between">
-									<span style="margin-left:0.5em;">${inscri.firstName} - ${inscri.lastName}</span><span style="margin-right:0.5em;"><input type="checkbox" name="present-${inscri.id}" value="valider"></span>
+									<span style="margin-left:0.5em;">${inscri.firstName} - ${inscri.lastName}</span>
+									<span style="margin-right:0.5em;">
+										<c:forEach items="${inscri.inscrits}" var="ins">
+											<input type="checkbox" name="present-${ins.id}" value="valider" <c:if test="${ins.present}">checked="checked"</c:if> >
+										</c:forEach>
+									</span>
 								</div>
 							</c:forEach>
-							<input type="submit" value="valider présecence" style="float:right;">
+							<input type="submit" name="even-${even.id}" value="valider présecence" style="float:right;">
 						</form>
 					</div>
 				</div>

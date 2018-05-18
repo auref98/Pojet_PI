@@ -113,7 +113,9 @@ public class ServletPosterCommentaire extends HttpServlet{
 							if(ListeInscris != null && !ListeInscris.isEmpty()){
 								for(Inscription ins : ListeInscris){
 									if(ins.isValide() == true){
-										listeRep.add(new DAORepresentant().find(ins.getRepresentant().getId()));
+										Representant repr = new DAORepresentant().find(ins.getRepresentant().getId());
+										repr.addInscrits(ins);
+										listeRep.add(repr);
 									}
 								}
 							}

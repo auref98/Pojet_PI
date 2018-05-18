@@ -47,7 +47,8 @@ public class Representant {
 	
 	/** Constructeur sans paramètre. */
 	public Representant() {
-
+		posts = new LinkedList<Commentaire>();
+		inscrits = new LinkedList<Inscription>();
 	}
 	
 	/**
@@ -69,6 +70,8 @@ public class Representant {
 		this.phone = phone;
 		this.mail = mail;
 		this.matricule = matricule;
+		posts = new LinkedList<Commentaire>();
+		inscrits = new LinkedList<Inscription>();
 	}
 	
 //###################################################################################################################################################################
@@ -245,6 +248,10 @@ public class Representant {
 	 */
 	public void setInscrits(LinkedList<Inscription> inscrits) {
 		if(inscrits != null)this.inscrits = inscrits;
+	}
+	
+	public void addInscrits(Inscription ins){
+		if(ins != null)this.inscrits.add(ins);
 	}
 	
 }

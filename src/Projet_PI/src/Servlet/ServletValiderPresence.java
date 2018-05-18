@@ -13,23 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Bean.Commentaire;
-import Bean.Etudiant;
-import Bean.Evenement;
-import Bean.Inscription;
-import Bean.Plage;
-import Bean.Professeur;
-import Bean.Representant;
-import DAO.DAOAdresse;
-import DAO.DAOCommentaire;
-import DAO.DAOEvenement;
-import DAO.DAOInscription;
-import DAO.DAOPlage;
-import DAO.DAOProfesseur;
-import DAO.DAORepresentant;
+import Bean.*;
+import DAO.*;
 
-@WebServlet("/supprimerCommentaire")
-public class ServletSupprimerCommentaire extends HttpServlet{
+@WebServlet("/validerPresence")
+public class ServletValiderPresence  extends HttpServlet{
 
 	/**
 	 * 
@@ -45,26 +33,36 @@ public class ServletSupprimerCommentaire extends HttpServlet{
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
-			
-			boolean relais = (boolean) session.getAttribute("relais");
+			boolean relais = (boolean)session.getAttribute("relais");
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			
-			Enumeration enume = request.getParameterNames();
-			int id = -1;
-			int idCom = -1;
-			if(enume.hasMoreElements()){
-				String nom = (String) enume.nextElement();
-				String[] names = nom.split("-");
-				try{
-					idCom = Integer.parseInt(names[0]);
-					id = Integer.parseInt(names[1]);
-				}catch(Exception e){
-					System.out.println("Erreur : parse int (ServletPosterCommentaire)");
+			Enumeration enumes = request.getParameterNames();
+			int idEven = -1;
+			LinkedList<Integer> listeId = new LinkedList<Integer>();
+			while(enumes.hasMoreElements()){
+				String nom = (String) enumes.nextElement();
+				String [] nomSplit = nom.split("-");
+				if(nomSplit[0].equals("present")){
+					int id = -1;
+					try{
+						id = Integer.parseInt(nomSplit[1]);
+					}catch(NullPointerException e){
+						System.out.println("Erreur de parse (Servlet valider Presence)");
+					}
+					if(id>0){
+						listeId.add(id);
+					}
+				}else if(nomSplit[0].equals("even")){
+					try{
+						idEven = Integer.parseInt(nomSplit[1]);
+					}catch(NullPointerException e){
+						System.out.println("Erreur de parse (Servlet valider Presence)");
+					}
 				}
 			}
-			if(id > 0 & idCom > 0){
+			if(idEven>1){
 				DAOEvenement DAOeven = new DAOEvenement();
-				Evenement even = DAOeven.find(id);
+				Evenement even = DAOeven.find(idEven);
 				even.setListPlage(DAOeven.findListePlage(even));
 				boolean posterCom = false;
 				for(Plage p : even.getListePlage()){
@@ -73,19 +71,15 @@ public class ServletSupprimerCommentaire extends HttpServlet{
 				even.setSection(DAOeven.findListeSection(even));
 				even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
 				
-				Representant rep = etu;
-				if(rep == null)rep = prof;
-				Commentaire coment = new Commentaire();
-				coment.setId(idCom);
-				new DAOCommentaire().delete(coment);
-				
 				even.setCommentaire(DAOeven.findListeCom(even));
 				if(even.getListeCommentaire()!=null){
 					for(Commentaire com : even.getListeCommentaire()){
 						com.setRep(new DAORepresentant().find(com.getRep().getId()));
 					}
 				}
-
+				
+				Representant rep = etu;
+				if(rep == null)rep = prof;
 				LinkedList<Representant> listeRep = null;
 				boolean inscri = false;
 				if(!relais){
@@ -118,6 +112,24 @@ public class ServletSupprimerCommentaire extends HttpServlet{
 										repr.addInscrits(ins);
 										listeRep.add(repr);
 									}
+								}
+							}
+						}
+					}
+					if(listeRep != null && !listeRep.isEmpty()){
+						for(Representant repr: listeRep){
+							for(Inscription ins: repr.getInscrits()){
+								boolean change = false;
+								for(Integer id:listeId){
+									if(id==ins.getId()){
+										ins.setPresent(true);
+										change = true;
+										new DAOInscription().update(ins);
+									}
+								}
+								if(!change){
+									ins.setPresent(false);
+									new DAOInscription().update(ins);
 								}
 							}
 						}
