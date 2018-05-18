@@ -46,6 +46,7 @@ public class ServletPosterCommentaire extends HttpServlet{
 			reqDisp.forward(request, response);
 		}else{
 			
+			boolean relais = (boolean)session.getAttribute("relais");
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			
 			Enumeration enume = request.getParameterNames();
@@ -83,9 +84,11 @@ public class ServletPosterCommentaire extends HttpServlet{
 						com.setRep(new DAORepresentant().find(com.getRep().getId()));
 					}
 				}
+
+				LinkedList<Representant> listeRep = null;
 				boolean inscri = false;
-				if(etu != null | prof != null){
-					
+				if(!relais){
+					if(rep == null)rep = prof;
 					for(Plage p : even.getListePlage()){
 						Inscription ins = new DAOInscription().find(rep.getId(), p.getId());
 						if(ins != null){
@@ -93,7 +96,29 @@ public class ServletPosterCommentaire extends HttpServlet{
 							inscri = true;
 						}
 					}
-					
+					request.setAttribute("rep",rep);
+				}else{
+					boolean contientDate = false;
+					LinkedList<Plage> pla = new LinkedList<Plage>();
+					for(Plage p : even.getListePlage()){
+						contientDate = p.getDate().toString().equals("2018-05-17");//LocalDate.now().toString()
+						if(contientDate){
+							pla.add(p);
+						}
+					}
+					if(!pla.isEmpty()){
+						for(Plage pl : pla){
+							LinkedList<Inscription> ListeInscris = new DAOPlage().findListeInscription(pl);
+							listeRep = new LinkedList<Representant>();
+							if(ListeInscris != null && !ListeInscris.isEmpty()){
+								for(Inscription ins : ListeInscris){
+									if(ins.isValide() == true){
+										listeRep.add(new DAORepresentant().find(ins.getRepresentant().getId()));
+									}
+								}
+							}
+						}
+					}
 				}
 				
 				LinkedList<Professeur> profs = new LinkedList<Professeur>();
@@ -113,10 +138,13 @@ public class ServletPosterCommentaire extends HttpServlet{
 					}
 				}
 				
-				request.setAttribute("profs", profs);
-				request.setAttribute("rep",rep);
+				if(relais && listeRep != null && !listeRep.isEmpty())request.setAttribute("ListeInscris", listeRep);
+				if(!profs.isEmpty())request.setAttribute("profs", profs);
+				request.setAttribute("nbPlage", even.getListePlage().size());
 				request.setAttribute("even", even);
-				request.setAttribute("inscri", inscri);
+				if(!relais)request.setAttribute("inscri", inscri);
+				if(even.getListeCommentaire() != null)request.setAttribute("com", !even.getListeCommentaire().isEmpty());
+				else if(posterCom)request.setAttribute("com", posterCom);
 				request.setAttribute("postercom", posterCom);
 				RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/DetailEvenement.jsp");
 				reqDisp.forward(request, response);
