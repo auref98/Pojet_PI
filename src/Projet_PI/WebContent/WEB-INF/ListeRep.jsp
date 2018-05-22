@@ -53,29 +53,116 @@
 		</nav>
 		<div style="margin-top:80px;"></div>
 		
+		<script language="JavaScript">
+	
+			function filtreProf(){
+				let etus = document.getElementsByClassName("etu");
+				for(let i = 0; i < etus.length; i++){
+					etus[i].style = "display:none;";
+				}
+				let profs = document.getElementsByClassName("prof");
+				for(let i = 0; i < profs.length; i++){
+					profs[i].style = "display:inherit;";
+				}
+			}
+			function filtreEtu(){
+				let profs = document.getElementsByClassName("prof");
+				for(let i = 0; i < profs.length; i++){
+					profs[i].style = "display:none;";
+				}
+				let etus = document.getElementsByClassName("etu");
+				for(let i = 0; i < etus.length; i++){
+					etus[i].style = "display:inherit;";
+				}
+			}
+			function triNom(){
+				let noms = document.getElementsByClassName("nom");
+				let tab = {};
+				for(let i = 0; i < noms.length; i++){
+					tab[i] = document.getElementById(noms[i].id).cloneNode(true);
+				}
+				tri(noms);
+				console.log(noms);
+				console.log(tab);
+				
+				afficher(noms,tab,"nom");
+				
+			}
+			function afficher(tab,tabSupp){
+				for(let i = 0; i < tab.length; i++){
+					document.getElementById(tab[i].id).remove();
+				}
+				for(let i = 0; i < tab.length; i++){
+					let id = tabSupp[i].id
+					id = id.split("-")[1];
+					document.getElementById("etu-"+id).append(tabSupp[i]);
+					document.getElementById("prof-"+id).append(tabSupp[i]);
+				}
+			}
+			function create(elem){
+				let nom = document.createElement("span");
+				nom.innerText = elem.innerText;
+				nom.className = "nom";
+				
+				
+			}
+			
+			function swap(items, firstIndex, secondIndex){
+			    let temp = items[firstIndex];
+			    items[firstIndex] = items[secondIndex];
+			    items[secondIndex] = temp;
+			}
+			function tri(tab){
+				let i = 0;
+				while(i < tab.length-1){
+					let imin = i;
+					let j = i+1;
+					while(j < tab.length){
+						if(tab[j].innerText < tab[imin].innerText){
+							imin = j;
+						}
+						j ++;
+					}
+					if (i != imin){
+						swap(tab,i,imin);
+					}
+					i++;
+				}
+			}
+			
+		</script>
+		
 		<div>
 			<label>Tri:</label>
 			<select name="optionTri" id="optionTri" class="inputClass">
+				<option value="aucun">aucun</option>
 				<option value="Nom">Nom</option>
 				<option value="Prenom">Prenom</option>
 				<option value="Participation">Participation</option>
 			</select>
 		</div>
 		<div>
-    		<input type="radio" id="etudiant" name="representant" value="etudiant">
+    		<input type="radio" id="etudiant" name="representant" value="etudiant" onclick="filtreEtu()">
     		<label for="etudiant">Etudiant</label>
-    		<input type="radio" id="professeur" name="representant" value="professeur">
+    		<input type="radio" id="professeur" name="representant" value="professeur" onclick="filtreProf()">
     		<label for="professeur">Professeur</label>
   		</div>
   		<div id="listeRep">
 			<c:set var="i" value="1"></c:set>
-			<c:forEach items="${event.listePlage }" var="plage">
-				<div id="plage-${i }">
-					<input value="${plage.date }" type="date" id="date-${i }" name="date-${i }">
-					<label for="debut-${i }">début</label><input value="${plage.heureDebut }" name="debut-${i }" type="time" id="debut-${i }">
-					<label for="fin-${i }">fin</label><input value="${plage.heureFin }" name="fin-${i }" type="time" id="fin-${i }">
-					<input type="button" value="X" name="sup-${i }" onclick="supprimerPlage('plage-${i }')">
+			<c:forEach items="${prof}" var="p">
+				<div id="prof-${p.id}" class="prof">
+					<span id="nom-${p.id}" class="nom">${p.lastName}</span>
+					<span class="prenom">${p.firstName}</span>
+					<span class="nbParticipation">${p.nbParticipations}</span>
 				</div>
+				<c:set var="i" value="${i+1}"></c:set>
+			</c:forEach>
+			<c:forEach items="${etu}" var="e">
+				<div id="etu-${e.id}" class="etu">
+					<span id="nom-${e.id}" class="nom">${e.lastName}</span>
+					<span class="prenom">${e.firstName}</span>
+				</div>
+				<c:set var="i" value="${i+1}"></c:set>
 			</c:forEach>
 		</div>
 	</body>
