@@ -132,38 +132,40 @@
 			
 		</script>
 		
-		<div>
-			<label>Tri:</label>
-			<select name="optionTri" id="optionTri" class="inputClass">
-				<option value="aucun">aucun</option>
-				<option value="Nom">Nom</option>
-				<option value="Prenom">Prenom</option>
-				<option value="Participation">Participation</option>
-			</select>
-		</div>
-		<div>
-    		<input type="radio" id="etudiant" name="representant" value="etudiant" onclick="filtreEtu()">
-    		<label for="etudiant">Etudiant</label>
-    		<input type="radio" id="professeur" name="representant" value="professeur" onclick="filtreProf()">
-    		<label for="professeur">Professeur</label>
-  		</div>
-  		<div id="listeRep">
-			<c:set var="i" value="1"></c:set>
-			<c:forEach items="${prof}" var="p">
-				<div id="prof-${p.id}" class="prof">
-					<span id="nom-${p.id}" class="nom">${p.lastName}</span>
-					<span class="prenom">${p.firstName}</span>
-					<span class="nbParticipation">${p.nbParticipations}</span>
+		<div class="col-4 offset-4 text-center bg-light">
+			<div class="dropdown" style="margin-bottom:20px;">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Tri</button>
+				<div class="dropdown-menu">
+					<input class="dropdown-item" type="button" value="Aucun"> 
+					<input class="dropdown-item" type="button" value="Nom">
+					<input class="dropdown-item" type="button" value="Prenom">
+					<input class="dropdown-item" type="button" value="Participation">
 				</div>
-				<c:set var="i" value="${i+1}"></c:set>
-			</c:forEach>
-			<c:forEach items="${etu}" var="e">
-				<div id="etu-${e.id}" class="etu">
-					<span id="nom-${e.id}" class="nom">${e.lastName}</span>
-					<span class="prenom">${e.firstName}</span>
-				</div>
-				<c:set var="i" value="${i+1}"></c:set>
-			</c:forEach>
+			</div>
+			<div style="margin-bottom:20px;">
+	    		<input type="radio" id="etudiant" name="representant" value="etudiant" onclick="filtreEtu()">
+	    		<label for="etudiant">Etudiant</label>
+	    		<input type="radio" id="professeur" name="representant" value="professeur" onclick="filtreProf()">
+	    		<label for="professeur">Professeur</label>
+	  		</div>
+			<div id="listeRep">
+				<c:set var="i" value="1"></c:set>
+				<c:forEach items="${prof}" var="p">
+					<div id="prof-${p.id}" class="prof">
+						<span id="nom-${p.id}" class="nom">${p.lastName}</span>
+						<span class="prenom">${p.firstName}</span>
+						<span class="nbParticipation">${p.nbParticipations}</span>
+					</div>
+					<c:set var="i" value="${i+1}"></c:set>
+				</c:forEach>
+				<c:forEach items="${etu}" var="e">
+					<div id="etu-${e.id}" class="etu">
+						<span id="nom-${e.id}" class="nom">${e.lastName}</span>
+						<span class="prenom">${e.firstName}</span>
+					</div>
+					<c:set var="i" value="${i+1}"></c:set>
+				</c:forEach>
+			</div>
 		</div>
 	</body>
 </html>
