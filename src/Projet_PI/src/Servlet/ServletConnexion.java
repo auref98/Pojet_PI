@@ -71,7 +71,7 @@ public class ServletConnexion extends HttpServlet
 				if(rep != null){
 					session.setAttribute("charge", true);
 					session.setAttribute("relais", true);
-					session.setAttribute("prof", rep);
+					session.setAttribute("professeur", rep);
 				}else{
 					request.setAttribute("connectionFailed", true);
 					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
