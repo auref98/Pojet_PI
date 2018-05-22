@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import Bean.*;
 import DAO.*;
+import oracle.net.aso.e;
 
 @WebServlet("/CopierCreeEvent")
 public class ServletCopierEventEtCree extends HttpServlet{
@@ -27,11 +28,15 @@ public class ServletCopierEventEtCree extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
+		
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
 			int id = -1;
 			Enumeration enume = request.getParameterNames();
@@ -48,7 +53,6 @@ public class ServletCopierEventEtCree extends HttpServlet{
 					}
 			}
 			
-			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			if(id > 0){
 				Evenement event = new DAOEvenement().find(id);
 				event.setAdresseEve(new DAOAdresse().find(event.getAdresseEve().getId()));

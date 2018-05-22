@@ -11,22 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.*;
 import Bean.*;
+import DAO.*;
 
-@WebServlet("/ListeRep")
-public class ServletListeRep extends HttpServlet 
+@WebServlet("/ListeSection")
+public class ServletListeSection extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-       
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession(true);
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		Representant repre = (Representant)session.getAttribute("representant");
-		if(etu == null & prof == null & repre == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
@@ -35,23 +38,18 @@ public class ServletListeRep extends HttpServlet
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
-			ArrayList<Professeur> tabProf = new DAOProfesseur().findAll();
-			ArrayList<Etudiant> tabEtud = new DAOEtudiant().findAll();
-			
-			if(tabProf != null){
-				for(Professeur p : tabProf){
-					if(p.getMatricule() == null || p.getMatricule() == "")tabProf.remove(p);
+			ArrayList<Section> sect = new DAOSection().findAll();
+			//ArrayList<Professeur> profs = new ArrayList<Professeur>();
+			for(Section sec : sect){
+				if(sec.getRelais().getMatricule() == null)sec.setRelais(new DAOProfesseur().find(sec.getRelais().getId()));
+				/*boolean add = true;
+				for(Professeur prf : profs){
+					if(add && prf != null)add = !(prf.getId() == sec.getRelais().getId());
 				}
+				if(add) profs.add(sec.getRelais());*/
 			}
-			if(tabEtud != null){
-				for(int i = 0; i < tabEtud.size(); i++){
-					if(tabEtud.get(i).getMatricule() == null || tabEtud.get(i).getMatricule() == "")tabEtud.remove(i);
-				}
-			}
-			
-			request.setAttribute("prof", tabProf);
-			request.setAttribute("etu", tabEtud);
-			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeRep.jsp");
+			request.setAttribute("section",sect);
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeSection.jsp");
 			reqDisp.forward(request, response);
 		}
 	}

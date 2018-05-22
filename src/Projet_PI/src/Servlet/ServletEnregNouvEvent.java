@@ -34,13 +34,15 @@ public class ServletEnregNouvEvent extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
 			String rue = request.getParameter("input-rue");
 			int numero = Integer.parseInt(request.getParameter("input-numero"));
@@ -106,8 +108,8 @@ public class ServletEnregNouvEvent extends HttpServlet{
 				String dest = "";
 				ArrayList<Professeur> listeProf = new DAOSection().findListeProfesseur(section);
 				ArrayList<Etudiant> listeEtud = new DAOSection().findListeEtudiant(section);
-				for(Professeur professeur : listeProf) dest += professeur.getMail() + ":";
-				for(Etudiant etudiant : listeEtud) dest += etudiant.getMail() + ":";
+				if(listeProf != null)for(Professeur professeur : listeProf) dest += professeur.getMail() + ":";
+				if(listeEtud != null)for(Etudiant etudiant : listeEtud) dest += etudiant.getMail() + ":";
 				tabDest = dest.split(":");
 				
 				for(int i = 0; i < tabDest.length; i++)

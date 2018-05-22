@@ -29,13 +29,16 @@ public class ServletCopierEvenement extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
+			
 			ArrayList<Evenement> events = new DAOEvenement().findAll();
 			request.setAttribute("events", events);
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/ListeAllEventCopier.jsp");

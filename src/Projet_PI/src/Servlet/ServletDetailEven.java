@@ -40,11 +40,15 @@ public class ServletDetailEven extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant repre = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & repre == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
+		
+			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 		
 			Enumeration names = request.getParameterNames();
 			int id = 0;

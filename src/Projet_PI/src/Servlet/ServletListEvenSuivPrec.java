@@ -15,6 +15,7 @@ import Bean.Etudiant;
 import Bean.Evenement;
 import Bean.Plage;
 import Bean.Professeur;
+import Bean.Representant;
 import DAO.DAOEvenement;
 import DAO.DAOPlage;
 
@@ -31,13 +32,15 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
 			int cpt = 5;
 			int compteur = 0;
@@ -68,13 +71,15 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
 		Professeur prof = (Professeur)session.getAttribute("professeur");
-		if(etu == null & prof == null){
+		Representant rep = (Representant)session.getAttribute("representant");
+		if(etu == null & prof == null & rep == null){
 			session.invalidate();
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/WEB-INF/Connexion.jsp");
 			reqDisp.forward(request, response);
 		}else{
 		
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
+			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
 			String suivant = request.getParameter("Suivant");
 			String precedent = request.getParameter("Precedent");

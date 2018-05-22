@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Accueil</title>
+		<title>Cree evenement</title>
 		<link rel="icon" href="assets/img/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+	
 			<div class="collapse navbar-collapse" id="navb">
 				<ul class="navbar-nav mr-auto order-first">
 					<li class="nav-item">
@@ -59,59 +59,12 @@
 		</nav>
 		<div style="margin-top:80px;"></div>
 		
-		<!-- container principal liste evenements -->
-		<div class="container" style="margin-top:30px">
-		 	<c:set var="i" value="0"/>
-		 	<c:forEach items="${ evens }" var="even">
-		 		<!-- container pour un event -->
-		 		<div class="row container border border-top-0 border-left-0 border-right-0 border-secondary" style="padding-bottom:10px;padding-top:10px;">
-					<!-- container image -->
-				 	<c:if test="${i%2==0 }">
-				 		<div class="col-md-4 order-first" >
-							<img width="auto" height="200" alt="enements" src="${even.image}" />
-						</div>
-				 	</c:if>
-				 	<c:if test="${i%2==1 }">
-					 	<div class="col-md-4 order-first order-md-4" >
-							<img width="auto" height="200" alt="enements" src="${even.image}" />
-						</div>
-				 	</c:if>
-				 	<!-- container texte -->
-			 		<div class="col-md-8 bg-light" >
-			 			<h4>${even.nom}</h4>
-				 		<c:forEach items="${even.listePlage }" var="date">
-				 			<p>${date.date }</p>
-				 		</c:forEach>
-			 			<p>Description : <br>${even.description}</p>
-				 		<!--<form method="post" action="inscriptionEvenement" name="${even.id }">
-				 			<input type="submit" class="btn btn-info" value="Inscription" name="${even.id }">
-				 		</form>-->
-				 		<form method="post" action="DetailEvenement">
-				 			<input type="submit" class="btn btn-info" value="Détails" name="${even.id }">
-				 		</form>
-				 	</div>
-			 	</div>
-		 		<c:set var="i" value="${i+1}"/>
+		<div>
+			<c:forEach items="${section}" var="sec">
+				<div>
+					<span><label for="sec-${sec.id}">Nom</label><input type="text" value="${sec.nom}" id="sec-${sec.id}"></span>
+				</div>
 			</c:forEach>
 		</div>
-		<div style="padding-top:15px;padding-bottom:15px;" class="row container-fluid text-center fixed-bottom">
-		 	<c:if test="${!(debut > 0)}">
-		 		<div class="col-4 col-md-2 offset-md-3"></div>
-		 	</c:if>
-			<c:if test="${debut > 0}">
-				<form class="col-4 col-md-2 offset-md-3" method="get" action="ListEvenSuivPrec">
-			 		<input class="btn btn-secondary" type="submit" value="Page ${debut}" name="Precedent">
-				</form>
-			</c:if>
-			<div class="col-4 col-md-2 btn-info disabled" style="border-radius: 0.25rem;">
-		 		<label style="margin-top:5px;">Page <c:out value="${debut+cpt}"></c:out></label> 
-			</div>
-			<c:if test="${suiv == true }">
-				<form class="col-4 col-md-2" method="get" action="ListEvenSuivPrec">
-					<input class="btn btn-secondary"type="submit" value="Page ${debut+cpt+1}" name="Suivant">
-				</form>
-			</c:if>
-		</div>
-		<div style="margin-top:80px;"></div>
 	</body>
 </html>
