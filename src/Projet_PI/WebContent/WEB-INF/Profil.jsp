@@ -275,7 +275,7 @@
 			 		
 			 		<div class="row form-group col-md-11 col-12 offset-1">
 				 			<label for="numBanque">
-					 		Numéro de banque
+					 			Numéro de banque
 					 		</label>
 					 		<input class="form-control mr-sm-2" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
 			 		</div>
@@ -428,10 +428,46 @@
 			 	</div>
 	 		</c:if>
 	 		
+	 		<!-- Modal button-->
+	 			<div class="row col-12 mb-3">
+	 				<button	type="button" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" data-toggle="modal" data-target="#modalMDP">
+	 					Enregistrer
+	 				</button>
+	 		
+	 			</div>
+	 		<!-- /Modal button -->
+	 		<!-- Modal -->
+	 			<div class="modal fade" id="modalMDP">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						  
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Entrez votre mot de passe actuel</h4>
+								<button type="button" class="close" data-dismiss="modal">×</button>
+							</div>
+							
+							<!-- Modal body -->
+							<div class="modal-body">
+								<h6 class="mb-2">Veuillez confirmer les modifications en entrant votre mot de passe actuel</h6>
+								<input type="password" placeholder="mot de passe" class="form-control mt-2">
+							</div>
+							
+							<!-- Modal footer -->
+							<div class="modal-footer">
+							
+								<input type="submit" class="btn btn-primary" value="Enregistrer" data-dismiss="modal"></button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+							</div>
+						</div>
+			    	</div>
+				</div>
+	 		<!-- /Modal -->
+	 		<!-- Ancien bouton
 	 		<div class="row col-12 mb-3">
 	 			<input type="submit" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" value="Enregistrer">
 	 		</div>
-	 		
+	 		-->
 	 	</form>
 	</body>
 </html>
