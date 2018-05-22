@@ -99,6 +99,22 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			}
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
 			reqDisp.forward(request, response);
+			
+			for(Section section : sects)
+			{
+				String[] tabDest;
+				String dest = "";
+				ArrayList<Professeur> listeProf = new DAOSection().findListeProfesseur(section);
+				ArrayList<Etudiant> listeEtud = new DAOSection().findListeEtudiant(section);
+				for(Professeur professeur : listeProf) dest += professeur.getMail() + ":";
+				for(Etudiant etudiant : listeEtud) dest += etudiant.getMail() + ":";
+				tabDest = dest.split(":");
+				
+				for(int i = 0; i < tabDest.length; i++)
+				{
+					System.out.println(tabDest[i]);
+				}
+			}
 		}
 	}
 }

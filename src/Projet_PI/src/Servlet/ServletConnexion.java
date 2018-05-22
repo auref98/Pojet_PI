@@ -64,11 +64,19 @@ public class ServletConnexion extends HttpServlet
 		}
 		else
 		{
+			Representant rep = null;
 			Professeur prof = new DAOProfesseur().find(mail, password);
 			if(prof == null) {
-				request.setAttribute("connectionFailed", true);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
-				failed = true;
+				rep = new DAORepresentant().find(mail, password);
+				if(rep != null){
+					session.setAttribute("charge", true);
+					session.setAttribute("relais", true);
+					session.setAttribute("professeur", rep);
+				}else{
+					request.setAttribute("connectionFailed", true);
+					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request,  response);
+					failed = true;
+				}
 			}
 			else if(prof.getFirstName() == null) firstConnection = true;
 			session.setAttribute("professeur", prof);
