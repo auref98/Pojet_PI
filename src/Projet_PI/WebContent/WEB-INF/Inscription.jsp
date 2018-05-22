@@ -26,11 +26,16 @@
 				<h3>Inscription EVENEMENTS HERS</h3>
 			</div>
 			<form style="padding-top:15px;padding-bottom: 30px" class="container-fluid" method="get" action="DemandeMDP">
-				<div style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1">
-			    	<label for="exampleInputEmail1" style="padding-top:5px;" class="col-md-2 col-10">Adresse Email:</label>
-			    	<input type="email" class="form-control col-md-6 col-10" name="email" placeholder="exemple@student.hers.be">
+				<div style="padding-bottom:10px;" class="form-group row offset-md-3 offset-1 col-6">
+			    	<label for="email" style="padding-top:5px;" class="col-10 col-md-4">Adresse Email:</label>
+			    	<input type="email" class="form-control col-md-8 col-10 ml-auto" name="email" placeholder="exemple@student.hers.be" required="required">
 			  	</div>
-			  	<button type="submit" class="btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
+			  	<div class="form-check row offset-md-3 offset-1 col-6"> 
+			  		<label for="check" class="form-check-label col-11 offset-1">
+			  			<input id="check" type="checkbox" class="form-check-input" required="required">j'accepte que mes données soient enregistrées et utilisées pour le fonctionnement de l'application
+			  		</label>
+			  	</div>
+			  	<button type="submit" class="mt-5 btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>
 			</form>
 			<c:if test="${inscriptionSuccess == false}">
 				<div class="alert alert-danger alert-dismissible fade show">
