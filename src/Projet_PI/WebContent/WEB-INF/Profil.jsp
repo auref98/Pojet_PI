@@ -105,7 +105,7 @@
 			}
 			function validNum(){
 				let phone = document.getElementById("Phone").value;
-				let regExp = /^\+(32|33)(\.)\d{3}(\.)\d{2}(\.)\d{2}(\.)\d{2}$/;
+				let regExp = /^\+\d{2}(\.)\d{3}(\.)\d{2}(\.)\d{2}(\.)\d{2}$/;
 				if(!regExp.test(phone)){
 					alert("Le numero de téléphone ne correspond pas\nchanger: 0475.00.00.00 -> +32.475.00.00.00\nExemple : +32.000.00.00.00");
 					document.getElementById("Phone").value = "";
@@ -117,16 +117,16 @@
 	 	<form method="post" action="EnregistrerProfil" class="row container-fluid">
 	 		<!-- erreur -->
 		 	<c:if test="${enregistrementSuccess == false}">
-				<div class="alert alert-danger alert-dismissible fade show text-center">
+				<div class="alert alert-danger alert-dismissible fade show text-center col-md-4 col-11 offset-md-4 offset-1">
 		 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-		 				<strong>Attention ! </strong>La connection a échoué
+		 				<strong>Attention ! </strong>La mise a jour du profil a échoué
 				</div>
 			</c:if>
 			
 			<c:if test="${enregistrementSuccess == true}">
-				<div class="alert alert-success alert-dismissible fade show text-center">
+				<div class="alert alert-success alert-dismissible fade show text-center col-md-4 col-11 offset-md-4 offset-1">
 		 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-		 				<strong>OK ! </strong>connection réussie
+		 				<span>Votre profil a bien été mis à jour</span>
 				</div>
 			</c:if>
 		 	<!-- Infos Basiques -->
@@ -206,7 +206,7 @@
 				 			<label for="numero">
 					 			Numéro
 					 		</label>
-					 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="text" required="required" placeholder="Numéro" name="Numero" id="Numero">
+					 		<input  class="form-control mr-sm-2" value="${adr.numero}" type="number" required="required" placeholder="Numéro" name="Numero" id="Numero">
 			 		</div>
 			 		<div class="row form-group col-md-6 col-5 ml-md-auto offset-1 offset-md-0">
 				 			<label for="boite">
@@ -225,7 +225,7 @@
 				 			<label for="codePostal">
 					 			Code postal
 					 		</label>
-					 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="text" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
+					 		<input  class="form-control mr-sm-2" value="${adr.codePostal}" type="number" required="required" placeholder="Code postal" name="CodePostal" id="CodePostal">
 			 		</div>
 			 		
 		 			<div class="row form-group col-12 offset-1 offset-md-0">
@@ -270,12 +270,12 @@
 				 			<label for="numNational">
 					 			Numéro national
 					 		</label>
-					 		<input class="form-control mr-sm-2" value="${rep.numNational}" type="text" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
+					 		<input class="form-control mr-sm-2" value="${rep.numNational}" type="number" required="required" placeholder="Numéro national" name="NumNational" id="NumNational">
 			 		</div>
 			 		
 			 		<div class="row form-group col-md-11 col-12 offset-1">
 				 			<label for="numBanque">
-					 		Numéro de banque
+					 			Numéro de banque
 					 		</label>
 					 		<input class="form-control mr-sm-2" value="${rep.numBanque}" type="text" required="required" placeholder="Numéro de banque" name="NumBanque" id="NumBanque">
 			 		</div>
@@ -428,10 +428,46 @@
 			 	</div>
 	 		</c:if>
 	 		
+	 		<!-- Modal button-->
+	 			<div class="row col-12 mb-3">
+	 				<button	type="button" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" data-toggle="modal" data-target="#modalMDP">
+	 					Enregistrer
+	 				</button>
+	 		
+	 			</div>
+	 		<!-- /Modal button -->
+	 		<!-- Modal -->
+	 			<div class="modal fade" id="modalMDP">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						  
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Entrez votre mot de passe actuel</h4>
+								<button type="button" class="close" data-dismiss="modal">×</button>
+							</div>
+							
+							<!-- Modal body -->
+							<div class="modal-body">
+								<h6 class="mb-2">Veuillez confirmer les modifications en entrant votre mot de passe actuel</h6>
+								<input type="password" placeholder="mot de passe" class="form-control mt-2" required="required" name="AncienMotDePasse" id="AncienMotDePasse">
+							</div>
+							
+							<!-- Modal footer -->
+							<div class="modal-footer">
+							
+								<input type="submit" class="btn btn-primary" value="Enregistrer"></button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+							</div>
+						</div>
+			    	</div>
+				</div>
+	 		<!-- /Modal -->
+	 		<!-- Ancien bouton
 	 		<div class="row col-12 mb-3">
 	 			<input type="submit" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" value="Enregistrer">
 	 		</div>
-	 		
+	 		-->
 	 	</form>
 	</body>
 </html>

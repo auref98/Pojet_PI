@@ -47,9 +47,9 @@
 				<a href="Profil" class="order-first order-md-last"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>
 				<a href="Deconnection" class="order-first order-md-last"><img src="assets/img/door.png" alt="door" style="width:40px;"></a>
 				
-				<form method="post" action="RechercherEvent" class="form-inline my-2 my-md-0 order-md-first">
-					<input name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche">
-				</form>
+				<div class="form-inline my-2 my-md-0 order-md-first">
+					<input id="recherche" name="recherche" class="form-control mr-sm-2" type="text" placeholder="Recherche" onchange="rechercher()">
+				</div>
 			</div>
 		</nav>
 		<div style="margin-top:80px;"></div>
@@ -74,11 +74,6 @@
 		 			}
 	 			}
 	 		</script>
-	 		
-	 		<div class="offset-md-5 offset-3">
-	 			<input class="border-secondary" type="text" id="recherche" placeholder="Chercher event a copier" onchange="rechercher()">
-	 		</div>
-	 		
 		 	<!-- container pour un event -->
 	 		<div class="container" style="margin-top:30px">
 	 			<c:forEach items="${ events }" var="even">
