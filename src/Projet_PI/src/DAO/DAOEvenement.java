@@ -179,7 +179,7 @@ public class DAOEvenement extends DAO<Evenement>
 	public ArrayList<Evenement> find(int debut, int cpt)
 	{
 		// Définit la requête SQL avec un paramètre
-		String query = "select e.* from evenement e, plage p where (e.id = p.REFEVEN and p.datePlage >= to_date(?,'yyyy-mm-dd') ) order by p.DATEPLAGE";
+		String query = "select e.* from evenement e, plage p where (e.id = p.REFEVEN and p.datePlage >= to_date(?,'yyyy-mm-dd') ) order by p.DATEPLAGE DESC";
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		ArrayList<Evenement> listEvent = new ArrayList<Evenement>();						// Initialise une ArrayList d'objets Evenement qui sera renvoyée par la méthode
 		
