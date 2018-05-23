@@ -42,6 +42,11 @@
 							<a class="nav-link" href="ListeRep">Liste des utilisateurs</a>
 						</li>
 					</c:if>
+					<c:if test="${charge == true}">
+						<li class="nav-item">
+							<a class="nav-link" href="ListeSection">Liste de sections</a>
+						</li>
+					</c:if>
 				</ul>
 				
 				<a href="Profil" class="order-first order-md-last"><img src="assets/img/profil.png" alt="profil" style="width:40px;"></a>

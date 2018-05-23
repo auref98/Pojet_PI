@@ -59,12 +59,63 @@
 		</nav>
 		<div style="margin-top:80px;"></div>
 		
-		<div>
-			<c:forEach items="${section}" var="sec">
-				<div>
-					<span><label for="sec-${sec.id}">Nom</label><input type="text" value="${sec.nom}" id="sec-${sec.id}"></span>
-				</div>
-			</c:forEach>
-		</div>
+		<form action="EnregistrerSection" method="post">
+			<h2>Liste des sections</h2>
+			<div>
+				<c:forEach items="${section}" var="sec">
+					<div>
+						<span><label for="sec-${sec.id}">Nom </label><input type="text" value="${sec.nom}" id="sec-${sec.id}" name="sec-${sec.id}"></span>
+						<span>
+							<label for="prof-${sec.id}">Relais</label>
+							<select id="prof-${sec.id}" name="prof-${sec.id}-${sec.relais.id}">
+								<c:forEach items="${profs}" var="prof">
+									<option value="${prof.id}" <c:if test="${sec.relais.id == prof.id}">selected="selected"</c:if> >
+										${prof.lastName} - ${prof.firstName}
+									</option>
+								</c:forEach>
+							</select>
+						</span>
+						<span>
+							<input type="button" value="X" onclick="document.location.href='SupprimerSection?supp-${sec.id}'" name="supp-${sec.id}">
+						</span>
+					</div>
+				</c:forEach>
+			</div>
+			<div>
+				<input type="submit" value="Enregistrer" name="enregistrerSection">
+			</div>
+		</form>
+		<input type="button" value="Nouvelle section >" onclick="NouvelleSection()" id="ajouterSection">
+		<script type="text/javascript">
+			let afficher = false;
+			function NouvelleSection(){
+				if(afficher){
+					document.getElementById("NouvelleSection").style ="display:none;";
+					document.getElementById("ajouterSection").value="Nouvelle section >";
+				}
+				else {
+					document.getElementById("NouvelleSection").style ="";
+					document.getElementById("ajouterSection").value="Nouvelle section \\/";
+				}
+				afficher = !afficher;
+			}
+		</script>
+		<form action="NouvelleSection" method="post" id="NouvelleSection" style="display:none;">
+			<h2>ajouter une section</h2>
+			<div>
+				<span><label for="NewSec">Nom</label><input type="text" id="NewSec" name="NewSec" required="required" placeholder="Entré le nom de la section"></span>
+				<span>
+					<label for="profes">Relais</label>
+					<select id="profes" name="prof">
+						<c:forEach items="${profs}" var="prof">
+							<option value="${prof.id}">
+								${prof.lastName} - ${prof.firstName}
+							</option>
+						</c:forEach>
+					</select>
+				</span>
+				<span><input type="submit" value="Créé"></span>
+			</div>
+		</form>
 	</body>
 </html>
