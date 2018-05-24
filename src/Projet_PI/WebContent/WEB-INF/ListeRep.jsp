@@ -156,18 +156,30 @@
 			<div id="listeRep">
 				<c:set var="i" value="1"></c:set>
 				<c:forEach items="${prof}" var="p">
-					<div id="prof-${p.id}" class="prof">
-						<span id="nom-${p.id}" class="nom">${p.lastName}</span>
-						<span class="prenom">${p.firstName}</span>
-						<span class="nbParticipation">${p.nbParticipations}</span>
-					</div>
+					<form action="ModifierProfil">
+						<div id="prof-${p.id}" class="prof">
+							<span id="nom-${p.id}" class="nom">${p.lastName}</span>
+							<span class="prenom">${p.firstName}</span>
+							<span class="nbParticipation">${p.nbParticipations}</span>
+							<c:if test="${charge == true}">
+								<span><input type="submit" value="Modifier le profil" name="modifierprofil"></span>
+								<input type="hidden" value="${p.id}" name="id">
+							</c:if>
+						</div>
+					</form>
 					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
 				<c:forEach items="${etu}" var="e">
-					<div id="etu-${e.id}" class="etu">
-						<span id="nom-${e.id}" class="nom">${e.lastName}</span>
-						<span class="prenom">${e.firstName}</span>
-					</div>
+					<form action="ModifierProfil">
+						<div id="etu-${e.id}" class="etu">
+							<span id="nom-${e.id}" class="nom">${e.lastName}</span>
+							<span class="prenom">${e.firstName}</span>
+							<c:if test="${charge == true}">
+								<span><input type="submit" value="Modifier le profil" name="modifierprofil"></span>
+								<input type="hidden" value="${e.id}" name="id">
+							</c:if>
+						</div>
+					</form>
 					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
 			</div>

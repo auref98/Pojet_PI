@@ -42,7 +42,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 			this.resSet = this.prStat.executeQuery();
 			if(this.resSet.next()){
 				Representant rep = new DAORepresentant().find(id);
-				prof = new Professeur(rep.getFirstName(),rep.getLastName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
+				prof = new Professeur(rep.getLastName(),rep.getFirstName(),rep.getPhone(),rep.getMail(),rep.getMatricule(),id,this.resSet.getInt("nbParticipations"));
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception

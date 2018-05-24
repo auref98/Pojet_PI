@@ -411,16 +411,16 @@
 	 						<div class="dropdown-menu">
 	 							<c:forEach items="${sects}" var="sect">
 						 			<div class="form-check dropdown-item">
-							 			<label class="form-check-label">
-							 				<input class="form-check-input" type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> >
-							 				${sect.nom }
-							 			</label>
 							 			<c:set var="check" value="false"/>
 							 			<c:forEach items="${sect.listeProf }" var="prof">
 							 				<c:if test="${prof.id == rep.id }">
 							 					<c:set var="check" value="true"/>
 							 				</c:if>
 							 			</c:forEach>
+							 			<label class="form-check-label">
+							 				<input class="form-check-input" type="checkbox" name="section-${sect.id}" <c:if test="${check}">checked </c:if> >
+							 				${sect.nom }
+							 			</label>
 				 					</div>
 				 				</c:forEach>
 	 						</div>
