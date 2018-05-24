@@ -109,6 +109,7 @@ public class ServletInscriptionEven extends HttpServlet{
 				}
 			}
 			
+			request.setAttribute("peutSinscrire", true);
 			request.setAttribute("profs", profs);
 			request.setAttribute("even", even);
 			request.setAttribute("postercom", posterCom);

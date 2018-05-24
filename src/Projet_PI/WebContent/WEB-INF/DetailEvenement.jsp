@@ -100,7 +100,7 @@
 							<p class="col-8" style="padding-top:5px;">
 								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
 							</p>
-							<c:if test="${relais == false}">
+							<c:if test="${relais == false && peutSinscrire == true}">
 								<c:if test="${inscri == true }">
 									<c:set var="i" value="false"></c:set>
 									<c:forEach items="${plage.listeInscription }" var="inscri" >
@@ -137,9 +137,14 @@
 				<p>Nombre de personne requise : ${even.nbParticipantsRequis }</p>
 				<p>
 					Section requise : <br>
+					<c:set var="i" value="${0}"></c:set>
 					<c:forEach items="${even.listeSection}" var="section">
-						${section.nom} <br>
+						- ${section.nom} <br>
+						<c:set var="i" value="${i+1}"></c:set>
 					</c:forEach>
+					<c:if test="${i == 0 }">
+						- Toutes les sections<br>
+					</c:if>
 				</p>
 				<p>
 					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }

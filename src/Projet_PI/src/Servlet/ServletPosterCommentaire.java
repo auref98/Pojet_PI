@@ -20,6 +20,7 @@ import Bean.Inscription;
 import Bean.Plage;
 import Bean.Professeur;
 import Bean.Representant;
+import Bean.Section;
 import DAO.DAOAdresse;
 import DAO.DAOCommentaire;
 import DAO.DAOEvenement;
@@ -74,6 +75,29 @@ public class ServletPosterCommentaire extends HttpServlet{
 					posterCom=(p.getDate().toString().compareTo(LocalDate.now().toString()) < 0 )?true:false;
 				}
 				even.setSection(DAOeven.findListeSection(even));
+				
+				/**
+				 * check si l'etudiant ou le prof peut s'inscrire a l'evenement
+				 */
+				boolean peutSinscrire = false;
+				if( even.getListeSection() != null){
+					if(!(boolean)session.getAttribute("relais") && etu != null){
+						for(Section sec : even.getListeSection())
+							if(!peutSinscrire)
+								peutSinscrire = (sec.getId() == etu.getSec().getId());
+					}
+					else if(!(boolean)session.getAttribute("relais") && prof != null){
+						prof.setEnseigne(new DAOProfesseur().findEnseigne(prof.getId()));
+						for(Section sect : even.getListeSection())
+							if(!peutSinscrire)
+								for(Section sec : prof.getEnseigne())
+									if(!peutSinscrire)
+										peutSinscrire = sec.getId() == sect.getId();
+					}
+				}else{
+					peutSinscrire = true;
+				}
+				
 				even.setAdresseEve(new DAOAdresse().find(even.getAdresseEve().getId()));
 				
 				Representant rep = etu;
@@ -143,6 +167,7 @@ public class ServletPosterCommentaire extends HttpServlet{
 					}
 				}
 				
+				request.setAttribute("peutSinscrire", peutSinscrire);
 				if(relais && listeRep != null && !listeRep.isEmpty())request.setAttribute("ListeInscris", listeRep);
 				if(!profs.isEmpty())request.setAttribute("profs", profs);
 				request.setAttribute("nbPlage", even.getListePlage().size());
