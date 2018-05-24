@@ -202,7 +202,15 @@
 						</p>
 					</div>
 				</c:if>
+			</div>
+			<c:if test="${charge == true }">
+				<div>
+					<form action="GererInscription" method="post">
+						<input type="submit" name="GererInsecription" value="Gerer les inscriptions">
+						<input type="hidden" name="inscription" value="${even.id }">
+					</form>
 				</div>
+			</c:if>
 			<div class="offset-md-5 offset-3">
 				<c:if test="${relais == true }">
 					<form action="SupprimerEvenement" method="post">

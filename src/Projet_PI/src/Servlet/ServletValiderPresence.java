@@ -99,7 +99,7 @@ public class ServletValiderPresence  extends HttpServlet{
 					boolean contientDate = false;
 					LinkedList<Plage> pla = new LinkedList<Plage>();
 					for(Plage p : even.getListePlage()){
-						contientDate = p.getDate().toString().equals("2018-05-17");//LocalDate.now().toString()
+						contientDate = p.getDate().toString().equals(LocalDate.now().toString());//"2018-05-17"
 						if(contientDate){
 							pla.add(p);
 						}
