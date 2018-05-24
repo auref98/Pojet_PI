@@ -94,7 +94,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 					enregistrementSuccess = new DAOEtudiant().update(etu);
 					session.setAttribute("etudiant", etu);
 				}
-				else
+				else if(prof != null)
 				{
 					prof.setLastname(lastName);
 					prof.setFirstname(firstName);
@@ -127,6 +127,17 @@ public class ServletEnregistrerProfil extends HttpServlet
 					
 					enregistrementSuccess = new DAOProfesseur().update(prof);
 					session.setAttribute("professeur", prof);
+				}
+				else if(rep != null){
+					rep.setLastname(lastName);
+					rep.setFirstname(firstName);
+					rep.setPhone(phone);
+					rep.setMail(mail+"@hers.be");
+					rep.setMatricule(matricule);
+					rep.setPassword(password);
+					
+					enregistrementSuccess = new DAORepresentant().update(rep);
+					session.setAttribute("representant", rep);
 				}
 			}
 			if(enregistrementSuccess && (boolean)session.getAttribute("firstConnection"))session.setAttribute("firstConnection", false);

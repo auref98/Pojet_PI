@@ -119,7 +119,7 @@
 		</script>
 	
 	 
-	 	<form method="post" action="EnregistrerProfil" class="row container-fluid">
+	 	<form method="post" <c:if test="${charge == false || autreutilisateur == false}"> action="EnregistrerProfil"</c:if><c:if test="${charge == true && autreutilisateur == true}"> action="EnregistrerProfilUtilsateur"</c:if> class="row container-fluid">
 	 		<!-- erreur -->
 		 	<c:if test="${enregistrementSuccess == false}">
 				<div class="alert alert-danger alert-dismissible fade show text-center col-md-4 col-11 offset-md-4 offset-1">
@@ -396,7 +396,7 @@
 			 	</div>
 		 	</c:if>
 		 	
-	 		<c:if test="${isEtu == false}">
+	 		<c:if test="${isProf == true}">
 	 		<!-- Infos Scolaires -->
 	 			<div class="row container-fluid col-md-6">
 	 				<h2 class="col-12 offset-1">Infos Scolaires</h2>
@@ -433,46 +433,50 @@
 			 	</div>
 	 		</c:if>
 	 		
-	 		<!-- Modal button-->
-	 			<div class="row col-12 mb-3">
-	 				<button	type="button" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" data-toggle="modal" data-target="#modalMDP">
-	 					Enregistrer
-	 				</button>
+	 		<c:if test="${charge == false || autreutilisateur == false}">
+		 		<!-- Modal button-->
+		 			<div class="row col-12 mb-3">
+		 				<button	type="button" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" data-toggle="modal" data-target="#modalMDP">
+		 					Enregistrer
+		 				</button>
+		 		
+		 			</div>
+		 		<!-- /Modal button -->
+		 		<!-- Modal -->
+		 			<div class="modal fade" id="modalMDP">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							  
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Entrez votre mot de passe actuel</h4>
+									<button type="button" class="close" data-dismiss="modal">×</button>
+								</div>
+								
+								<!-- Modal body -->
+								<div class="modal-body">
+									<h6 class="mb-2">Veuillez confirmer les modifications en entrant votre mot de passe actuel</h6>
+									<input type="password" placeholder="mot de passe" class="form-control mt-2" required="required" name="AncienMotDePasse" id="AncienMotDePasse">
+								</div>
+								
+								<!-- Modal footer -->
+								<div class="modal-footer">
+								
+									<input type="submit" class="btn btn-primary" value="Enregistrer"></button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+								</div>
+							</div>
+				    	</div>
+					</div>
+		 		<!-- /Modal -->
+	 		</c:if>
 	 		
-	 			</div>
-	 		<!-- /Modal button -->
-	 		<!-- Modal -->
-	 			<div class="modal fade" id="modalMDP">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						  
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title">Entrez votre mot de passe actuel</h4>
-								<button type="button" class="close" data-dismiss="modal">×</button>
-							</div>
-							
-							<!-- Modal body -->
-							<div class="modal-body">
-								<h6 class="mb-2">Veuillez confirmer les modifications en entrant votre mot de passe actuel</h6>
-								<input type="password" placeholder="mot de passe" class="form-control mt-2" required="required" name="AncienMotDePasse" id="AncienMotDePasse">
-							</div>
-							
-							<!-- Modal footer -->
-							<div class="modal-footer">
-							
-								<input type="submit" class="btn btn-primary" value="Enregistrer"></button>
-								<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-							</div>
-						</div>
-			    	</div>
-				</div>
-	 		<!-- /Modal -->
-	 		<!-- Ancien bouton
-	 		<div class="row col-12 mb-3">
-	 			<input type="submit" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" value="Enregistrer">
-	 		</div>
-	 		-->
+	 		<c:if test="${charge == true && autreutilisateur == true}">
+		 		<div class="row col-12 mb-3">
+		 			<input type="submit" class="btn btn-primary col-md-2 col-10 offset-md-5 offset-2" value="Enregistrer">
+		 			<input type="hidden" value="${rep.id}" name="representant" id="representant">
+		 		</div>
+		 	</c:if>
 	 	</form>
 	</body>
 </html>
