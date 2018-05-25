@@ -7,6 +7,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.apache.tomcat.jni.Time;
 
@@ -102,21 +105,27 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
 			reqDisp.forward(request, response);
 			
+			LinkedList<String> listeDest = new LinkedList<String>();
 			for(Section section : sects)
 			{
-				String[] tabDest;
-				String dest = "";
 				ArrayList<Professeur> listeProf = new DAOSection().findListeProfesseur(section);
 				ArrayList<Etudiant> listeEtud = new DAOSection().findListeEtudiant(section);
-				if(listeProf != null)for(Professeur professeur : listeProf) dest += professeur.getMail() + ":";
-				if(listeEtud != null)for(Etudiant etudiant : listeEtud) dest += etudiant.getMail() + ":";
-				tabDest = dest.split(":");
-				
-				for(int i = 0; i < tabDest.length; i++)
-				{
-					System.out.println(tabDest[i]);
-				}
+				if(listeProf != null)for(Professeur professeur : listeProf) listeDest.add(professeur.getMail());
+				if(listeEtud != null)for(Etudiant etudiant : listeEtud) listeDest.add(etudiant.getMail());
 			}
+			
+			HashSet<String> hs = new HashSet<String>(listeDest);
+			
+			java.util.Iterator it = hs.iterator(); 
+			while(it.hasNext ())
+			{ 
+			    String s = (String)it.next();
+
+
+			    System.out.println (s);   
+			} 
+			System.out.println(listeDest.size());
+			System.out.println(hs.size());
 		}
 	}
 }
