@@ -41,12 +41,12 @@ public class DAOInscription extends DAO<Inscription>
 		String query = "select * from inscription where id = ?";
 		PreparedStatement ps = null;
 		Inscription inscpt = null;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -66,6 +66,11 @@ public class DAOInscription extends DAO<Inscription>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -139,7 +144,7 @@ public class DAOInscription extends DAO<Inscription>
 		String query = "insert into inscription values(null, ?, ?, ?, ?)";
 		PreparedStatement ps = null;
 		boolean resultat = false;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query, new String[] {"id"});
@@ -151,7 +156,7 @@ public class DAOInscription extends DAO<Inscription>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ResultSet resultSet = ps.getGeneratedKeys();
+			resultSet = ps.getGeneratedKeys();
 			if(resultSet.next()) incptn.setId(resultSet.getInt(1));
 			
 			resultat = true;
@@ -162,6 +167,11 @@ public class DAOInscription extends DAO<Inscription>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();

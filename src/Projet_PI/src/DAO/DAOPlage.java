@@ -43,12 +43,12 @@ public class DAOPlage extends DAO<Plage>
 		String query = "select * from plage where id = ?";
 		PreparedStatement ps = null;
 		Plage plage = null;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -66,6 +66,11 @@ public class DAOPlage extends DAO<Plage>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -91,12 +96,12 @@ public class DAOPlage extends DAO<Plage>
 		String query = "select * from inscription where refPlage = ?";
 		PreparedStatement ps = null;
 		LinkedList<Inscription> listeIncptn = new LinkedList<Inscription>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, plage.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -118,6 +123,11 @@ public class DAOPlage extends DAO<Plage>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -143,7 +153,7 @@ public class DAOPlage extends DAO<Plage>
 		String query = "insert into plage values(null, ?, ?, ?, ?)";
 		PreparedStatement ps = null;
 		boolean resultat = false;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query, new String[] {"id"});
@@ -154,7 +164,7 @@ public class DAOPlage extends DAO<Plage>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ResultSet resultSet = ps.getGeneratedKeys();
+			resultSet = ps.getGeneratedKeys();
 			if(resultSet.next()) plage.setId(resultSet.getInt(1));
 
 			resultat = true;
@@ -165,6 +175,11 @@ public class DAOPlage extends DAO<Plage>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();

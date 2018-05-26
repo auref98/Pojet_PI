@@ -41,6 +41,8 @@ public class Professeur extends Representant{
 	/** Canstructeur sans paramètre. */
 	public Professeur() {
 		super();
+		relais = new ArrayList<Section>();
+		enseigne = new ArrayList<Section>();
 		
 	}
 	
@@ -59,6 +61,8 @@ public class Professeur extends Representant{
 		super(id, nom, prenom, numTel, mail, matricule);				// Appelle le constructeur de la super-classe Representant
 		this.id = id;
 		this.nbParticipations = nbParticipations;
+		relais = new ArrayList<Section>();
+		enseigne = new ArrayList<Section>();
 	}
 
 //###################################################################################################################################################################

@@ -189,11 +189,12 @@ public class DAOEvenement extends DAO<Evenement>
 		int year = (jour - 30 < 0)?1:0;
 		jour = (jour - 30 < 0 )?365+(jour-30):jour-30;
 		d = LocalDate.ofYearDay(d.getYear()-year, jour);
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);										// Initialise le PreparedStatement avec la requête définie plus haut
 			ps.setString(1, d.toString());													// Assigne la date formatée en chaine de caractères au paramètre de la requête
-			ResultSet resultSet = ps.executeQuery();											// Exécute la requête
+			resultSet = ps.executeQuery();											// Exécute la requête
 			
 			ArrayList<Evenement> list = new ArrayList<Evenement>();
 			while(resultSet.next()){
@@ -241,6 +242,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -266,12 +272,13 @@ public class DAOEvenement extends DAO<Evenement>
 		String query = "select * from plage where refEven = ?";									// Définit la requête SQL avec un paramètre
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		ArrayList<Plage> listePlage = new ArrayList<Plage>();
+		ResultSet resultSet = null;
 		
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -292,6 +299,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -317,12 +329,12 @@ public class DAOEvenement extends DAO<Evenement>
 		String query = "select * from commentaire where refEven = ? order by id";				// Définit la requête SQL avec des paramètres
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		LinkedList<Commentaire> listeCom = new LinkedList<Commentaire>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -342,6 +354,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -367,12 +384,12 @@ public class DAOEvenement extends DAO<Evenement>
 		String query = "select * from Contact where refEvenement = ?";							// Définit la requête SQL avec des paramètres
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		LinkedList<Contact> listeContact = new LinkedList<Contact>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -392,6 +409,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -418,12 +440,12 @@ public class DAOEvenement extends DAO<Evenement>
 		String query = "select s.* from EVENEMENT e, SECTION s, CONCERNE c where e.id = c.REFEVEN and s.id = c.REFSECT and e.id = ?";
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		ArrayList<Section> listeSection = new ArrayList<Section>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, event.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -441,6 +463,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -471,6 +498,7 @@ public class DAOEvenement extends DAO<Evenement>
 		String query = "insert into evenement values(null, ?, ?, ?, ?, ?)";							// Définit la requête SQL avec des paramètres
 		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
 		boolean resultat = false;															// Initialise la variable qui sera retournée à false (échec) par défaut
+		ResultSet resultSet = null;
 		
 		try
 		{
@@ -484,7 +512,7 @@ public class DAOEvenement extends DAO<Evenement>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();							// Exécute la requête et lance une exception si elle n'aboutit pas	
 			
-			ResultSet resultSet = ps.getGeneratedKeys();
+			resultSet = ps.getGeneratedKeys();
 			if(resultSet.next()) event.setId(resultSet.getInt(1));
 			
 			if(event.getListeSection() != null)												// Si des objets Section sont liées à l'objet Evenement
@@ -521,6 +549,11 @@ public class DAOEvenement extends DAO<Evenement>
 		}
 		finally																			// Bloc finally fermant  le PreparedStatement
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();

@@ -127,12 +127,12 @@ public class DAOSection extends DAO<Section>
 		String query = "select * from etudiant where refSect = ?";
 		PreparedStatement ps = null;
 		ArrayList<Etudiant> listeEtudiant = new ArrayList<Etudiant>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -152,6 +152,11 @@ public class DAOSection extends DAO<Section>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -178,12 +183,12 @@ public class DAOSection extends DAO<Section>
 
 		PreparedStatement ps = null;
 		ArrayList<Contact> listeContact = new ArrayList<Contact>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -201,6 +206,11 @@ public class DAOSection extends DAO<Section>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -227,12 +237,12 @@ public class DAOSection extends DAO<Section>
 
 		PreparedStatement ps = null;
 		ArrayList<Professeur> listeProf = new ArrayList<Professeur>();
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, section.getId());
-			ResultSet resultSet = ps.executeQuery();
+			resultSet = ps.executeQuery();
 			
 			if(resultSet.next() == false) throw new SQLException();
 			
@@ -250,6 +260,11 @@ public class DAOSection extends DAO<Section>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
@@ -275,7 +290,7 @@ public class DAOSection extends DAO<Section>
 		String query = "insert into section values(null, ?, ?)";
 		PreparedStatement ps = null;
 		boolean resultat = false;
-		
+		ResultSet resultSet = null;
 		try
 		{
 			ps = connection.prepareStatement(query, new String[] {"id"});
@@ -284,7 +299,7 @@ public class DAOSection extends DAO<Section>
 			
 			if(ps.executeUpdate() == 0) throw new SQLException();
 			
-			ResultSet resultSet = ps.getGeneratedKeys();
+			resultSet = ps.getGeneratedKeys();
 			if(resultSet.next()) section.setId(resultSet.getInt(1));
 
 			resultat = true;
@@ -295,6 +310,11 @@ public class DAOSection extends DAO<Section>
 		}
 		finally
 		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			try
 			{
 				ps.close();
