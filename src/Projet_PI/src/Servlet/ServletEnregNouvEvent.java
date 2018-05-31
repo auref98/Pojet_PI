@@ -139,7 +139,7 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			
 				String[] tabDest = destS.split(":");
 				String subject = "Nouvel évèvenement disponible !";
-				String text= "HERSEventsOfficiel vient de poster un nouvel évènement :\n"
+				String text= "HERSEvents Officiel vient de poster un nouvel évènement :\n"
 						+ "\n" + eve.getNom()
 						+ "\nVenez vous inscrire dès maintenant sur le site : \n http://localhost:8080/Projet_PI";
 				
