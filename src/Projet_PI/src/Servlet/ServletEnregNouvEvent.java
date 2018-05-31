@@ -123,7 +123,11 @@ public class ServletEnregNouvEvent extends HttpServlet{
 					+ "\n" + eve.getNom()
 					+ "\nVenez vous inscrire dès maintenant sur le site : \n http://localhost:8080/Projet_PI";
 			
-			new EnvoieMail().send(tabDest, subject, text);
+			String[] test = new String[2];
+			test[0] = "ludovic.adam@student.hers.be";
+			test[1] = "afockedey@student.hers.be";
+			EnvoieMail envoieMail = new EnvoieMail();
+			envoieMail.send(tabDest, subject, text);
 			
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
 			reqDisp.forward(request, response);
