@@ -59,6 +59,18 @@
 		<div style="margin-top:80px;"></div>
 		
 	  	<div class="container">
+	  		<style>
+	  			.nav-tabs{
+					border-bottom: none;
+				}
+				.nav-tabs .nav-link {
+					border: 0px solid transparent;
+					border-radius: 0.25rem;
+				}
+				.nav-tabs .nav-link.active{
+					background-color: rgba(0,123,255,0.5);
+				}
+	  		</style>
 	  		<!-- Nav tabs -->
 	  		<ul class="nav nav-tabs col-12">
 				<li class="nav-item">
