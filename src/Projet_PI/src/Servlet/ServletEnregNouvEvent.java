@@ -102,8 +102,6 @@ public class ServletEnregNouvEvent extends HttpServlet{
 					}
 				}
 			}
-			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
-			reqDisp.forward(request, response);
 			
 			LinkedList<String> listeDest = new LinkedList<String>();
 			for(Section section : sects)
@@ -115,17 +113,20 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			}
 			
 			HashSet<String> hs = new HashSet<String>(listeDest);
-			
 			java.util.Iterator it = hs.iterator(); 
-			while(it.hasNext ())
-			{ 
-			    String s = (String)it.next();
-
-
-			    System.out.println (s);   
-			} 
-			System.out.println(listeDest.size());
-			System.out.println(hs.size());
+			String destS = "";
+			while(it.hasNext ()) destS += (String)it.next() + ":";  
+		
+			String[] tabDest = destS.split(":");
+			String subject = "Nouvel évèvenement disponible !";
+			String text= "HERSEventsOfficiel vient de poster un nouvel évènement :\n"
+					+ "\n" + eve.getNom()
+					+ "\nVenez vous inscrire dès maintenant sur le site : \n http://localhost:8080/Projet_PI";
+			
+			new EnvoieMail().send(tabDest, subject, text);
+			
+			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
+			reqDisp.forward(request, response);
 		}
 	}
 }
