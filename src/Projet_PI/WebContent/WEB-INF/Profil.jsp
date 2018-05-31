@@ -154,10 +154,17 @@
 		 		<div class="row form-group col-12 container-fluid offset-1">
 			 			<label for="Mail" class="col-12" style="padding-left: 0px;">Mail</label>
 			 			<div class="row container-fluid col-12">
-					 		<input class="form-control mr-sm-2 col-7" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
-					 		<span class="col-4" style="margin-top:5px;padding-left:0px;">
-								${hers}
-					 		</span>
+						 	<c:if test="${charge == true }">
+						 		<input class="form-control mr-sm-2 col-7" value="${mail}" type="text" required="required" placeholder="Mail" name="Mail" id="Mail">
+						 		<span class="col-4" style="margin-top:5px;padding-left:0px;">
+									${hers}
+						 		</span>
+						 	</c:if>
+						 	<c:if test="${charge == false }">
+						 		<span class="col-4" style="margin-top:5px;padding-left:0px;">
+									${mail}${hers}
+						 		</span>
+						 	</c:if>
 					 	</div>
 		 		</div>
 		 		
