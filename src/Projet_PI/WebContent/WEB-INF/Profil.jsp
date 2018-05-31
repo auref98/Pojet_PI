@@ -259,7 +259,7 @@
 			 		</div>
 			 		<div class="row form-group col-12 col-md-5 offset-1">
 				 			<label for="lieuNaissance">
-					 			lieu de naissance
+					 			Lieu de naissance
 					 		</label>
 					 		<input class="form-control mr-sm-2" value="${rep.lieuNaissance}" type="text" required="required" placeholder="lieu de naissance" name="LieuNaissance" id="LieuNaissance">
 			 		</div>
@@ -376,11 +376,11 @@
 			 		</div>
 			 		<div class="row form-group col-12 offset-1 offset-md-0">
 				 			<label for="role" class="mt-md-1 col-12 col-md-6 pl-0">
-					 		Role
+					 		Rôle
 					 		</label>
 					 		<select name="Role" id="Role" class="col-md-5 col-12 ml-md-auto form-control">
-					 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">representant</option>
-					 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">ouvrier</option>
+					 			<option <c:if test="${rep.role == 'representant'}">selected="selected"</c:if> value="representant">Représentant</option>
+					 			<option <c:if test="${rep.role == 'ouvrier'}">selected="selected"</c:if> value="ouvrier">Ouvrier</option>
 					 		</select>
 		 			</div>
 			 		<div class="row form-group col-12 offset-1 offset-md-0">
