@@ -216,6 +216,14 @@
 					</form>
 				</div>
 			</c:if>
+			<c:if test="${relais == true }">
+				<div>
+					<form action="CopierCreeEvent" method="post">
+						<input type="submit" value="Modifier" name="event-${even.id }">
+						<input type="hidden" value="update-${even.id}" name="dao">
+					</form>
+				</div>
+			</c:if>
 			<div class="offset-md-5 offset-3">
 				<c:if test="${relais == true }">
 					<form action="SupprimerEvenement" method="post">

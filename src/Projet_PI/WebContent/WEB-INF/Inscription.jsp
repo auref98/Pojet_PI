@@ -32,7 +32,15 @@
 			  	</div>
 			  	<div class="form-check row offset-md-3 offset-1 col-6"> 
 			  		<label for="check" class="form-check-label col-11 offset-1">
-			  			<input id="check" type="checkbox" class="form-check-input" required="required">j'accepte que mes données soient enregistrées et utilisées pour le fonctionnement de l'application
+			  			<input id="check" type="checkbox" class="form-check-input" required="required">
+			  				j'accepte que mes données soient enregistrées
+			  				</br></br>
+			  				Le responsable de traitement des données est la Haute École Robert Schuman</br>
+			  					Rue Fontaine Aux Mûres 13b</br>
+			  					6800 Libramont</br>
+			  					+32(0)61/23.01.20</br></br>
+			  				Vos données ne seront transmises à aucun tiers et ne seront uniquement utilisées que pour le fonctionnement de l'application</br>
+			  				Vos données à caractère personnel, en particulier le fait de bénéficier ou non d'une aide du service social, ne seront accessible que par le chargé de communication actuel 
 			  		</label>
 			  	</div>
 			  	<button type="submit" class="mt-5 btn btn-primary row offset-md-4 offset-2 col-md-4 col-8">Demander un mot de passe</button>

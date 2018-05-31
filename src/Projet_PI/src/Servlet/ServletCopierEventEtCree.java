@@ -53,6 +53,9 @@ public class ServletCopierEventEtCree extends HttpServlet{
 					}
 			}
 			
+			String name = request.getParameter("dao");
+			request.setAttribute("name", name);
+			
 			if(id > 0){
 				Evenement event = new DAOEvenement().find(id);
 				event.setAdresseEve(new DAOAdresse().find(event.getAdresseEve().getId()));
