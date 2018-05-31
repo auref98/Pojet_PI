@@ -49,7 +49,7 @@ public class ConnectionOracle
 	 * Référence vers la seule instance de cette classe créée. <br><br>
 	 * Sert à indiquer si la connection a déjà été initialisée (auquel cas cette variable contient une référence) ou pas (cette variable est à null).
 	 */
-	private static ConnectionOracle instance = null;												
+	private static ConnectionOracle instance = null;											
 	
 	/**
 	 * L'url de la base de données à joindre. 

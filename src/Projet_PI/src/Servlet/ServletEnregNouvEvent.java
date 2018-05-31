@@ -47,6 +47,9 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			request.setAttribute("relais", (boolean)session.getAttribute("relais"));
 			request.setAttribute("charge", (boolean)session.getAttribute("charge"));
 			
+			String n = request.getParameter("dao");
+			boolean create = (n == null || n.equals("create"));
+			
 			String rue = request.getParameter("input-rue");
 			int numero = Integer.parseInt(request.getParameter("input-numero"));
 			String boite = request.getParameter("input-boite");
@@ -57,8 +60,11 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			new DAOAdresse().find(adr);
 			boolean adrCree = false;
 			if(adr.getId() == -1){
-				new DAOAdresse().create(adr);
-				adrCree = true;
+				if(create)
+					new DAOAdresse().create(adr);
+				else
+					new DAOAdresse().update(adr);
+				adrCree = create;
 			}
 			
 			String nomEven = request.getParameter("nomEvenement");
@@ -86,14 +92,28 @@ public class ServletEnregNouvEvent extends HttpServlet{
 			
 			Evenement eve = new Evenement(-1,nomEven,nbParticipant,description,img,adr);
 			eve.setSection(sects);
-			if(!new DAOEvenement().create(eve) && adrCree)new DAOAdresse().delete(adr);
+			if(!create){
+				int idEven = 0;
+				try {
+					idEven = Integer.parseInt(n.split("-")[1]);
+				} catch (NullPointerException e) {
+					System.out.println("Erreur : impossible de parse pour l'even(ServletEnregNouvEven)");
+				}
+				if(idEven>0){
+					eve.setId(idEven);
+					new DAOEvenement().update(eve);
+				}
+				ArrayList<Plage> ListePlage = new DAOEvenement().findListePlage(eve);
+				for(Plage p : ListePlage)
+					new DAOPlage().delete(p);
+			}
+			if(create && !new DAOEvenement().create(eve) && adrCree)new DAOAdresse().delete(adr);
 			else{
 				Enumeration enume = request.getParameterNames();
 				while(enume.hasMoreElements()){
 					String name = (String)enume.nextElement();
 					String [] nameSplit = name.split("-");
 					if(nameSplit[0].equals("date")){
-						//int id = Integer.parseInt(nameSplit[1]);
 						LocalDate date = LocalDate.parse(request.getParameter(name), DateTimeFormatter.ISO_DATE);
 						LocalTime HDebut = LocalTime.parse(request.getParameter("debut-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
 						LocalTime HFin = LocalTime.parse(request.getParameter("fin-"+nameSplit[1]), DateTimeFormatter.ISO_LOCAL_TIME);
@@ -102,29 +122,30 @@ public class ServletEnregNouvEvent extends HttpServlet{
 					}
 				}
 			}
+			if(create){
+				LinkedList<String> listeDest = new LinkedList<String>();
+				for(Section section : sects)
+				{
+					ArrayList<Professeur> listeProf = new DAOSection().findListeProfesseur(section);
+					ArrayList<Etudiant> listeEtud = new DAOSection().findListeEtudiant(section);
+					if(listeProf != null)for(Professeur professeur : listeProf) listeDest.add(professeur.getMail());
+					if(listeEtud != null)for(Etudiant etudiant : listeEtud) listeDest.add(etudiant.getMail());
+				}
+				
+				HashSet<String> hs = new HashSet<String>(listeDest);
+				java.util.Iterator it = hs.iterator(); 
+				String destS = "";
+				while(it.hasNext ()) destS += (String)it.next() + ":";  
 			
-			LinkedList<String> listeDest = new LinkedList<String>();
-			for(Section section : sects)
-			{
-				ArrayList<Professeur> listeProf = new DAOSection().findListeProfesseur(section);
-				ArrayList<Etudiant> listeEtud = new DAOSection().findListeEtudiant(section);
-				if(listeProf != null)for(Professeur professeur : listeProf) listeDest.add(professeur.getMail());
-				if(listeEtud != null)for(Etudiant etudiant : listeEtud) listeDest.add(etudiant.getMail());
+				String[] tabDest = destS.split(":");
+				String subject = "Nouvel évèvenement disponible !";
+				String text= "HERSEventsOfficiel vient de poster un nouvel évènement :\n"
+						+ "\n" + eve.getNom()
+						+ "\nVenez vous inscrire dès maintenant sur le site : \n http://localhost:8080/Projet_PI";
+				
+				EnvoieMail envoieMail = new EnvoieMail();
+				envoieMail.send(tabDest, subject, text);
 			}
-			
-			HashSet<String> hs = new HashSet<String>(listeDest);
-			java.util.Iterator it = hs.iterator(); 
-			String destS = "";
-			while(it.hasNext ()) destS += (String)it.next() + ":";  
-		
-			String[] tabDest = destS.split(":");
-			String subject = "Nouvel évèvenement disponible !";
-			String text= "HERSEventsOfficiel vient de poster un nouvel évènement :\n"
-					+ "\n" + eve.getNom()
-					+ "\nVenez vous inscrire dès maintenant sur le site : \n http://localhost:8080/Projet_PI";
-			
-			EnvoieMail envoieMail = new EnvoieMail();
-			envoieMail.send(tabDest, subject, text);
 			
 			RequestDispatcher reqDisp = request.getRequestDispatcher("/ListEvenSuivPrec");
 			reqDisp.forward(request, response);
