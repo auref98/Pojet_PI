@@ -317,4 +317,16 @@ public class Etudiant extends Representant{
 		if(sec != null)this.sec = sec;
 	}
 	
+	public int compareTo(Etudiant etu){
+		if(this.getLastName().compareTo(etu.getLastName()) > 0)return 1;
+		else if(this.getLastName().compareTo(etu.getLastName()) < 0)return -1;
+		else if(this.getLastName().compareTo(etu.getLastName()) == 0){
+			if(this.getFirstName().compareTo(etu.getFirstName()) > 0)return 1;
+			else if(this.getFirstName().compareTo(etu.getFirstName()) < 0)return -1;
+			else
+				return 0;
+		}
+		return 0;
+	}
+	
 }

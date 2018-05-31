@@ -253,5 +253,23 @@ public class Representant {
 	public void addInscrits(Inscription ins){
 		if(ins != null)this.inscrits.add(ins);
 	}
+
+	public int compareTo(Representant repr) {
+		if(this.getLastName().compareTo(repr.getLastName()) > 0)return 1;
+		else if(this.getLastName().compareTo(repr.getLastName()) < 0)return -1;
+		else if(this.getLastName().compareTo(repr.getLastName()) == 0){
+			if(this.getFirstName().compareTo(repr.getFirstName()) > 0)return 1;
+			else if(this.getFirstName().compareTo(repr.getFirstName()) < 0)return -1;
+			else
+				return 0;
+		}
+		return 0;
+	}
+
+	
+	public int compareTo(Object profs) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

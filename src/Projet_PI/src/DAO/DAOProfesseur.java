@@ -20,6 +20,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import Bean.Etudiant;
 import Bean.Professeur;
@@ -148,6 +150,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 		}
 		else tabProf = null;
 		
+		if(tabProf != null)
+			Collections.sort(tabProf, new Comparator<Professeur>() {
+	
+				@Override
+				public int compare(Professeur o1, Professeur o2) {
+					return o1.compareTo(o2);
+				}
+			});
 		return tabProf;
 	}
 

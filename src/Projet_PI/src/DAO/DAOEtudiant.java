@@ -22,9 +22,12 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import Bean.Adresse;
 import Bean.Etudiant;
+import Bean.Professeur;
 import Bean.Representant;
 import Bean.Section;
 
@@ -250,6 +253,15 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			}
 		}
 		else tabEtud = null;
+		
+		/*if(tabEtud != null)
+			Collections.sort(tabEtud, new Comparator<Etudiant>() {
+	
+				@Override
+				public int compare(Etudiant o1, Etudiant o2) {
+					return o1.compareTo(o2);
+				}
+			});*/
 		
 		return tabEtud;
 	}

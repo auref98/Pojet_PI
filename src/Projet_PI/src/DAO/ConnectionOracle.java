@@ -54,7 +54,7 @@ public class ConnectionOracle
 	/**
 	 * L'url de la base de données à joindre. 
 	 */
-	private String url = "jdbc:oracle:thin:@"+ "172.16.110.172:2115:o11etu2";//172.16.110.172:2115 	127.0.0.1:12115	 				// Initialise une variable avec l'url de la base de données à joindre 
+	private String url = "jdbc:oracle:thin:@"+ "127.0.0.1:12115:o11etu2";//172.16.110.172:2115 	127.0.0.1:12115	 				// Initialise une variable avec l'url de la base de données à joindre 
 	/**
 	 * Le nom d'utilisateur du représentant essayant de se connecter.
 	 */

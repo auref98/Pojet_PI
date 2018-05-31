@@ -17,6 +17,7 @@
 package Bean;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /** 
  * Classe de type "bean" représentant un professeur. <br><br>
@@ -150,4 +151,16 @@ public class Professeur extends Representant{
 		this.enseigne = enseigne;
 	}
 	
+    public int compareTo(Professeur profs){
+		Professeur prof = (Professeur)profs;
+		if(this.getLastName().compareTo(prof.getLastName()) > 0)return 1;
+		else if(this.getLastName().compareTo(prof.getLastName()) < 0)return -1;
+		else if(this.getLastName().compareTo(prof.getLastName()) == 0){
+			if(this.getFirstName().compareTo(prof.getFirstName()) > 0)return 1;
+			else if(this.getFirstName().compareTo(prof.getFirstName()) < 0)return -1;
+			else
+				return 0;
+		}
+		return 0;
+	}
 }
