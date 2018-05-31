@@ -108,7 +108,7 @@
 					</c:forEach>
 				</div>
 	  		</div>
-	  		<c:if test="${valider == true}">
+	  		<c:if test="${valide == true}">
 	  			<div class="alert alert-success alert-dismissible fade show">
   					<button type="button" class="close" data-dismiss="alert">&times;</button>
   					<strong>Opération réussie ! </strong>Des mails ont été envoyés aux membres inscrits à l'évènement
