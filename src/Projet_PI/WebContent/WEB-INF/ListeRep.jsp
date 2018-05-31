@@ -58,144 +58,86 @@
 		</nav>
 		<div style="margin-top:80px;"></div>
 		
-		<script language="JavaScript">
-	
-			function filtreProf(){
-				let etus = document.getElementsByClassName("etu");
-				for(let i = 0; i < etus.length; i++){
-					etus[i].style = "display:none;";
-				}
-				let profs = document.getElementsByClassName("prof");
-				for(let i = 0; i < profs.length; i++){
-					profs[i].style = "display:inherit;";
-				}
-			}
-			function filtreEtu(){
-				let profs = document.getElementsByClassName("prof");
-				for(let i = 0; i < profs.length; i++){
-					profs[i].style = "display:none;";
-				}
-				let etus = document.getElementsByClassName("etu");
-				for(let i = 0; i < etus.length; i++){
-					etus[i].style = "display:inherit;";
-				}
-			}
-			function triNom(){
-				let noms = document.getElementsByClassName("nom");
-				let tab = {};
-				for(let i = 0; i < noms.length; i++){
-					tab[i] = document.getElementById(noms[i].id).cloneNode(true);
-				}
-				tri(noms);
-				console.log(noms);
-				console.log(tab);
-				
-				afficher(noms,tab,"nom");
-				
-			}
-			function afficher(tab,tabSupp){
-				for(let i = 0; i < tab.length; i++){
-					document.getElementById(tab[i].id).remove();
-				}
-				for(let i = 0; i < tab.length; i++){
-					let id = tabSupp[i].id
-					id = id.split("-")[1];
-					document.getElementById("etu-"+id).append(tabSupp[i]);
-					document.getElementById("prof-"+id).append(tabSupp[i]);
-				}
-			}
-			function create(elem){
-				let nom = document.createElement("span");
-				nom.innerText = elem.innerText;
-				nom.className = "nom";
-				
-				
-			}
-			
-			function swap(items, firstIndex, secondIndex){
-			    let temp = items[firstIndex];
-			    items[firstIndex] = items[secondIndex];
-			    items[secondIndex] = temp;
-			}
-			function tri(tab){
-				let i = 0;
-				while(i < tab.length-1){
-					let imin = i;
-					let j = i+1;
-					while(j < tab.length){
-						if(tab[j].innerText < tab[imin].innerText){
-							imin = j;
-						}
-						j ++;
-					}
-					if (i != imin){
-						swap(tab,i,imin);
-					}
-					i++;
-				}
-			}
-			
-		</script>
-		
-		<div class="col-8 row offset-2 text-center bg-light">
-			<div style="margin-bottom:20px;">
-	    		<input type="radio" id="etudiant" name="representant" value="etudiant" onclick="filtreEtu()">
-	    		<label for="etudiant">Etudiant</label>
-	    		<input type="radio" id="professeur" name="representant" value="professeur" onclick="filtreProf()">
-	    		<label for="professeur">Professeur</label>
-	  		</div>
-			<div  class="col-12"id="listeRep">
-			  <table>
-			    <thead class="thead-light">
-			      <tr>
-			        <th>Nom</th>
-			        <th>Prenom</th>
-			        <th>Participation</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			    
-				<c:set var="i" value="1"></c:set>
-				<c:forEach items="${prof}" var="p">
-					
-						<!-- <div id="prof-${p.id}" class="prof" style="margin-bottom:10px;"> -->
+	  	<div class="container">
+	  		<!-- Nav tabs -->
+	  		<ul class="nav nav-tabs col-12">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#etu">Étudiants</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#prof">Professeurs</a>
+				</li>
+			</ul>
+	  		
+	  		<!-- Panes -->
+	  		<div class="tab-content col-12">
+	  			<div id="etu" class="container tab-pane active"><br>
+					<h3>Étudiants</h3>
+					<table class="col-12 table table-striped  table-borderless">
+						<thead class="thead-light">
 							<tr>
-							<td><span id="nom-${p.id}" class="nom">${p.lastName}</span></td>
-							<td><span class="prenom">${p.firstName}</span></td>
-							<td><span class="nbParticipation">${p.nbParticipations}</span></td>
+								<th>Nom</th>
+								<th>Prénom</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${etu}" var="e">
+							<tr>
+								<td>${e.lastName}</td>
+								<td>${e.firstName}</td>
+								<c:if test="${charge == true}">
+									<td class="float-right">
+										<form action="ModifierProfil">
+											<input type="hidden" value="${e.id}" name="id">
+											<input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil">
+										</form>
+									</td>
+								</c:if>
+							</tr>
+							<c:set var="i" value="${i+1}"></c:set>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div id="prof" class="container tab-pane fade"><br>
+					<h3>Professeurs</h3>
+					<table class="col-12 table table-striped table-borderless">
+						<thead class="thead-light">
+							<tr>
+								<th>Nom</th>
+								<th>Prénom</th>
+								<th>Participations</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:set var="i" value="1"></c:set>
+							<c:forEach items="${prof}" var="p">
+												
+							<!-- <div id="prof-${p.id}" class="prof" style="margin-bottom:10px;"> -->
+							<tr>
+								<td>${p.lastName}</td>
+								<td>${p.firstName}</td>
+								<td>${p.nbParticipations}</td>
+								
+								<c:if test="${charge == true}">
+									<td class="float-right">
+										<form action="ModifierProfil">
+											<input type="hidden" value="${p.id}" name="id">
+											<input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil">
+										</form>
+									</td>
+								</c:if>
+							</tr>
+							<!-- </div> -->
 
-							<c:if test="${charge == true}">
-								<td>
-									<form action="ModifierProfil">
-										<input type="hidden" value="${p.id}" name="id">
-										<input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil">
-									</form>
-								</td>
-							</c:if>
-							</tr>
-						<!-- </div> -->
-					
-					<c:set var="i" value="${i+1}"></c:set>
-				</c:forEach>
-				<c:forEach items="${etu}" var="e">
-					<form action="ModifierProfil">
-						<div id="etu-${e.id}" class="etu" style="margin-bottom:10px;">
-							<tr>
-							<td><span id="nom-${e.id}" class="nom">${e.lastName}</span></td>
-							<td><span class="prenom">${e.firstName}</span></td>
-							<c:if test="${charge == true}">
-								<td><span><input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil"></span></td>
-								<input type="hidden" value="${e.id}" name="id">
-							</c:if>
-							</tr>
-						</div>
-					</form>
-					<c:set var="i" value="${i+1}"></c:set>
-				</c:forEach>
-				
-			    </tbody>
-			  </table>
-			</div>
-		</div>
+							<c:set var="i" value="${i+1}"></c:set>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+	  		</div>
+	  	</div>
 	</body>
 </html>
