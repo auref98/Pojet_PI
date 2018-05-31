@@ -132,7 +132,7 @@ public class ServletEnregistrerProfil extends HttpServlet
 					rep.setLastname(lastName);
 					rep.setFirstname(firstName);
 					rep.setPhone(phone);
-					//rep.setMail(mail+"@hers.be");
+					rep.setMail(mail+"@hers.be");
 					rep.setMatricule(matricule);
 					rep.setPassword(password);
 					
