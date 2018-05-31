@@ -216,6 +216,6 @@ public class Adresse implements Serializable {
 	 */
 	@Override
 	public String toString(){
-		return("Rue "+rue+", "+ numero + "/n"+ codePostal + localite + "( " + pays + " )");
+		return(rue+", "+ numero + " "+ codePostal + " " + localite + " (" + pays + ")");
 	}
 }

@@ -97,7 +97,7 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 								+ "Votre inscription à l'évènement "+eve.getNom() + " est confirmée.\n"
 								+ "Nous vous attendons donc à l'adresse suivante : " + eve.getAdresseEve() + ",\n"
 								+ "pour la date : " + p.getDate().toString() + ".\n\n" 
-								+ "Bien à vous. \n L'équipe Hevent Officiel.";
+								+ "Bien à vous. \nL'équipe Hevent Officiel.";
 					
 					EnvoieMail envoieMail = new EnvoieMail();
 					envoieMail.send(tabDest, subject, text);
@@ -108,7 +108,8 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 						if(pla.getListeInscription() != null)
 							for(Inscription ins : pla.getListeInscription())
 								ins.setRepresentant(new DAORepresentant().find(ins.getRepresentant().getId()));
-							
+						
+					request.setAttribute("valide", true);
 					}
 					
 					request.setAttribute("even", eve);
