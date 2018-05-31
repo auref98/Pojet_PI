@@ -108,7 +108,8 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 						if(pla.getListeInscription() != null)
 							for(Inscription ins : pla.getListeInscription())
 								ins.setRepresentant(new DAORepresentant().find(ins.getRepresentant().getId()));
-							
+						
+					request.setAttribute("valide", true);
 					}
 					
 					request.setAttribute("even", eve);
