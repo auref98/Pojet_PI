@@ -212,29 +212,10 @@ public class DAOEvenement extends DAO<Evenement>
 				}
 				if(add) list.add(event);
 			}
+		
 			for(int i = 0;i < cpt && i+debut < list.size();i++){
 				listEvent.add(list.get(i+debut));
 			}
-			
-			/*for(int i = 0; i < debut; i++) if(resultSet.next() == false) throw new SQLException();	// Ignore les "debut" premiers résultats et lance une exception si "debut" est supérieur au nombre de résultat
-			for(int i = 0; i < cpt && resultSet.next()  != false; i++)								// Tant que le nombre d'éléments traités est inférieur à cpt et que le ResultSet contient un résultat supplémentaire
-			{
-				// Initialise les attributs de l'objet à ajouter à la liste
-				int id = resultSet.getInt("id");
-				String nom = resultSet.getString("nom");
-				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
-				String description = resultSet.getString("description");
-				String image = resultSet.getString("image");
-				Adresse adr = new Adresse();
-				adr.setId(resultSet.getInt("refaddr"));
-				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);			// Ajoute un nouvel Evenement à la liste avec les informations récupérée de la BD et la référence de l'Adresse
-				boolean add = true;
-				for(Evenement eve : listEvent){												// Boucle vérifiant si l'élément à déjà été ajouté pour éviter les doublons
-					if(add)add = (!(eve.getId() == event.getId()))?true:false;
-				}
-				if(add) listEvent.add(event);												// Si l'élément n'est pas encore présent dans la liste, l'y ajoute
-				else i--;																	// Sinon, décrémente le compteur
-			}*/
 		}
 		catch (SQLException ex)															// Si une erreur SQL a été rencontrée ou si aucun résultat n'a été trouvé
 		{
@@ -259,6 +240,66 @@ public class DAOEvenement extends DAO<Evenement>
 		return listEvent;																	// Renvoie la référence de la liste contenant les objets Evenement contenant les informations récupérées dans la base de données
 	}
 
+	public ArrayList<Evenement> findNow(int debut, int cpt)
+	{
+		// Définit la requête SQL avec un paramètre
+		String query = "select e.* from evenement e, plage p where (e.id = p.REFEVEN and p.datePlage >= to_date(?,'yyyy-mm-dd') ) order by p.DATEPLAGE";
+		PreparedStatement ps = null;														// Initialise un objet PreparedStatement pour exécuter la requête
+		ArrayList<Evenement> listEvent = new ArrayList<Evenement>();						// Initialise une ArrayList d'objets Evenement qui sera renvoyée par la méthode
+		
+		// Obtient une instance de LocalDate dans un format valide pour la requête SQL
+		LocalDate d = LocalDate.now();
+		ResultSet resultSet = null;
+		try
+		{
+			ps = connection.prepareStatement(query);										// Initialise le PreparedStatement avec la requête définie plus haut
+			ps.setString(1, d.toString());													// Assigne la date formatée en chaine de caractères au paramètre de la requête
+			resultSet = ps.executeQuery();											// Exécute la requête
+			
+			ArrayList<Evenement> list = new ArrayList<Evenement>();
+			while(resultSet.next()){
+				int id = resultSet.getInt("id");
+				String nom = resultSet.getString("nom");
+				int nbParticipantRequis = resultSet.getInt("nbParticipantRequis");
+				String description = resultSet.getString("description");
+				String image = resultSet.getString("image");
+				Adresse adr = new Adresse();
+				adr.setId(resultSet.getInt("refaddr"));
+				Evenement event = new Evenement(id, nom, nbParticipantRequis, description, image, adr);
+				boolean add = true;
+				for(Evenement eve : list){												// Boucle vérifiant si l'élément à déjà été ajouté pour éviter les doublons
+					if(add)add = (!(eve.getId() == event.getId()))?true:false;
+				}
+				if(add) list.add(event);
+			}
+			
+			for(int i = 0;i < cpt && i+debut < list.size();i++){
+				listEvent.add(list.get(i+debut));
+			}
+		}
+		catch (SQLException ex)															// Si une erreur SQL a été rencontrée ou si aucun résultat n'a été trouvé
+		{
+			System.out.println("Erreur: findEvent failed !");
+		}
+		finally																			// Bloc finally fermant  le PreparedStatement
+		{
+			try{
+				resultSet.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			try
+			{
+				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listEvent;																	// Renvoie la référence de la liste contenant les objets Evenement contenant les informations récupérées dans la base de données
+	}
+	
 	/**
 	 * 
 	 * @param	event est initialisé

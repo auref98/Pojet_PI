@@ -17,6 +17,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -92,7 +93,7 @@ public class ServletConnexion extends HttpServlet
 			}
 			
 			int cpt = 5; // nombre d'evenement
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
+			ArrayList<Evenement> evens = new DAOEvenement().findNow(0,cpt);
 			int compteur = 0;
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);

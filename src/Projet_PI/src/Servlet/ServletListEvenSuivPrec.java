@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,8 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		System.out.println("test");
+		
 		HttpSession session = request.getSession(true);
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
@@ -44,7 +47,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 			
 			int cpt = 5;
 			int compteur = 0;
-			ArrayList<Evenement> evens = new DAOEvenement().find(0,cpt);
+			ArrayList<Evenement> evens = new DAOEvenement().findNow(0,cpt);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				ArrayList<Plage> plage = new ArrayList<Plage>();
@@ -58,6 +61,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 				even.setListPlage(plage);
 				compteur++;
 			}
+			for(Evenement even : evens) System.out.println(even.getNom());
 			request.setAttribute("evens", evens);
 			request.setAttribute("debut", 0);
 			request.setAttribute("suiv", compteur == cpt);
@@ -67,6 +71,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		}
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		System.out.println("testGet");
 		HttpSession session = request.getSession(true);
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
@@ -98,7 +103,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 				else nb = 0;
 			}
 			int compteur = 0;
-			ArrayList<Evenement> evens = new DAOEvenement().find(nb,cpt);
+			ArrayList<Evenement> evens = new DAOEvenement().findNow(nb,cpt);
 			for(Evenement even : evens){
 				ArrayList<Plage> p = new DAOEvenement().findListePlage(even);
 				ArrayList<Plage> plage = new ArrayList<Plage>();
