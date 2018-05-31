@@ -97,8 +97,14 @@
 					
 					<c:forEach items="${even.listePlage }" var="plage">
 						<div class="row container-fluid">
+							<c:set var="isInscri" value="false"></c:set>
+							<c:forEach items="${plage.listeInscription }" var="inscri" >
+								<c:if test="${inscri.valide == true && isInscri == false }"><c:set var="isInscri" value="true"></c:set></c:if>
+							</c:forEach>
 							<p class="col-8" style="padding-top:5px;">
 								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
+								<c:if test="${isInscri == true }"> vous etes inscri</c:if>
+								<c:if test="${isInscri == false }"> vous n'etes pas inscri</c:if>
 							</p>
 							<c:if test="${relais == false && peutSinscrire == true}">
 								<c:if test="${inscri == true }">
