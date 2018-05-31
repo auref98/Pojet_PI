@@ -36,7 +36,7 @@
 							<a class="nav-link" href="CreeEvenement">Créer un événement</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="CopierEvenement">archives</a>
+							<a class="nav-link" href="CopierEvenement">Archives</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="ListeRep">Liste des utilisateurs</a>
@@ -44,7 +44,7 @@
 					</c:if>
 					<c:if test="${charge == true}">
 						<li class="nav-item">
-							<a class="nav-link" href="ListeSection">Liste de sections</a>
+							<a class="nav-link" href="ListeSection">Liste des sections</a>
 						</li>
 					</c:if>
 				</ul>
@@ -66,7 +66,7 @@
 				let input = document.getElementById("posterCommentaire");
 				if(input.value.length > 200 | input.value == ""){
 					event.preventDefault();
-					alert("votre commentaire dois faire moins de 200 carractère ("+input.value.length+")");
+					alert("Votre commentaire dois faire moins de 200 carractères ("+input.value.length+")");
 					input.value = "";
 				}
 			}
@@ -134,9 +134,9 @@
 				<p>${even.description }</p>
 			</div>
 			<div>
-				<p>Nombre de personne requise : ${even.nbParticipantsRequis }</p>
+				<p>Nombre de personnes requises : ${even.nbParticipantsRequis }</p>
 				<p>
-					Section requise : <br>
+					Section(s) requise(s) : <br>
 					<c:set var="i" value="${0}"></c:set>
 					<c:forEach items="${even.listeSection}" var="section">
 						- ${section.nom} <br>
@@ -147,7 +147,7 @@
 					</c:if>
 				</p>
 				<p>
-					Adresse de l'evenement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
+					Adresse de l'évènement : ${even.adresseEve.rue } ${even.adresseEve.numero } ${even.adresseEve.boite }, ${even.adresseEve.codePostal } ${even.adresseEve.localite }, ${even.adresseEve.pays }
 				</p>
 			</div>
 			<c:if test="${relais == true && ListeInscris != null}">
@@ -172,7 +172,7 @@
 			
 			<c:if test="${profs != null}">
 				<div style="margin:0.5em;border:solid 1px black;border-radius:15px;padding:0.5em;">
-				<p>liste des professeur inscrits</p>
+				<p>Liste des professeurs inscrits</p>
 					<c:forEach items="${profs }" var="prof">
 						<div style="padding-left:1.5em;">
 							${prof.firstName} - ${prof.lastName}
@@ -185,7 +185,7 @@
 				<div style="margin: 0.5em;border: solid 1px black;border-radius: 20px;">
 					<div style="margin: 0.5em;padding: 0.5em;max-height:250px;overflow-y: scroll;">
 						<p>
-							Commentaire <br>
+							Commentaires <br>
 							<c:forEach items="${even.listeCommentaire }" var="com">
 								<div style="border:solid 1px black;margin:0.5em;padding:0.5em;border-radius:20px;">
 									<form method="post" action="supprimerCommentaire" style="display: flex;justify-content: space-between;">
