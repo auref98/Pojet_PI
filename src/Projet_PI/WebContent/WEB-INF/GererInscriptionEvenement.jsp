@@ -59,23 +59,55 @@
 		</nav>
 		<div style="margin-top:80px;"></div>
 	
-		<div>
-			<c:forEach items="${plage}" var="pl">
-				<h2>${pl.date} (${pl.heureDebut} - ${pl.heureFin})</h2>
-				<form action="EnregistrerListeValide" method="post">
-					<c:forEach items="${pl.listeInscription}" var="ins">
+		<div class="container">
+	  		<style>
+	  			.nav-tabs{
+					border-bottom: none;
+				}
+				.nav-tabs .nav-link {
+					border: 0px solid transparent;
+					border-radius: 0.25rem;
+				}
+				.nav-tabs .nav-link.active{
+					background-color: rgba(0,123,255,0.5);
+				}
+	  		</style>
+	  		
+	  		<!-- Panes -->
+	  		<div class="tab-content col-12">
+	  			<div class="container tab-pane active"><br>
+					<c:forEach items="${plage}" var="pl">
+						<h2 class="text-center">${pl.date} (${pl.heureDebut} - ${pl.heureFin})</h2>
+						<form action="EnregistrerListeValide" method="post">
+						
+						<table class="col-12 table table-striped  table-borderless">
+							<thead class="thead-light">
+								<tr>
+									<th>Nom</th>
+									<th>Prénom</th>
+									<th>Validation</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${pl.listeInscription}" var="ins">
+								<tr>
+									<td>${ins.representant.lastName}</td>
+									<td>${ins.representant.firstName}</td>
+									<td><input type="checkbox" name="${pl.id}-${ins.representant.id}-${ins.id}" id="${pl.id}-${ins.representant.id}" <c:if test="${ins.valide == true}"> checked="checked" </c:if> ></td>
+								</tr>
+								<c:set var="i" value="${i+1}"></c:set>
+								</c:forEach>
+							</tbody>
+						</table>
 						<div>
-							<span> ${ins.representant.lastName} - ${ins.representant.firstName} </span>
-							<span><label for="${pl.id}-${ins.representant.id}">Ajouter la personne</label><input type="checkbox" name="${pl.id}-${ins.representant.id}-${ins.id}" id="${pl.id}-${ins.representant.id}" <c:if test="${ins.valide == true}"> checked="checked" </c:if> > </span>
-						</div> 
-					</c:forEach>
-					<div>
-						<input type="submit" name="Enregistrer" value="Enregistrer">
+						<input class="btn btn-primary offset-md-5" type="submit" name="Enregistrer" value="Enregistrer" style="margin-bottom:2em;">
 						<input type="hidden" name="ValiderIns" value="${pl.id}">
 						<input type="hidden" name="Evenement" value="${even.id }">
 					</div>
-				</form>
-			</c:forEach>
-		</div>
+					</form>
+				</c:forEach>
+				</div>
+	  		</div>
+	  	</div>
 	</body>
 </html>
