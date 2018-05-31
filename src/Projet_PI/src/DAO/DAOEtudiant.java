@@ -99,6 +99,10 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				Representant rep = new DAORepresentant().find(this.resSet.getInt("ID"));			// Instancie un objet Representant via un objet DAORepresentant, avec l'identifiant trouvé dans le ResultSet
 				LocalDate date = null;															// Déclare un objet LocalDate
 				// Si la ligne lu depuis le ResultSet renseigne une date de naissance, met celle-ci au format LocalDate dans la variable déclarée au dessus
+				Section sec = new Section();
+				sec.setId(this.resSet.getInt("refsect"));
+				Adresse adr = new Adresse();
+				adr.setId(this.resSet.getInt("refaddr"));
 				if(this.resSet.getString("DATENAISSANCE") != null)date = LocalDate.parse(this.resSet.getString("DATENAISSANCE").split(" ")[0],DateTimeFormatter.ISO_DATE);
 				etu = new Etudiant(rep.getLastName(),											// Instancie un objet Etudiant avec comme informations:	- le nom du représentant dont il est dérivé
 									rep.getFirstName(),										//													- le prénom du représentant dont il est dérivé
@@ -115,8 +119,8 @@ public class DAOEtudiant extends DAO<Etudiant>{
 									(this.resSet.getInt("SOUTIENSOCIAL")==1)?true:false,			//													- "true" s'il bénéficie d'une aide du service social, "false" sinon
 									this.resSet.getString("EMPLACEMENTECOLE"),				//													- l'implantation de l'école qu'il fréquente
 									this.resSet.getString("ROLE"),								//													- le rôle qu'il souhaite jouer lors d'événements
-									null,
-									null);
+									adr,
+									sec);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
