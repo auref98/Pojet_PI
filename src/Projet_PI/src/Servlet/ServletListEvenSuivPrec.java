@@ -29,8 +29,7 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		System.out.println("test");
-		
+
 		HttpSession session = request.getSession(true);
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");
@@ -71,7 +70,6 @@ public class ServletListEvenSuivPrec extends HttpServlet{
 		}
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		System.out.println("testGet");
 		HttpSession session = request.getSession(true);
 		
 		Etudiant etu = (Etudiant)session.getAttribute("etudiant");

@@ -71,6 +71,7 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 						}
 					}
 				}
+				String destS ="";
 				for(Inscription ins : p.getListeInscription()){
 					int trouver = -1;
 					int cpt = 0;
@@ -84,11 +85,23 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 					else
 						ins = inscri.get(trouver);
 					new DAOInscription().update(ins);
+					if(ins.isValide()) destS += new DAORepresentant().find(ins.getRepresentant().getId()).getMail() + ":";
 				}
 				
 				if(idEve > 0){
-					Evenement eve = new Evenement();
-					eve.setId(idEve);
+					Evenement eve = new DAOEvenement().find(idEve);
+					eve.setAdresseEve(new DAOAdresse().find(eve.getAdresseEve().getId()));
+					String[] tabDest = destS.split(":");
+					String subject = "Validation inscription";
+					String text = "Bonjour, \n\n"
+								+ "Votre inscription à l'évènement "+eve.getNom() + " est confirmée.\n"
+								+ "Nous vous attendons donc à l'adresse suivante : " + eve.getAdresseEve() + ",\n"
+								+ "pour la date : " + p.getDate().toString() + ".\n\n" 
+								+ "Bien à vous. \n L'équipe Hevent Officiel.";
+					
+					EnvoieMail envoieMail = new EnvoieMail();
+					envoieMail.send(tabDest, subject, text);
+					
 					ArrayList<Plage> pl = new DAOEvenement().findListePlage(eve);
 					for(Plage pla : pl){
 						pla.setListeInscription(new DAOPlage().findListeInscription(pla));
