@@ -128,6 +128,11 @@ public class ServletValiderPresence  extends HttpServlet{
 										ins.setPresent(true);
 										change = true;
 										new DAOInscription().update(ins);
+										Professeur professeur = new DAOProfesseur().find(ins.getRepresentant().getId());
+										if (professeur != null){
+											professeur.setNbParticipations(professeur.getNbParticipations()+1);
+											new DAOProfesseur().update(professeur);
+										}
 									}
 								}
 								if(!change){

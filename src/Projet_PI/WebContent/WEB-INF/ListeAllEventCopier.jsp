@@ -97,6 +97,7 @@
 		 					<p>Description : <br>${even.description}</p>
 			 				<form method="post" action="CopierCreeEvent">
 			 					<input type="submit" class="btn btn-info offset-5" value="Copier" name="event-${even.id }">
+								<input type="hidden" value="create" name="dao">
 			 				</form>
 			 			</div>
 			 		</div>

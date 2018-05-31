@@ -63,7 +63,7 @@
 			function ajouterHoraire(event){
 				event.preventDefault();
 				
-				let d = "date-";
+				let d = "plage-";
 				let i = 1;
 				while(document.getElementById(d+i) != null){
 				    i++;
@@ -230,6 +230,7 @@
 									<input style="padding-left:5px;padding-right:5px;" class="btn btn-danger col-12" type="button" required="required" value="X" name="sup-${i }" onclick="supprimerPlage('plage-${i }')">
 								</div>
 							</div>
+							<c:set var="i" value="${i+1 }"></c:set>
 						</c:forEach>
 						</div>
 							<input type="button" value="Ajouter une plage horaire" class="btn btn-info" onclick="ajouterHoraire(event)">
@@ -280,6 +281,7 @@
 					
 				</div>
 					<input class="btn btn-info" type="submit" value="Enregistrer" style="margin-bottom:30px;">
+					<input type="hidden" value="${name}" name="dao">
 				<div>
 			</form>
 		</div>
