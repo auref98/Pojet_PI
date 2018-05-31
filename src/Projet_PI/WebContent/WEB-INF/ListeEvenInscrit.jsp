@@ -110,7 +110,7 @@
 			
 			
 			
-			<div id="demo" class="carousel slide" data-ride="carousel">
+			<div id="demo" class="carousel slide offset-md-3 offset-0 col-md-6 col-12" data-ride="carousel">
 			  <ul class="carousel-indicators">
 			    <li data-target="#demo" data-slide-to="0" class="active"></li>
 			    <li data-target="#demo" data-slide-to="1"></li>
@@ -119,16 +119,16 @@
 			  </ul>
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			      <img src="assets/img/i1.jpg" alt="image1" width="1100" height="500">
+			      <img src="assets/img/i1.jpg" alt="image1" width="550" height="250">
 			    </div>
 			    <div class="carousel-item">
-			      <img src="assets/img/i2.jpg" alt="image2" width="1100" height="500">
+			      <img src="assets/img/i2.jpg" alt="image2" width="550" height="250">
 			    </div>
 			    <div class="carousel-item">
-			      <img src="assets/img/i3.jpg" alt="image3" width="1100" height="500">
+			      <img src="assets/img/i3.jpg" alt="image3" width="550" height="250">
 			    </div>
 			    <div class="carousel-item">
-			      <img src="assets/img/i4.jpg" alt="image4" width="1100" height="500">
+			      <img src="assets/img/i4.jpg" alt="image4" width="550" height="250">
 			    </div>
 			  </div>
 			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
