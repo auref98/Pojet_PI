@@ -97,7 +97,7 @@ public class ServletEnregistrerListeValide extends HttpServlet{
 								+ "Votre inscription à l'évènement "+eve.getNom() + " est confirmée.\n"
 								+ "Nous vous attendons donc à l'adresse suivante : " + eve.getAdresseEve() + ",\n"
 								+ "pour la date : " + p.getDate().toString() + ".\n\n" 
-								+ "Bien à vous. \n L'équipe Hevent Officiel.";
+								+ "Bien à vous. \nL'équipe Hevent Officiel.";
 					
 					EnvoieMail envoieMail = new EnvoieMail();
 					envoieMail.send(tabDest, subject, text);
