@@ -100,14 +100,20 @@
 							</tbody>
 						</table>
 						<div>
-						<input class="btn btn-primary offset-md-5" type="submit" name="Enregistrer" value="Enregistrer" style="margin-bottom:2em;">
-						<input type="hidden" name="ValiderIns" value="${pl.id}">
-						<input type="hidden" name="Evenement" value="${even.id }">
-					</div>
-					</form>
-				</c:forEach>
+							<input class="btn btn-primary offset-md-5" type="submit" name="Enregistrer" value="Enregistrer" style="margin-bottom:2em;">
+							<input type="hidden" name="ValiderIns" value="${pl.id}">
+							<input type="hidden" name="Evenement" value="${even.id }">
+						</div>
+						</form>
+					</c:forEach>
 				</div>
 	  		</div>
+	  		<c:if test="${valider == true}">
+	  			<div class="alert alert-success alert-dismissible fade show">
+  					<button type="button" class="close" data-dismiss="alert">&times;</button>
+  					<strong>Opération réussie ! </strong>Des mails ont été envoyés aux membres inscrits à l'évènement
+				</div>
+	  		</c:if>
 	  	</div>
 	</body>
 </html>
