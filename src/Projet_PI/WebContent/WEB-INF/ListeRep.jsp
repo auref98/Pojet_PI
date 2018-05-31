@@ -137,51 +137,64 @@
 			
 		</script>
 		
-		<div class="col-4 offset-4 text-center bg-light">
-			<div class="dropdown" style="margin-bottom:20px;">
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Tri</button>
-				<div class="dropdown-menu">
-					<input class="dropdown-item" type="button" value="Aucun"> 
-					<input class="dropdown-item" type="button" value="Nom">
-					<input class="dropdown-item" type="button" value="Prenom">
-					<input class="dropdown-item" type="button" value="Participation">
-				</div>
-			</div>
+		<div class="col-8 row offset-2 text-center bg-light">
 			<div style="margin-bottom:20px;">
 	    		<input type="radio" id="etudiant" name="representant" value="etudiant" onclick="filtreEtu()">
 	    		<label for="etudiant">Etudiant</label>
 	    		<input type="radio" id="professeur" name="representant" value="professeur" onclick="filtreProf()">
 	    		<label for="professeur">Professeur</label>
 	  		</div>
-			<div id="listeRep">
+			<div  class="col-12"id="listeRep">
+			  <table>
+			    <thead class="thead-light">
+			      <tr>
+			        <th>Nom</th>
+			        <th>Prenom</th>
+			        <th>Participation</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    
 				<c:set var="i" value="1"></c:set>
 				<c:forEach items="${prof}" var="p">
-					<form action="ModifierProfil">
-						<div id="prof-${p.id}" class="prof">
-							<span id="nom-${p.id}" class="nom">${p.lastName}</span>
-							<span class="prenom">${p.firstName}</span>
-							<span class="nbParticipation">${p.nbParticipations}</span>
+					
+						<!-- <div id="prof-${p.id}" class="prof" style="margin-bottom:10px;"> -->
+							<tr>
+							<td><span id="nom-${p.id}" class="nom">${p.lastName}</span></td>
+							<td><span class="prenom">${p.firstName}</span></td>
+							<td><span class="nbParticipation">${p.nbParticipations}</span></td>
+
 							<c:if test="${charge == true}">
-								<span><input type="submit" value="Modifier le profil" name="modifierprofil"></span>
-								<input type="hidden" value="${p.id}" name="id">
+								<td>
+									<form action="ModifierProfil">
+										<input type="hidden" value="${p.id}" name="id">
+										<input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil">
+									</form>
+								</td>
 							</c:if>
-						</div>
-					</form>
+							</tr>
+						<!-- </div> -->
+					
 					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
 				<c:forEach items="${etu}" var="e">
 					<form action="ModifierProfil">
-						<div id="etu-${e.id}" class="etu">
-							<span id="nom-${e.id}" class="nom">${e.lastName}</span>
-							<span class="prenom">${e.firstName}</span>
+						<div id="etu-${e.id}" class="etu" style="margin-bottom:10px;">
+							<tr>
+							<td><span id="nom-${e.id}" class="nom">${e.lastName}</span></td>
+							<td><span class="prenom">${e.firstName}</span></td>
 							<c:if test="${charge == true}">
-								<span><input type="submit" value="Modifier le profil" name="modifierprofil"></span>
+								<td><span><input class="btn btn-info" type="submit" value="Modifier le profil" name="modifierprofil"></span></td>
 								<input type="hidden" value="${e.id}" name="id">
 							</c:if>
+							</tr>
 						</div>
 					</form>
 					<c:set var="i" value="${i+1}"></c:set>
 				</c:forEach>
+				
+			    </tbody>
+			  </table>
 			</div>
 		</div>
 	</body>
