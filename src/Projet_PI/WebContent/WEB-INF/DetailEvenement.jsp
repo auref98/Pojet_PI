@@ -76,7 +76,7 @@
 		<div class="container bg-light" style="margin-top:30px">
 			<div class="row">
 				<!--  titre -->
-				<div class = "col-md-12 offset-4">
+				<div class = "col-md-12 text-center">
 					<h1>${even.nom }</h1>
 				</div>
 				
@@ -103,8 +103,8 @@
 							</c:forEach>
 							<p class="col-8" style="padding-top:5px;">
 								${plage.date} - (${plage.heureDebut } - ${plage.heureFin })
-								<c:if test="${isInscri == true }"> vous etes inscri</c:if>
-								<c:if test="${isInscri == false }"> vous n'etes pas inscri</c:if>
+								<c:if test="${isInscri == true }"> Vous êtes inscrit</c:if>
+								<c:if test="${isInscri == false }"> Vous n'êtes pas inscrit</c:if>
 							</p>
 							<c:if test="${relais == false && peutSinscrire == true}">
 								<c:if test="${inscri == true }">
@@ -215,17 +215,17 @@
 				</c:if>
 			</div>
 			<c:if test="${charge == true }">
-				<div>
+				<div class="offset-md-5 offset-3">
 					<form action="GererInscription" method="post">
-						<input type="submit" name="GererInsecription" value="Gerer les inscriptions">
+						<input class="btn btn-primary" type="submit" name="GererInsecription" value="Gerer les inscriptions">
 						<input type="hidden" name="inscription" value="${even.id }">
 					</form>
 				</div>
 			</c:if>
 			<c:if test="${relais == true }">
-				<div>
+				<div class="offset-md-5 offset-3">
 					<form action="CopierCreeEvent" method="post">
-						<input type="submit" value="Modifier" name="event-${even.id }">
+						<input class="btn btn-primary" type="submit" value="Modifier" name="event-${even.id }">
 						<input type="hidden" value="update-${even.id}" name="dao">
 					</form>
 				</div>
