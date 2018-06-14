@@ -112,14 +112,6 @@ public class DAOEvenement extends DAO<Evenement>
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return event;																		// Renvoie la référence de l'objet Evenement contenant les informations récupérées dans la base de données
 	}
@@ -166,14 +158,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -252,14 +236,6 @@ public class DAOEvenement extends DAO<Evenement>
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return listEvent;																	// Renvoie la référence de la liste contenant les objets Evenement contenant les informations récupérées dans la base de données
 	}
@@ -315,14 +291,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -385,14 +353,6 @@ public class DAOEvenement extends DAO<Evenement>
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return listePlage;
 	}
@@ -443,14 +403,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -511,14 +463,6 @@ public class DAOEvenement extends DAO<Evenement>
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return listeContact;
 	}
@@ -568,14 +512,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -662,14 +598,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -773,14 +701,6 @@ public class DAOEvenement extends DAO<Evenement>
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return resultat;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -822,14 +742,6 @@ public class DAOEvenement extends DAO<Evenement>
 			try
 			{
 				ps.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
 			}
 			catch (SQLException e)
 			{

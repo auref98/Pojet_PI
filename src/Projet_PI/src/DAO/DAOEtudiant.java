@@ -140,14 +140,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return etu;																			// Renvoie la référence de l'objet Etudiant contenant les informations récupérées dans la base de données
 	}
@@ -188,14 +180,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return sec;																			// Renvoie la référence de l'objet Section à laquelle appartient l'étudiant (ou null)
 	}
@@ -235,14 +219,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return adr;																			// Renvoie la référence de l'objet Adresse à laquelle appartient l'étudiant
 	}
@@ -276,7 +252,17 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				if(etud != null) tabEtud.add(etud);
 			}
 		}
-		else tabEtud = null;	
+		else tabEtud = null;
+		
+		/*if(tabEtud != null)
+			Collections.sort(tabEtud, new Comparator<Etudiant>() {
+	
+				@Override
+				public int compare(Etudiant o1, Etudiant o2) {
+					return o1.compareTo(o2);
+				}
+			});*/
+		
 		return tabEtud;
 	}
 	
@@ -355,14 +341,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return change;																	// Renvoie true si la table etudiant a été modifiée, false sinon
 	}
@@ -432,14 +410,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return change;																	// Renvoie true si la table etudiant a été modifiée, false sinon
 	}
@@ -470,14 +440,6 @@ public class DAOEtudiant extends DAO<Etudiant>{
 				this.prStat.close();
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
 			}
 		}
 		return change;																	// Renvoie true si la table etudiant a été modifiée, false sinon

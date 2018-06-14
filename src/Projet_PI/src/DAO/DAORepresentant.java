@@ -68,14 +68,6 @@ public class DAORepresentant extends DAO<Representant>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return repr;
 	}
@@ -111,14 +103,6 @@ public class DAORepresentant extends DAO<Representant>{
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
 				e.printStackTrace();
 			}
 		}
@@ -159,14 +143,6 @@ public class DAORepresentant extends DAO<Representant>{
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
 				e.printStackTrace();
 			}
 		}
@@ -214,14 +190,6 @@ public class DAORepresentant extends DAO<Representant>{
 			{
 				e.printStackTrace();
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		if(tabRep.isEmpty()) tabRep = null;
 		return tabRep;
@@ -255,14 +223,6 @@ public class DAORepresentant extends DAO<Representant>{
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
 			}
 		}
 		return ins;
@@ -307,14 +267,6 @@ public class DAORepresentant extends DAO<Representant>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return change;
 	}
@@ -336,14 +288,6 @@ public class DAORepresentant extends DAO<Representant>{
 				this.prStat.close();
 			} catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
 				e.printStackTrace();
 			}
 		}
@@ -379,14 +323,6 @@ public class DAORepresentant extends DAO<Representant>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
 		}
 		return change;
 	}
@@ -409,14 +345,6 @@ public class DAORepresentant extends DAO<Representant>{
 				this.prStat.close();
 			}catch(Exception e){
 				System.out.println(e.getMessage());
-			}
-			try
-			{
-				connection.close();
-			}
-			catch (SQLException e)
-			{
-				e.printStackTrace();
 			}
 		}
 		return change;
