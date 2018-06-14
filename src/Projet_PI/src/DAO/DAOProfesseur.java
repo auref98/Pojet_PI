@@ -62,7 +62,15 @@ public class DAOProfesseur extends DAO<Professeur>{
 			}catch(SQLException e){
 				System.out.println("Erreur: prStatClose failed !");
 				System.out.println(e.getMessage());
+			}try
+			{
+				connection.close();
 			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
 		}
 		return prof;
 	}
@@ -101,6 +109,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return sect;
 	}
@@ -130,6 +146,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return sect;
@@ -196,6 +220,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
 		sql = "INSERT INTO enseigne (refprof,refsect) VALUES(?,?)";
@@ -220,6 +252,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 					// TODO: handle exception
 					System.out.println(e.getMessage());
 				}
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
 		return change;
@@ -242,6 +282,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return change;
@@ -276,6 +324,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return change;
 	}
@@ -297,6 +353,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return change;
 	}
@@ -316,6 +380,14 @@ public class DAOProfesseur extends DAO<Professeur>{
 				this.prStat.close();
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return change;

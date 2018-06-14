@@ -79,6 +79,14 @@ public class DAOPlage extends DAO<Plage>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return plage;
 	}
@@ -136,6 +144,14 @@ public class DAOPlage extends DAO<Plage>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return listeIncptn;
 	}
@@ -188,6 +204,14 @@ public class DAOPlage extends DAO<Plage>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
@@ -233,6 +257,14 @@ public class DAOPlage extends DAO<Plage>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
@@ -269,6 +301,14 @@ public class DAOPlage extends DAO<Plage>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{

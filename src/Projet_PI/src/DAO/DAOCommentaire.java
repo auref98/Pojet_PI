@@ -112,42 +112,17 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return com;																		// Renvoie la référence de l'objet Commentaire contenant les informations récupérées dans la base de données
 	}
-	
-	/* POUR LUDOVIC
-	 * Recherche dans la BD tout les commentaire relier a idEve.
-	 * @param idEve
-	 * @return LinkedList de commentaire relier a un evenement.
-	 
-	public LinkedList<Commentaire> findAllEve(int idEve){
-		LinkedList<Commentaire> com = null;
-		String sql = "SELECT * FROM commentaire WHERE refeven = ?";
-		try {
-			this.prStat = connection.prepareStatement(sql);
-			this.prStat.setInt(1, idEve);
-			this.resSet = this.prStat.executeQuery();
-			while(this.resSet.next())
-				com.add(new Commentaire(this.resSet.getInt("id"),this.resSet.getString("contenu")));
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-		}finally{
-			try {
-				this.resSet.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-				System.out.println(e.getMessage());
-			}
-			try{
-				this.prStat.close();
-			}catch(Exception e){
-				System.out.println(e.getMessage());
-			}
-		}
-		return com;
-	}*/
 	
 	/**
 	 * Permet d'insérer une ligne dans la table <code>commentaire</code>. <br><br>
@@ -184,6 +159,14 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -217,6 +200,14 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -247,6 +238,14 @@ public class DAOCommentaire extends DAO<Commentaire> {
 				this.prStat.close();
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return change;																	// Renvoie true si la requête a abouti, false sinon

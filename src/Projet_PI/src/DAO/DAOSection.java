@@ -78,6 +78,14 @@ public class DAOSection extends DAO<Section>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return section;
 	}
@@ -109,6 +117,14 @@ public class DAOSection extends DAO<Section>
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println("Erreur : prStat impossible a fermer (findAll section)");
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return sects;
@@ -160,6 +176,14 @@ public class DAOSection extends DAO<Section>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -219,6 +243,14 @@ public class DAOSection extends DAO<Section>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return listeContact;
 	}
@@ -268,6 +300,14 @@ public class DAOSection extends DAO<Section>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -323,6 +363,14 @@ public class DAOSection extends DAO<Section>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
@@ -361,6 +409,14 @@ public class DAOSection extends DAO<Section>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -407,8 +463,15 @@ public class DAOSection extends DAO<Section>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
-
 }

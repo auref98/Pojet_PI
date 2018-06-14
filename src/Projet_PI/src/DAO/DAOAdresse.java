@@ -112,6 +112,14 @@ public class DAOAdresse extends DAO<Adresse>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return adr;																		// Renvoie la référence de l'objet Adresse contenant les informations récupérées dans la base de données
 	}
@@ -179,6 +187,14 @@ public class DAOAdresse extends DAO<Adresse>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -241,6 +257,14 @@ public class DAOAdresse extends DAO<Adresse>
 			{
 				System.out.println("Erreur : " + e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return changed;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -294,6 +318,14 @@ public class DAOAdresse extends DAO<Adresse>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -334,6 +366,14 @@ public class DAOAdresse extends DAO<Adresse>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{

@@ -79,6 +79,14 @@ public class DAOInscription extends DAO<Inscription>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return inscpt;
 	}
@@ -122,6 +130,14 @@ public class DAOInscription extends DAO<Inscription>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{
@@ -180,6 +196,14 @@ public class DAOInscription extends DAO<Inscription>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
@@ -226,6 +250,14 @@ public class DAOInscription extends DAO<Inscription>
 			{
 				e.printStackTrace();
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return resultat;
 	}
@@ -262,6 +294,14 @@ public class DAOInscription extends DAO<Inscription>
 			try
 			{
 				ps.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				connection.close();
 			}
 			catch (SQLException e)
 			{

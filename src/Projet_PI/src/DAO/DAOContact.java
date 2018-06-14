@@ -110,6 +110,14 @@ public class DAOContact extends DAO<Contact>{
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return cont;																		// Renvoie la référence de l'objet Contact contenant les informations récupérées dans la base de données
 	}
@@ -154,6 +162,14 @@ public class DAOContact extends DAO<Contact>{
 				// TODO: handle exception
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		DAOSection daoSec = new DAOSection();											// Instancie un objet DAOSection pour récupérer les objets Sections
 		for(int i = 0; i < tab.length;i++){													// Pour toutes les valeurs contenues dans le tableau tab,
@@ -194,6 +210,14 @@ public class DAOContact extends DAO<Contact>{
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		if(cont.getInteresse() != null){														// Si l'objet Contact référence une liste de Section
 			sql = "INSERT INTO interesse (REFCONTACT, REFSECT) VALUES (?,?)";				// Définit une nouvelle requête SQL avec des paramètres	
@@ -215,6 +239,14 @@ public class DAOContact extends DAO<Contact>{
 					this.prStat.close();
 				} catch (Exception e) {
 					// TODO: handle exception
+					e.printStackTrace();
+				}
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
 					e.printStackTrace();
 				}
 			}
@@ -253,6 +285,14 @@ public class DAOContact extends DAO<Contact>{
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return change;																	// Renvoie true si la requête a abouti, false sinon
 	}
@@ -285,6 +325,14 @@ public class DAOContact extends DAO<Contact>{
 				this.prStat.close();
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
+			}
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
 			}
 		}
 		return change;																	// Renvoie true si la requête a abouti, false sinon
