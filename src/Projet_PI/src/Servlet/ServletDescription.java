@@ -36,7 +36,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Inscription")	// Balise indiquant au servlet la cible de la requete HTTP déclenchant son appel
 public class ServletDescription extends HttpServlet
 {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 
 	/* Constructeur par défaut, explicité pour générer la javadoc */
 	/**
