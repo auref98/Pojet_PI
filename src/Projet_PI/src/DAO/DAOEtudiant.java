@@ -249,7 +249,7 @@ public class DAOEtudiant extends DAO<Etudiant>{
 			for(Representant rep : tabRep)
 			{
 				Etudiant etud = find(rep.getId());
-				if(etud != null) tabEtud.add(etud);
+				if(etud != null && etud.getMatricule() != null) tabEtud.add(etud);
 			}
 		}
 		else tabEtud = null;

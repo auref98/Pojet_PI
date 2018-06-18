@@ -140,6 +140,7 @@ public class ServletConnexion extends HttpServlet
 			}
 			request.setAttribute("sects", sects);
 			request.setAttribute("isEtu", isEtu);
+			request.setAttribute("isProf", prof != null);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request,  response);
 		}
 	}

@@ -145,7 +145,7 @@ public class DAOProfesseur extends DAO<Professeur>{
 			for(Representant rep : tabRep)
 			{
 				Professeur prof = find(rep.getId());
-				if(prof != null) tabProf.add(prof);
+				if(prof != null && prof.getMatricule() != null) tabProf.add(prof);
 			}
 		}
 		else tabProf = null;

@@ -157,11 +157,13 @@ public class ServletPosterCommentaire extends HttpServlet{
 						if(inscris != null){
 							for(Inscription ins : inscris){
 								Professeur pr = new DAOProfesseur().find(ins.getRepresentant().getId());
-								boolean add = true;
-								for(Professeur prf : profs){
-									if(add)add = !(prf.getId() == pr.getId());
+								if(pr != null){
+									boolean add = true;
+									for(Professeur prf : profs){
+										if(add)add = !(prf.getId() == pr.getId());
+									}
+									if(add)profs.add(pr);
 								}
-								if(add)profs.add(pr);
 							}
 						}
 					}
