@@ -212,31 +212,35 @@
 							</c:if>
 						</p>
 					</div>
-				</c:if>
-			</div>
-			<c:if test="${charge == true }">
-				<div class="offset-md-5 offset-3">
-					<form action="GererInscription" method="post">
-						<input class="btn btn-primary" type="submit" name="GererInsecription" value="Gerer les inscriptions">
-						<input type="hidden" name="inscription" value="${even.id }">
-					</form>
 				</div>
 			</c:if>
-			<c:if test="${relais == true }">
-				<div class="offset-md-5 offset-3">
-					<form action="CopierCreeEvent" method="post">
-						<input class="btn btn-primary" type="submit" value="Modifier" name="event-${even.id }">
-						<input type="hidden" value="update-${even.id}" name="dao">
-					</form>
+			<c:if test="${charge == true || relais == true }">
+				<div class="container row mx-auto w-100 p-0 m-0">
+					<c:if test="${charge == true }">
+						<div class="col-4 col-md-2">
+							<form action="GererInscription" method="post">
+								<input class="btn btn-primary" type="submit" name="GererInsecription" value="Gerer les inscriptions">
+								<input type="hidden" name="inscription" value="${even.id }">
+							</form>
+						</div>
+					</c:if>
+					<c:if test="${relais == true }">
+						<div class="col-2 col-md-1">
+							<form action="CopierCreeEvent" method="post">
+								<input class="btn btn-primary" type="submit" value="Modifier" name="event-${even.id }">
+								<input type="hidden" value="update-${even.id}" name="dao">
+							</form>
+						</div>
+					</c:if>
+					<c:if test="${relais == true }">
+						<div class="col-4 col-md-2">
+							<form action="SupprimerEvenement" method="post">
+								<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
+							</form>
+						</div>
+					</c:if>
 				</div>
 			</c:if>
-			<div class="offset-md-5 offset-3">
-				<c:if test="${relais == true }">
-					<form action="SupprimerEvenement" method="post">
-						<input type="submit" class="btn btn-danger" value="supprimer l'événement" name="event-${even.id }" style="margin-bottom:30px">
-					</form>
-				</c:if>
-			</div>
 		</div>
 	</body>
 </html>
